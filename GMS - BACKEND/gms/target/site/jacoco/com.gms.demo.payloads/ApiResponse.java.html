@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ApiResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">grievance</a> &gt; <a href="index.source.html" class="el_package">com.gms.demo.payloads</a> &gt; <span class="el_source">ApiResponse.java</span></div><h1>ApiResponse.java</h1><pre class="source lang-java linenums">package com.gms.demo.payloads;
+
+import java.util.Objects;
+
+/**
+ * The `ApiResponse` class represents a response from an API, containing a message and a success
+ * indicator.
+ */
+public class ApiResponse {
+
+  private String message;
+  private boolean success;
+
+  public final String getMessage() {
+<span class="nc" id="L15">    return message;</span>
+  }
+
+  public final void setMessage(final String message) {
+<span class="nc" id="L19">    this.message = message;</span>
+<span class="nc" id="L20">  }</span>
+
+  public final boolean isSuccess() {
+<span class="nc" id="L23">    return success;</span>
+  }
+
+  public final void setSuccess(final boolean success) {
+<span class="nc" id="L27">    this.success = success;</span>
+<span class="nc" id="L28">  }</span>
+
+  @Override
+  public final int hashCode() {
+<span class="nc" id="L32">    return Objects.hash(message, success);</span>
+  }
+
+  @Override
+  public final boolean equals(final Object obj) {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">    if (this == obj) {</span>
+<span class="nc" id="L38">      return true;</span>
+    }
+<span class="nc bnc" id="L40" title="All 2 branches missed.">    if (obj == null) {</span>
+<span class="nc" id="L41">      return false;</span>
+    }
+<span class="nc bnc" id="L43" title="All 2 branches missed.">    if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L44">      return false;</span>
+    }
+<span class="nc" id="L46">    ApiResponse other = (ApiResponse) obj;</span>
+<span class="nc bnc" id="L47" title="All 4 branches missed.">    return Objects.equals(message, other.message) &amp;&amp; success == other.success;</span>
+  }
+
+  public ApiResponse(final String message, final boolean success) {
+<span class="nc" id="L51">    super();</span>
+<span class="nc" id="L52">    this.message = message;</span>
+<span class="nc" id="L53">    this.success = success;</span>
+<span class="nc" id="L54">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

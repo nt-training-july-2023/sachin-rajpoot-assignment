@@ -1,0 +1,87 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@300;400;700&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* font-family: "Roboto", sans-serif; */
+}
+
+.user_container {
+    width: 100%;
+    /* height: 70vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+    margin: 2rem 0;
+}
+
+.user_registration_form {
+    padding: 1rem;
+    /* width: 80%; */
+    /* width: 570px; */
+    min-width: 60%;
+    background-color: aliceblue;
+    box-shadow: -2px 7px 25px -9px rgba(0, 0, 0, 0.75);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center;*/
+}
+
+
+.user_heading {
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+}
+
+.user_form{
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+}
+
+.user_input_area {
+    /* padding: 1rem; */
+    /* width: 90%; */
+    /* width: 200px; */
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    /* justify-content: center; */
+    /* width: 40%; */
+    min-width: 50%;
+    /* align-items: center; */
+}
+
+.user_input_area input, .user_input_area select, .user_input_area option {
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+
+
+.user_registration_form_btn input {
+    padding: 0.5rem 2.5rem;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 10px;
+    width: 100%;
+    transition: .2s ease-in-out;
+    font-weight: 500;
+}
+.user_registration_form_btn input:hover{
+    color: black;
+    background-color: aliceblue;
+}

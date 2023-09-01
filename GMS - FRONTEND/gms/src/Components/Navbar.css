@@ -1,0 +1,76 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap');
+
+
+
+.nav_bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    /* background-color: #abc1bb; */
+    background-color: black;
+    padding: 2rem;
+    height: 10vh;
+}
+
+.logo p {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Tilt Prism', cursive;
+    color: aliceblue;
+}
+.link,a {
+    text-decoration: none;
+    color: aliceblue;
+}
+.link:hover, a:hover{
+    color: grey;
+}
+
+
+
+.nav_links{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2.5rem;
+    text-decoration: none;
+    margin-right: 3.5rem;
+}
+
+
+
+.dropbtn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: aliceblue;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: aliceblue;
+    /* color: black; */
+  }
+  
+  .dropdown:hover .dropdown-content{
+    display: block;
+  }
+  .dropdown-content a{
+    display: block;
+    color: black;
+    margin: .7rem;
+  }
+  
+  .dropdown-content a:hover{
+    color: gray;
+  }
+
+  a{
+    text-decoration: none;
+    color: aliceblue;
+  }
