@@ -9,16 +9,15 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootTest
 class GmsApplicationTests {
-  @MockBean
-  private MemberRepo memberRepo;
+	@MockBean
+	private MemberRepo memberRepo;
 
+	@Test
+	void contextLoads() {
+	}
 
-
-  @Test
-  void contextLoads() {}
-  
-  @Bean
-  public ModelMapper modelMapper() {
-    return new ModelMapper();
-  }
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 }

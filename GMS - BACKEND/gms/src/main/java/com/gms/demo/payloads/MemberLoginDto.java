@@ -40,7 +40,7 @@ public class MemberLoginDto {
   /**
    * The Check for the first login of the member.
    */
-  @NotEmpty
+//  @NotEmpty
   private Boolean isFirstLogin;
 
   /**

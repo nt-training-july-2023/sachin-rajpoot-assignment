@@ -49,7 +49,7 @@ public class MemberDtoTest {
         memberDto.setDepartment(new Department(1, "HR", null, null));
         assertEquals(new Department(1, "HR", null, null), memberDto.getDepartment());
 
-        memberDto.setRole(Role.ADMIN); // You should set an actual Role value here.
+        memberDto.setRole(Role.ADMIN); 
         assertEquals(Role.ADMIN, memberDto.getRole());
 
         List<Ticket> tickets = new ArrayList<>();
@@ -60,8 +60,8 @@ public class MemberDtoTest {
                         "desc desc desc",
                         null,
                         null,
-                        Status.OPEN, // You should set an actual Status value here.
-                        TicketType.GREIVANCE, // You should set an actual TicketType value here.
+                        Status.OPEN, 
+                        TicketType.GREIVANCE, 
                         null,
                         null,
                         null));

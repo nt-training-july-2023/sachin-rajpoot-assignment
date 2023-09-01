@@ -17,22 +17,22 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class GmsApplication {
 
-  /**
-   * The main entry point of the application.
-   *
-   * @param args The command-line arguments.
-   */
-  public static void main(final String[] args) {
-    SpringApplication.run(GmsApplication.class, args);
-  }
+	/**
+	 * The main entry point of the application.
+	 *
+	 * @param args The command-line arguments.
+	 */
+	public static void main(final String[] args) {
+		SpringApplication.run(GmsApplication.class, args);
+	}
 
-  /**
-   * Create a new instance of ModelMapper to be used as a Spring bean.
-   *
-   * @return The configured ModelMapper instance.
-   */
-  @Bean
-  public ModelMapper modelMapper() {
-    return new ModelMapper();
-  }
+	/**
+	 * Create a new instance of ModelMapper to be used as a Spring bean.
+	 *
+	 * @return The configured ModelMapper instance.
+	 */
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
+	}
 }
