@@ -18,5 +18,5 @@ public enum TicketType {
     /**
      * Represents a ticket for raising a grievance.
      */
-    GRIEVANCE, GREIVANCE
+    GRIEVANCE, 
 }

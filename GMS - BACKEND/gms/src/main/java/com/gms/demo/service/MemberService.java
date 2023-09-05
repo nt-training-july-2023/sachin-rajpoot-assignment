@@ -1,8 +1,12 @@
 package com.gms.demo.service;
 
 
+import java.util.List;
+
+import com.gms.demo.entity.Role;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberLoginDto;
+import com.gms.demo.payloads.MemberOutDto;
 
 /**
  * Represents a service interface for Member-related operations.
@@ -20,7 +24,11 @@ public interface MemberService {
      * @param memberDto The MemberDto containing member details.
      * @return The created MemberDto.
      */
-  MemberDto createMember(MemberDto memberDto);
+  MemberDto createMember(MemberDto memberDto, final Integer departmentId);
+  
+  MemberOutDto createMember2(MemberDto memberDto, final Integer departmentId, String email, String password);
+  
+  List<MemberOutDto> getAllmember();
 
   /**
      * Perform member login.
@@ -30,6 +38,8 @@ public interface MemberService {
  * @throws Exception
      */
   Boolean login(MemberLoginDto memberLoginDto) throws Exception;
+  
+  Boolean verifyEmailAndPassword(final String email, final String password);
 
 
 }

@@ -2,6 +2,8 @@ package com.gms.demo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +27,9 @@ import javax.validation.constraints.NotEmpty;
  * @since 28-08-2023
  */
 
+/**
+ * 
+ */
 @Entity
 public class Member {
   /**
@@ -58,7 +63,7 @@ public class Member {
   /**
    * The Check for the first login of the member.
    */
-  @NotEmpty
+//  @NotEmpty
   private Boolean isFirstLogin;
 
   /**
@@ -205,43 +210,12 @@ public class Member {
     this.tickets = tickets;
   }
 
-  /**
-   * Generates a string representation of the Member object.
-   *
-   * @return The string representation.
-   */
   @Override
-  public String toString() {
-    return ("Member [memberId="
-        +
-        memberId
-        +
-        ", name="
-        +
-        name
-        +
-        ", email="
-        +
-        email
-        +
-        ", password="
-        +
-        password
-        +
-        ", role="
-        +
-        role
-        +
-        ", department="
-        +
-        department
-        +
-        ", tickets="
-        +
-        tickets
-        +
-        "]");
-  }
+public String toString() {
+	return "Member [memberId=" + memberId + ", name=" + name + ", email=" + email + ", password=" + password
+			+ ", isFirstLogin=" + isFirstLogin + ", role=" + role + ", department=" + department + ", tickets="
+			+ tickets + "]";
+}
 
   /**
    * Constructor for creating a Member object.
@@ -299,5 +273,46 @@ public class Member {
     super();
     // TODO Auto-generated constructor stub
   }
+
+public Boolean getIsFirstLogin() {
+	return isFirstLogin;
+}
+
+public void setIsFirstLogin(Boolean isFirstLogin) {
+	this.isFirstLogin = isFirstLogin;
+}
+
+@Override
+public int hashCode() {
+	return Objects.hash(department, email, isFirstLogin, memberId, name, password, role, tickets);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Member other = (Member) obj;
+	return Objects.equals(department, other.department) && Objects.equals(email, other.email)
+			&& Objects.equals(isFirstLogin, other.isFirstLogin) && Objects.equals(memberId, other.memberId)
+			&& Objects.equals(name, other.name) && Objects.equals(password, other.password) && role == other.role
+			&& Objects.equals(tickets, other.tickets);
+}
+
+public Member(Integer memberId, @NotEmpty String name, @NotEmpty @Email String email, @NotEmpty String password,
+		Boolean isFirstLogin, Role role, Department department, List<Ticket> tickets) {
+	super();
+	this.memberId = memberId;
+	this.name = name;
+	this.email = email;
+	this.password = password;
+	this.isFirstLogin = isFirstLogin;
+	this.role = role;
+	this.department = department;
+	this.tickets = tickets;
+}
 
 }

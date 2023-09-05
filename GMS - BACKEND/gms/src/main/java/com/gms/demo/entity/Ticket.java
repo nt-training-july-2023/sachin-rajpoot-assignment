@@ -67,14 +67,14 @@ public class Ticket {
   /**
    * The status of the ticket.
    */
-  @NotEmpty
+//  @NotEmpty
   @Enumerated(EnumType.STRING)
   private Status status;
 
   /**
    * The type of the ticket.
    */
-  @NotEmpty
+//  @NotEmpty
   @Enumerated(EnumType.STRING)
   private TicketType ticketType;
 

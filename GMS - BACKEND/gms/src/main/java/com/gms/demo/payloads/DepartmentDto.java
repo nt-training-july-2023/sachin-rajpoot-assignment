@@ -1,6 +1,15 @@
 package com.gms.demo.payloads;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
+
+import com.gms.demo.entity.Member;
+import com.gms.demo.entity.Ticket;
 
 /**
  * Data transfer object (DTO) representing a department.
@@ -16,8 +25,32 @@ public class DepartmentDto {
      */
     @NotEmpty
     private String name;
-
+    
+    
     /**
+     * The list of tickets associated with this department.
+     */
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MemberOutDto> members = new ArrayList<>();
+
+
+    public List<MemberOutDto> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<MemberOutDto> members) {
+		this.members = members;
+	}
+
+	
+	public DepartmentDto(Integer departmentId, @NotEmpty String name, List<MemberOutDto> members) {
+		super();
+		this.departmentId = departmentId;
+		this.name = name;
+		this.members = members;
+	}
+
+	/**
      * Get the ID of the department.
      *
      * @return The department ID.
@@ -118,4 +151,10 @@ public class DepartmentDto {
     public String toString() {
         return "DepartmentDto [departmentId=" + departmentId + ", name=" + name + "]";
     }
+    
+    public DepartmentDto() {
+    	super();
+    }
+    
+ 
 }
