@@ -12,7 +12,7 @@ public class CommentDtoTest {
   private CommentDto commentDto = new CommentDto(
     1,
     "This is a comment",
-    "JohnDoe",
+    "kingkong",
     new Date(),
     new TicketDto()
   );
@@ -31,8 +31,8 @@ public class CommentDtoTest {
 
   @Test
   public void testGetAndSetUserName() {
-    commentDto.setUserName("JaneDoe");
-    assertEquals("JaneDoe", commentDto.getUserName());
+    commentDto.setUserName("kingkong");
+    assertEquals("kingkong", commentDto.getUserName());
   }
 
   @Test
@@ -52,7 +52,7 @@ public class CommentDtoTest {
   @Test
   public void testToString() {
     String expected =
-      "CommentDto [commentId=1, content=This is a comment, userName=JohnDoe, date=" +
+      "CommentDto [commentId=1, content=This is a comment, userName=kingkong, date=" +
       commentDto.getDate() +
       "]";
     assertEquals(expected, commentDto.toString());
