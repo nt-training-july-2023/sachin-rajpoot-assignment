@@ -17,8 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 /**
  * Represents an Department Entity.
@@ -54,27 +54,28 @@ public class Ticket {
   /**
    * The date and time when the ticket was created.
    */
-  @CreatedDate
+  @CreationTimestamp // Automatically set the creation timestamp
   @Temporal(TemporalType.TIMESTAMP)
   private Date createdOn;
 
   /**
    * The date and time when the ticket was last updated.
    */
-  @UpdateTimestamp
+  @UpdateTimestamp // Automatically set the update timestamp
+  @Temporal(TemporalType.TIMESTAMP)
   private Date lastUpdatedOn;
 
   /**
    * The status of the ticket.
    */
-//  @NotEmpty
+  //  @NotEmpty
   @Enumerated(EnumType.STRING)
   private Status status;
 
   /**
    * The type of the ticket.
    */
-//  @NotEmpty
+  //  @NotEmpty
   @Enumerated(EnumType.STRING)
   private TicketType ticketType;
 
@@ -83,20 +84,24 @@ public class Ticket {
    */
   @ManyToOne
   @JoinColumn(name = "department_id")
- private Department department;
+  private Department department;
 
   /**
    * The member who created the ticket.
    */
   @ManyToOne
   @JoinColumn(name = "member_id")
- private Member member;
+  private Member member;
 
   /**
    * The list of comments associated with this ticket.
    */
-  @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
- private List<Comment> comments = new ArrayList<>();
+  @OneToMany(
+    mappedBy = "ticket",
+    cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY
+  )
+  private List<Comment> comments = new ArrayList<>();
 
   /**
    * Get the ticket ID.
@@ -285,27 +290,29 @@ public class Ticket {
    */
   @Override
   public String toString() {
-    return ("Ticket [ticketId="
-        + ticketId
-        + ", title="
-        + title
-        + ", description="
-        + description
-        + ", createdOn="
-        + createdOn
-        + ", lastUpdatedOn="
-        + lastUpdatedOn
-        + ", status="
-        + status
-        + ", ticketType="
-        + ticketType
-        + ", department="
-        + department
-        + ", member="
-        + member
-        + ", comments="
-        + comments
-        + "]");
+    return (
+      "Ticket [ticketId=" +
+      ticketId +
+      ", title=" +
+      title +
+      ", description=" +
+      description +
+      ", createdOn=" +
+      createdOn +
+      ", lastUpdatedOn=" +
+      lastUpdatedOn +
+      ", status=" +
+      status +
+      ", ticketType=" +
+      ticketType +
+      ", department=" +
+      department +
+      ", member=" +
+      member +
+      ", comments=" +
+      comments +
+      "]"
+    );
   }
 
   /**
@@ -323,16 +330,17 @@ public class Ticket {
    * @param comments      The list of comments associated with the ticket.
    */
   public Ticket(
-      final Integer ticketId,
-      @NotEmpty final String title,
-      @NotEmpty final String description,
-      final Date createdOn,
-      final Date lastUpdatedOn,
-      @NotEmpty final Status status,
-      @NotEmpty final TicketType ticketType,
-      final Department department,
-      final Member member,
-      final List<Comment> comments) {
+    final Integer ticketId,
+    @NotEmpty final String title,
+    @NotEmpty final String description,
+    final Date createdOn,
+    final Date lastUpdatedOn,
+    @NotEmpty final Status status,
+    @NotEmpty final TicketType ticketType,
+    final Department department,
+    final Member member,
+    final List<Comment> comments
+  ) {
     super();
     this.ticketId = ticketId;
     this.title = title;
@@ -352,5 +360,4 @@ public class Ticket {
   public Ticket() {
     super();
   }
-
 }

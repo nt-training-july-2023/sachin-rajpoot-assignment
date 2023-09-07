@@ -1,6 +1,5 @@
 package com.gms.demo.payloads;
 
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -16,6 +15,7 @@ import javax.validation.constraints.Size;
  */
 
 public class MemberLoginDto {
+
   /**
    * The email address of the member.
    */
@@ -30,117 +30,86 @@ public class MemberLoginDto {
   private static final int MIN_SIZE_PASSWORD = 5;
 
   /**
-   * The password associated with the member's account.
-   * Password must be between 5 and 12 characters in length.
+   * The password associated with the member's account. Password must be between 5
+   * and 12 characters in length.
    */
   @NotEmpty
-  @Size(min = MIN_SIZE_PASSWORD, message = "Password must be between 5 and 12 characters.")
+  @Size(
+    min = MIN_SIZE_PASSWORD,
+    message = "Password must be between 5 and 12 characters."
+  )
   private String password;
-  
-  /**
-   * The Check for the first login of the member.
-   */
-//  @NotEmpty
-  private Boolean isFirstLogin;
 
   /**
-   * Get the email of the member for login.
+   * Gets the email of the member for login.
    *
-   * @return The member's login email.
+   * @return The email used for member login.
    */
   public String getEmail() {
     return email;
   }
 
   /**
-   * Set the email of the member for login.
+   * Sets the email of the member for login.
    *
-   * @param email The member's login email to set.
+   * @param email The email to set for member login.
    */
   public void setEmail(final String email) {
     this.email = email;
   }
 
   /**
-   * Get the password of the member for login.
+   * Gets the password of the member for login.
    *
-   * @return The member's login password.
+   * @return The password used for member login.
    */
   public String getPassword() {
     return password;
   }
 
   /**
-   * Set the password of the member for login.
+   * Sets the password of the member for login.
    *
-   * @param password The member's login password to set.
+   * @param password The password to set for member login.
    */
   public void setPassword(final String password) {
     this.password = password;
   }
 
   /**
-   * Calculates the hash code for the MemberLoginDto object.
+   * Gets the minimum size required for a password.
    *
-   * @return The hash code value.
+   * @return The minimum size required for a password.
    */
-  @Override
-  public int hashCode() {
-    return Objects.hash(email, password);
+  public static int getMinSizePassword() {
+    return MIN_SIZE_PASSWORD;
   }
 
   /**
-   * Checks if this MemberLoginDto object is equal to another object.
+   * Returns a string representation of the MemberLoginDto object.
    *
-   * @param obj The object to compare.
-   * @return True if the objects are equal, false otherwise.
-   */
-  @Override
-  public boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null || getClass() != obj.getClass()) {
-      return false;
-    }
-    MemberLoginDto other = (MemberLoginDto) obj;
-    return (Objects.equals(email, other.email) && Objects.equals(password, other.password));
-  }
-
-  /**
-   * Generates a string representation of the MemberLoginDto object.
-   *
-   * @return The string representation.
+   * @return A string containing member login details.
    */
   @Override
   public String toString() {
-    return ("email=" + email + ", password=" + password + "]");
+    return "MemberLoginDto [email=" + email + ", password=" + password + "]";
   }
 
   /**
-   * Constructor for creating a MemberLoginDto object.
+   * Constructs a MemberLoginDto object with the specified email and password.
    *
-   * @param memberId The member ID.
-   * @param email    The email of the member for login.
-   * @param password The password of the member for login.
+   * @param email    The email for member login.
+   * @param password The password for member login.
    */
   public MemberLoginDto(
-      final Integer memberId,
-      @NotEmpty @Email final String email,
-      @NotEmpty @Size(min = '5', message = "Password Must be minimum 5 and maximum 12 characters.") final String password) {
-    super();
-    this.email = email;
-    this.password = password;
-  }
-
-  /**
-   * Constructs a new MemberLoginDto with the provided email and password.
-   * @param email    The email address of the member.
-   * @param password The password associated with the member's account.
-   */
-  public MemberLoginDto(
-      @NotEmpty @Email final String email,
-      @NotEmpty @Size(min = '5', message = "Password must be between 5 and 12 characters.") final String password) {
+    @NotEmpty @Email final String email,
+    @NotEmpty @Size(
+      min = MIN_SIZE_PASSWORD,
+      message = "Password must be between " +
+      MIN_SIZE_PASSWORD +
+      " and 12 characters."
+    ) final String password
+  ) {
     super();
     this.email = email;
     this.password = password;

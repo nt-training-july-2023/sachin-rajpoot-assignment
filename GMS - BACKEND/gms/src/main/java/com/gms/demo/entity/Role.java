@@ -10,13 +10,12 @@ package com.gms.demo.entity;
  */
 
 public enum Role {
-    /**
-     * Indicates that the Member is ADMIN.
-     */
-    ADMIN,
-    /**
-     * Indicates that the Member is USER.
-     */
-    USER
-
+  /**
+   * Indicates that the Member is ADMIN.
+   */
+  ADMIN,
+  /**
+   * Indicates that the Member is USER.
+   */
+  USER,
 }

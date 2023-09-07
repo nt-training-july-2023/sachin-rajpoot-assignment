@@ -1,67 +1,118 @@
 package com.gms.demo.payloads;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * The `DepartmentOutDto` class represents a Data Transfer Object (DTO) for outbound department information.
+ * It contains details about a department, including its name, associated members, and associated tickets.
+ *
+ * @version 1.0
+ * @since 28-08-2023
+ */
 public class DepartmentOutDto {
-	 private String departmentName;
-	 
-//	 private Integer numberOfEmployees;
-	 
-//	 private String memberName;
-	 
-//	 private String memberEmail;
-	 
-	 private MemberOutDto memberOutDto;
 
-	public String getDepartmentName() {
-		return departmentName;
-	}
+  /**
+   * The name of the department.
+   */
+  private String departmentName;
 
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
+  /**
+   * The list of members associated with the department.
+   */
+  private List<MemberOutDto> members = new ArrayList<>();
 
-	public MemberOutDto getMemberOutDto() {
-		return memberOutDto;
-	}
+  /**
+   * The list of tickets associated with the department.
+   */
+  private List<TicketOutDto> tickets = new ArrayList<>();
 
-	public void setMemberOutDto(MemberOutDto memberOutDto) {
-		this.memberOutDto = memberOutDto;
-	}
+  /**
+   * Gets the name of the department.
+   *
+   * @return The name of the department.
+   */
+  public String getDepartmentName() {
+    return departmentName;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(departmentName, memberOutDto);
-	}
+  /**
+   * Sets the name of the department.
+   *
+   * @param departmentName The name to set for the department.
+   */
+  public void setDepartmentName(final String departmentName) {
+    this.departmentName = departmentName;
+  }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DepartmentOutDto other = (DepartmentOutDto) obj;
-		return Objects.equals(departmentName, other.departmentName) && Objects.equals(memberOutDto, other.memberOutDto);
-	}
+  /**
+   * Gets the list of members associated with the department.
+   *
+   * @return The list of associated members as MemberOutDto objects.
+   */
+  public List<MemberOutDto> getMembers() {
+    return members;
+  }
 
-	@Override
-	public String toString() {
-		return "DepartmentOutDto [departmentName=" + departmentName + ", memberOutDto=" + memberOutDto + "]";
-	}
+  /**
+   * Sets the list of members associated with the department.
+   *
+   * @param members The list of associated members as MemberOutDto objects.
+   */
+  public void setMembers(final List<MemberOutDto> members) {
+    this.members = members;
+  }
 
-	public DepartmentOutDto(String departmentName, MemberOutDto memberOutDto) {
-		super();
-		this.departmentName = departmentName;
-		this.memberOutDto = memberOutDto;
-	}
+  /**
+   * Gets the list of tickets associated with the department.
+   *
+   * @return The list of associated tickets as TicketOutDto objects.
+   */
+  public List<TicketOutDto> getTickets() {
+    return tickets;
+  }
 
-	public DepartmentOutDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	 
-	 
-	 
+  /**
+   * Sets the list of tickets associated with the department.
+   *
+   * @param tickets The list of associated tickets as TicketOutDto objects.
+   */
+  public void setTickets(final List<TicketOutDto> tickets) {
+    this.tickets = tickets;
+  }
+
+  /**
+   * Returns a string representation of the DepartmentOutDto object.
+   *
+   * @return A string containing department details.
+   */
+  @Override
+  public String toString() {
+    return "DepartmentOutDto [departmentName=" + departmentName + "]";
+  }
+
+  /**
+   * Constructs a DepartmentOutDto object with the specified department name, associated members, and associated tickets.
+   *
+   * @param departmentName The name of the department.
+   * @param members        The list of associated members as MemberOutDto objects.
+   * @param tickets        The list of associated tickets as TicketOutDto objects.
+   */
+  public DepartmentOutDto(
+    final String departmentName,
+    final List<MemberOutDto> members,
+    final List<TicketOutDto> tickets
+  ) {
+    super();
+    this.departmentName = departmentName;
+    this.members = members;
+    this.tickets = tickets;
+  }
+
+  /**
+   * Default constructor for DepartmentOutDto class.
+   */
+  public DepartmentOutDto() {
+    // Default constructor
+  }
 }

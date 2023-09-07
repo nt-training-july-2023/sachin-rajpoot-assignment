@@ -2,8 +2,6 @@ package com.gms.demo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,11 +25,9 @@ import javax.validation.constraints.NotEmpty;
  * @since 28-08-2023
  */
 
-/**
- * 
- */
 @Entity
 public class Member {
+
   /**
    * The unique identifier for the member.
    */
@@ -58,12 +54,11 @@ public class Member {
    */
   @NotEmpty
   private String password;
-  
 
   /**
    * The Check for the first login of the member.
    */
-//  @NotEmpty
+  //  @NotEmpty
   private Boolean isFirstLogin;
 
   /**
@@ -81,238 +76,218 @@ public class Member {
   /**
    * The list of tickets associated with this member.
    */
-  @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToMany(
+    mappedBy = "member",
+    cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY
+  )
   private List<Ticket> tickets = new ArrayList<>();
 
   /**
-   * Get the member ID.
+   * Gets the unique identifier for the member.
    *
-   * @return The member ID.
+   * @return The member's unique identifier.
    */
-  public Integer getMemberId() {
+  public final Integer getMemberId() {
     return memberId;
   }
 
   /**
-   * Set the member ID.
+   * Sets the unique identifier for the member.
    *
-   * @param memberId The member ID to set.
+   * @param memberId The member's unique identifier.
    */
-  public void setMemberId(final Integer memberId) {
+  public final void setMemberId(Integer memberId) {
     this.memberId = memberId;
   }
 
   /**
-   * Get the name of the member.
+   * Gets the name of the member.
    *
-   * @return The member name.
+   * @return The name of the member.
    */
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
   /**
-   * Set the name of the member.
+   * Sets the name of the member.
    *
-   * @param name The member name to set.
+   * @param name The name of the member.
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
   /**
-   * Get the email of the member.
+   * Gets the email address of the member.
    *
-   * @return The member email.
+   * @return The email address of the member.
    */
-  public String getEmail() {
+  public final String getEmail() {
     return email;
   }
 
   /**
-   * Set the email of the member.
+   * Sets the email address of the member.
    *
-   * @param email The member email to set.
+   * @param email The email address of the member.
    */
-  public void setEmail(final String email) {
+  public final void setEmail(final String email) {
     this.email = email;
   }
 
   /**
-   * Get the password of the member.
+   * Gets the password of the member.
    *
-   * @return The member password.
+   * @return The password of the member.
    */
-  public String getPassword() {
+  public final String getPassword() {
     return password;
   }
 
   /**
-   * Set the password of the member.
+   * Sets the password of the member.
    *
-   * @param password The member password to set.
+   * @param password The password of the member.
    */
-  public void setPassword(final String password) {
+  public final void setPassword(final String password) {
     this.password = password;
   }
 
   /**
-   * Get the role of the member.
+   * Gets whether the member is logging in for the first time.
    *
-   * @return The member role.
+   * @return True if the member is logging in for the first time; false otherwise.
    */
-  public Role getRole() {
+  public final Boolean getIsFirstLogin() {
+    return isFirstLogin;
+  }
+
+  /**
+   * Sets whether the member is logging in for the first time.
+   *
+   * @param isFirstLogin True if the member is logging in for the first time; false otherwise.
+   */
+  public final void setIsFirstLogin(final Boolean isFirstLogin) {
+    this.isFirstLogin = isFirstLogin;
+  }
+
+  /**
+   * Gets the role of the member.
+   *
+   * @return The role of the member.
+   */
+  public final Role getRole() {
     return role;
   }
 
   /**
-   * Set the role of the member.
+   * Sets the role of the member.
    *
-   * @param role The member role to set.
+   * @param role The role of the member.
    */
-  public void setRole(final Role role) {
+  public final void setRole(final Role role) {
     this.role = role;
   }
 
   /**
-   * Get the department of the member.
+   * Gets the department to which the member belongs.
    *
-   * @return The member department.
+   * @return The department to which the member belongs.
    */
-  public Department getDepartment() {
+  public final Department getDepartment() {
     return department;
   }
 
   /**
-   * Set the department of the member.
+   * Sets the department to which the member belongs.
    *
-   * @param department The member department to set.
+   * @param department The department to which the member belongs.
    */
-  public void setDepartment(final Department department) {
+  public final void setDepartment(final Department department) {
     this.department = department;
   }
 
   /**
-   * Get the list of tickets associated with the member.
+   * Gets the list of tickets associated with the member.
    *
-   * @return The list of tickets.
+   * @return The list of tickets associated with the member.
    */
-  public List<Ticket> getTickets() {
+  public final List<Ticket> getTickets() {
     return tickets;
   }
 
   /**
-   * Set the list of tickets associated with the member.
+   * Sets the list of tickets associated with the member.
    *
-   * @param tickets The list of tickets to set.
+   * @param tickets The list of tickets associated with the member.
    */
-  public void setTickets(final List<Ticket> tickets) {
+  public final void setTickets(final List<Ticket> tickets) {
     this.tickets = tickets;
   }
 
+  /**
+   * Returns a string representation of the Member object.
+   *
+   * @return A string containing member details.
+   */
   @Override
-public String toString() {
-	return "Member [memberId=" + memberId + ", name=" + name + ", email=" + email + ", password=" + password
-			+ ", isFirstLogin=" + isFirstLogin + ", role=" + role + ", department=" + department + ", tickets="
-			+ tickets + "]";
-}
+  public final String toString() {
+    return (
+      "Member [memberId=" +
+      memberId +
+      ", name=" +
+      name +
+      ", email=" +
+      email +
+      ", password=" +
+      password +
+      ", isFirstLogin=" +
+      isFirstLogin +
+      ", role=" +
+      role +
+      "]"
+    );
+  }
 
   /**
-   * Constructor for creating a Member object.
+   * Constructs a Member object with the specified parameters.
    *
-   * @param memberId   The member ID.
-   * @param name       The name of the member.
-   * @param email      The email of the member.
-   * @param password   The password of the member.
-   * @param role       The role of the member.
-   * @param department The department of the member.
-   * @param tickets    The list of tickets associated with the member.
+   * @param memberId     The unique identifier for the member.
+   * @param name         The name of the member.
+   * @param email        The email address of the member.
+   * @param password     The password of the member.
+   * @param isFirstLogin Whether the member is logging in for the first time.
+   * @param role         The role of the member.
+   * @param department   The department to which the member belongs.
+   * @param tickets      The list of tickets associated with the member.
    */
   public Member(
-      final Integer memberId,
-      @NotEmpty final String name,
-      @NotEmpty @Email final String email,
-      @NotEmpty final String password,
-      @NotEmpty final Role role,
-      final Department department,
-      final List<Ticket> tickets) {
+    final Integer memberId,
+    @NotEmpty final String name,
+    @NotEmpty @Email final String email,
+    @NotEmpty final String password,
+    final Boolean isFirstLogin,
+    final Role role,
+    final Department department,
+    final List<Ticket> tickets
+  ) {
     super();
     this.memberId = memberId;
     this.name = name;
     this.email = email;
     this.password = password;
+    this.isFirstLogin = isFirstLogin;
     this.role = role;
     this.department = department;
     this.tickets = tickets;
   }
 
   /**
-   * Constructor for creating a Member object.
-   *
-   * @param memberId   The member ID.
-   * @param name       The name of the member.
-   * @param email      The email of the member.
-   * @param password   The password of the member.
-   */
-  public Member(
-      final Integer memberId,
-      @NotEmpty final String name,
-      @NotEmpty @Email final String email,
-      @NotEmpty final String password) {
-    super();
-    this.memberId = memberId;
-    this.name = name;
-    this.email = email;
-    this.password = password;
-  }
-
-  /**
-   * Default constructor for creating a Member object.
+   * Default constructor for Member class.
    */
   public Member() {
-    super();
-    // TODO Auto-generated constructor stub
+    // Default constructor
   }
-
-public Boolean getIsFirstLogin() {
-	return isFirstLogin;
-}
-
-public void setIsFirstLogin(Boolean isFirstLogin) {
-	this.isFirstLogin = isFirstLogin;
-}
-
-@Override
-public int hashCode() {
-	return Objects.hash(department, email, isFirstLogin, memberId, name, password, role, tickets);
-}
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Member other = (Member) obj;
-	return Objects.equals(department, other.department) && Objects.equals(email, other.email)
-			&& Objects.equals(isFirstLogin, other.isFirstLogin) && Objects.equals(memberId, other.memberId)
-			&& Objects.equals(name, other.name) && Objects.equals(password, other.password) && role == other.role
-			&& Objects.equals(tickets, other.tickets);
-}
-
-public Member(Integer memberId, @NotEmpty String name, @NotEmpty @Email String email, @NotEmpty String password,
-		Boolean isFirstLogin, Role role, Department department, List<Ticket> tickets) {
-	super();
-	this.memberId = memberId;
-	this.name = name;
-	this.email = email;
-	this.password = password;
-	this.isFirstLogin = isFirstLogin;
-	this.role = role;
-	this.department = department;
-	this.tickets = tickets;
-}
-
 }

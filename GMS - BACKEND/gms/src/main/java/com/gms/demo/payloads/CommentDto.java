@@ -1,239 +1,180 @@
 package com.gms.demo.payloads;
 
 import java.util.Date;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
-
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 public class CommentDto {
 
-    /**
-     * The unique identifier for the comment.
-     */
-    private Integer commentId;
+  /**
+   * The unique identifier for the comment.
+   */
+  private Integer commentId;
 
-    /**
-     * The content of the comment.
-     */
-    @NotEmpty
-    private String content;
+  /**
+   * The content of the comment.
+   */
+  @NotEmpty
+  private String content;
 
-    /**
-     * The username associated with the comment.
-     */
-    @NotEmpty
-    private String userName;
+  /**
+   * The username associated with the comment.
+   */
+  @NotEmpty
+  private String userName;
 
-    /**
-     * The date and time when the comment was created.
-     */
-    @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
+  /**
+   * The date and time when the comment was created.
+   */
+  @CreationTimestamp // Automatically set the creation timestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date date;
 
-    /**
-     * The ticket to which this comment belongs.
-     */
-    @ManyToOne
-    @JoinColumn(name = "ticket_id")
-    private TicketDto ticketDto;
+  /**
+   * The ticket to which this comment belongs.
+   */
+  private TicketDto ticket;
 
-    /**
-     * Get the comment's unique identifier.
-     *
-     * @return The comment ID.
-     */
-    public Integer getCommentId() {
-        return commentId;
-    }
+  /**
+   * Gets the unique identifier for the comment.
+   *
+   * @return The comment's unique identifier.
+   */
+  public final Integer getCommentId() {
+    return commentId;
+  }
 
-    /**
-     * Set the comment's unique identifier.
-     *
-     * @param commentId The comment ID to set.
-     */
-    public void setCommentId(final Integer commentId) {
-        this.commentId = commentId;
-    }
+  /**
+   * Sets the unique identifier for the comment.
+   *
+   * @param commentId The comment's unique identifier.
+   */
+  public final void setCommentId(final Integer commentId) {
+    this.commentId = commentId;
+  }
 
-    /**
-     * Get the content of the comment.
-     *
-     * @return The comment content.
-     */
-    public String getContent() {
-        return content;
-    }
+  /**
+   * Gets the content of the comment.
+   *
+   * @return The content of the comment.
+   */
+  public final String getContent() {
+    return content;
+  }
 
-    /**
-     * Set the content of the comment.
-     *
-     * @param content The comment content to set.
-     */
-    public void setContent(final String content) {
-        this.content = content;
-    }
+  /**
+   * Sets the content of the comment.
+   *
+   * @param content The content of the comment.
+   */
+  public final void setContent(final String content) {
+    this.content = content;
+  }
 
-    /**
-     * Get the username associated with the comment.
-     *
-     * @return The username.
-     */
-    public String getUserName() {
-        return userName;
-    }
+  /**
+   * Gets the username associated with the comment.
+   *
+   * @return The username of the comment's author.
+   */
+  public final String getUserName() {
+    return userName;
+  }
 
-    /**
-     * Set the username associated with the comment.
-     *
-     * @param userName The username to set.
-     */
-    public void setUserName(final String userName) {
-        this.userName = userName;
-    }
+  /**
+   * Sets the username associated with the comment.
+   *
+   * @param userName The username of the comment's author.
+   */
+  public final void setUserName(final String userName) {
+    this.userName = userName;
+  }
 
-    /**
-     * Get the date when the comment was created.
-     *
-     * @return The creation date.
-     */
-    public Date getDate() {
-        return date;
-    }
+  /**
+   * Gets the date and time when the comment was created.
+   *
+   * @return The date and time of comment creation.
+   */
+  public final Date getDate() {
+    return date;
+  }
 
-    /**
-     * Set the date when the comment was created.
-     *
-     * @param date The creation date to set.
-     */
-    public void setDate(final Date date) {
-        this.date = date;
-    }
+  /**
+   * Sets the date and time when the comment was created.
+   *
+   * @param date The date and time of comment creation.
+   */
+  public final void setDate(final Date date) {
+    this.date = date;
+  }
 
-    /**
-     * Get the associated ticket DTO.
-     *
-     * @return The associated ticket DTO.
-     */
-    public TicketDto getTicketDto() {
-        return ticketDto;
-    }
+  /**
+   * Gets the ticket to which this comment belongs.
+   *
+   * @return The associated ticket as a TicketDto object.
+   */
+  public final TicketDto getTicket() {
+    return ticket;
+  }
 
-    /**
-     * Set the associated ticket DTO.
-     *
-     * @param ticketDto The ticket DTO to set.
-     */
-    public void setTicketDto(final TicketDto ticketDto) {
-        this.ticketDto = ticketDto;
-    }
+  /**
+   * Sets the ticket to which this comment belongs.
+   *
+   * @param ticket The associated ticket as a TicketDto object.
+   */
+  public final void setTicket(final TicketDto ticket) {
+    this.ticket = ticket;
+  }
 
-    /**
-     * Constructs a new CommentDto with the specified details.
-     *
-     * @param commentId The unique identifier for the comment.
-     * @param content   The content of the comment.
-     * @param userName  The username associated with the comment.
-     * @param date      The date when the comment was created.
-     * @param ticketDto The associated ticket DTO.
-     */
-    public CommentDto(final Integer commentId, @NotEmpty final String content, @NotEmpty final String userName,
-            final Date date,
-            final TicketDto ticketDto) {
-        this.commentId = commentId;
-        this.content = content;
-        this.userName = userName;
-        this.date = date;
-        this.ticketDto = ticketDto;
-    }
+  /**
+   * Returns a string representation of the CommentDto object.
+   *
+   * @return A string containing comment details.
+   */
+  @Override
+  public final String toString() {
+    return (
+      "CommentDto [commentId=" +
+      commentId +
+      ", content=" +
+      content +
+      ", userName=" +
+      userName +
+      ", date=" +
+      date +
+      "]"
+    );
+  }
 
-    /**
-     * Generate a hash code for the CommentDto.
-     *
-     * @return The hash code.
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((commentId == null) ? 0 : commentId.hashCode());
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
-        result = prime * result + ((userName == null) ? 0 : userName.hashCode());
-        result = prime * result + ((date == null) ? 0 : date.hashCode());
-        result = prime * result + ((ticketDto == null) ? 0 : ticketDto.hashCode());
-        return result;
-    }
+  /**
+   * Constructs a CommentDto object with the specified parameters.
+   *
+   * @param commentId The unique identifier for the comment.
+   * @param content   The content of the comment.
+   * @param userName  The username associated with the comment.
+   * @param date      The date and time when the comment was created.
+   * @param ticket    The associated ticket as a TicketDto object.
+   */
+  public CommentDto(
+    final Integer commentId,
+    @NotEmpty final String content,
+    @NotEmpty final String userName,
+    final Date date,
+    final TicketDto ticket
+  ) {
+    super();
+    this.commentId = commentId;
+    this.content = content;
+    this.userName = userName;
+    this.date = date;
+    this.ticket = ticket;
+  }
 
-    /**
-     * Check if this CommentDto is equal to another object.
-     *
-     * @param obj The object to compare.
-     * @return True if the objects are equal, false otherwise.
-     */
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        CommentDto other = (CommentDto) obj;
-        if (commentId == null) {
-            if (other.commentId != null) {
-                return false;
-            }
-        } else if (!commentId.equals(other.commentId)) {
-            return false;
-        }
-        if (content == null) {
-            if (other.content != null) {
-                return false;
-            }
-        } else if (!content.equals(other.content)) {
-            return false;
-        }
-        if (userName == null) {
-            if (other.userName != null) {
-                return false;
-            }
-        } else if (!userName.equals(other.userName)) {
-            return false;
-        }
-        if (date == null) {
-            if (other.date != null) {
-                return false;
-            }
-        } else if (!date.equals(other.date)) {
-            return false;
-        }
-        if (ticketDto == null) {
-            if (other.ticketDto != null) {
-                return false;
-            }
-        } else if (!ticketDto.equals(other.ticketDto)) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Generate a string representation of the CommentDto.
-     *
-     * @return The string representation.
-     */
-    @Override
-    public String toString() {
-        return "CommentDto [commentId=" + commentId + ", content=" + content + ", userName=" + userName + ", date="
-                + date + ", ticketDto=" + ticketDto + "]";
-    }
-
+  /**
+   * Default constructor for CommentDto class.
+   */
+  public CommentDto() {
+    // Default constructor
+  }
 }

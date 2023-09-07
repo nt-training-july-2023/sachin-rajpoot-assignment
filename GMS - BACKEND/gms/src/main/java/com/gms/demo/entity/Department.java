@@ -2,7 +2,6 @@ package com.gms.demo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,6 +22,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Department {
+
   /**
    * The unique identifier for the department.
    */
@@ -39,160 +39,119 @@ public class Department {
   /**
    * The list of members associated with this department.
    */
-  @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToMany(
+    mappedBy = "department",
+    cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY
+  )
   private List<Member> members = new ArrayList<>();
 
   /**
    * The list of tickets associated with this department.
    */
-  @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToMany(
+    mappedBy = "department",
+    cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY
+  )
   private List<Ticket> tickets = new ArrayList<>();
 
   /**
-   * Get the department ID.
+   * Sets the unique identifier for the department.
    *
-   * @return The department ID.
+   * @param departmentId The department's unique identifier.
    */
-  public Integer getDepartmentId() {
+  public final void setDepartmentId(Integer departmentId) {
+    this.departmentId = departmentId;
+  }
+  
+  /**
+   * Gets the departmentId of the department.
+   *
+   * @return The name of the department.
+   */
+  public final Integer getDepartmentId() {
     return departmentId;
   }
 
   /**
-   * Set the department ID.
+   * Gets the name of the department.
    *
-   * @param departmentId The department ID to set.
+   * @return The name of the department.
    */
-  public void setDepartmentId(final Integer departmentId) {
-    this.departmentId = departmentId;
-  }
-
-  /**
-   * Get the name of the department.
-   *
-   * @return The department name.
-   */
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
   /**
-   * Set the name of the department.
+   * Sets the name of the department.
    *
-   * @param name The department name to set.
+   * @param name The name of the department.
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
   /**
-   * Get the list of members associated with the department.
+   * Gets the list of members associated with the department.
    *
-   * @return The list of members.
+   * @return The list of members associated with the department.
    */
-  public List<Member> getMembers() {
+  public final List<Member> getMembers() {
     return members;
   }
 
   /**
-   * Set the list of members associated with the department.
+   * Sets the list of members associated with the department.
    *
-   * @param members The list of members to set.
+   * @param members The list of members associated with the department.
    */
-  public void setMembers(final List<Member> members) {
+  public final void setMembers(final List<Member> members) {
     this.members = members;
   }
 
   /**
-   * Get the list of tickets associated with the department.
+   * Gets the list of tickets associated with the department.
    *
-   * @return The list of tickets.
+   * @return The list of tickets associated with the department.
    */
-  public List<Ticket> getTickets() {
+  public final List<Ticket> getTickets() {
     return tickets;
   }
 
   /**
-   * Set the list of tickets associated with the department.
+   * Sets the list of tickets associated with the department.
    *
-   * @param tickets The list of tickets to set.
+   * @param tickets The list of tickets associated with the department.
    */
-  public void setTickets(final List<Ticket> tickets) {
+  public final void setTickets(final List<Ticket> tickets) {
     this.tickets = tickets;
   }
 
   /**
-   * Calculates the hash code for the Department object.
+   * Returns a string representation of the Department object.
    *
-   * @return The hash code value.
+   * @return A string containing department details.
    */
   @Override
-  public int hashCode() {
-    return Objects.hash(departmentId, members, name, tickets);
+  public final String toString() {
+    return "Department [departmentId=" + departmentId + ", name=" + name + "]";
   }
 
   /**
-   * Checks if this Department object is equal to another object.
+   * Constructs a Department object with the specified parameters.
    *
-   * @param obj The object to compare.
-   * @return True if the objects are equal, false otherwise.
-   */
-  @Override
-  public boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null || getClass() != obj.getClass()) {
-      return false;
-    }
-    Department other = (Department) obj;
-    return (Objects.equals(departmentId, other.departmentId)
-        &&
-        Objects.equals(members, other.members)
-        &&
-        Objects.equals(name, other.name)
-        &&
-        Objects.equals(tickets, other.tickets));
-  }
-
-  /**
-   * Generates a string representation of the Department object.
-   *
-   * @return The string representation.
-   */
-  @Override
-  public String toString() {
-    return ("Department [departmentId="
-        +
-        departmentId
-        +
-        ", name="
-        +
-        name
-        +
-        ", members="
-        +
-        members
-        +
-        ", tickets="
-        +
-        tickets
-        +
-        "]");
-  }
-
-  /**
-   * Constructor for creating a Department object.
-   *
-   * @param departmentId The department ID.
+   * @param departmentId The unique identifier for the department.
    * @param name         The name of the department.
    * @param members      The list of members associated with the department.
    * @param tickets      The list of tickets associated with the department.
    */
   public Department(
-      final Integer departmentId,
-      @NotEmpty final String name,
-      final List<Member> members,
-      final List<Ticket> tickets) {
+    final Integer departmentId,
+    @NotEmpty final String name,
+    final List<Member> members,
+    final List<Ticket> tickets
+  ) {
     super();
     this.departmentId = departmentId;
     this.name = name;
@@ -201,9 +160,8 @@ public class Department {
   }
 
   /**
-   * Default constructor for creating a Department object.
+   * Default constructor for Department class.
    */
   public Department() {
-    super();
   }
 }

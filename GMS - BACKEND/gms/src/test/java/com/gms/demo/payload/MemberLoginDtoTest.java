@@ -1,10 +1,10 @@
 package com.gms.demo.payload;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
-
 import com.gms.demo.payloads.MemberLoginDto;
+import org.junit.Test;
 
 /**
  * Represents a test class for the Member Login Dto entity, covering Member
@@ -16,32 +16,51 @@ import com.gms.demo.payloads.MemberLoginDto;
  * @version 1.0
  * @since Beginning of time
  */
+
 public class MemberLoginDtoTest {
-    /** The MemberLoginDto entity instance for testing. */
-    private MemberLoginDto memberLoginDto = new MemberLoginDto();
 
-    /**
-     * Test method for setters and getters of the Member Login Dto entity.
-     */
-    @Test
-    public void settersAndGetterTest() {
+  private MemberLoginDto memberLoginDto = new MemberLoginDto();
 
-        memberLoginDto.setEmail("supersaiyan@nucleusteq.com");
-        assertEquals("supersaiyan@nucleusteq.com", memberLoginDto.getEmail());
+  @Test
+  public void testGetAndSetEmail() {
+    memberLoginDto.setEmail("kingkong@example.com");
+    assertEquals("kingkong@example.com", memberLoginDto.getEmail());
+  }
 
-        memberLoginDto.setPassword("123456788");
-        assertEquals("123456788", memberLoginDto.getPassword());
+  @Test
+  public void testGetAndSetPassword() {
+    memberLoginDto.setPassword("password123");
+    assertEquals("password123", memberLoginDto.getPassword());
+  }
 
-    }
+  @Test
+  public void testGetMinSizePassword() {
+    assertEquals(5, MemberLoginDto.getMinSizePassword());
+  }
 
-    /**
-     * Test method for generating the String representation of the MemberLoginDto entity.
-     */
-    @Test
-    public void toStringTest() {
-        String expected = "email=" + memberLoginDto.getEmail() + ", password=" + memberLoginDto.getPassword() + "]";
+  @Test
+  public void testToString() {
+    memberLoginDto.setEmail("kingkong@example.com");
+    memberLoginDto.setPassword("password123");
 
-        assertEquals(expected, memberLoginDto.toString());
-    }
+    String expected =
+      "MemberLoginDto [email=kingkong@example.com, password=password123]";
+    assertEquals(expected, memberLoginDto.toString());
+  }
 
+  @Test
+  public void testParameterizedConstructor() {
+    MemberLoginDto loginDto = new MemberLoginDto(
+      "kingkong@example.com",
+      "password123"
+    );
+
+    assertEquals("kingkong@example.com", loginDto.getEmail());
+    assertEquals("password123", loginDto.getPassword());
+  }
+
+  @Test
+  public void testDefaultConstructor() {
+    assertNotNull(new MemberLoginDto());
+  }
 }

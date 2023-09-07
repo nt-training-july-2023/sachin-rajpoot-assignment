@@ -1,168 +1,301 @@
 package com.gms.demo.payloads;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-
-import javax.persistence.CascadeType;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-
-import com.gms.demo.entity.Comment;
-import com.gms.demo.entity.Department;
-import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Status;
 import com.gms.demo.entity.TicketType;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 public class TicketOutDto {
 
-	private String title;
+  /**
+   * The title of the ticket.
+   */
+  private String title;
 
-	private String description;
+  /**
+   * The description of the ticket.
+   */
+  private String description;
 
-	@CreationTimestamp // Automatically set the creation timestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdOn;
+  /**
+   * The date and time when the ticket was created.
+   */
+  @CreationTimestamp // Automatically set the creation timestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date createdOn;
 
-	@UpdateTimestamp // Automatically set the update timestamp
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastUpdatedOn;
+  /**
+   * The date and time when the ticket was last updated.
+   */
+  @UpdateTimestamp // Automatically set the update timestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date lastUpdatedOn;
 
-	@Enumerated(EnumType.STRING)
-	private Status status;
+  /**
+   * The status of the ticket.
+   */
+  @Enumerated(EnumType.STRING)
+  private Status status;
 
-	@Enumerated(EnumType.STRING)
-	private TicketType ticketType;
+  /**
+   * The type of the ticket.
+   */
+  @Enumerated(EnumType.STRING)
+  private TicketType ticketType;
 
-	private String departmentName;
+  /**
+   * The name of the department associated with the ticket.
+   */
+  private String departmentName;
 
-	private String memberName;
+  /**
+   * The name of the member associated with the ticket.
+   */
+  private String memberName;
 
-	public String getTitle() {
-		return title;
-	}
+  /**
+   * A list of CommentOutDto objects representing comments associated with the ticket.
+   */
+  private List<CommentOutDto> comments;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  /**
+   * Gets the title of the ticket.
+   *
+   * @return The title of the ticket.
+   */
+  public String getTitle() {
+    return title;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  /**
+   * Sets the title of the ticket.
+   *
+   * @param title The title of the ticket to set.
+   */
+  public void setTitle(final String title) {
+    this.title = title;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  /**
+   * Gets the description of the ticket.
+   *
+   * @return The description of the ticket.
+   */
+  public String getDescription() {
+    return description;
+  }
 
-	public Date getCreatedOn() {
-		return createdOn;
-	}
+  /**
+   * Sets the description of the ticket.
+   *
+   * @param description The description of the ticket to set.
+   */
+  public void setDescription(final String description) {
+    this.description = description;
+  }
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
+  /**
+   * Gets the date when the ticket was created.
+   *
+   * @return The date when the ticket was created.
+   */
+  public Date getCreatedOn() {
+    return createdOn;
+  }
 
-	public Date getLastUpdatedOn() {
-		return lastUpdatedOn;
-	}
+  /**
+   * Sets the date when the ticket was created.
+   *
+   * @param createdOn The date when the ticket was created to set.
+   */
+  public void setCreatedOn(final Date createdOn) {
+    this.createdOn = createdOn;
+  }
 
-	public void setLastUpdatedOn(Date lastUpdatedOn) {
-		this.lastUpdatedOn = lastUpdatedOn;
-	}
+  /**
+   * Gets the date when the ticket was last updated.
+   *
+   * @return The date when the ticket was last updated.
+   */
+  public Date getLastUpdatedOn() {
+    return lastUpdatedOn;
+  }
 
-	public Status getStatus() {
-		return status;
-	}
+  /**
+   * Sets the date when the ticket was last updated.
+   *
+   * @param lastUpdatedOn The date when the ticket was last updated to set.
+   */
+  public void setLastUpdatedOn(final Date lastUpdatedOn) {
+    this.lastUpdatedOn = lastUpdatedOn;
+  }
 
-	public void setStatus(Status status) {
-		this.status = status;
-	}
+  /**
+   * Gets the status of the ticket.
+   *
+   * @return The status of the ticket.
+   */
+  public Status getStatus() {
+    return status;
+  }
 
-	public TicketType getTicketType() {
-		return ticketType;
-	}
+  /**
+   * Sets the status of the ticket.
+   *
+   * @param status The status of the ticket to set.
+   */
+  public void setStatus(final Status status) {
+    this.status = status;
+  }
 
-	public void setTicketType(TicketType ticketType) {
-		this.ticketType = ticketType;
-	}
+  /**
+   * Gets the type of the ticket.
+   *
+   * @return The type of the ticket.
+   */
+  public TicketType getTicketType() {
+    return ticketType;
+  }
 
-	public String getDepartmentName() {
-		return departmentName;
-	}
+  /**
+   * Sets the type of the ticket.
+   *
+   * @param ticketType The type of the ticket to set.
+   */
+  public void setTicketType(final TicketType ticketType) {
+    this.ticketType = ticketType;
+  }
 
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
+  /**
+   * Gets the name of the department associated with the ticket.
+   *
+   * @return The name of the department associated with the ticket.
+   */
+  public String getDepartmentName() {
+    return departmentName;
+  }
 
-	public String getMemberName() {
-		return memberName;
-	}
+  /**
+   * Sets the name of the department associated with the ticket.
+   *
+   * @param departmentName The name of the department to set.
+   */
+  public void setDepartmentName(final String departmentName) {
+    this.departmentName = departmentName;
+  }
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
-	}
+  /**
+   * Gets the name of the member associated with the ticket.
+   *
+   * @return The name of the member associated with the ticket.
+   */
+  public String getMemberName() {
+    return memberName;
+  }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(createdOn, departmentName, description, lastUpdatedOn, memberName, status, ticketType,
-				title);
-	}
+  /**
+   * Sets the name of the member associated with the ticket.
+   *
+   * @param memberName The name of the member to set.
+   */
+  public void setMemberName(final String memberName) {
+    this.memberName = memberName;
+  }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TicketOutDto other = (TicketOutDto) obj;
-		return Objects.equals(createdOn, other.createdOn) && Objects.equals(departmentName, other.departmentName)
-				&& Objects.equals(description, other.description) && Objects.equals(lastUpdatedOn, other.lastUpdatedOn)
-				&& Objects.equals(memberName, other.memberName) && status == other.status
-				&& ticketType == other.ticketType && Objects.equals(title, other.title);
-	}
+  /**
+   * Gets the list of comments associated with the ticket.
+   *
+   * @return The list of comments associated with the ticket.
+   */
+  public List<CommentOutDto> getComments() {
+    return comments;
+  }
 
-	@Override
-	public String toString() {
-		return "TicketOutDto [title=" + title + ", description=" + description + ", createdOn=" + createdOn
-				+ ", lastUpdatedOn=" + lastUpdatedOn + ", status=" + status + ", ticketType=" + ticketType
-				+ ", departmentName=" + departmentName + ", memberName=" + memberName + "]";
-	}
+  /**
+   * Sets the list of comments associated with the ticket.
+   *
+   * @param comments The list of comments to set.
+   */
+  public void setComments(final List<CommentOutDto> comments) {
+    this.comments = comments;
+  }
 
-	public TicketOutDto(String title, String description, Date createdOn, Date lastUpdatedOn, Status status,
-			TicketType ticketType, String departmentName, String memberName) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.createdOn = createdOn;
-		this.lastUpdatedOn = lastUpdatedOn;
-		this.status = status;
-		this.ticketType = ticketType;
-		this.departmentName = departmentName;
-		this.memberName = memberName;
-	}
+  /**
+   * Returns a string representation of the TicketOutDto object.
+   *
+   * @return A string containing the values of the title, description, createdOn, lastUpdatedOn,
+   *         status, ticketType, departmentName, and memberName fields.
+   */
+  @Override
+  public final String toString() {
+    return (
+      "TicketOutDto [title=" +
+      title +
+      ", description=" +
+      description +
+      ", createdOn=" +
+      createdOn +
+      ", lastUpdatedOn=" +
+      lastUpdatedOn +
+      ", status=" +
+      status +
+      ", ticketType=" +
+      ticketType +
+      ", departmentName=" +
+      departmentName +
+      ", memberName=" +
+      memberName +
+      "]"
+    );
+  }
 
-	public TicketOutDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+  /**
+   * Constructs a new TicketOutDto object with the specified attributes.
+   *
+   * @param title The title of the ticket.
+   * @param description The description of the ticket.
+   * @param createdOn The date when the ticket was created.
+   * @param lastUpdatedOn The date when the ticket was last updated.
+   * @param status The status of the ticket.
+   * @param ticketType The type of the ticket.
+   * @param departmentName The name of the department associated with the ticket.
+   * @param memberName The name of the member associated with the ticket.
+   * @param comments The list of comments associated with the ticket.
+   */
+  public TicketOutDto(
+    final String title,
+    final String description,
+    final Date createdOn,
+    final Date lastUpdatedOn,
+    final Status status,
+    final TicketType ticketType,
+    final String departmentName,
+    final String memberName,
+    final List<CommentOutDto> comments
+  ) {
+    super();
+    this.title = title;
+    this.description = description;
+    this.createdOn = createdOn;
+    this.lastUpdatedOn = lastUpdatedOn;
+    this.status = status;
+    this.ticketType = ticketType;
+    this.departmentName = departmentName;
+    this.memberName = memberName;
+    this.comments = comments;
+  }
 
+  /**
+   * Constructs a new empty TicketOutDto object.
+   */
+  public TicketOutDto() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
 }

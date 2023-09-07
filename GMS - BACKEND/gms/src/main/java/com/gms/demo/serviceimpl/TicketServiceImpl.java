@@ -1,15 +1,7 @@
 package com.gms.demo.serviceimpl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
-import com.gms.demo.entity.Role;
 import com.gms.demo.entity.Ticket;
 import com.gms.demo.exception.ResourceNotFoundException;
 import com.gms.demo.payloads.DepartmentDto;
@@ -20,102 +12,101 @@ import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.repo.TicketRepo;
 import com.gms.demo.service.TicketService;
+import java.util.ArrayList;
+import java.util.List;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TicketServiceImpl implements TicketService {
 
-	@Autowired
-	TicketRepo ticketRepo;
+  /**
+   * The TicketRepo interface represents a repository for Ticket entities in the database.
+   * It provides methods for querying and manipulating ticket data.
+   */
+  @Autowired
+  private TicketRepo ticketRepo;
 
-	@Autowired
-	ModelMapper modelMapper;
+  /**
+   * The ModelMapper class is used for object mapping between different data models.
+   * It facilitates the conversion of one object type to another.
+   */
+  @Autowired
+  private ModelMapper modelMapper;
 
-	@Autowired
-	MemberRepo memberRepo;
+  /**
+   * The MemberRepo interface represents a repository for Member entities in the database.
+   * It provides methods for querying and manipulating member data.
+   */
+  @Autowired
+  private MemberRepo memberRepo;
 
-	@Autowired
-	DepartmentRepo departmentRepo;
+  /**
+   * The DepartmentRepo interface represents a repository for Department entities in the database.
+   * It provides methods for querying and manipulating department data.
+   */
+  @Autowired
+  private DepartmentRepo departmentRepo;
 
-	@Override
-	public TicketOutDto createTicket(final TicketDto ticketDto, final Integer memberId, final Integer departmentId) {
-		System.out.println("entered in create method");
+  /**
+   * Creates a new ticket based on the provided TicketDto, associating it with a specific member and department.
+   *
+   * @param ticketDto    The TicketDto containing ticket information.
+   * @param memberId     The ID of the member associated with the ticket.
+   * @param departmentId The ID of the department associated with the ticket.
+   * @return A TicketOutDto representing the newly created ticket.
+   * @throws ResourceNotFoundException If the specified member or department is not found in the database.
+   */
+  @Override
+  public TicketOutDto createTicket(
+    final TicketDto ticketDto,
+    final Integer memberId,
+    final Integer departmentId
+  ) {
+    Member member =
+      this.memberRepo.findById(memberId)
+        .orElseThrow(() ->
+          new ResourceNotFoundException("Member", "member ID", memberId)
+        );
 
-		Member member = this.memberRepo.findById(memberId)
-				.orElseThrow(() -> new ResourceNotFoundException("Member", "member ID", memberId));
-//		System.out.println(member);
-		
-		MemberDto memberDto = this.modelMapper.map(member, MemberDto.class);
-//		System.out.println(memberDto);
-		
-		Department department = this.departmentRepo.findById(departmentId)
-				.orElseThrow(() -> new ResourceNotFoundException("Department", "department ID", departmentId));
-//		System.out.println("ddddddddddd");
-		
-		DepartmentDto departmentDto = this.modelMapper.map(department, DepartmentDto.class);
+//    MemberDto memberDto = this.modelMapper.map(member, MemberDto.class);
 
-//		System.out.println(departmentDto);
-		
-		ticketDto.setMember(memberDto);
-		ticketDto.setDepartment(departmentDto);
-		
-//		System.out.println(ticketDto);
-		
-		Ticket ticket = this.modelMapper.map(ticketDto, Ticket.class);
-		Ticket savedTicket = this.ticketRepo.save(ticket);
-//		System.out.println(savedTicket);
-//		return this.modelMapper.map(, TicketDto.class);
-		return new TicketOutDto(savedTicket.getTitle(), savedTicket.getDescription(), savedTicket.getCreatedOn(),
-				savedTicket.getLastUpdatedOn(), savedTicket.getStatus(), savedTicket.getTicketType(),
-				savedTicket.getDepartment().getName(), savedTicket.getMember().getName());
-	}
+    Department department =
+      this.departmentRepo.findById(departmentId)
+        .orElseThrow(() ->
+          new ResourceNotFoundException(
+            "Department",
+            "department ID",
+            departmentId
+          )
+        );
 
-	@Override
-	public List<TicketOutDto> getAllTicket() {
-		List<Ticket> tickets = this.ticketRepo.findAll();
-		List<TicketOutDto> ticketOutDtos = new ArrayList<>();
-		tickets.forEach(ticket -> ticketOutDtos.add(new TicketOutDto(ticket.getTitle(), ticket.getDescription(),
-				ticket.getCreatedOn(), ticket.getLastUpdatedOn(), ticket.getStatus(), ticket.getTicketType(),
-				ticket.getDepartment().getName(), ticket.getMember().getName())));
-//		tickets.forEach(ticket -> ticketDtos.add(new TicketDto(ticket.getDepartment().getName())));
-		return ticketOutDtos;
-	}
-//
-//	@Override
-//	public TicketDto createTicket2(TicketDto ticketDto, Integer memberId, Integer departmentId, String email,
-//			String password) {
-//		System.out.println("inside service");
-//		Member member = this.memberRepo.findByEmail(email);
-//		if (member != null) {
-//			System.out.println("inside 1");
-//			System.out.println("Role " + member.getRole());
-//			System.out.println(member.getRole().equals(Role.ADMIN));
-//			if (member.getPassword().equals(password) && member.getRole() != null
-//					&& member.getRole().equals(Role.ADMIN)) {
-//				System.out.println("Hail Admin!!!!!!!!!");
-//				System.out.println("This is what you've created" + ticketDto);
-//				
-//				Member member2 = this.memberRepo.findById(memberId)
-//						.orElseThrow(() -> new ResourceNotFoundException("Member", "member ID", memberId));
-//				MemberDto memberDto = this.modelMapper.map(member2, MemberDto.class);
-//
-//				Department department = this.departmentRepo.findById(departmentId)
-//						.orElseThrow(() -> new ResourceNotFoundException("Department", "department ID", departmentId));
-//				DepartmentDto departmentDto = this.modelMapper.map(department, DepartmentDto.class);
-//
-//				ticketDto.setMember(memberDto);
-//				ticketDto.setDepartment(departmentDto.getName());
-//
-//				Ticket ticket = this.modelMapper.map(ticketDto, Ticket.class);
-//				return this.modelMapper.map(this.ticketRepo.save(ticket), TicketDto.class);
-//				
-//			}
-//		}
-//		return null;
-//	}
+//    DepartmentDto departmentDto =
+//      this.modelMapper.map(department, DepartmentDto.class);
 
-//	@Override
-//	public List<TicketDto> getAllTicketByDepartment(final Integer departmentId) {
-//		Department department = 
-//	}
+//    ticketDto.setMember(memberDto);
+//    ticketDto.setDepartment(departmentDto);
 
+    Ticket ticket = this.modelMapper.map(ticketDto, Ticket.class);
+    ticket.setMember(member);
+    ticket.setDepartment(department);
+    Ticket savedTicket = this.ticketRepo.save(ticket);
+    return this.modelMapper.map(savedTicket, TicketOutDto.class);
+  }
+
+  /**
+   * Retrieves a list of all tickets in the system.
+   *
+   * @return A list of TicketOutDto objects representing all tickets.
+   */
+  @Override
+  public List<TicketOutDto> getAllTicket() {
+    List<Ticket> tickets = this.ticketRepo.findAll();
+    List<TicketOutDto> ticketOutDtos = new ArrayList<>();
+    tickets.forEach(ticket ->
+      ticketOutDtos.add(this.modelMapper.map(ticket, TicketOutDto.class))
+    );
+    return ticketOutDtos;
+  }
 }

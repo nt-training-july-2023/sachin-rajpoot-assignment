@@ -10,13 +10,13 @@ package com.gms.demo.entity;
  */
 
 public enum TicketType {
-    /**
-     * Represents a ticket for providing feedback.
-     */
-    FEEDBACK,
+  /**
+   * Represents a ticket for providing feedback.
+   */
+  FEEDBACK,
 
-    /**
-     * Represents a ticket for raising a grievance.
-     */
-    GRIEVANCE, 
+  /**
+   * Represents a ticket for raising a grievance.
+   */
+  GRIEVANCE,
 }

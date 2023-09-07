@@ -1,110 +1,104 @@
-//package com.gms.demo.payload;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.junit.jupiter.api.Assertions.assertTrue;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import org.junit.Test;
-//
-//import com.gms.demo.entity.Department;
-//import com.gms.demo.entity.Role;
-//import com.gms.demo.entity.Status;
-//import com.gms.demo.entity.Ticket;
-//import com.gms.demo.entity.TicketType;
-//import com.gms.demo.payloads.MemberDto;
-//
-///**
-// * Represents a test class for the memberDtoTest entity, covering member
-// * Dto-related
-// * operations.
-// * Contains methods for testing getters, setters, and the toString() method.
-// *
-// * @author Sachin Singh Rajpoot
-// * @version 1.0
-// * @since Beginning of time
-// */
-//public class MemberDtoTest {
-//    /** The memberDto entity instance for testing. */
-//    private MemberDto memberDto = new MemberDto();
-//
-//    /**
-//     * Test method for setters and getters of the memberDto entity.
-//     */
-//    @Test
-//    public void settersAndGetterTest() {
-//        memberDto.setName("Goku");
-//        assertEquals("Goku", memberDto.getName());
-//
-//        memberDto.setMemberId(1);
-//        assertTrue(1 == memberDto.getMemberId());
-//
-//        memberDto.setEmail("supersaiyan@nucleusteq.com");
-//        assertEquals("supersaiyan@nucleusteq.com", memberDto.getEmail());
-//
-//        memberDto.setPassword("123456788");
-//        assertEquals("123456788", memberDto.getPassword());
-//
-//        memberDto.setDepartment(new Department(1, "HR", null, null));
-//        assertEquals(new Department(1, "HR", null, null), memberDto.getDepartment());
-//
-//        memberDto.setRole(Role.ADMIN); // You should set an actual Role value here.
-//        assertEquals(Role.ADMIN, memberDto.getRole());
-//
-//        List<Ticket> tickets = new ArrayList<>();
-//        tickets.add(
-//                new Ticket(
-//                        1,
-//                        "title",
-//                        "desc desc desc",
-//                        null,
-//                        null,
-//                        Status.OPEN, // You should set an actual Status value here.
-//                        TicketType.GREIVANCE, // You should set an actual TicketType value here.
-//                        null,
-//                        null,
-//                        null));
-//        memberDto.setTickets(tickets);
-//        assertEquals(tickets, memberDto.getTickets());
-//    }
-//
-//    /**
-//     * Test method for generating the String representation of the Member entity.
-//     */
-//    @Test
-//    public void toStringTest() {
-//        String expected = "Member [memberId="
-//                +
-//                memberDto.getMemberId()
-//                +
-//                ", name="
-//                +
-//                memberDto.getName()
-//                +
-//                ", email="
-//                +
-//                memberDto.getEmail()
-//                +
-//                ", password="
-//                +
-//                memberDto.getPassword()
-//                +
-//                ", role="
-//                +
-//                memberDto.getPassword()
-//                +
-//                ", department="
-//                +
-//                memberDto.getDepartment()
-//                +
-//                ", tickets="
-//                +
-//                memberDto.getTickets()
-//                +
-//                "]";
-//
-//        assertEquals(expected, memberDto.toString());
-//    }
-//
-//}
+package com.gms.demo.payload;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.gms.demo.entity.Role;
+import com.gms.demo.payloads.DepartmentOutDto;
+import com.gms.demo.payloads.MemberDto;
+import org.junit.jupiter.api.Test;
+
+public class MemberDtoTest {
+
+  private MemberDto memberDto = new MemberDto();
+
+  @Test
+  public void testGetAndSetMemberId() {
+    memberDto.setMemberId(1);
+    assertEquals(1, memberDto.getMemberId());
+  }
+
+  @Test
+  public void testGetAndSetName() {
+    memberDto.setName("kingkong");
+    assertEquals("kingkong", memberDto.getName());
+  }
+
+  @Test
+  public void testGetAndSetEmail() {
+    memberDto.setEmail("kingkong@example.com");
+    assertEquals("kingkong@example.com", memberDto.getEmail());
+  }
+
+  @Test
+  public void testGetAndSetPassword() {
+    memberDto.setPassword("password123");
+    assertEquals("password123", memberDto.getPassword());
+  }
+
+  @Test
+  public void testGetAndSetIsFirstLogin() {
+    memberDto.setIsFirstLogin(true);
+    assertTrue(memberDto.getIsFirstLogin());
+  }
+
+  @Test
+  public void testGetAndSetRole() {
+    memberDto.setRole(Role.ADMIN);
+    assertEquals(Role.ADMIN, memberDto.getRole());
+  }
+
+  @Test
+  public void testGetAndSetDepartment() {
+    DepartmentOutDto department = new DepartmentOutDto();
+    department.setDepartmentName("HR Department");
+    memberDto.setDepartment(department);
+
+    assertEquals(
+      "HR Department",
+      memberDto.getDepartment().getDepartmentName()
+    );
+  }
+
+  @Test
+  public void testToString() {
+    memberDto.setMemberId(1);
+    memberDto.setName("kingkong");
+    memberDto.setEmail("kingkong@example.com");
+    memberDto.setPassword("password123");
+    memberDto.setIsFirstLogin(true);
+    memberDto.setRole(Role.ADMIN);
+
+    String expected =
+      "MemberDto [memberId=1, name=kingkong, email=kingkong@example.com, password=password123, isFirstLogin=true, role=ADMIN]";
+    assertEquals(expected, memberDto.toString());
+  }
+
+  @Test
+  public void testParameterizedConstructor() {
+    DepartmentOutDto department = new DepartmentOutDto();
+    department.setDepartmentName("HR Department");
+
+    MemberDto member = new MemberDto(
+      1,
+      "kingkong",
+      "kingkong@example.com",
+      "password123",
+      true,
+      Role.ADMIN,
+      department
+    );
+
+    assertEquals(1, member.getMemberId());
+    assertEquals("kingkong", member.getName());
+    assertEquals("kingkong@example.com", member.getEmail());
+    assertEquals("password123", member.getPassword());
+    assertTrue(member.getIsFirstLogin());
+    assertEquals(Role.ADMIN, member.getRole());
+    assertEquals("HR Department", member.getDepartment().getDepartmentName());
+  }
+
+  @Test
+  public void testDefaultConstructor() {
+    assertNotNull(new MemberDto());
+  }
+}

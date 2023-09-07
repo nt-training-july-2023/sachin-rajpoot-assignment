@@ -1,7 +1,6 @@
 package com.gms.demo.entity;
 
 import java.util.Date;
-import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +20,7 @@ import org.springframework.data.annotation.CreatedDate;
  */
 @Entity
 public class Comment {
+
   /**
    * The unique identifier for the comment.
    */
@@ -55,25 +55,55 @@ public class Comment {
   private Ticket ticket;
 
   /**
-   * Get the comment ID.
+   * Constructs a Comment object with the specified parameters.
    *
-   * @return The comment ID.
+   * @param commentId The unique identifier for the comment.
+   * @param content   The content of the comment.
+   * @param userName  The username associated with the comment.
+   * @param date      The date and time when the comment was created.
+   * @param ticket    The ticket to which this comment belongs.
+   */
+  public Comment(
+    final Integer commentId,
+    @NotEmpty final String content,
+    @NotEmpty final String userName,
+    final Date date,
+    final Ticket ticket
+  ) {
+    this.commentId = commentId;
+    this.content = content;
+    this.userName = userName;
+    this.date = date;
+    this.ticket = ticket;
+  }
+
+  /**
+   * Default constructor for Comment class.
+   */
+  public Comment() {
+    // Default constructor
+  }
+
+  /**
+   * Gets the unique identifier for the comment.
+   *
+   * @return The comment's unique identifier.
    */
   public Integer getCommentId() {
     return commentId;
   }
 
   /**
-   * Set the comment ID.
+   * Sets the unique identifier for the comment.
    *
-   * @param commentId The comment ID to set.
+   * @param commentId The comment's unique identifier.
    */
-  public void setCommentId(final Integer commentId) {
+  public void setCommentId(Integer commentId) {
     this.commentId = commentId;
   }
 
   /**
-   * Get the content of the comment.
+   * Gets the content of the comment.
    *
    * @return The content of the comment.
    */
@@ -82,148 +112,85 @@ public class Comment {
   }
 
   /**
-   * Set the content of the comment.
+   * Sets the content of the comment.
    *
-   * @param content The content to set.
+   * @param content The content of the comment.
    */
   public void setContent(final String content) {
     this.content = content;
   }
 
   /**
-   * Get the user name associated with the comment.
+   * Gets the username associated with the comment.
    *
-   * @return The user name.
+   * @return The username associated with the comment.
    */
   public String getUserName() {
     return userName;
   }
 
   /**
-   * Set the user name associated with the comment.
+   * Sets the username associated with the comment.
    *
-   * @param userName The user name to set.
+   * @param userName The username associated with the comment.
    */
   public void setUserName(final String userName) {
     this.userName = userName;
   }
 
   /**
-   * Get the date of the comment.
+   * Gets the date and time when the comment was created.
    *
-   * @return The comment date.
+   * @return The date and time of comment creation.
    */
   public Date getDate() {
     return date;
   }
 
   /**
-   * Set the date of the comment.
+   * Sets the date and time when the comment was created.
    *
-   * @param date The date to set.
+   * @param date The date and time of comment creation.
    */
   public void setDate(final Date date) {
     this.date = date;
   }
 
   /**
-   * Get the associated ticket.
+   * Gets the ticket to which this comment belongs.
    *
-   * @return The associated ticket.
+   * @return The ticket associated with the comment.
    */
   public Ticket getTicket() {
     return ticket;
   }
 
   /**
-   * Set the associated ticket.
+   * Sets the ticket to which this comment belongs.
    *
-   * @param ticket The ticket to set.
+   * @param ticket The ticket associated with the comment.
    */
   public void setTicket(final Ticket ticket) {
     this.ticket = ticket;
   }
 
-  @Override
-  public final int hashCode() {
-    return Objects.hash(commentId, content, date, ticket, userName);
-  }
-
-  @Override
-  public final boolean equals(final Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    Comment other = (Comment) obj;
-    return (Objects.equals(commentId, other.commentId)
-        &&
-        Objects.equals(content, other.content)
-        &&
-        Objects.equals(date, other.date)
-        &&
-        Objects.equals(ticket, other.ticket)
-        &&
-        Objects.equals(userName, other.userName));
-  }
-
-  @Override
-  public final String toString() {
-    return ("Comment [commentId="
-        +
-        commentId
-        +
-        ", content="
-        +
-        content
-        +
-        ", userName="
-        +
-        userName
-        +
-        ", date="
-        +
-        date
-        +
-        ", ticket="
-        +
-        ticket
-        +
-        "]");
-  }
-
   /**
-   * Constructor with parameters.
+   * Returns a string representation of the Comment object.
    *
-   * @param commentId The comment ID.
-   * @param content   The content of the comment.
-   * @param userName  The user name associated with the comment.
-   * @param date      The date of the comment.
-   * @param ticket    The associated ticket.
+   * @return A string containing comment details.
    */
-  public Comment(
-      final Integer commentId,
-      @NotEmpty final String content,
-      @NotEmpty final String userName,
-      final Date date,
-      final Ticket ticket) {
-    super();
-    this.commentId = commentId;
-    this.content = content;
-    this.userName = userName;
-    this.date = date;
-    this.ticket = ticket;
-  }
-
-  /**
-   * Default constructor.
-   */
-  public Comment() {
-    super();
+  @Override
+  public String toString() {
+    return (
+      "Comment [commentId=" +
+      commentId +
+      ", content=" +
+      content +
+      ", userName=" +
+      userName +
+      ", date=" +
+      date +
+      "]"
+    );
   }
 }

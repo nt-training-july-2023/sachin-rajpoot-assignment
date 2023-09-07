@@ -1,7 +1,19 @@
 import React, { useState } from "react";
 import "./NewTicket.css";
+import { useNavigate } from "react-router-dom";
+import axios, { HttpStatusCode } from "axios";
 
 function DeptRegistration() {
+
+  const navigate = useNavigate();
+
+  const data = {
+    "title":"",
+    "description":"",
+    "status":"",
+    "ticketType":""
+  };
+
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [titleError, setTitleError] = useState("");
@@ -28,7 +40,27 @@ function DeptRegistration() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+    data.title = title;
+    data.description=desc;
+    data.status="OPEN";
+    data.ticketType="GRIEVANCE";
+    
+    console.log(data);
     console.log("Form submitted successfully!");
+
+    axios
+      .post("http://localhost:8080/api/ticket/create/memberId/3/departmentId/15", data)
+      .then((response) => {
+        // setData(response.data);
+        // if(response.data === "Login Successfully", HttpStatusCode.Accepted){
+        navigate("/");
+        // }
+        console.log(response.data);
+        // alert(response.data)
+      })
+      .catch((err) => console.log(err));
+
   };
 
   return (
@@ -97,7 +129,7 @@ function DeptRegistration() {
             <input
               type="submit"
               value="Register"
-              disabled={isButtonDisabled}
+              // disabled={isButtonDisabled}
               className={isButtonDisabled ? "disabled-button" : ""}
             />
           </div>

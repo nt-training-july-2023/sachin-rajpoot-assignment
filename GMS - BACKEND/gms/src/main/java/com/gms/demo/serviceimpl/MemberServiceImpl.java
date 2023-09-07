@@ -1,9 +1,11 @@
 package com.gms.demo.serviceimpl;
 
+import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
-import com.gms.demo.payloads.ApiResponse;
+import com.gms.demo.exception.ResourceNotFoundException;
 import com.gms.demo.payloads.DepartmentDto;
+import com.gms.demo.payloads.DepartmentOutDto;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberLoginDto;
 import com.gms.demo.payloads.MemberOutDto;
@@ -11,10 +13,8 @@ import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.service.DepartmentService;
 import com.gms.demo.service.MemberService;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,125 +31,149 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MemberServiceImpl implements MemberService {
-	/** The ModelMapper instance. */
-	@Autowired
-	private ModelMapper mapper;
 
-	/** The MemberRepo instance. */
-	@Autowired
-	private MemberRepo memberRepo;
+  /** The ModelMapper instance. */
+  @Autowired
+  private ModelMapper mapper;
 
-	@Autowired
-	DepartmentRepo departmentRepo;
+  /** The MemberRepo instance. */
+  @Autowired
+  private MemberRepo memberRepo;
 
-	@Autowired
-	DepartmentService departmentService;
+  /** The DepartmentService instance. */
+  @Autowired
+  private DepartmentService departmentService;
+  
+  /** The DepartmentService instance. */
+  @Autowired
+  private DepartmentRepo departmentRepo;
 
-	/**
-	 * The minimum sixe for password.
-	 */
-	private static final int MIN_SIZE_PASSWORD = 5;
+  /**
+   * The minimum sixe for password.
+   */
+  private static final int MIN_SIZE_PASSWORD = 5;
 
-	/**
-	 * Perform member login.
-	 *
-	 * @param memberLoginDto The MemberLoginDto containing login credentials.
-	 * @return True if login is successful, false otherwise.
-	 * @throws Exception
-	 */
-	@Override
-	public Boolean login(final MemberLoginDto memberLoginDto) {
+  /**
+   * Perform member login.
+   *
+   * @param memberLoginDto The MemberLoginDto containing login credentials.
+   * @return True if login is successful, false otherwise.
+   * @throws Exception
+   */
+  @Override
+  public Boolean login(final MemberLoginDto memberLoginDto) {
+    Member member = this.memberRepo.findByEmail(memberLoginDto.getEmail());
+    if (member != null) {
+      if (member.getPassword().equals(memberLoginDto.getPassword())) {
+        System.out.println(memberLoginDto);
+        return true;
+      }
+    }
 
-		Member member = this.memberRepo.findByEmail(memberLoginDto.getEmail());
-		if (member != null) {
-			if (member.getPassword().equals(memberLoginDto.getPassword())) {
-				System.out.println(memberLoginDto);
-				return true;
-			}
-		}
+    return false;
+  }
 
-		return false;
-	}
+  /**
+   * Create a new member.
+   *
+   * @param memberDto The MemberDto containing member details.
+   * @param departmentId
+   * @return The created MemberDto.
+   */
+  @Override
+  public MemberOutDto createMember(
+    final MemberDto memberDto,
+    final Integer departmentId
+  ) {
+//    DepartmentDto departmentDto =
+//      this.departmentService.getDepartmentById(departmentId);
+//    memberDto.setDepartmentDto(departmentDto); 
+    		Department department = this.departmentRepo.findById(departmentId).orElseThrow(()->new ResourceNotFoundException("Department", "departmentId", departmentId));
 
-	/**
-	 * Create a new member.
-	 *
-	 * @param memberDto The MemberDto containing member details.
-	 * @return The created MemberDto.
-	 */
-	@Override
-	public MemberDto createMember(final MemberDto memberDto, final Integer departmentId) {
-		DepartmentDto departmentDto = this.departmentService.getDepartmentById(departmentId);
-		memberDto.setDepartment(departmentDto);
-//		memberDto.setDepartment();
-		Member member = this.mapper.map(memberDto, Member.class);
-		return this.mapper.map(this.memberRepo.save(member), MemberDto.class);
-	}
+    Member member = this.mapper.map(memberDto, Member.class);
+    member.setDepartment(department);
+    return this.mapper.map(this.memberRepo.save(member), MemberOutDto.class);
+  }
 
-	/**
-	 * Verify valid email and password.
-	 *
-	 * @param memberLoginDto The MemberLoginDto containing email and password.
-	 * @return True if valid email and password.
-	 * @throws Exception
-	 */
-	@Override
-	public Boolean verifyEmailAndPassword(final String email, final String password) {
-		String emailPattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+  /**
+   * Verify valid email and password.
+   *
+   * @param email
+   * @param password
+   * @return True if valid email and password.
+   * @throws Exception
+   */
+  @Override
+  public Boolean verifyEmailAndPassword(
+    final String email,
+    final String password
+  ) {
+    String emailPattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
 
-		boolean isValidEmail = email.matches(emailPattern);
-		boolean isValidEmail2 = email.endsWith("@nucleusteq.com");
-		boolean isValidPassword = password.length() >= MIN_SIZE_PASSWORD ? true : false;
+    boolean isValidEmail = email.matches(emailPattern);
+    boolean isValidEmail2 = email.endsWith("@nucleusteq.com");
+    boolean isValidPassword = password.length() >= MIN_SIZE_PASSWORD
+      ? true
+      : false;
 
-		if (isValidEmail && isValidPassword && isValidEmail2) {
-			return true;
+    if (isValidEmail && isValidPassword && isValidEmail2) {
+      return true;
+    }
+    return false;
+  }
 
-		}
-		return false;
-	}
+  @Override
+  public final List<MemberOutDto> getAllmember() {
+    List<MemberOutDto> memberOutDtos = new ArrayList<>();
+    List<Member> members = this.memberRepo.findAll();
 
-	@Override
-	public List<MemberOutDto> getAllmember() {
-		
-		// GET LIST IF ROLE IS USER -> MEMBER OF SAME DEPT
-		// GET LIST OF ALL MEMBER IF ROLE IS ADMIN
-		
-		List<MemberOutDto> memberOutDtos = new ArrayList<>();
-		List<Member> members = this.memberRepo.findAll();
-		members.forEach(member -> memberOutDtos.add(new MemberOutDto(member.getName(), member.getEmail(),
-				member.getRole(), member.getDepartment().getName())));
+    members.forEach(m ->
+      memberOutDtos.add(this.mapper.map(m, MemberOutDto.class))
+    );
 
-		return memberOutDtos;
-	}
+    return memberOutDtos;
+  }
 
-	@Override
-	public MemberOutDto createMember2(MemberDto memberDto, Integer departmentId, String email, String password) {
+  /**
+   * Creates a new member if the provided credentials match those of an admin member.
+   * This method requires administrator privileges.
+   *
+   * @param memberDto The data transfer object containing member information.
+   * @param departmentId The unique identifier of the department to which the member will be added.
+   * @param email The email address of the administrator member.
+   * @param password The password of the administrator member.
+   * @return The created member represented as a MemberOutDto if the credentials match;
+   *         otherwise, returns null.
+   */
+  @Override
+  public final MemberOutDto createMember2(
+    final MemberDto memberDto,
+    final Integer departmentId,
+    final String email,
+    final String password
+  ) {
+    Member member = this.memberRepo.findByEmail(email);
+    if (member != null) {
+      if (
+        member.getPassword().equals(password) &&
+        member.getRole() != null &&
+        member.getRole().equals(Role.ADMIN)
+      ) {
+    	  Department department =
+          this.departmentRepo.findById(departmentId).orElseThrow(()->new ResourceNotFoundException("Department", "departmentId", departmentId));
+//        memberDto.setDepartment(departmentDto);
 
-		System.out.println("inside service");
-		Member member = this.memberRepo.findByEmail(email);
-		if (member != null) {
-			System.out.println("inside 1");
-			System.out.println("Role " + member.getRole());
-			System.out.println(member.getRole().equals(Role.ADMIN));
-			if (member.getPassword().equals(password) && member.getRole() != null
-					&& member.getRole().equals(Role.ADMIN)) {
-				System.out.println("Hail Admin!!!!!!!!!");
-				System.out.println("This is what you've created" + memberDto);
+        Member member2 = this.mapper.map(memberDto, Member.class);
+        member2.setDepartment(department);
+        Member savedMember = this.memberRepo.save(member2);
 
-				DepartmentDto departmentDto = this.departmentService.getDepartmentById(departmentId);
-				memberDto.setDepartment(departmentDto);
+        MemberOutDto memberOutDto2 =
+          this.mapper.map(savedMember, MemberOutDto.class);
+        return memberOutDto2;
+      }
+    }
+    return null;
+  }
 
-//				Member member3 = this.mapper.map(memberDto, Member.class);
 
-				Member member2 = this.mapper.map(memberDto, Member.class);
-			Member savedMember =	this.memberRepo.save(member2);
-//				return this.mapper.map(, MemberDto.class);
-				return new MemberOutDto(savedMember.getName(), savedMember.getEmail(),
-						savedMember.getRole(), savedMember.getDepartment().getName());
-
-			}
-		}
-		return null;
-
-	}
 }
