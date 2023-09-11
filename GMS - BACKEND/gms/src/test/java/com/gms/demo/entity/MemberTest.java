@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
@@ -73,7 +74,7 @@ public class MemberTest {
   public void testGetAndSetTickets() {
     Ticket ticket1 = new Ticket();
     Ticket ticket2 = new Ticket();
-    member.setTickets(List.of(ticket1, ticket2));
+    member.setTickets(new ArrayList<>(List.of(ticket1, ticket2)));
     assertEquals(List.of(ticket1, ticket2), member.getTickets());
   }
 

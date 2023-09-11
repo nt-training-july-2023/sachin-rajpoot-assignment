@@ -2,6 +2,7 @@ package com.gms.demo.entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ public class DepartmentTest {
   public void testGetAndSetMembers() {
     Member member1 = new Member();
     Member member2 = new Member();
-    department.setMembers(List.of(member1, member2));
+    department.setMembers(new ArrayList<>(List.of(member1, member2)));
     assertEquals(List.of(member1, member2), department.getMembers());
   }
 
@@ -33,7 +34,7 @@ public class DepartmentTest {
   public void testGetAndSetTickets() {
     Ticket ticket1 = new Ticket();
     Ticket ticket2 = new Ticket();
-    department.setTickets(List.of(ticket1, ticket2));
+    department.setTickets(new ArrayList<>(List.of(ticket1, ticket2)));
     assertEquals(List.of(ticket1, ticket2), department.getTickets());
   }
 

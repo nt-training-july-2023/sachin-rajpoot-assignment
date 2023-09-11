@@ -21,7 +21,7 @@ function App() {
         <Route path="/newuser" element={<UserRegistration/>}></Route>
         <Route path="/newdept" element={<NewTicket/>}></Route>
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

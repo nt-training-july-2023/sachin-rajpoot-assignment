@@ -3,6 +3,7 @@ package com.gms.demo.entity;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -76,7 +77,7 @@ public class TicketTest {
   public void testGetAndSetComments() {
     Comment comment1 = new Comment();
     Comment comment2 = new Comment();
-    ticket.setComments(List.of(comment1, comment2));
+    ticket.setComments(new ArrayList<>(List.of(comment1, comment2)));
     assertEquals(List.of(comment1, comment2), ticket.getComments());
   }
 

@@ -33,8 +33,14 @@ public class MemberController {
   /**
    * The Member Service instance for handling member-related operations.
    */
-  @Autowired
+//  @Autowired
   private MemberService memberService;
+  
+  @Autowired
+	public MemberService setMemberService(MemberService memberService) {
+		this.memberService=memberService;
+		return memberService;
+	}
 
   /**
    * Handles member login.
@@ -57,6 +63,7 @@ public class MemberController {
         )
       && this.memberService.login(memberLoginDto)
     ) {
+      System.out.println("Login Successfully");
       return new ResponseEntity<>("Login Successfully", HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>("Invalid Credentials", HttpStatus.UNAUTHORIZED);
