@@ -6,14 +6,30 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 public class TicketOutDto {
+	
+	  /**
+	   * The unique identifier for the ticket.
+	   */
+	  private Integer ticketId;
 
-  /**
+  public Integer getTicketId() {
+		return ticketId;
+	}
+
+	public void setTicketId(Integer ticketId) {
+		this.ticketId = ticketId;
+	}
+
+/**
    * The title of the ticket.
    */
   private String title;

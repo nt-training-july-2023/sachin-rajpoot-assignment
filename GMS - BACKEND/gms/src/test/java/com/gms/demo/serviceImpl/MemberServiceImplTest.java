@@ -235,4 +235,70 @@ public class MemberServiceImplTest {
     assertEquals("Member 1", memberOutDtos.get(0).getName());
 //    assertEquals("Member 2", memberOutDtos.get(1).getName());
   }
+  
+  @Test
+  public void changePassword_Test() {
+	  
+	  Integer memberId = 1;
+	  String oldPassword ="12345678";
+	  String newPassword ="11111111";
+	  
+	    Member member = new Member();
+	    member.setEmail("user@nucleusteq.com");
+	    member.setPassword(oldPassword); 
+	    member.setIsFirstLogin(true); 
+	    member.setName("test name");
+	    member.setMemberId(1);
+	    member.setRole(Role.USER);
+	    
+	    MemberOutDto memberOutDto = new MemberOutDto();
+	    memberOutDto.setEmail(member.getEmail());
+	    memberOutDto.setName(member.getName());
+	    memberOutDto.setRole(member.getRole());
+	    memberOutDto.setDepartmentName(null);
+	    memberOutDto.setDepartmentName(null);
+	    memberOutDto.setIsFirstLogin(member.getIsFirstLogin());
+	    
+	    when(this.memberRepo.findById(memberId)).thenReturn(Optional.of(member));
+	    when(this.memberRepo.save(member)).thenReturn(member);
+	   when(this.modelMapper.map(member, MemberOutDto.class)).thenReturn(memberOutDto);
+	   
+	    MemberOutDto memberOutDto2 = this.memberService.changePassword(memberId, oldPassword, newPassword);
+	    assertEquals(memberOutDto2, memberOutDto);
+	    
+	    
+  }
+  
+  @Test
+  public void changePasswordFail_Test() {
+	  
+	  Integer memberId = 1;
+	  String oldPassword ="12345678";
+	  String newPassword ="11111111";
+	  
+	    Member member = new Member();
+	    member.setEmail("user@nucleusteq.com");
+	    member.setPassword("222222222222"); 
+	    member.setIsFirstLogin(true); 
+	    member.setName("test name");
+	    member.setMemberId(1);
+	    member.setRole(Role.USER);
+	    
+	    MemberOutDto memberOutDto = new MemberOutDto();
+	    memberOutDto.setEmail(member.getEmail());
+	    memberOutDto.setName(member.getName());
+	    memberOutDto.setRole(member.getRole());
+	    memberOutDto.setDepartmentName(null);
+	    memberOutDto.setDepartmentName(null);
+	    memberOutDto.setIsFirstLogin(member.getIsFirstLogin());
+	    
+	    when(this.memberRepo.findById(memberId)).thenReturn(Optional.of(member));
+//	    when(this.memberRepo.save(member)).thenReturn(member);
+//	   when(this.modelMapper.map(member, MemberOutDto.class)).thenReturn(memberOutDto);
+	   
+	    MemberOutDto memberOutDto2 = this.memberService.changePassword(memberId, oldPassword, newPassword);
+	    assertNotEquals(memberOutDto2, memberOutDto);
+	    
+	    
+  }
 }

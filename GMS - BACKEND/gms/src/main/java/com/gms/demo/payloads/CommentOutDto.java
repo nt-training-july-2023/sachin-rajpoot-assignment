@@ -13,8 +13,22 @@ import org.hibernate.annotations.CreationTimestamp;
  * @since 28-08-2023
  */
 public class CommentOutDto {
+	
 
-  /**
+	  /**
+	   * The unique identifier for the comment.
+	   */
+	  private Integer commentId;
+
+  public Integer getCommentId() {
+		return commentId;
+	}
+
+	public void setCommentId(Integer commentId) {
+		this.commentId = commentId;
+	}
+
+/**
    * The content of the comment.
    */
   private String content;

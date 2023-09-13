@@ -6,8 +6,21 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 public class MemberOutDto {
+	
+	  /**
+	   * The unique identifier for the member.
+	   */
+	  private Integer memberId;
 
-  /**
+  public Integer getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
+	}
+
+/**
    * The name of the member.
    */
   private String name;

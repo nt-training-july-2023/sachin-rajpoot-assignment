@@ -163,5 +163,81 @@ public class TicketServiceImplTest {
 	    
 	    
 	}
+	
+	@Test
+	public void updateTicket_Test() {
+		
+		Integer ticketId = 1;
+		 Integer memberId = 2;
+	     Integer departmentId = 3;
+	     
+			Department department = new Department();
+			department.setDepartmentId(departmentId);
+			department.setMembers(null);
+			department.setName("test");
+			department.setTickets(null);
+			
+			Member member = new Member() ;
+			member.setMemberId(memberId);
+			member.setDepartment(null); 
+			member.setEmail("test@nucleusteq.com");
+			member.setPassword("12345678");
+			member.setIsFirstLogin(true);
+			member.setName("test");
+			member.setRole(Role.USER);
+			member.setTickets(null);
+			
+			TicketOutDto ticketOutDto = new TicketOutDto();
+			ticketOutDto.setTitle("test");
+			ticketOutDto.setCreatedOn(null);
+			ticketOutDto.setDescription("test");
+			ticketOutDto.setLastUpdatedOn(null);
+			ticketOutDto.setStatus(Status.OPEN);
+			ticketOutDto.setTicketType(TicketType.FEEDBACK);
+			
+			TicketDto ticketDto = new TicketDto();
+			ticketDto.setTitle("test");
+			ticketDto.setCreatedOn(null);
+			ticketDto.setDepartment(null);
+			ticketDto.setDescription("test");
+			ticketDto.setLastUpdatedOn(null);
+			ticketDto.setMember(null);
+			ticketDto.setStatus(Status.OPEN);
+			ticketDto.setTicketId(ticketId);
+			ticketDto.setTicketType(TicketType.FEEDBACK);
+			
+			Ticket ticket = new Ticket();
+			ticket.setTitle("test");
+			ticket.setCreatedOn(null);
+			ticket.setDepartment(null);
+			ticket.setDescription("test");
+			ticket.setLastUpdatedOn(null);
+			ticket.setMember(null);
+			ticket.setStatus(Status.OPEN);
+			ticket.setTicketId(ticketId);
+			ticket.setTicketType(TicketType.FEEDBACK);
+			
+			Optional<Member> m = java.util.Optional.of(member) ;
+			Optional<Department> d = java.util.Optional.of(department) ;
+			
+			
+			
+			when(memberRepo.findById(memberId)).thenReturn(m);
+			
+			when(departmentRepo.findById(departmentId)).thenReturn(d);
+			
+			when(ticketRepo.findById(ticketId)).thenReturn(Optional.of(ticket));
+			
+			ticket.setDepartment(department);
+			ticket.setMember(member);
+			
+			when(ticketRepo.save(ticket)).thenReturn(ticket);
+			
+			when(this.modelMapper.map(ticket, TicketOutDto.class)).thenReturn(ticketOutDto);
+			
+			assertNotNull(this.ticketServiceImpl.updateTicket(ticketDto, ticketId, memberId, departmentId));
+			
+	    
+	}
 
 }

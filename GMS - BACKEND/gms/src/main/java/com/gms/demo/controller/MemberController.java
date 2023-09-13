@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -151,4 +152,21 @@ public class MemberController {
       HttpStatus.OK
     );
   }
-}
+  
+  @CrossOrigin
+  @PutMapping("changepassword/memberId/{memberId}/oldpassword/{oldPassword}/newpassword/{newPassword}")
+  public final ResponseEntity<MemberOutDto> changePassword(
+		  @PathVariable final Integer memberId,
+		    @PathVariable final String oldPassword,
+		    @PathVariable final String newPassword
+		    ) {
+
+		      return new ResponseEntity<>( this.memberService.changePassword(
+		    		  memberId,
+		    		  oldPassword,
+		    		  newPassword
+		        ), HttpStatus.OK);
+		    }
+//	  return null;
+  }
+

@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberLoginDto;
@@ -287,4 +288,48 @@ public class MemberControllerTest {
     assertEquals(401, responseEntity.getStatusCodeValue());
     
   }
+  
+  @Test
+  public void changePassword_Test() throws Exception {
+	  
+	  Integer memberId = 1;
+	  String oldPassword ="12345678";
+	  String newPassword ="11111111";
+	  
+	  Member member = new Member();
+	  member.setMemberId(1);
+	  member.setEmail("user@nucleusteq.com");
+	  member.setDepartment(null);
+	  member.setIsFirstLogin(false);
+	  member.setName("test");
+	  member.setPassword(oldPassword);
+	  member.setTickets(null);
+	  member.setRole(Role.USER);
+	  
+	  
+
+	  
+	  MemberOutDto memberOutDto = new MemberOutDto();
+	  memberOutDto.setMemberId(1);
+	  when(this.memberService.changePassword(memberId, oldPassword, newPassword)).thenReturn(memberOutDto);
+	  
+	    mockMvc
+	      .perform(
+	        MockMvcRequestBuilders
+	          .put(
+	            "/api/changepassword/memberId/{memberId}/oldpassword/{oldPassword}/newpassword/{newPassword}",
+	            memberId,
+	            oldPassword,
+	            newPassword
+	          )
+	          .contentType(MediaType.APPLICATION_JSON)
+	          .accept(MediaType.APPLICATION_JSON)
+	      )
+	      .andExpect(MockMvcResultMatchers.status().isOk());
+	    ResponseEntity<MemberOutDto> responseEntity = memberController.changePassword(memberId,oldPassword,newPassword);
+	  assertEquals(200, responseEntity.getStatusCodeValue());
+	  assertEquals(this.memberService.changePassword(memberId, oldPassword, newPassword), responseEntity.getBody());
+  }
+  
+
 }

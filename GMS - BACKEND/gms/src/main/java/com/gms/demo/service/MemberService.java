@@ -63,4 +63,9 @@ public interface MemberService {
    * @return true if the email and password combination is valid, false otherwise.
    */
   Boolean verifyEmailAndPassword(String email, String password);
+  
+  
+  
+  
+  MemberOutDto changePassword(Integer memberId, String oldPassword, String newPassword);
 }

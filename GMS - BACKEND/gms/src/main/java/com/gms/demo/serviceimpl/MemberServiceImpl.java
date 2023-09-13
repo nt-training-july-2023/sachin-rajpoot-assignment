@@ -14,6 +14,7 @@ import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.service.DepartmentService;
 import com.gms.demo.service.MemberService;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -165,6 +166,8 @@ public class MemberServiceImpl implements MemberService {
 
         Member member2 = this.mapper.map(memberDto, Member.class);
         member2.setDepartment(department);
+        // ENCODING
+        member2.setPassword(Base64.getEncoder().encodeToString(member2.getPassword().getBytes()));
         Member savedMember = this.memberRepo.save(member2);
 
         MemberOutDto memberOutDto2 =
@@ -175,5 +178,19 @@ public class MemberServiceImpl implements MemberService {
     return null;
   }
 
+@Override
+public MemberOutDto changePassword(Integer memberId,String oldPassword, String newPassword) {
+	Member member = this.memberRepo.findById(memberId)
+			.orElseThrow(()-> new ResourceNotFoundException("member", "member ID", memberId));
+	
+	if(member.getPassword().equals(oldPassword)) {
+		member.setPassword(newPassword);
+		Member savedMember = this.memberRepo.save(member);
+		return this.mapper.map(savedMember, MemberOutDto.class);
+	}
+	return null;
+}
+
+  
 
 }

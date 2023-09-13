@@ -25,4 +25,13 @@ public interface TicketService {
    * @return A list of TicketOutDto objects representing all tickets.
    */
   List<TicketOutDto> getAllTicket();
+  
+  /**
+   * Updates a tickets.
+   *
+   * @return Updated TicketOutDto.
+   */
+  TicketOutDto updateTicket(TicketDto ticketDto, Integer ticketId,     final Integer memberId,
+		    final Integer departmentId);
+  
 }

@@ -12,7 +12,20 @@ import java.util.List;
  */
 public class DepartmentOutDto {
 
-  /**
+	
+	  /**
+	   * The unique identifier for the department.
+	   */
+	  private Integer departmentId;
+  public Integer getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(Integer departmentId) {
+		this.departmentId = departmentId;
+	}
+
+/**
    * The name of the department.
    */
   private String departmentName;

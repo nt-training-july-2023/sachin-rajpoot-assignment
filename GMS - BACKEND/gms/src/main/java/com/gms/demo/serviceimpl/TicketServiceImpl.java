@@ -14,9 +14,13 @@ import com.gms.demo.repo.TicketRepo;
 import com.gms.demo.service.TicketService;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class TicketServiceImpl implements TicketService {
@@ -109,4 +113,40 @@ public class TicketServiceImpl implements TicketService {
     );
     return ticketOutDtos;
   }
+
+  /**
+   * Updates a tickets.
+   *
+   * @return Updated TicketOutDto.
+   */
+@Override
+public TicketOutDto updateTicket(TicketDto ticketDto, Integer ticketId,final Integer memberId,
+	    final Integer departmentId){
+	Ticket ticket = this.ticketRepo.findById(ticketId)
+			.orElseThrow(() ->
+	          new ResourceNotFoundException("ticket", "ticket ID", ticketId)
+	        );
+	Department department = this.departmentRepo.findById(departmentId)
+		    .orElseThrow(() ->
+		      new ResourceNotFoundException(
+		        "Department",
+		        "department ID",
+		        departmentId
+		      )
+		    );
+	Member member =
+		      this.memberRepo.findById(memberId)
+		        .orElseThrow(() ->
+		          new ResourceNotFoundException("Member", "member ID", memberId)
+		        );
+	ticket.setDepartment(department);
+	ticket.setMember(member);
+	ticket.setDescription(ticketDto.getDescription());
+	ticket.setStatus(ticketDto.getStatus());
+	ticket.setTicketType(ticketDto.getTicketType());
+	ticket.setTitle(ticketDto.getTitle());
+	Ticket savedTicket = this.ticketRepo.save(ticket);
+	return this.modelMapper.map(savedTicket, TicketOutDto.class);
+	
+}
 }
