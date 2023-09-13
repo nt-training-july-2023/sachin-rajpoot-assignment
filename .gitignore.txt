@@ -1,0 +1,50 @@
+# Ignore node_modules directory (Frontend)
+/frontend/gms/node_modules/
+
+# Ignore Maven target directory (Backend)
+/backend/gms/target/
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+*.iml
+
+# Ignore build artifacts
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.swp
+
+# Ignore generated reports and documentation
+/target/site/
+/target/jacoco/
+/target/surefire-reports/
+/target/failsafe-reports/
+/doc/api/
+
+# Ignore Checkstyle and PMD reports
+/checkstyle-reports/
+/pmd-reports/
+
+# Ignore editor/IDE configuration
+/.editorconfig
+/.eslintrc
+/.prettierrc
+
+# Ignore temporary files and editor backups
+*~
+*.swp
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Gradle specific files (if used)
+.gradle/
+/build/
+
+# Ignore Maven wrapper jar
+/mvnw
+/mvnw.cmd

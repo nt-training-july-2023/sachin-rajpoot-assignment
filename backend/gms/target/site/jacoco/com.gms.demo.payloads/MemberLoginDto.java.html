@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MemberLoginDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">grievance</a> &gt; <a href="index.source.html" class="el_package">com.gms.demo.payloads</a> &gt; <span class="el_source">MemberLoginDto.java</span></div><h1>MemberLoginDto.java</h1><pre class="source lang-java linenums">package com.gms.demo.payloads;
+
+import java.util.Objects;
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+/**
+ * Represents an Member Login DTO.
+ *
+ * @author Sachin Singh Rajpoot
+ *
+ * @version 1.0
+ * @since Begining of time
+ */
+
+public class MemberLoginDto {
+  /**
+   * The email address of the member.
+   */
+  @NotEmpty
+  @Email
+  @Column(unique = true)
+  private String email;
+
+  /**
+   * The minimum size of password for the member.
+   */
+  private static final int MIN_SIZE_PASSWORD = 5;
+
+  /**
+   * The password associated with the member's account.
+   * Password must be between 5 and 12 characters in length.
+   */
+  @NotEmpty
+  @Size(min = MIN_SIZE_PASSWORD, message = &quot;Password must be between 5 and 12 characters.&quot;)
+  private String password;
+
+  /**
+   * Get the email of the member for login.
+   *
+   * @return The member's login email.
+   */
+  public String getEmail() {
+<span class="fc" id="L46">    return email;</span>
+  }
+
+  /**
+   * Set the email of the member for login.
+   *
+   * @param email The member's login email to set.
+   */
+  public void setEmail(final String email) {
+<span class="fc" id="L55">    this.email = email;</span>
+<span class="fc" id="L56">  }</span>
+
+  /**
+   * Get the password of the member for login.
+   *
+   * @return The member's login password.
+   */
+  public String getPassword() {
+<span class="fc" id="L64">    return password;</span>
+  }
+
+  /**
+   * Set the password of the member for login.
+   *
+   * @param password The member's login password to set.
+   */
+  public void setPassword(final String password) {
+<span class="fc" id="L73">    this.password = password;</span>
+<span class="fc" id="L74">  }</span>
+
+  /**
+   * Calculates the hash code for the MemberLoginDto object.
+   *
+   * @return The hash code value.
+   */
+  @Override
+  public int hashCode() {
+<span class="nc" id="L83">    return Objects.hash(email, password);</span>
+  }
+
+  /**
+   * Checks if this MemberLoginDto object is equal to another object.
+   *
+   * @param obj The object to compare.
+   * @return True if the objects are equal, false otherwise.
+   */
+  @Override
+  public boolean equals(final Object obj) {
+<span class="nc bnc" id="L94" title="All 2 branches missed.">    if (this == obj) {</span>
+<span class="nc" id="L95">      return true;</span>
+    }
+<span class="nc bnc" id="L97" title="All 4 branches missed.">    if (obj == null || getClass() != obj.getClass()) {</span>
+<span class="nc" id="L98">      return false;</span>
+    }
+<span class="nc" id="L100">    MemberLoginDto other = (MemberLoginDto) obj;</span>
+<span class="nc bnc" id="L101" title="All 4 branches missed.">    return (Objects.equals(email, other.email) &amp;&amp; Objects.equals(password, other.password));</span>
+  }
+
+  /**
+   * Generates a string representation of the MemberLoginDto object.
+   *
+   * @return The string representation.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L111">    return (&quot;email=&quot; + email + &quot;, password=&quot; + password + &quot;]&quot;);</span>
+  }
+
+  /**
+   * Constructor for creating a MemberLoginDto object.
+   *
+   * @param memberId The member ID.
+   * @param email    The email of the member for login.
+   * @param password The password of the member for login.
+   */
+  public MemberLoginDto(
+      final Integer memberId,
+      @NotEmpty @Email final String email,
+      @NotEmpty @Size(min = '5', message = &quot;Password Must be minimum 5 and maximum 12 characters.&quot;) final String password) {
+<span class="nc" id="L125">    super();</span>
+<span class="nc" id="L126">    this.email = email;</span>
+<span class="nc" id="L127">    this.password = password;</span>
+<span class="nc" id="L128">  }</span>
+
+  /**
+   * Constructs a new MemberLoginDto with the provided email and password.
+   * @param email    The email address of the member.
+   * @param password The password associated with the member's account.
+   */
+  public MemberLoginDto(
+      @NotEmpty @Email final String email,
+      @NotEmpty @Size(min = '5', message = &quot;Password must be between 5 and 12 characters.&quot;) final String password) {
+<span class="fc" id="L138">    super();</span>
+<span class="fc" id="L139">    this.email = email;</span>
+<span class="fc" id="L140">    this.password = password;</span>
+<span class="fc" id="L141">  }</span>
+
+  /**
+   * Default constructor for creating a MemberLoginDto object.
+   */
+  public MemberLoginDto() {
+<span class="fc" id="L147">    super();</span>
+<span class="fc" id="L148">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

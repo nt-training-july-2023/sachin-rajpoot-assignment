@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Comment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">grievance</a> &gt; <a href="index.source.html" class="el_package">com.gms.demo.entity</a> &gt; <span class="el_source">Comment.java</span></div><h1>Comment.java</h1><pre class="source lang-java linenums">package com.gms.demo.entity;
+
+import java.util.Date;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import org.springframework.data.annotation.CreatedDate;
+
+/**
+ * Represents a Comment Entity.
+ *
+ * @version 1.0
+ * @since 28-08-2023
+ */
+@Entity
+public class Comment {
+  /**
+   * The unique identifier for the comment.
+   */
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer commentId;
+
+  /**
+   * The content of the comment.
+   */
+  @NotEmpty
+  private String content;
+
+  /**
+   * The username associated with the comment.
+   */
+  @NotEmpty
+  private String userName;
+
+  /**
+   * The date and time when the comment was created.
+   */
+  @CreatedDate
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date date;
+
+  /**
+   * The ticket to which this comment belongs.
+   */
+  @ManyToOne
+  @JoinColumn(name = &quot;ticket_id&quot;)
+  private Ticket ticket;
+
+  /**
+   * Get the comment ID.
+   *
+   * @return The comment ID.
+   */
+  public Integer getCommentId() {
+<span class="nc" id="L63">    return commentId;</span>
+  }
+
+  /**
+   * Set the comment ID.
+   *
+   * @param commentId The comment ID to set.
+   */
+  public void setCommentId(final Integer commentId) {
+<span class="nc" id="L72">    this.commentId = commentId;</span>
+<span class="nc" id="L73">  }</span>
+
+  /**
+   * Get the content of the comment.
+   *
+   * @return The content of the comment.
+   */
+  public String getContent() {
+<span class="nc" id="L81">    return content;</span>
+  }
+
+  /**
+   * Set the content of the comment.
+   *
+   * @param content The content to set.
+   */
+  public void setContent(final String content) {
+<span class="nc" id="L90">    this.content = content;</span>
+<span class="nc" id="L91">  }</span>
+
+  /**
+   * Get the user name associated with the comment.
+   *
+   * @return The user name.
+   */
+  public String getUserName() {
+<span class="nc" id="L99">    return userName;</span>
+  }
+
+  /**
+   * Set the user name associated with the comment.
+   *
+   * @param userName The user name to set.
+   */
+  public void setUserName(final String userName) {
+<span class="nc" id="L108">    this.userName = userName;</span>
+<span class="nc" id="L109">  }</span>
+
+  /**
+   * Get the date of the comment.
+   *
+   * @return The comment date.
+   */
+  public Date getDate() {
+<span class="nc" id="L117">    return date;</span>
+  }
+
+  /**
+   * Set the date of the comment.
+   *
+   * @param date The date to set.
+   */
+  public void setDate(final Date date) {
+<span class="nc" id="L126">    this.date = date;</span>
+<span class="nc" id="L127">  }</span>
+
+  /**
+   * Get the associated ticket.
+   *
+   * @return The associated ticket.
+   */
+  public Ticket getTicket() {
+<span class="nc" id="L135">    return ticket;</span>
+  }
+
+  /**
+   * Set the associated ticket.
+   *
+   * @param ticket The ticket to set.
+   */
+  public void setTicket(final Ticket ticket) {
+<span class="nc" id="L144">    this.ticket = ticket;</span>
+<span class="nc" id="L145">  }</span>
+
+  @Override
+  public final int hashCode() {
+<span class="nc" id="L149">    return Objects.hash(commentId, content, date, ticket, userName);</span>
+  }
+
+  @Override
+  public final boolean equals(final Object obj) {
+<span class="nc bnc" id="L154" title="All 2 branches missed.">    if (this == obj) {</span>
+<span class="nc" id="L155">      return true;</span>
+    }
+<span class="nc bnc" id="L157" title="All 2 branches missed.">    if (obj == null) {</span>
+<span class="nc" id="L158">      return false;</span>
+    }
+<span class="nc bnc" id="L160" title="All 2 branches missed.">    if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L161">      return false;</span>
+    }
+<span class="nc" id="L163">    Comment other = (Comment) obj;</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">    return (Objects.equals(commentId, other.commentId)</span>
+        &amp;&amp;
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        Objects.equals(content, other.content)</span>
+        &amp;&amp;
+<span class="nc bnc" id="L168" title="All 2 branches missed.">        Objects.equals(date, other.date)</span>
+        &amp;&amp;
+<span class="nc bnc" id="L170" title="All 2 branches missed.">        Objects.equals(ticket, other.ticket)</span>
+        &amp;&amp;
+<span class="nc bnc" id="L172" title="All 2 branches missed.">        Objects.equals(userName, other.userName));</span>
+  }
+
+  @Override
+  public final String toString() {
+<span class="nc" id="L177">    return (&quot;Comment [commentId=&quot;</span>
+        +
+        commentId
+        +
+        &quot;, content=&quot;
+        +
+        content
+        +
+        &quot;, userName=&quot;
+        +
+        userName
+        +
+        &quot;, date=&quot;
+        +
+        date
+        +
+        &quot;, ticket=&quot;
+        +
+        ticket
+        +
+        &quot;]&quot;);
+  }
+
+  /**
+   * Constructor with parameters.
+   *
+   * @param commentId The comment ID.
+   * @param content   The content of the comment.
+   * @param userName  The user name associated with the comment.
+   * @param date      The date of the comment.
+   * @param ticket    The associated ticket.
+   */
+  public Comment(
+      final Integer commentId,
+      @NotEmpty final String content,
+      @NotEmpty final String userName,
+      final Date date,
+      final Ticket ticket) {
+<span class="nc" id="L215">    super();</span>
+<span class="nc" id="L216">    this.commentId = commentId;</span>
+<span class="nc" id="L217">    this.content = content;</span>
+<span class="nc" id="L218">    this.userName = userName;</span>
+<span class="nc" id="L219">    this.date = date;</span>
+<span class="nc" id="L220">    this.ticket = ticket;</span>
+<span class="nc" id="L221">  }</span>
+
+  /**
+   * Default constructor.
+   */
+  public Comment() {
+<span class="fc" id="L227">    super();</span>
+<span class="fc" id="L228">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

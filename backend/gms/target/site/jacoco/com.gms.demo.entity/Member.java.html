@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Member.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">grievance</a> &gt; <a href="index.source.html" class="el_package">com.gms.demo.entity</a> &gt; <span class="el_source">Member.java</span></div><h1>Member.java</h1><pre class="source lang-java linenums">package com.gms.demo.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+/**
+ * Represents an Member Entity.
+ *
+ * @author Sachin Singh Rajpoot
+ *
+ * @version 1.0
+ * @since 28-08-2023
+ */
+
+@Entity
+public class Member {
+  /**
+   * The unique identifier for the member.
+   */
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer memberId;
+
+  /**
+   * The name of the member.
+   */
+  @NotEmpty
+  private String name;
+
+  /**
+   * The email address of the member.
+   */
+  @NotEmpty
+  @Email
+  @Column(unique = true)
+  private String email;
+
+  /**
+   * The password of the member.
+   */
+  @NotEmpty
+  private String password;
+
+  /**
+   * The role of the member.
+   */
+  @Enumerated(EnumType.STRING)
+  private Role role;
+
+  /**
+   * The department to which this member belongs.
+   */
+  @ManyToOne
+  private Department department;
+
+  /**
+   * The list of tickets associated with this member.
+   */
+<span class="pc" id="L72">  @OneToMany(mappedBy = &quot;member&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)</span>
+  private List&lt;Ticket&gt; tickets = new ArrayList&lt;&gt;();
+
+  /**
+   * Get the member ID.
+   *
+   * @return The member ID.
+   */
+  public Integer getMemberId() {
+<span class="fc" id="L81">    return memberId;</span>
+  }
+
+  /**
+   * Set the member ID.
+   *
+   * @param memberId The member ID to set.
+   */
+  public void setMemberId(final Integer memberId) {
+<span class="fc" id="L90">    this.memberId = memberId;</span>
+<span class="fc" id="L91">  }</span>
+
+  /**
+   * Get the name of the member.
+   *
+   * @return The member name.
+   */
+  public String getName() {
+<span class="fc" id="L99">    return name;</span>
+  }
+
+  /**
+   * Set the name of the member.
+   *
+   * @param name The member name to set.
+   */
+  public void setName(final String name) {
+<span class="fc" id="L108">    this.name = name;</span>
+<span class="fc" id="L109">  }</span>
+
+  /**
+   * Get the email of the member.
+   *
+   * @return The member email.
+   */
+  public String getEmail() {
+<span class="fc" id="L117">    return email;</span>
+  }
+
+  /**
+   * Set the email of the member.
+   *
+   * @param email The member email to set.
+   */
+  public void setEmail(final String email) {
+<span class="fc" id="L126">    this.email = email;</span>
+<span class="fc" id="L127">  }</span>
+
+  /**
+   * Get the password of the member.
+   *
+   * @return The member password.
+   */
+  public String getPassword() {
+<span class="fc" id="L135">    return password;</span>
+  }
+
+  /**
+   * Set the password of the member.
+   *
+   * @param password The member password to set.
+   */
+  public void setPassword(final String password) {
+<span class="fc" id="L144">    this.password = password;</span>
+<span class="fc" id="L145">  }</span>
+
+  /**
+   * Get the role of the member.
+   *
+   * @return The member role.
+   */
+  public Role getRole() {
+<span class="fc" id="L153">    return role;</span>
+  }
+
+  /**
+   * Set the role of the member.
+   *
+   * @param role The member role to set.
+   */
+  public void setRole(final Role role) {
+<span class="fc" id="L162">    this.role = role;</span>
+<span class="fc" id="L163">  }</span>
+
+  /**
+   * Get the department of the member.
+   *
+   * @return The member department.
+   */
+  public Department getDepartment() {
+<span class="fc" id="L171">    return department;</span>
+  }
+
+  /**
+   * Set the department of the member.
+   *
+   * @param department The member department to set.
+   */
+  public void setDepartment(final Department department) {
+<span class="fc" id="L180">    this.department = department;</span>
+<span class="fc" id="L181">  }</span>
+
+  /**
+   * Get the list of tickets associated with the member.
+   *
+   * @return The list of tickets.
+   */
+  public List&lt;Ticket&gt; getTickets() {
+<span class="fc" id="L189">    return tickets;</span>
+  }
+
+  /**
+   * Set the list of tickets associated with the member.
+   *
+   * @param tickets The list of tickets to set.
+   */
+  public void setTickets(final List&lt;Ticket&gt; tickets) {
+<span class="fc" id="L198">    this.tickets = tickets;</span>
+<span class="fc" id="L199">  }</span>
+
+  /**
+   * Generates a string representation of the Member object.
+   *
+   * @return The string representation.
+   */
+  @Override
+  public String toString() {
+<span class="fc" id="L208">    return (&quot;Member [memberId=&quot;</span>
+        +
+        memberId
+        +
+        &quot;, name=&quot;
+        +
+        name
+        +
+        &quot;, email=&quot;
+        +
+        email
+        +
+        &quot;, password=&quot;
+        +
+        password
+        +
+        &quot;, role=&quot;
+        +
+        role
+        +
+        &quot;, department=&quot;
+        +
+        department
+        +
+        &quot;, tickets=&quot;
+        +
+        tickets
+        +
+        &quot;]&quot;);
+  }
+
+  /**
+   * Constructor for creating a Member object.
+   *
+   * @param memberId   The member ID.
+   * @param name       The name of the member.
+   * @param email      The email of the member.
+   * @param password   The password of the member.
+   * @param role       The role of the member.
+   * @param department The department of the member.
+   * @param tickets    The list of tickets associated with the member.
+   */
+  public Member(
+      final Integer memberId,
+      @NotEmpty final String name,
+      @NotEmpty @Email final String email,
+      @NotEmpty final String password,
+      @NotEmpty final Role role,
+      final Department department,
+      final List&lt;Ticket&gt; tickets) {
+<span class="nc" id="L258">    super();</span>
+<span class="nc" id="L259">    this.memberId = memberId;</span>
+<span class="nc" id="L260">    this.name = name;</span>
+<span class="nc" id="L261">    this.email = email;</span>
+<span class="nc" id="L262">    this.password = password;</span>
+<span class="nc" id="L263">    this.role = role;</span>
+<span class="nc" id="L264">    this.department = department;</span>
+<span class="nc" id="L265">    this.tickets = tickets;</span>
+<span class="nc" id="L266">  }</span>
+
+  /**
+   * Constructor for creating a Member object.
+   *
+   * @param memberId   The member ID.
+   * @param name       The name of the member.
+   * @param email      The email of the member.
+   * @param password   The password of the member.
+   */
+  public Member(
+      final Integer memberId,
+      @NotEmpty final String name,
+      @NotEmpty @Email final String email,
+      @NotEmpty final String password) {
+<span class="fc" id="L281">    super();</span>
+<span class="fc" id="L282">    this.memberId = memberId;</span>
+<span class="fc" id="L283">    this.name = name;</span>
+<span class="fc" id="L284">    this.email = email;</span>
+<span class="fc" id="L285">    this.password = password;</span>
+<span class="fc" id="L286">  }</span>
+
+  /**
+   * Default constructor for creating a Member object.
+   */
+  public Member() {
+<span class="fc" id="L292">    super();</span>
+    // TODO Auto-generated constructor stub
+<span class="fc" id="L294">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
