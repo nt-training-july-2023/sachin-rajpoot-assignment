@@ -9,12 +9,33 @@ import com.gms.demo.payloads.TicketOutDto;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 
 public class TicketOutDtoTest {
 
   private TicketOutDto ticketOutDto = new TicketOutDto();
 
+  Integer ticketId =1;
+  String title="Test title"; String description="test decs"; 
+  Date createdOn= new Date();
+  Date lastUpdatedOn = new Date();
+  Status status = Status.OPEN;
+  TicketType ticketType= TicketType.GRIEVANCE;
+  String departmentName="HR";
+  String memberName="kingkong";
+  List<CommentOutDto> comments = new ArrayList<>();
+ private TicketOutDto ticketOutDto2 = new TicketOutDto(
+		  ticketId,  title,  description,  createdOn,  lastUpdatedOn,
+			 status,  ticketType,  departmentName,  memberName,  comments
+		 );
+ 
+ private TicketOutDto ticketOutDto3 = new TicketOutDto(
+		  ticketId,  title,  description,  createdOn,  lastUpdatedOn,
+			 status,  ticketType,  departmentName,  memberName,  comments
+		 );
+  
   @Test
   public void testGetAndSetTitle() {
     ticketOutDto.setTitle("Sample Ticket");
@@ -131,5 +152,18 @@ public class TicketOutDtoTest {
   @Test
   public void testDefaultConstructor() {
     assertNotNull(new TicketOutDto());
+  }
+  
+  @Test
+  public void testHashCodeMethod() {
+	 int receivedValue = Objects.hash(comments, createdOn, departmentName, description, lastUpdatedOn, memberName, status, ticketId,
+				ticketType, title);
+	 int expected = this.ticketOutDto2.hashCode();
+	 assertEquals(expected, receivedValue);
+  }
+  
+  @Test
+  public void testEqualsMethod() {
+	  assertTrue(this.ticketOutDto2.equals(ticketOutDto3));
   }
 }

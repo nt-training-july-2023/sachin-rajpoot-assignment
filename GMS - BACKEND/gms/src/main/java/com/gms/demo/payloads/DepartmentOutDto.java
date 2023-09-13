@@ -2,6 +2,7 @@ package com.gms.demo.payloads;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The `DepartmentOutDto` class represents a Data Transfer Object (DTO) for outbound department information.
@@ -128,4 +129,33 @@ public class DepartmentOutDto {
   public DepartmentOutDto() {
     // Default constructor
   }
+
+@Override
+public int hashCode() {
+	return Objects.hash(departmentId, departmentName, members, tickets);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	DepartmentOutDto other = (DepartmentOutDto) obj;
+	return Objects.equals(departmentId, other.departmentId) && Objects.equals(departmentName, other.departmentName)
+			&& Objects.equals(members, other.members) && Objects.equals(tickets, other.tickets);
+}
+
+public DepartmentOutDto(Integer departmentId, String departmentName, List<MemberOutDto> members,
+		List<TicketOutDto> tickets) {
+	super();
+	this.departmentId = departmentId;
+	this.departmentName = departmentName;
+	this.members = members;
+	this.tickets = tickets;
+}
+  
+  
 }

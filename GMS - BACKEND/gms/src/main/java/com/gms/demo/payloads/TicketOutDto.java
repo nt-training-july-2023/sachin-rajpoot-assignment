@@ -4,6 +4,8 @@ import com.gms.demo.entity.Status;
 import com.gms.demo.entity.TicketType;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -314,4 +316,43 @@ public class TicketOutDto {
     super();
     // TODO Auto-generated constructor stub
   }
+
+@Override
+public int hashCode() {
+	return Objects.hash(comments, createdOn, departmentName, description, lastUpdatedOn, memberName, status, ticketId,
+			ticketType, title);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	TicketOutDto other = (TicketOutDto) obj;
+	return Objects.equals(comments, other.comments) && Objects.equals(createdOn, other.createdOn)
+			&& Objects.equals(departmentName, other.departmentName) && Objects.equals(description, other.description)
+			&& Objects.equals(lastUpdatedOn, other.lastUpdatedOn) && Objects.equals(memberName, other.memberName)
+			&& status == other.status && Objects.equals(ticketId, other.ticketId) && ticketType == other.ticketType
+			&& Objects.equals(title, other.title);
+}
+
+public TicketOutDto(Integer ticketId, String title, String description, Date createdOn, Date lastUpdatedOn,
+		Status status, TicketType ticketType, String departmentName, String memberName, List<CommentOutDto> comments) {
+	super();
+	this.ticketId = ticketId;
+	this.title = title;
+	this.description = description;
+	this.createdOn = createdOn;
+	this.lastUpdatedOn = lastUpdatedOn;
+	this.status = status;
+	this.ticketType = ticketType;
+	this.departmentName = departmentName;
+	this.memberName = memberName;
+	this.comments = comments;
+}
+  
+  
 }

@@ -7,11 +7,28 @@ import com.gms.demo.payloads.MemberOutDto;
 import com.gms.demo.payloads.TicketOutDto;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 
 public class MemberOutDtoTest {
 
   private MemberOutDto memberOutDto = new MemberOutDto();
+  
+  Integer memberId =1;
+  String name="kingkong";
+  String email="kingkong@nucleusteq.com";
+  Role role = Role.USER;
+  String departmentName="Test Dept";
+  Boolean isFirstLogin = true;
+  List<TicketOutDto> tickets = new ArrayList<>();
+  private MemberOutDto memberOutDto2 = new MemberOutDto(
+		   memberId,  name,  email,  role,  departmentName,  isFirstLogin,
+			 tickets);
+  private MemberOutDto memberOutDto3 = new MemberOutDto(
+		   memberId,  name,  email,  role,  departmentName,  isFirstLogin,
+			 tickets);
+ 
 
   @Test
   public void testGetAndSetName() {
@@ -93,5 +110,17 @@ public class MemberOutDtoTest {
   @Test
   public void testDefaultConstructor() {
     assertNotNull(new MemberOutDto());
+  }
+  
+  @Test
+  public void testHashCodeMethod() {
+	 int receivedValue = Objects.hash(departmentName, email, isFirstLogin, memberId, name, role, tickets);
+	 int expected = this.memberOutDto2.hashCode();
+	 assertEquals(expected, receivedValue);
+  }
+  
+  @Test
+  public void testEqualsMethod() {
+	  assertTrue(this.memberOutDto2.equals(memberOutDto3));
   }
 }

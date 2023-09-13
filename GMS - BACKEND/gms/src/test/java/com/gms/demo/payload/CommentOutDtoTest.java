@@ -4,15 +4,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.gms.demo.payloads.CommentOutDto;
 import java.util.Date;
+import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 
 public class CommentOutDtoTest {
+	
+	 Integer commentId=1;
+	 String content = "This is a comment";
+	 Date date = new Date();
+	 String userName = "kingkong";
 
   private CommentOutDto commentOutDto = new CommentOutDto(
-    "This is a comment",
-    "kingkong",
-    new Date()
+   content,
+    userName,
+    date
   );
+  
+  private CommentOutDto commentOutDto2 = new CommentOutDto(
+		  	commentId,
+		  	content,
+		    userName,
+		    date
+		  );
+
+  private CommentOutDto commentOutDto3 = new CommentOutDto(
+		  	commentId,
+		  	content,
+		    userName,
+		    date
+		  );
 
   @Test
   public void testGetAndSetContent() {
@@ -45,5 +66,17 @@ public class CommentOutDtoTest {
   @Test
   public void testDefaultConstructor() {
     assertNotNull(new CommentOutDto());
+  }
+  
+  @Test
+  public void testHashCodeMethod() {
+	 int receivedValue = Objects.hash(commentId, content, date, userName);
+	 int expected = this.commentOutDto2.hashCode();
+	 assertEquals(expected, receivedValue);
+  }
+  
+  @Test
+  public void testEqualsMethod() {
+	  assertTrue(this.commentOutDto2.equals(commentOutDto3));
   }
 }

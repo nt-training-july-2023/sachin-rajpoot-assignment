@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -113,12 +114,12 @@ public class MemberController {
    *         otherwise, returns HTTP status 401 (Unauthorized).
    */
   @CrossOrigin
-  @PostMapping("{departmentId}/email/{email}/password/{password}")
+  @PostMapping("departmentId/{departmentId}")
   public final ResponseEntity<MemberOutDto> createMember2(
     @RequestBody @Valid final MemberDto memberDto,
     @PathVariable final Integer departmentId,
-    @PathVariable final String email,
-    @PathVariable final String password
+    @RequestHeader final String email,
+    @RequestHeader final String password
   ) {
     System.out.println("Role " + memberDto.getRole());
     System.out.println("Member DTO " + memberDto);

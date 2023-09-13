@@ -1,12 +1,14 @@
 package com.gms.demo.payloads;
 
 import java.util.Date;
+import java.util.Objects;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 /**
- * The `CommentOutDto` class represents a Data Transfer Object (DTO) for outbound comment information.
+ * The `CommentOutDto` class represents a Data Transfer Object (DTO) for comment information.
  * It contains details about a comment, such as content, author username, and creation date.
  *
  * @version 1.0
@@ -141,4 +143,32 @@ public class CommentOutDto {
   public CommentOutDto() {
     // Default constructor
   }
+
+  
+public CommentOutDto(Integer commentId, String content, String userName, Date date) {
+	super();
+	this.commentId = commentId;
+	this.content = content;
+	this.userName = userName;
+	this.date = date;
+}
+
+@Override
+public int hashCode() {
+	return Objects.hash(commentId, content, date, userName);
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	CommentOutDto other = (CommentOutDto) obj;
+	return Objects.equals(commentId, other.commentId) && Objects.equals(content, other.content)
+			&& Objects.equals(date, other.date) && Objects.equals(userName, other.userName);
+}
+  
 }
