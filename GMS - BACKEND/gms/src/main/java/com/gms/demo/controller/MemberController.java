@@ -154,6 +154,19 @@ public class MemberController {
     );
   }
   
+  
+  @CrossOrigin
+  @GetMapping("member/getAll/auth")
+  public final ResponseEntity<List<MemberOutDto>> getAllMemberAuth(
+		    @RequestHeader final String email,
+		    @RequestHeader final String password
+		  ) {
+    return new ResponseEntity<>(
+      this.memberService.getAllMemberAuth(email, password),
+      HttpStatus.OK
+    );
+  }
+  
   @CrossOrigin
   @PutMapping("changepassword/memberId/{memberId}/oldpassword/{oldPassword}/newpassword/{newPassword}")
   public final ResponseEntity<MemberOutDto> changePassword(

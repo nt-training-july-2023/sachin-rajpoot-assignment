@@ -191,6 +191,30 @@ public MemberOutDto changePassword(Integer memberId,String oldPassword, String n
 	return null;
 }
 
+@Override
+public List<MemberOutDto> getAllMemberAuth(String email, String password) {
+	Member member = this.memberRepo.findByEmail(email);
+	Role role = member.getRole();
+	String departmentName = member.getDepartment().getName();
+	if(role.equals(Role.ADMIN)) {
+		List<Member> members = this.memberRepo.findAll();
+		List<MemberOutDto> memberOutDtos = new ArrayList<>();
+		members.forEach(m -> memberOutDtos.add(this.mapper.map(m, MemberOutDto.class)));
+		return memberOutDtos;
+	} 
+	else {
+		List<Member> members = this.memberRepo.findAll();
+		List<MemberOutDto> memberOutDtos = new ArrayList<>();
+		members.forEach(m -> {
+			if(m.getDepartment().getName().equals(departmentName)) {
+				memberOutDtos.add(this.mapper.map(m, MemberOutDto.class));
+			}
+		});
+		return memberOutDtos;
+	}
+	
+}
+
   
 
 }

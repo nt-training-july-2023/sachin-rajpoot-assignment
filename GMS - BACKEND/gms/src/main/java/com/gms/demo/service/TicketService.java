@@ -26,6 +26,8 @@ public interface TicketService {
    */
   List<TicketOutDto> getAllTicket();
   
+  List<TicketOutDto> getAllTicketAuth(Integer memberId, boolean myTickets);
+  
   /**
    * Updates a tickets.
    *
@@ -34,4 +36,6 @@ public interface TicketService {
   TicketOutDto updateTicket(TicketDto ticketDto, Integer ticketId,     final Integer memberId,
 		    final Integer departmentId);
   
+  
+ 
 }

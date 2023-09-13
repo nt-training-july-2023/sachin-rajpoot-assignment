@@ -2,10 +2,12 @@ package com.gms.demo.serviceimpl;
 
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
+import com.gms.demo.entity.Role;
 import com.gms.demo.entity.Ticket;
 import com.gms.demo.exception.ResourceNotFoundException;
 import com.gms.demo.payloads.DepartmentDto;
 import com.gms.demo.payloads.MemberDto;
+import com.gms.demo.payloads.MemberOutDto;
 import com.gms.demo.payloads.TicketDto;
 import com.gms.demo.payloads.TicketOutDto;
 import com.gms.demo.repo.DepartmentRepo;
@@ -149,4 +151,37 @@ public TicketOutDto updateTicket(TicketDto ticketDto, Integer ticketId,final Int
 	return this.modelMapper.map(savedTicket, TicketOutDto.class);
 	
 }
+
+@Override
+public List<TicketOutDto> getAllTicketAuth(Integer memberId, boolean myTickets) {
+	Member member = this.memberRepo.findById(memberId)
+			.orElseThrow(() ->
+	          new ResourceNotFoundException("Member", "member ID", memberId)
+	        );
+	Role role = member.getRole();
+	String departmentName = member.getDepartment().getName();
+	if( myTickets){
+		List<Ticket> tickets = member.getTickets();
+		List<TicketOutDto> ticketOutDtos = new ArrayList<>();
+		tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketOutDto.class)));
+		return ticketOutDtos;
+		
+	}
+	else if(role.equals(Role.ADMIN)) {
+		List<Ticket> tickets = this.ticketRepo.findAll();
+		List<TicketOutDto> ticketOutDtos = new ArrayList<>();
+		tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketOutDto.class)));
+		return ticketOutDtos;
+	} 
+	else {
+		List<Ticket> tickets = this.ticketRepo.findAll();
+		List<TicketOutDto> ticketOutDtos = new ArrayList<>();
+		tickets.forEach(t -> {
+			if(departmentName.equals(t.getDepartment().getName())) {
+				ticketOutDtos.add(this.modelMapper.map(t, TicketOutDto.class));
+			}
+		});	    
+		return ticketOutDtos;
+		}
+	}
 }

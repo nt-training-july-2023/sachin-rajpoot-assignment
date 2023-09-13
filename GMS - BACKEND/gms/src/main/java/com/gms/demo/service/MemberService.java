@@ -45,6 +45,8 @@ public interface MemberService {
    * @return A list of MemberOutDto objects representing all members.
    */
   List<MemberOutDto> getAllmember();
+  
+  List<MemberOutDto> getAllMemberAuth(String email, String password);
 
   /**
    * Perform member login.

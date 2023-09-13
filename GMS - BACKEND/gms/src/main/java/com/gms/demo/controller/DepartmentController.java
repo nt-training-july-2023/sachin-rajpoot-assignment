@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -65,11 +66,11 @@ public class DepartmentController {
    *         returns HTTP status 401 (Unauthorized).
    */
   @CrossOrigin
-  @PostMapping("create/email/{email}/password/{password}")
+  @PostMapping("create/auth")
   ResponseEntity<DepartmentOutDto> createDepartment2(
     @RequestBody @Valid final DepartmentDto departmentDto,
-    @PathVariable final String email,
-    @PathVariable final String password
+    @RequestHeader final String email,
+    @RequestHeader final String password
   ) {
 	  DepartmentOutDto departmentDto2 =
       this.departmentService.createDepartment2(departmentDto, email, password);
