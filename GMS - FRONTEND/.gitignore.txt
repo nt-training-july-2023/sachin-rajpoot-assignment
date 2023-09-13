@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 # dependencies
-gms/node_modules
-gms/.pnp
-gms/.pnp.js
+gms/node_modules/
+gms/.pnp/
+gms/.pnp.js/
 # testing
 gms/coverage
 # production
