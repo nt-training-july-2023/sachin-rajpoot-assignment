@@ -1,0 +1,5 @@
+package com.gms.demo.filter;
+
+public class FilterConfiguration {
+
+}

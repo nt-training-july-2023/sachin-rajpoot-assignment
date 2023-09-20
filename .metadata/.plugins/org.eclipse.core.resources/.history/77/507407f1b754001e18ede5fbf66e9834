@@ -1,0 +1,18 @@
+package com.gms.demo.serviceimpl;
+
+import org.springframework.stereotype.Service;
+
+import com.gms.demo.payloads.CommentOutDto;
+import com.gms.demo.service.CommentService;
+
+@Service
+public class CommentServiceImpl implements CommentService {
+
+	@Override
+	public CommentOutDto createComment(Integer ticketId) {
+		
+		return null;
+	}
+
+	
+}

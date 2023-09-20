@@ -1,0 +1,34 @@
+package com.gms.demo.serviceimpl;
+
+import org.apache.velocity.exception.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gms.demo.entity.Ticket;
+import com.gms.demo.payloads.CommentDto;
+import com.gms.demo.payloads.CommentOutDto;
+import com.gms.demo.repo.TicketRepo;
+import com.gms.demo.service.CommentService;
+
+@Service
+public class CommentServiceImpl implements CommentService {
+
+	@Autowired
+	TicketRepo ticketRepo;
+	@Override
+	public CommentOutDto createComment(Integer ticketId, CommentDto commentDto) {
+		Ticket ticket = this.ticketRepo.findById(ticketId) 
+				.orElseThrow(() ->
+		          new ResourceNotFoundException(
+		            "Ticket",
+		            "Ticket ID",
+		            ticketId
+		          )
+		        );
+		return null;
+	}
+
+	
+
+	
+}
