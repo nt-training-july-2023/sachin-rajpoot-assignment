@@ -1,0 +1,49 @@
+package com.gms.demo.controller;
+
+import com.gms.demo.payloads.CommentDto;
+import com.gms.demo.payloads.CommentOutDto;
+import com.gms.demo.service.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Controller class for managing comments related to tickets.
+ * Handles HTTP requests for creating comments on a ticket.
+ */
+@RestController
+@RequestMapping("/api/comment/")
+public class CommentController {
+
+  /**
+   * Service responsible for comment-related operations.
+   */
+  @Autowired
+  private CommentService commentService;
+
+  /**
+   * Creates a new comment for a specified ticket.
+   *
+   * @param commentDto The comment data to be created.
+   * @param ticketId   The ID of the ticket to which the comment belongs.
+   * @return A ResponseEntity containing the created CommentOutDto and an HTTP status code.
+   */
+  @CrossOrigin
+  @PostMapping("create/ticketId/{ticketId}")
+  public final ResponseEntity<CommentOutDto> createComment(
+    @RequestBody final CommentDto commentDto,
+    @PathVariable final Integer ticketId
+  ) {
+    System.out.println(commentDto);
+    return new ResponseEntity<CommentOutDto>(
+      this.commentService.createComment(ticketId, commentDto),
+      HttpStatus.OK
+    );
+  }
+}

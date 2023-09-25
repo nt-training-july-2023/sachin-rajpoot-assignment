@@ -49,7 +49,7 @@ public class DepartmentDto {
   /**
    * Set the name of the department.
    *
-   * @param name The department name to set.
+   * @param departmentName The department name to set.
    */
   public void setDepartmentName(final String departmentName) {
     this.departmentName = departmentName;
@@ -66,7 +66,10 @@ public class DepartmentDto {
     int result = 1;
     result =
       prime * result + ((departmentId == null) ? 0 : departmentId.hashCode());
-    result = prime * result + ((departmentName == null) ? 0 : departmentName.hashCode());
+    result =
+      prime *
+      result +
+      ((departmentName == null) ? 0 : departmentName.hashCode());
     return result;
   }
 
@@ -110,17 +113,7 @@ public class DepartmentDto {
     return true;
   }
 
-  /**
-   * Generate a string representation of the DepartmentDto.
-   *
-   * @return The string representation.
-   */
-  @Override
-  public String toString() {
-    return (
-      "DepartmentDto [departmentId=" + departmentId + ", departmentName=" + departmentName + "]"
-    );
-  }
+
 
   /**
    * Default constructor for the DepartmentDto class.

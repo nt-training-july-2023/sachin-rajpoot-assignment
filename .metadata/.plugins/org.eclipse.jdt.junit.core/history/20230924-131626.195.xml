@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TicketControllerTest.testGetAllTicket" project="grievance" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.controller.TicketControllerTest" time="2.243" displayname="TicketControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]">
+    <testcase name="testGetAllTicket" classname="com.gms.demo.controller.TicketControllerTest" time="2.243" displayname="testGetAllTicket" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testGetAllTicket(com.gms.demo.controller.TicketControllerTest)]"/>
+  </testsuite>
+</testrun>

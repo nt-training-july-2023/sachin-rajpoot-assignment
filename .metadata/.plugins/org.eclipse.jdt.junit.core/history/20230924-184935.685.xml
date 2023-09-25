@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="grievance" project="grievance" tests="189" started="189" failures="1" errors="1" ignored="0">
+  <testsuite name="com.gms.demo.controller.TicketControllerTest" time="6.113" displayname="TicketControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]">
+    <testcase name="testCreateTicket_ValidInput" classname="com.gms.demo.controller.TicketControllerTest" time="5.895" displayname="testCreateTicket_ValidInput" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testCreateTicket_ValidInput(com.gms.demo.controller.TicketControllerTest)]"/>
+    <testcase name="updateTicket_Test" classname="com.gms.demo.controller.TicketControllerTest" time="0.086" displayname="updateTicket_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:updateTicket_Test(com.gms.demo.controller.TicketControllerTest)]"/>
+    <testcase name="testGetAllTicket" classname="com.gms.demo.controller.TicketControllerTest" time="0.063" displayname="testGetAllTicket" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testGetAllTicket(com.gms.demo.controller.TicketControllerTest)]"/>
+    <testcase name="testgetticketById" classname="com.gms.demo.controller.TicketControllerTest" time="0.066" displayname="testgetticketById" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testgetticketById(com.gms.demo.controller.TicketControllerTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.controller.MemberControllerTest" time="0.68" displayname="MemberControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]">
+    <testcase name="testLogin_Success" classname="com.gms.demo.controller.MemberControllerTest" time="0.353" displayname="testLogin_Success" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testLogin_Success(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testCreateMember2_Success" classname="com.gms.demo.controller.MemberControllerTest" time="0.08" displayname="testCreateMember2_Success" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testCreateMember2_Success(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testLogin_InvalidCredentials" classname="com.gms.demo.controller.MemberControllerTest" time="0.062" displayname="testLogin_InvalidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testLogin_InvalidCredentials(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testDeleteMember" classname="com.gms.demo.controller.MemberControllerTest" time="0.07" displayname="testDeleteMember" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testDeleteMember(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testGetAllMember" classname="com.gms.demo.controller.MemberControllerTest" time="0.054" displayname="testGetAllMember" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testGetAllMember(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="changePassword_Test" classname="com.gms.demo.controller.MemberControllerTest" time="0.058" displayname="changePassword_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:changePassword_Test(com.gms.demo.controller.MemberControllerTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.controller.DepartmentControllerTest" time="0.045" displayname="DepartmentControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]">
+    <testcase name="testGetAllDepartment" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.037" displayname="testGetAllDepartment" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testGetAllDepartment(com.gms.demo.controller.DepartmentControllerTest)]"/>
+    <testcase name="testDeleteDepartment" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.002" displayname="testDeleteDepartment" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testDeleteDepartment(com.gms.demo.controller.DepartmentControllerTest)]"/>
+    <testcase name="testCreateDepartment2_InvalidCredentials" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.001" displayname="testCreateDepartment2_InvalidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testCreateDepartment2_InvalidCredentials(com.gms.demo.controller.DepartmentControllerTest)]"/>
+    <testcase name="testCreateDepartment2_ValidCredentials" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.002" displayname="testCreateDepartment2_ValidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testCreateDepartment2_ValidCredentials(com.gms.demo.controller.DepartmentControllerTest)]"/>
+    <testcase name="testGetAllDepartmentNoPage" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.002" displayname="testGetAllDepartmentNoPage" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testGetAllDepartmentNoPage(com.gms.demo.controller.DepartmentControllerTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.GmsApplicationTests" time="0.05" displayname="GmsApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.GmsApplicationTests]">
+    <testcase name="contextLoads" classname="com.gms.demo.GmsApplicationTests" time="0.05" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.GmsApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.MemberDtoTest" time="0.02" displayname="MemberDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]">
+    <testcase name="testGetAndSetPassword" classname="com.gms.demo.payload.MemberDtoTest" time="0.001" displayname="testGetAndSetPassword()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetPassword()]"/>
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.MemberDtoTest" time="0.002" displayname="testParameterizedConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testParameterizedConstructor()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.MemberDtoTest" time="0.0" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetDepartment" classname="com.gms.demo.payload.MemberDtoTest" time="0.001" displayname="testGetAndSetDepartment()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetDepartment()]"/>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.payload.MemberDtoTest" time="0.002" displayname="testGetAndSetName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetName()]"/>
+    <testcase name="testGetAndSetRole" classname="com.gms.demo.payload.MemberDtoTest" time="0.001" displayname="testGetAndSetRole()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetRole()]"/>
+    <testcase name="testGetAndSetMemberId" classname="com.gms.demo.payload.MemberDtoTest" time="0.001" displayname="testGetAndSetMemberId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetMemberId()]"/>
+    <testcase name="testGetAndSetIsFirstLogin" classname="com.gms.demo.payload.MemberDtoTest" time="0.001" displayname="testGetAndSetIsFirstLogin()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetIsFirstLogin()]"/>
+    <testcase name="testGetAndSetEmail" classname="com.gms.demo.payload.MemberDtoTest" time="0.001" displayname="testGetAndSetEmail()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testGetAndSetEmail()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.MemberDtoTest" time="0.002" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.MemberOutDtoTest" time="0.014" displayname="MemberOutDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]">
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.001" displayname="testParameterizedConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testParameterizedConstructor()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.002" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testToString()]"/>
+    <testcase name="testEqualsMethod" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.001" displayname="testEqualsMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testEqualsMethod()]"/>
+    <testcase name="testHashCodeMethod" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.001" displayname="testHashCodeMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testHashCodeMethod()]"/>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.0" displayname="testGetAndSetName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testGetAndSetName()]"/>
+    <testcase name="testGetAndSetRole" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.0" displayname="testGetAndSetRole()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testGetAndSetRole()]"/>
+    <testcase name="testGetAndSetDepartmentName" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.0" displayname="testGetAndSetDepartmentName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testGetAndSetDepartmentName()]"/>
+    <testcase name="testGetAndSetIsFirstLogin" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.0" displayname="testGetAndSetIsFirstLogin()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testGetAndSetIsFirstLogin()]"/>
+    <testcase name="testGetAndSetTickets" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.0" displayname="testGetAndSetTickets()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testGetAndSetTickets()]"/>
+    <testcase name="testGetAndSetEmail" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.0" displayname="testGetAndSetEmail()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testGetAndSetEmail()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.MemberOutDtoTest" time="0.001" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberOutDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.TicketOutDtoTest" time="0.023" displayname="TicketOutDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]">
+    <testcase name="testGetAndSetMemberName" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetMemberName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetMemberName()]"/>
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.002" displayname="testParameterizedConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testParameterizedConstructor()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testToString()]"/>
+    <testcase name="testEqualsMethod" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testEqualsMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testEqualsMethod()]"/>
+    <testcase name="testHashCodeMethod" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testHashCodeMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testHashCodeMethod()]"/>
+    <testcase name="testGetAndSetDepartmentName" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.0" displayname="testGetAndSetDepartmentName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetDepartmentName()]"/>
+    <testcase name="testGetAndSetComments" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetComments()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetComments()]"/>
+    <testcase name="testGetAndSetTitle" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetTitle()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetTitle()]"/>
+    <testcase name="testGetAndSetStatus" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetStatus()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetStatus()]"/>
+    <testcase name="testGetAndSetCreatedOn" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetCreatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetCreatedOn()]"/>
+    <testcase name="testGetAndSetTicketType" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetTicketType()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetTicketType()]"/>
+    <testcase name="testGetAndSetDescription" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.001" displayname="testGetAndSetDescription()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetDescription()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testDefaultConstructor()]"/>
+    <testcase name="testGetAndSetLastUpdatedOn" classname="com.gms.demo.payload.TicketOutDtoTest" time="0.0" displayname="testGetAndSetLastUpdatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketOutDtoTest]/[method:testGetAndSetLastUpdatedOn()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.CommentOutDtoTest" time="0.025" displayname="CommentOutDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]">
+    <testcase name="testGetAndSetContent" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.0" displayname="testGetAndSetContent()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testGetAndSetContent()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.018" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testToString()]"/>
+    <testcase name="testEqualsMethod" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.001" displayname="testEqualsMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testEqualsMethod()]"/>
+    <testcase name="testHashCodeMethod" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.001" displayname="testHashCodeMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testHashCodeMethod()]"/>
+    <testcase name="testGetAndSetDate" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.0" displayname="testGetAndSetDate()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testGetAndSetDate()]"/>
+    <testcase name="testGetAndSetUserName" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.0" displayname="testGetAndSetUserName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testGetAndSetUserName()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.CommentOutDtoTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentOutDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.01" displayname="MemberGetAllOutDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]">
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.001" displayname="testParameterizedConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testParameterizedConstructor()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.001" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.001" displayname="testGetAndSetName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testGetAndSetName()]"/>
+    <testcase name="testGetAndSetRole" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.0" displayname="testGetAndSetRole()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testGetAndSetRole()]"/>
+    <testcase name="testGetAndSetDepartmentName" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.0" displayname="testGetAndSetDepartmentName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testGetAndSetDepartmentName()]"/>
+    <testcase name="testGetAndSetMemberId" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.0" displayname="testGetAndSetMemberId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testGetAndSetMemberId()]"/>
+    <testcase name="testGetAndSetEmail" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.002" displayname="testGetAndSetEmail()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testGetAndSetEmail()]"/>
+    <testcase name="testHashCode" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.001" displayname="testHashCode()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testHashCode()]"/>
+    <testcase name="testEquals" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.001" displayname="testEquals()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testEquals()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.MemberGetAllOutDtoTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.MemberGetAllOutDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.TicketDtoTest" time="0.008" displayname="TicketDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]">
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testParameterizedConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testParameterizedConstructor()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetTicketId" classname="com.gms.demo.payload.TicketDtoTest" time="0.001" displayname="testGetAndSetTicketId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetTicketId()]"/>
+    <testcase name="testGetAndSetDepartment" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testGetAndSetDepartment()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetDepartment()]"/>
+    <testcase name="testGetAndSetTitle" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testGetAndSetTitle()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetTitle()]"/>
+    <testcase name="testGetAndSetMember" classname="com.gms.demo.payload.TicketDtoTest" time="0.001" displayname="testGetAndSetMember()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetMember()]"/>
+    <testcase name="testGetAndSetStatus" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testGetAndSetStatus()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetStatus()]"/>
+    <testcase name="testGetAndSetCreatedOn" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testGetAndSetCreatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetCreatedOn()]"/>
+    <testcase name="testGetAndSetTicketType" classname="com.gms.demo.payload.TicketDtoTest" time="0.001" displayname="testGetAndSetTicketType()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetTicketType()]"/>
+    <testcase name="testGetAndSetDescription" classname="com.gms.demo.payload.TicketDtoTest" time="0.001" displayname="testGetAndSetDescription()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetDescription()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testDefaultConstructor()]"/>
+    <testcase name="testGetAndSetLastUpdatedOn" classname="com.gms.demo.payload.TicketDtoTest" time="0.0" displayname="testGetAndSetLastUpdatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketDtoTest]/[method:testGetAndSetLastUpdatedOn()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.DepartmentDtoTest" time="0.006" displayname="DepartmentDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]">
+    <testcase name="testGetAndSetDepartmentId" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.0" displayname="testGetAndSetDepartmentId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testGetAndSetDepartmentId()]"/>
+    <testcase name="testHashCodeAndEquals" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.003" displayname="testHashCodeAndEquals()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testHashCodeAndEquals()]"/>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.001" displayname="testGetAndSetName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testGetAndSetName()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.001" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.ApiResponseTest" time="0.008" displayname="ApiResponseTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]">
+    <testcase name="testEqualsWithDifferentObjects" classname="com.gms.demo.payload.ApiResponseTest" time="0.002" displayname="testEqualsWithDifferentObjects()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testEqualsWithDifferentObjects()]"/>
+    <testcase name="testGetAndSetMessage" classname="com.gms.demo.payload.ApiResponseTest" time="0.0" displayname="testGetAndSetMessage()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testGetAndSetMessage()]"/>
+    <testcase name="testEqualsWithEqualObjects" classname="com.gms.demo.payload.ApiResponseTest" time="0.0" displayname="testEqualsWithEqualObjects()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testEqualsWithEqualObjects()]"/>
+    <testcase name="testGetAndSetSuccess" classname="com.gms.demo.payload.ApiResponseTest" time="0.0" displayname="testGetAndSetSuccess()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testGetAndSetSuccess()]"/>
+    <testcase name="testHashCode" classname="com.gms.demo.payload.ApiResponseTest" time="0.001" displayname="testHashCode()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testHashCode()]"/>
+    <testcase name="testEqualsWithDifferentClass" classname="com.gms.demo.payload.ApiResponseTest" time="0.001" displayname="testEqualsWithDifferentClass()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testEqualsWithDifferentClass()]"/>
+    <testcase name="testConstructor" classname="com.gms.demo.payload.ApiResponseTest" time="0.0" displayname="testConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testConstructor()]"/>
+    <testcase name="testEqualsWithNull" classname="com.gms.demo.payload.ApiResponseTest" time="0.001" displayname="testEqualsWithNull()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.ApiResponseTest]/[method:testEqualsWithNull()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.01" displayname="TicketGetAllOutDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]">
+    <testcase name="testEqual" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.001" displayname="testEqual()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testEqual()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.001" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetTicketId" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testGetAndSetTicketId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetTicketId()]"/>
+    <testcase name="testGetAndSetDepartment" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testGetAndSetDepartment()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetDepartment()]"/>
+    <testcase name="testHashCode" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.001" displayname="testHashCode()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testHashCode()]"/>
+    <testcase name="testGetAndSetTitle" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testGetAndSetTitle()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetTitle()]"/>
+    <testcase name="testGetAndSetMember" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testGetAndSetMember()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetMember()]"/>
+    <testcase name="testGetAndSetStatus" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.001" displayname="testGetAndSetStatus()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetStatus()]"/>
+    <testcase name="testGetAndSetCreatedOn" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testGetAndSetCreatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetCreatedOn()]"/>
+    <testcase name="testGetAndSetTicketType" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.001" displayname="testGetAndSetTicketType()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetTicketType()]"/>
+    <testcase name="testGetAndSetDescription" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.001" displayname="testGetAndSetDescription()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetDescription()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testDefaultConstructor()]"/>
+    <testcase name="testGetAndSetLastUpdatedOn" classname="com.gms.demo.payload.TicketGetAllOutDtoTest" time="0.0" displayname="testGetAndSetLastUpdatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.TicketGetAllOutDtoTest]/[method:testGetAndSetLastUpdatedOn()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.DepartmentOutDtoTest" time="0.007" displayname="DepartmentOutDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]">
+    <testcase name="testGetAndSetMembers" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.001" displayname="testGetAndSetMembers()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testGetAndSetMembers()]"/>
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.0" displayname="testParameterizedConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testParameterizedConstructor()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.0" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testToString()]"/>
+    <testcase name="testEqualsMethod" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.0" displayname="testEqualsMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testEqualsMethod()]"/>
+    <testcase name="testHashCodeMethod" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.001" displayname="testHashCodeMethod()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testHashCodeMethod()]"/>
+    <testcase name="testGetAndSetDepartmentName" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.0" displayname="testGetAndSetDepartmentName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testGetAndSetDepartmentName()]"/>
+    <testcase name="testGetAndSetTickets" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.0" displayname="testGetAndSetTickets()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testGetAndSetTickets()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.DepartmentOutDtoTest" time="0.001" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentOutDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.CommentDtoTest" time="0.004" displayname="CommentDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]">
+    <testcase name="testGetAndSetContent" classname="com.gms.demo.payload.CommentDtoTest" time="0.0" displayname="testGetAndSetContent()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testGetAndSetContent()]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.CommentDtoTest" time="0.0" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetCommentId" classname="com.gms.demo.payload.CommentDtoTest" time="0.0" displayname="testGetAndSetCommentId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testGetAndSetCommentId()]"/>
+    <testcase name="testGetAndSetDate" classname="com.gms.demo.payload.CommentDtoTest" time="0.001" displayname="testGetAndSetDate()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testGetAndSetDate()]"/>
+    <testcase name="testGetAndSetTicket" classname="com.gms.demo.payload.CommentDtoTest" time="0.0" displayname="testGetAndSetTicket()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testGetAndSetTicket()]"/>
+    <testcase name="testGetAndSetUserName" classname="com.gms.demo.payload.CommentDtoTest" time="0.0" displayname="testGetAndSetUserName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testGetAndSetUserName()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.CommentDtoTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.CommentDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.001" displayname="TicketUpdateStatusInDtoTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]">
+    <testcase name="testGettersAndSetters" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testGettersAndSetters" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testGettersAndSetters(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testParameterizedConstructor" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testParameterizedConstructor(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testToString" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testToString(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testHashCode" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testHashCode" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testHashCode(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testEquals" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testEquals" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testEquals(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.MemberLoginDtoTest" time="0.002" displayname="MemberLoginDtoTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]">
+    <testcase name="testGetAndSetPassword" classname="com.gms.demo.payload.MemberLoginDtoTest" time="0.0" displayname="testGetAndSetPassword" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]/[test:testGetAndSetPassword(com.gms.demo.payload.MemberLoginDtoTest)]"/>
+    <testcase name="testGetMinSizePassword" classname="com.gms.demo.payload.MemberLoginDtoTest" time="0.001" displayname="testGetMinSizePassword" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]/[test:testGetMinSizePassword(com.gms.demo.payload.MemberLoginDtoTest)]"/>
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.MemberLoginDtoTest" time="0.0" displayname="testParameterizedConstructor" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]/[test:testParameterizedConstructor(com.gms.demo.payload.MemberLoginDtoTest)]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.MemberLoginDtoTest" time="0.0" displayname="testToString" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]/[test:testToString(com.gms.demo.payload.MemberLoginDtoTest)]"/>
+    <testcase name="testGetAndSetEmail" classname="com.gms.demo.payload.MemberLoginDtoTest" time="0.0" displayname="testGetAndSetEmail" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]/[test:testGetAndSetEmail(com.gms.demo.payload.MemberLoginDtoTest)]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.MemberLoginDtoTest" time="0.0" displayname="testDefaultConstructor" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberLoginDtoTest]/[test:testDefaultConstructor(com.gms.demo.payload.MemberLoginDtoTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.payload.MemberChangePasswordDtoTest" time="0.001" displayname="MemberChangePasswordDtoTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberChangePasswordDtoTest]">
+    <testcase name="testGettersAndSetters" classname="com.gms.demo.payload.MemberChangePasswordDtoTest" time="0.001" displayname="testGettersAndSetters" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberChangePasswordDtoTest]/[test:testGettersAndSetters(com.gms.demo.payload.MemberChangePasswordDtoTest)]"/>
+    <testcase name="testParameterizedConstructor" classname="com.gms.demo.payload.MemberChangePasswordDtoTest" time="0.0" displayname="testParameterizedConstructor" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberChangePasswordDtoTest]/[test:testParameterizedConstructor(com.gms.demo.payload.MemberChangePasswordDtoTest)]"/>
+    <testcase name="testHashCode" classname="com.gms.demo.payload.MemberChangePasswordDtoTest" time="0.0" displayname="testHashCode" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberChangePasswordDtoTest]/[test:testHashCode(com.gms.demo.payload.MemberChangePasswordDtoTest)]"/>
+    <testcase name="testEquals" classname="com.gms.demo.payload.MemberChangePasswordDtoTest" time="0.0" displayname="testEquals" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.MemberChangePasswordDtoTest]/[test:testEquals(com.gms.demo.payload.MemberChangePasswordDtoTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.serviceImpl.TicketServiceImplTest" time="0.328" displayname="TicketServiceImplTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.TicketServiceImplTest]">
+    <testcase name="updateTicket_Test" classname="com.gms.demo.serviceImpl.TicketServiceImplTest" time="0.299" displayname="updateTicket_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.TicketServiceImplTest]/[test:updateTicket_Test(com.gms.demo.serviceImpl.TicketServiceImplTest)]"/>
+    <testcase name="createTicketTest" classname="com.gms.demo.serviceImpl.TicketServiceImplTest" time="0.007" displayname="createTicketTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.TicketServiceImplTest]/[test:createTicketTest(com.gms.demo.serviceImpl.TicketServiceImplTest)]"/>
+    <testcase name="getAllTest" classname="com.gms.demo.serviceImpl.TicketServiceImplTest" time="0.021" displayname="getAllTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.TicketServiceImplTest]/[test:getAllTest(com.gms.demo.serviceImpl.TicketServiceImplTest)]">
+      <error>java.lang.NullPointerException: Cannot invoke "org.springframework.data.domain.Page.getContent()" because "pageTickets" is null&#13;
+	at com.gms.demo.serviceimpl.TicketServiceImpl.getAllTicketAuth(TicketServiceImpl.java:161)&#13;
+	at com.gms.demo.serviceImpl.TicketServiceImplTest.getAllTest(TicketServiceImplTest.java:190)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.mockito.internal.runners.DefaultInternalRunner$1$1.evaluate(DefaultInternalRunner.java:44)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.mockito.internal.runners.DefaultInternalRunner$1.run(DefaultInternalRunner.java:74)&#13;
+	at org.mockito.internal.runners.DefaultInternalRunner.run(DefaultInternalRunner.java:80)&#13;
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:39)&#13;
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)&#13;
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)&#13;
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)&#13;
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:40)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)&#13;
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)&#13;
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)&#13;
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)&#13;
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)&#13;
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)&#13;
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)&#13;
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:71)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.043" displayname="MemberServiceImplTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]">
+    <testcase name="testVerifyEmailAndPasswordInvalidEmail" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.002" displayname="testVerifyEmailAndPasswordInvalidEmail" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testVerifyEmailAndPasswordInvalidEmail(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testCreateMember3ValidAdminCredentials" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.004" displayname="testCreateMember3ValidAdminCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testCreateMember3ValidAdminCredentials(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="changePasswordFail_Test" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.004" displayname="changePasswordFail_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:changePasswordFail_Test(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testCreateMember2InvalidAdminCredentials" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.007" displayname="testCreateMember2InvalidAdminCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testCreateMember2InvalidAdminCredentials(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testVerifyEmailAndPasswordValid" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.002" displayname="testVerifyEmailAndPasswordValid" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testVerifyEmailAndPasswordValid(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testVerifyEmailAndPasswordInvalidPassword" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.001" displayname="testVerifyEmailAndPasswordInvalidPassword" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testVerifyEmailAndPasswordInvalidPassword(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testGetAllMemberAuth" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.003" displayname="testGetAllMemberAuth" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testGetAllMemberAuth(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testLoginValidCredentials" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.005" displayname="testLoginValidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testLoginValidCredentials(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="testLoginInvalidCredentials" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.004" displayname="testLoginInvalidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testLoginInvalidCredentials(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+    <testcase name="changePassword_Test" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.009" displayname="changePassword_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:changePassword_Test(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.034" displayname="DepartmentServiceImplTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]">
+    <testcase name="testGetDepartmentByIdInvalidId" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.008" displayname="testGetDepartmentByIdInvalidId" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testGetDepartmentByIdInvalidId(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+    <testcase name="testGetAllDepartmentWithPage" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.003" displayname="testGetAllDepartmentWithPage" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testGetAllDepartmentWithPage(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+    <testcase name="testCreateDepartment2ValidAdminCredentials" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.005" displayname="testCreateDepartment2ValidAdminCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testCreateDepartment2ValidAdminCredentials(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+    <testcase name="testCreateDepartment2InvalidAdminCredentials" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.004" displayname="testCreateDepartment2InvalidAdminCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testCreateDepartment2InvalidAdminCredentials(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+    <testcase name="testGetAllDepartmentNoPage" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.008" displayname="testGetAllDepartmentNoPage" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testGetAllDepartmentNoPage(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+    <testcase name="testGetDepartmentByIdValidId" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="0.004" displayname="testGetDepartmentByIdValidId" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testGetDepartmentByIdValidId(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.entity.CommentTest" time="0.008" displayname="CommentTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]">
+    <testcase name="testGetAndSetContent" classname="com.gms.demo.entity.CommentTest" time="0.001" displayname="testGetAndSetContent()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testGetAndSetContent()]"/>
+    <testcase name="testToString" classname="com.gms.demo.entity.CommentTest" time="0.001" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetCommentId" classname="com.gms.demo.entity.CommentTest" time="0.0" displayname="testGetAndSetCommentId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testGetAndSetCommentId()]"/>
+    <testcase name="testGetAndSetDate" classname="com.gms.demo.entity.CommentTest" time="0.001" displayname="testGetAndSetDate()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testGetAndSetDate()]"/>
+    <testcase name="testGetAndSetTicket" classname="com.gms.demo.entity.CommentTest" time="0.001" displayname="testGetAndSetTicket()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testGetAndSetTicket()]"/>
+    <testcase name="testGetAndSetUserName" classname="com.gms.demo.entity.CommentTest" time="0.002" displayname="testGetAndSetUserName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testGetAndSetUserName()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.entity.CommentTest" time="0.001" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.CommentTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.entity.DepartmentTest" time="0.012" displayname="DepartmentTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]">
+    <testcase name="testGetAndSetDepartmentId" classname="com.gms.demo.entity.DepartmentTest" time="0.001" displayname="testGetAndSetDepartmentId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]/[method:testGetAndSetDepartmentId()]"/>
+    <testcase name="testGetAndSetMembers" classname="com.gms.demo.entity.DepartmentTest" time="0.001" displayname="testGetAndSetMembers()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]/[method:testGetAndSetMembers()]"/>
+    <testcase name="testToString" classname="com.gms.demo.entity.DepartmentTest" time="0.008" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]/[method:testToString()]">
+      <failure>
+        <expected>Department [departmentId=1, name=HR Department]</expected>
+        <actual>Department [departmentId=1, departmentName=HR Department]</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;Department [departmentId=1, name=HR Department]&gt; but was: &lt;Department [departmentId=1, departmentName=HR Department]&gt;&#13;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)&#13;
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)&#13;
+	at com.gms.demo.entity.DepartmentTest.testToString(DepartmentTest.java:47)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:675)&#13;
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)&#13;
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:125)&#13;
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:132)&#13;
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:124)&#13;
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:74)&#13;
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)&#13;
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)&#13;
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:104)&#13;
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:62)&#13;
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:43)&#13;
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:35)&#13;
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)&#13;
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)&#13;
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:202)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:198)&#13;
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)&#13;
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)&#13;
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)&#13;
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)&#13;
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)&#13;
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)&#13;
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)&#13;
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)&#13;
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)&#13;
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.entity.DepartmentTest" time="0.001" displayname="testGetAndSetName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]/[method:testGetAndSetName()]"/>
+    <testcase name="testGetAndSetTickets" classname="com.gms.demo.entity.DepartmentTest" time="0.0" displayname="testGetAndSetTickets()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]/[method:testGetAndSetTickets()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.entity.DepartmentTest" time="0.001" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.DepartmentTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.entity.TicketTest" time="0.009" displayname="TicketTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]">
+    <testcase name="testToString" classname="com.gms.demo.entity.TicketTest" time="0.001" displayname="testToString()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testToString()]"/>
+    <testcase name="testGetAndSetTicketId" classname="com.gms.demo.entity.TicketTest" time="0.001" displayname="testGetAndSetTicketId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetTicketId()]"/>
+    <testcase name="testGetAndSetDepartment" classname="com.gms.demo.entity.TicketTest" time="0.001" displayname="testGetAndSetDepartment()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetDepartment()]"/>
+    <testcase name="testGetAndSetComments" classname="com.gms.demo.entity.TicketTest" time="0.0" displayname="testGetAndSetComments()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetComments()]"/>
+    <testcase name="testGetAndSetTitle" classname="com.gms.demo.entity.TicketTest" time="0.0" displayname="testGetAndSetTitle()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetTitle()]"/>
+    <testcase name="testGetAndSetMember" classname="com.gms.demo.entity.TicketTest" time="0.0" displayname="testGetAndSetMember()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetMember()]"/>
+    <testcase name="testGetAndSetStatus" classname="com.gms.demo.entity.TicketTest" time="0.0" displayname="testGetAndSetStatus()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetStatus()]"/>
+    <testcase name="testGetAndSetCreatedOn" classname="com.gms.demo.entity.TicketTest" time="0.001" displayname="testGetAndSetCreatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetCreatedOn()]"/>
+    <testcase name="testGetAndSetTicketType" classname="com.gms.demo.entity.TicketTest" time="0.001" displayname="testGetAndSetTicketType()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetTicketType()]"/>
+    <testcase name="testGetAndSetDescription" classname="com.gms.demo.entity.TicketTest" time="0.0" displayname="testGetAndSetDescription()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetDescription()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.entity.TicketTest" time="0.0" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testDefaultConstructor()]"/>
+    <testcase name="testGetAndSetLastUpdatedOn" classname="com.gms.demo.entity.TicketTest" time="0.001" displayname="testGetAndSetLastUpdatedOn()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.entity.TicketTest]/[method:testGetAndSetLastUpdatedOn()]"/>
+  </testsuite>
+  <testsuite name="com.gms.demo.entity.MemberTest" time="0.003" displayname="MemberTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]">
+    <testcase name="testGetAndSetPassword" classname="com.gms.demo.entity.MemberTest" time="0.001" displayname="testGetAndSetPassword" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetPassword(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testToString" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testToString" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testToString(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetDepartment" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetDepartment" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetDepartment(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetName" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetName(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetRole" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetRole" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetRole(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetMemberId" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetMemberId" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetMemberId(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetIsFirstLogin" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetIsFirstLogin" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetIsFirstLogin(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetTickets" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetTickets" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetTickets(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testGetAndSetEmail" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testGetAndSetEmail" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testGetAndSetEmail(com.gms.demo.entity.MemberTest)]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.entity.MemberTest" time="0.0" displayname="testDefaultConstructor" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.entity.MemberTest]/[test:testDefaultConstructor(com.gms.demo.entity.MemberTest)]"/>
+  </testsuite>
+</testrun>

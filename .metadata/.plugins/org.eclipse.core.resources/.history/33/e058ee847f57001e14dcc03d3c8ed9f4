@@ -1,0 +1,71 @@
+package com.gms.demo.payloads;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.gms.demo.entity.Status;
+import com.gms.demo.entity.TicketType;
+
+public class TicketGetAllOutDto {
+	/**
+	 * The unique identifier for the ticket.
+	 */
+	private Integer ticketId;
+
+
+	/**
+	 * The title of the ticket.
+	 */
+	private String title;
+
+	/**
+	 * The description of the ticket.
+	 */
+	private String description;
+
+	/**
+	 * The date and time when the ticket was created.
+	 */
+	@CreationTimestamp // Automatically set the creation timestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdOn;
+
+	/**
+	 * The date and time when the ticket was last updated.
+	 */
+	@UpdateTimestamp // Automatically set the update timestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdatedOn;
+
+	/**
+	 * The status of the ticket.
+	 */
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
+	/**
+	 * The type of the ticket.
+	 */
+	@Enumerated(EnumType.STRING)
+	private TicketType ticketType;
+
+	/**
+	 * The name of the department associated with the ticket.
+	 */
+	private String departmentName;
+
+	/**
+	 * The name of the member associated with the ticket.
+	 */
+	private String memberName;
+
+
+}

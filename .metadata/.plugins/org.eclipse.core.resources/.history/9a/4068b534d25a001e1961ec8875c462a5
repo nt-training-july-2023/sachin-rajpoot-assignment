@@ -1,0 +1,43 @@
+package com.gms.demo.payload;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+import com.gms.demo.entity.Role;
+import com.gms.demo.payloads.MemberGetAllOutDto;
+
+public class MemberGetAllOutDtoTest {
+
+	private MemberGetAllOutDto memberGetAllOutDto = new MemberGetAllOutDto();
+	
+	 @Test
+	  public void testGetAndSetMemberId() {
+		 memberGetAllOutDto.setMemberId(1);
+	    assertEquals(1, memberGetAllOutDto.getMemberId());
+	  }
+
+	  @Test
+	  public void testGetAndSetName() {
+		  memberGetAllOutDto.setName("kingkong");
+	    assertEquals("kingkong", memberGetAllOutDto.getName());
+	  }
+
+	  @Test
+	  public void testGetAndSetEmail() {
+		  memberGetAllOutDto.setEmail("kingkong@example.com");
+	    assertEquals("kingkong@example.com", memberGetAllOutDto.getEmail());
+	  }
+	  @Test
+	  
+	  public void testGetAndSetRole() {
+		  memberGetAllOutDto.setRole(Role.ADMIN);
+	    assertEquals(Role.ADMIN, memberGetAllOutDto.getRole());
+	  }
+	  
+	  @Test
+	  public void testGetAndSetDepartmentName() {
+		  memberGetAllOutDto.setDepartmentName("HR");
+	    assertEquals("HR", memberGetAllOutDto.getDepartmentName());
+	  }
+}

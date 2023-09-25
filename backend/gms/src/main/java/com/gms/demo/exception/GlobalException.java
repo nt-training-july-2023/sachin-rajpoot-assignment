@@ -3,7 +3,6 @@ package com.gms.demo.exception;
 import com.gms.demo.payloads.ApiResponse;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +29,7 @@ public class GlobalException {
    * @return ResponseEntity containing an ApiResponse with HTTP status 404 (Not Found).
    */
   @ExceptionHandler(ResourceNotFoundException.class)
+public
   ResponseEntity<ApiResponse> resourceNotFoundHandler(
     final ResourceNotFoundException ex
   ) {
@@ -45,6 +45,7 @@ public class GlobalException {
    * @return ResponseEntity containing a Map of field validation errors with HTTP status 400 (Bad Request).
    */
   @ExceptionHandler(MethodArgumentNotValidException.class)
+public
   ResponseEntity<Map<String, String>> methodArgumentNotValidExceptionHandler(
     final MethodArgumentNotValidException ex
   ) {
@@ -68,6 +69,7 @@ public class GlobalException {
    * @return ResponseEntity containing an ApiResponse with HTTP status 405 (Method Not Allowed).
    */
   @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+public
   final ResponseEntity<ApiResponse> httpRequestMethodNotSupportedExceptionHandler(
     final HttpRequestMethodNotSupportedException ex
   ) {
@@ -77,16 +79,15 @@ public class GlobalException {
     return new ResponseEntity<>(api, HttpStatus.NOT_FOUND);
   }
 
+  @ExceptionHandler(DataIntegrityViolationException.class)
+public
+  final ResponseEntity<ApiResponse> DataIntegrityViolationExceptionHandler(
+    final DataIntegrityViolationException ex
+  ) {
+    String message = "THIS FIELD ALREADY EXISTS, CHECK FOR UNIQUE FIELDS.";
 
-
-@ExceptionHandler(DataIntegrityViolationException.class)
-final ResponseEntity<ApiResponse> DataIntegrityViolationExceptionHandler(
-  final DataIntegrityViolationException ex
-) {
-  String message = "THIS FIELD ALREADY EXISTS, CHECK FOR UNIQUE FIELDS.";
-
-  ApiResponse api = new ApiResponse(message, false);
-  return new ResponseEntity<>(api, HttpStatus.OK);
-}
+    ApiResponse api = new ApiResponse(message, false);
+    return new ResponseEntity<>(api, HttpStatus.BAD_REQUEST);
+  }
 }
 

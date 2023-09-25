@@ -1,0 +1,60 @@
+package com.gms.demo.payloads;
+
+import java.util.Objects;
+
+public class MemberChangePasswordDto {
+
+	String oldpassword;
+	
+	String newPassword;
+
+	public String getOldpassword() {
+		return oldpassword;
+	}
+
+	public void setOldpassword(String oldpassword) {
+		this.oldpassword = oldpassword;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(newPassword, oldpassword);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MemberChangePasswordDto other = (MemberChangePasswordDto) obj;
+		return Objects.equals(newPassword, other.newPassword) && Objects.equals(oldpassword, other.oldpassword);
+	}
+
+	@Override
+	public String toString() {
+		return "MemberChangePasswordDto [oldpassword=" + oldpassword + ", newPassword=" + newPassword + "]";
+	}
+
+	public MemberChangePasswordDto(String oldpassword, String newPassword) {
+		super();
+		this.oldpassword = oldpassword;
+		this.newPassword = newPassword;
+	}
+
+	public MemberChangePasswordDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}

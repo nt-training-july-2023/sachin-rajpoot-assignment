@@ -63,10 +63,10 @@ public class Department {
    *
    * @param departmentId The department's unique identifier.
    */
-  public final void setDepartmentId(Integer departmentId) {
+  public final void setDepartmentId(final Integer departmentId) {
     this.departmentId = departmentId;
   }
-  
+
   /**
    * Gets the departmentId of the department.
    *
@@ -137,14 +137,19 @@ public class Department {
    */
   @Override
   public final String toString() {
-    return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + "]";
+    return (
+      "Department [departmentId=" +
+      departmentId +
+      ", departmentName=" +
+      departmentName +
+      "]"
+    );
   }
 
   /**
    * Constructs a Department object with the specified parameters.
    *
    * @param departmentId The unique identifier for the department.
-   * @param name         The name of the department.
    * @param members      The list of members associated with the department.
    * @param tickets      The list of tickets associated with the department.
    */
@@ -165,5 +170,6 @@ public class Department {
    * Default constructor for Department class.
    */
   public Department() {
+    super();
   }
 }

@@ -1,0 +1,8 @@
+package com.gms.demo.payloads;
+
+public class MemberChangePasswordDto {
+
+	String oldpassword;
+	
+	String newPassword;
+}

@@ -1,27 +1,27 @@
-import Login from "./Components/Login";
+import Login from "./Components/Login/Login";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Home from "./Components/Home";
-import Footer from "./Components/Footer";
-import UserRegistration from "./Components/UserRegistration";
-import NewTicket from "./Components/NewTicket";
-import TicketTable from "./Components/TicketTable";
-import ChangePassword from "./Components/ChangePassword";
+import Navbar from "./Components/Navbar/Navbar";
+import Home from "./Components/Home/Home";
+import UserRegistration from "./Components/NewUser/UserRegistration";
+import NewTicket from "./Components/NewTicket/NewTicket";
+import TicketTable from "./Components/Tables/TicketTable";
+import ChangePassword from "./Components/ChangePassword/ChangePassword";
 import Profile from "./Components/Profile";
-import UserTable from "./Components/UserTable";
-import DepartmentTable from "./Components/DepartmentTable";
+import UserTable from "./Components/Tables/UserTable";
+import DepartmentTable from "./Components/Tables/DepartmentTable";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    setIsLoggedIn(JSON.parse(localStorage.getItem("member")) !== null);
-    // console.log("GETTING USER FROM LOCAL STORAGE : "+localStorage.getItem("member"))
+    const user = JSON.parse(localStorage.getItem("member"));
+    setIsLoggedIn(user !== null);
   }, []);
 
+  const user = JSON.parse(localStorage.getItem("member"));
+  // const role = user ? user.role : "GUEST";
   const role = JSON.parse(localStorage.getItem("member"))?.role;
-  console.log("IS USER LOGGED IN ? -> "+isLoggedIn);
 
   return (
     <div className="App">
@@ -31,30 +31,45 @@ function App() {
         <Navigate to="/login" />
       )}
 
-      {/* <Login/> */}
-      {isLoggedIn ? (
-        <Routes>
-          <Route path="/newuser" element={<UserRegistration />}></Route>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/newticket" element={<NewTicket />}></Route>
-          <Route path="/tickettable" element={<TicketTable />}></Route>
-          <Route path="/changepassword" element={<ChangePassword />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/UserTable" element={<UserTable />}></Route>
-          <Route path="/Departmenttable" element={<DepartmentTable />}></Route>
-        </Routes>
-      ) : (
-        <Routes>
-          <Route
-            path="/login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} />}
-          ></Route>
-        </Routes>
-      )}
+      <Routes>
+        {isLoggedIn ? (
+          <>
+            {role === "ADMIN" && (
+              <>
+                <Route path="/newuser" element={<UserRegistration />} />
+                <Route path="/newticket" element={<NewTicket />} />
+                <Route path="/userTable" element={<UserTable />} />
+                <Route path="/departmenttable" element={<DepartmentTable />} />
+                <Route path="/tickettable" element={<TicketTable />} />
+                <Route
+                  path="/changepassword"
+                  element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />}
+                />
+              </>
+            )}
+            {role === "ADMIN" || role === "USER" && (
+              <>
+                <Route path="/tickettable" element={<TicketTable />} />
+                <Route path="/newticket" element={<NewTicket />} />
+                <Route path="/changepassword" element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />}/>
+              </>
+            )}
+          </>
+        ) : (
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        )}
 
-      {/* <Footer/> */}
+        {/* Catch-all route for unauthorized access */}
+        <Route
+          path="*"
+          element={<div>You are not authorized to access this page.</div>}
+        />
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+
+

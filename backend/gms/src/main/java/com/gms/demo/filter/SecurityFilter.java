@@ -4,7 +4,6 @@ import com.gms.demo.entity.Role;
 import com.gms.demo.repo.MemberRepo;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,84 +20,116 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SecurityFilter implements Filter {
-	/**
-	 * Employee Repo Autowired.
-	 */
-	@Autowired
-	private MemberRepo memberRepo;
-	/**
-	 * List to store Admin urls.
-	 */
-	private static List<String> adminUrls = new ArrayList<String>();
-	static {
-//	  MEMBER URLS 
-		adminUrls.add("/api/create/nodept");
-		adminUrls.add("/api/member/getAll/auth");
-		adminUrls.add("/api/member/delete/memberId/{memberId}");
 
-//    DEPARTMENT URLS 
-		adminUrls.add("/api/department/create/auth");
-		adminUrls.add("/api/department/delete/departmentId/{departmentId}");
-		adminUrls.add("/api/department/getAll");
-	}
+  /**
+   * Employee Repo Autowired.
+   */
+  @Autowired
+  private MemberRepo memberRepo;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param employeeRepo2 Employee Repository
-	 */
-	public SecurityFilter(MemberRepo memberRepo) {
-		this.memberRepo = memberRepo;
-	}
+  /**
+   * List to store Admin urls.
+   */
+  private static List<String> adminUrls = new ArrayList<String>();
 
-	/**
-	 * Chack if url is in the admin urls or not.
-	 *
-	 * @param currentUrl String
-	 * @return Boolean
-	 */
-	public Boolean checkAdminUrl(String currentUrl) {
-		if (adminUrls.contains(currentUrl)) {
-			return true;
-		}
-		return false;
-	}
+  static {
+    //    MEMBER URLS
+    adminUrls.add("/api/create/nodept");
+    adminUrls.add("/api/member/getAll/auth");
+    adminUrls.add("/api/member/delete/memberId/{memberId}");
 
-	/**
-	 * Filter for urls.
-	 */
-	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		System.out.println("HEADERS RECEIVED -> EMAIL : "+httpServletRequest.getHeader("email")+" AND PASSWORD : "+httpServletRequest.getHeader("password"));
-		String email = httpServletRequest.getHeader("email");
-		String password = httpServletRequest.getHeader("password");
-		
-		String currentUrl = httpServletRequest.getRequestURI();
-		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-		System.out.println(currentUrl + email + password);
-		if (currentUrl.equals("/api/login")) {
-			chain.doFilter(request, response);
-		} else if (httpServletRequest.getMethod().equals("OPTIONS")) {
-			httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
-			httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-			httpServletResponse.setHeader("Access-Control-Allow-Headers",
-					"Authorization, Content-Type, email, password");
-			httpServletResponse.setContentType("application/json");
-			httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-		} else {
-			if (email == null || password == null) {
-				((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid User");
-			} else if (memberRepo.existsByEmailAndPasswordAndRole(email, password, Role.ADMIN)
-					&& checkAdminUrl(currentUrl)) {
-				System.out.println("Inside admin");
-				chain.doFilter(request, response);
-			} else if (memberRepo.existsByEmailAndPassword(email, password) && !(checkAdminUrl(currentUrl))) {
-				chain.doFilter(request, response);
-			} else {
-				((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized User");
-			}
-		}
-	}
+    //    DEPARTMENT URLS
+    adminUrls.add("/api/department/create/auth");
+    adminUrls.add("/api/department/delete/departmentId/{departmentId}");
+    adminUrls.add("/api/department/getAll");
+  }
+
+  /**
+   * Constructor.
+   *
+   * @param MemberRepo memberRepo Repository
+   */
+  public SecurityFilter(final MemberRepo memberRepo) {
+    this.memberRepo = memberRepo;
+  }
+
+  /**
+   * Chack if url is in the admin urls or not.
+   *
+   * @param currentUrl String
+   * @return Boolean
+   */
+  public Boolean checkAdminUrl(final String currentUrl) {
+    if (adminUrls.contains(currentUrl)) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Filter for urls.
+   */
+  @Override
+  public void doFilter(
+    final ServletRequest request,
+    final ServletResponse response,
+    final FilterChain chain
+  ) throws IOException, ServletException {
+    HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+    System.out.println(
+      "HEADERS RECEIVED -> EMAIL : " +
+      httpServletRequest.getHeader("email") +
+      " AND PASSWORD : " +
+      httpServletRequest.getHeader("password")
+    );
+    String email = httpServletRequest.getHeader("email");
+    String password = httpServletRequest.getHeader("password");
+
+    String currentUrl = httpServletRequest.getRequestURI();
+    HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+    System.out.println(currentUrl + email + password);
+    if (currentUrl.equals("/api/login")) {
+      chain.doFilter(request, response);
+    } else if (httpServletRequest.getMethod().equals("OPTIONS")) {
+      httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
+      httpServletResponse.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PUT, DELETE"
+      );
+      httpServletResponse.setHeader(
+        "Access-Control-Allow-Headers",
+        "Authorization, Content-Type, email, password"
+      );
+      httpServletResponse.setContentType("application/json");
+      httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+    } else {
+      if (email == null || password == null) {
+        ((HttpServletResponse) response).sendError(
+            HttpServletResponse.SC_UNAUTHORIZED,
+            "Invalid User"
+          );
+      } else if (
+        memberRepo.existsByEmailAndPasswordAndRole(
+          email,
+          password,
+          Role.ADMIN
+        ) &&
+        checkAdminUrl(currentUrl)
+      ) {
+        System.out.println("Inside admin");
+        chain.doFilter(request, response);
+      } else if (
+        memberRepo.existsByEmailAndPassword(email, password) &&
+        !(checkAdminUrl(currentUrl))
+      ) {
+        chain.doFilter(request, response);
+      } else {
+        System.out.println("unauthorized");
+        ((HttpServletResponse) response).sendError(
+            HttpServletResponse.SC_UNAUTHORIZED,
+            "Unauthorized User"
+          );
+      }
+    }
+  }
 }

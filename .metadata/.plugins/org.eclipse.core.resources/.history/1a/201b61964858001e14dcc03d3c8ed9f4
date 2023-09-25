@@ -1,0 +1,54 @@
+package com.gms.demo.payloads;
+
+import java.util.Objects;
+
+import javax.validation.constraints.NotEmpty;
+
+import com.gms.demo.entity.Status;
+
+public class TicketUpdateStatusInDto {
+
+	@NotEmpty
+	Status status;
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(status);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TicketUpdateStatusInDto other = (TicketUpdateStatusInDto) obj;
+		return status == other.status;
+	}
+
+	@Override
+	public String toString() {
+		return "TicketUpdateStatusInDto [status=" + status + "]";
+	}
+
+	public TicketUpdateStatusInDto(@NotEmpty Status status) {
+		super();
+		this.status = status;
+	}
+
+	public TicketUpdateStatusInDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+}

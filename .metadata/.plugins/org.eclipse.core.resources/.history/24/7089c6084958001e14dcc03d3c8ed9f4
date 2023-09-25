@@ -1,0 +1,43 @@
+package com.gms.demo.payloads;
+
+import java.util.Objects;
+
+import javax.validation.constraints.NotEmpty;
+
+import com.gms.demo.entity.Status;
+
+public class TicketUpdateStatusInDto {
+
+	@NotEmpty
+	Status status;
+
+
+	@NotEmpty
+	CommentOutDto comment;
+
+
+	public Status getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+
+	public CommentOutDto getComment() {
+		return commentOutDto;
+	}
+
+
+	public void setComment(CommentOutDto commentOutDto) {
+		this.commentOutDto = commentOutDto;
+	}
+	
+	
+	
+	
+
+	
+}

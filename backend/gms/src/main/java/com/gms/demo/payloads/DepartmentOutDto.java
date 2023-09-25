@@ -1,10 +1,9 @@
 package com.gms.demo.payloads;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * The `DepartmentOutDto` class represents a Data Transfer Object (DTO) for outbound department information.
@@ -15,20 +14,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class DepartmentOutDto {
 
-	
-	  /**
-	   * The unique identifier for the department.
-	   */
-	  private Integer departmentId;
-  public Integer getDepartmentId() {
-		return departmentId;
-	}
+  /**
+   * The unique identifier for the department.
+   */
+  private Integer departmentId;
 
-	public void setDepartmentId(Integer departmentId) {
-		this.departmentId = departmentId;
-	}
+  public final Integer getDepartmentId() {
+    return departmentId;
+  }
 
-/**
+  public final void setDepartmentId(final Integer departmentId) {
+    this.departmentId = departmentId;
+  }
+
+  /**
    * The name of the department.
    */
   private String departmentName;
@@ -134,32 +133,41 @@ public class DepartmentOutDto {
     // Default constructor
   }
 
-@Override
-public int hashCode() {
-	return Objects.hash(departmentId, departmentName, members, tickets);
-}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(departmentId, departmentName, members, tickets);
+  }
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	DepartmentOutDto other = (DepartmentOutDto) obj;
-	return Objects.equals(departmentId, other.departmentId) && Objects.equals(departmentName, other.departmentName)
-			&& Objects.equals(members, other.members) && Objects.equals(tickets, other.tickets);
-}
+  @Override
+  public final boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    DepartmentOutDto other = (DepartmentOutDto) obj;
+    return (
+      Objects.equals(departmentId, other.departmentId) &&
+      Objects.equals(departmentName, other.departmentName) &&
+      Objects.equals(members, other.members) &&
+      Objects.equals(tickets, other.tickets)
+    );
+  }
 
-public DepartmentOutDto(Integer departmentId, String departmentName, List<MemberOutDto> members,
-		List<TicketOutDto> tickets) {
-	super();
-	this.departmentId = departmentId;
-	this.departmentName = departmentName;
-	this.members = members;
-	this.tickets = tickets;
-}
-  
-  
+  public DepartmentOutDto(
+    final Integer departmentId,
+    final String departmentName,
+    final List<MemberOutDto> members,
+    final List<TicketOutDto> tickets
+  ) {
+    super();
+    this.departmentId = departmentId;
+    this.departmentName = departmentName;
+    this.members = members;
+    this.tickets = tickets;
+  }
 }

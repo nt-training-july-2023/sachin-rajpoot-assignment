@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TicketControllerTest" project="grievance" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.controller.TicketControllerTest" time="6.154" displayname="TicketControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]">
+    <testcase name="testCreateTicket_ValidInput" classname="com.gms.demo.controller.TicketControllerTest" time="5.945" displayname="testCreateTicket_ValidInput" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testCreateTicket_ValidInput(com.gms.demo.controller.TicketControllerTest)]"/>
+    <testcase name="updateTicket_Test" classname="com.gms.demo.controller.TicketControllerTest" time="0.079" displayname="updateTicket_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:updateTicket_Test(com.gms.demo.controller.TicketControllerTest)]"/>
+    <testcase name="testGetAllTicket" classname="com.gms.demo.controller.TicketControllerTest" time="0.057" displayname="testGetAllTicket" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testGetAllTicket(com.gms.demo.controller.TicketControllerTest)]"/>
+    <testcase name="testgetticketById" classname="com.gms.demo.controller.TicketControllerTest" time="0.069" displayname="testgetticketById" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.TicketControllerTest]/[test:testgetticketById(com.gms.demo.controller.TicketControllerTest)]"/>
+  </testsuite>
+</testrun>

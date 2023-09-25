@@ -21,14 +21,7 @@ public class DepartmentDtoTest {
     assertEquals("HR Department", departmentDto.getDepartmentName());
   }
 
-  @Test
-  public void testToString() {
-    departmentDto.setDepartmentId(1);
-    departmentDto.setDepartmentName("HR Department");
 
-    String expected = "DepartmentDto [departmentId=1, name=HR Department]";
-    assertEquals(expected, departmentDto.toString());
-  }
 
   @Test
   public void testHashCodeAndEquals() {
@@ -43,6 +36,8 @@ public class DepartmentDtoTest {
     DepartmentDto departmentDto3 = new DepartmentDto();
     departmentDto3.setDepartmentId(2);
     departmentDto3.setDepartmentName("IT Department");
+    
+    assertTrue(departmentDto1.equals(departmentDto2));
 
     assertEquals(departmentDto1.hashCode(), departmentDto2.hashCode());
     assertEquals(departmentDto1, departmentDto2);

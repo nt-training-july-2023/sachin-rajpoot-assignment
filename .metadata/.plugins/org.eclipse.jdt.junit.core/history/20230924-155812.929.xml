@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberServiceImplTest.testGetAllMemberAuth" project="grievance" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.serviceImpl.MemberServiceImplTest" time="1.003" displayname="MemberServiceImplTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]">
+    <testcase name="testGetAllMemberAuth" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="1.003" displayname="testGetAllMemberAuth" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:testGetAllMemberAuth(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+  </testsuite>
+</testrun>

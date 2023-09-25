@@ -1,6 +1,7 @@
 package com.gms.demo.controller;
 
 import com.gms.demo.payloads.ApiResponse;
+import com.gms.demo.payloads.MemberChangePasswordDto;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
 import com.gms.demo.payloads.MemberLoginDto;
@@ -35,87 +36,146 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/")
 public class MemberController {
 
-	/**
-	 * The Member Service instance for handling member-related operations.
-	 */
-	private MemberService memberService;
+  /**
+   * The Member Service instance for handling member-related operations.
+   */
+  @Autowired
+  private MemberService memberService;
 
-	@Autowired
-	public final MemberService setMemberService(final MemberService memberService) {
-		this.memberService = memberService;
-		return memberService;
-	}
+  /**
+   * Setter method for injecting  MemberService.
+   *
+   * @param memberService The MemberService to be injected.
+   * @return The injected  MemberService.
+   */
+  @Autowired
+  public final MemberService setMemberService(
+    final MemberService memberService
+  ) {
+    this.memberService = memberService;
+    return memberService;
+  }
 
-	/**
-	 * Handles member login.
-	 *
-	 * @param memberLoginDto The data transfer object containing login credentials.
-	 * @return ResponseEntity indicating the status of the login attempt.
-	 * @throws Exception If an error occurs during the login process.
-	 */
-	@CrossOrigin
-	@PostMapping("login")
-	public ResponseEntity<?> login(@RequestBody @Valid final MemberLoginDto memberLoginDto) throws Exception {
-		System.out.println("Verify email and password"+this.memberService.verifyEmailAndPassword(memberLoginDto.getEmail(), memberLoginDto.getPassword()));
-		
-		if (this.memberService.verifyEmailAndPassword(memberLoginDto.getEmail(), memberLoginDto.getPassword())) {
-			MemberOutDto memberOutDto = this.memberService.login(memberLoginDto);
-			System.out.println("Member Out Dto received back "+memberOutDto);
-			if (memberOutDto != null) {
-				return new ResponseEntity<>(memberOutDto, HttpStatus.ACCEPTED);
-			}
-		}
-		return new ResponseEntity<>("Invalid Credentials, Please try again.", HttpStatus.BAD_REQUEST);
-	}
+  /**
+   * Handles member login.
+   *
+   * @param memberLoginDto The data transfer object containing login credentials.
+   * @return ResponseEntity indicating the status of the login attempt.
+   * @throws Exception If an error occurs during the login process.
+   */
+  @CrossOrigin
+  @PostMapping("login")
+  public ResponseEntity<?> login(
+    @RequestBody @Valid final MemberLoginDto memberLoginDto
+  ) throws Exception {
+    System.out.println(
+      "Verify email and password"
+      + this.memberService.verifyEmailAndPassword(
+          memberLoginDto.getEmail(),
+          memberLoginDto.getPassword()
+        )
+    );
 
+    if (
+      this.memberService.verifyEmailAndPassword(
+          memberLoginDto.getEmail(),
+          memberLoginDto.getPassword()
+        )
+    ) {
+      MemberOutDto memberOutDto = this.memberService.login(memberLoginDto);
+      System.out.println("Member Out Dto received back " + memberOutDto);
+      if (memberOutDto != null) {
+        return new ResponseEntity<>(memberOutDto, HttpStatus.ACCEPTED);
+      }
+    }
+    return new ResponseEntity<>(
+      "Invalid Credentials, Please try again.",
+      HttpStatus.BAD_REQUEST
+    );
+  }
 
-	@CrossOrigin
-	@PostMapping("create/nodept")
-	public final ResponseEntity<?> createMember3(@RequestBody @Valid final MemberDto memberDto,
-			@RequestHeader final String email, @RequestHeader final String password) {
-		if (this.memberService.verifyEmailAndPassword(memberDto.getEmail(), memberDto.getPassword())) {
-			MemberOutDto memberDto2 = this.memberService.createMember3(memberDto, email, password);
-			if (memberDto2 != null) {
-				return new ResponseEntity<>(memberDto2, HttpStatus.CREATED);
-			}
-			else {
-				return new ResponseEntity<>("Not Authorized",HttpStatus.UNAUTHORIZED);
-			}
-		}
-		return new ResponseEntity<>("invalid credentails, Check email and password",HttpStatus.BAD_REQUEST);
-	}
+  /**
+   * Creates a new member without specifying a department.
+   *
+   * @param memberDto The MemberDto containing member data.
+   * @param email     The email header used for verification.
+   * @param password  The password header used for verification.
+   * @return A ResponseEntity containing the created MemberOutDto and an HTTP status code.
+   */
+  @CrossOrigin
+  @PostMapping("create/nodept")
+  public final ResponseEntity<?> createMember3(
+    @RequestBody @Valid final MemberDto memberDto,
+    @RequestHeader final String email,
+    @RequestHeader final String password
+  ) {
+    
+    return new ResponseEntity<>(this.memberService.createMember3(memberDto, email, password), HttpStatus.OK);
+  }
+  /**
+   * Retrieves a list of authenticated members with pagination.
+   *
+   * @param email      The email header used for authentication.
+   * @param password   The password header used for authentication.
+   * @param pageNumber The page number for pagination.
+   * @return A ResponseEntity containing a list of authenticated MemberGetAllOutDto objects and an HTTP status code.
+   */
+  @CrossOrigin
+  @GetMapping("member/getAll/auth/pageNumber/{pageNumber}")
+  public final ResponseEntity<List<MemberGetAllOutDto>> getAllMemberAuth(
+    @RequestHeader final String email,
+    @RequestHeader final String password,
+    @PathVariable final Integer pageNumber
+  ) {
+    return new ResponseEntity<>(
+      this.memberService.getAllMemberAuth(email, password, pageNumber),
+      HttpStatus.OK
+    );
+  }
 
+  /**
+   * Changes the password of a member.
+   *
+   * @param memberId           The ID of the member whose password will be changed.
+   * @param changePasswordDto  The DTO containing the new password information.
+   * @return A ResponseEntity containing the updated MemberOutDto or an error ApiResponse and an HTTP status code.
+   */
+  @CrossOrigin
+  @PutMapping("changepassword/memberId/{memberId}")
+  public final ResponseEntity<?> changePassword(
+    @PathVariable final Integer memberId,
+    @RequestBody final MemberChangePasswordDto changePasswordDto
+  ) {
+    System.out.println("inside controller");
 
+    MemberOutDto memberOutDto =
+      this.memberService.changePassword(memberId, changePasswordDto);
 
-	@CrossOrigin
-	@GetMapping("member/getAll/auth/pageNumber/{pageNumber}")
-	public final ResponseEntity<List<MemberGetAllOutDto>> getAllMemberAuth(@RequestHeader final String email,
-			@RequestHeader final String password
-			, @PathVariable Integer pageNumber) {
-		return new ResponseEntity<>(this.memberService.getAllMemberAuth(email, password, pageNumber), HttpStatus.OK);
-	}
+    if (memberOutDto != null) {
+      return new ResponseEntity<>(memberOutDto, HttpStatus.OK);
+    }
 
-	@CrossOrigin
-	@PutMapping("changepassword/memberId/{memberId}")
-	public final ResponseEntity<?> changePassword(@PathVariable final Integer memberId,
-			@RequestHeader final String oldPassword, @RequestHeader final String newPassword) {
-		MemberOutDto memberOutDto = this.memberService.changePassword(memberId, oldPassword, newPassword);
+    return new ResponseEntity<>(
+      new ApiResponse("Incorrect Password, Please try again.", false),
+      HttpStatus.BAD_REQUEST
+    );
+  }
 
-		if (memberOutDto != null) {
-			return new ResponseEntity<>(memberOutDto, HttpStatus.OK);
-		}
-
-		return new ResponseEntity<>(new ApiResponse("Incorrect Password, Please try again.", false),
-				HttpStatus.BAD_REQUEST);
-	}
-	
-	@CrossOrigin
-	@DeleteMapping("member/delete/memberId/{memberId}")
-	public ResponseEntity<ApiResponse> deleteMember(@PathVariable @Valid Integer memberId){
-		ApiResponse apiResponse = this.memberService.deleteMember(memberId);
-		if(apiResponse != null) {
-			return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
-		}
-		return new ResponseEntity<ApiResponse>( HttpStatus.BAD_REQUEST);
-	}
+  /**
+   * Deletes a member by their ID.
+   *
+   * @param memberId The ID of the member to be deleted.
+   * @return A ResponseEntity containing an ApiResponse and an HTTP status code.
+   */
+  @CrossOrigin
+  @DeleteMapping("member/delete/memberId/{memberId}")
+  public final ResponseEntity<ApiResponse> deleteMember(
+    @PathVariable @Valid final Integer memberId
+  ) {
+    ApiResponse apiResponse = this.memberService.deleteMember(memberId);
+    if (apiResponse != null) {
+      return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+    }
+    return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST);
+  }
 }

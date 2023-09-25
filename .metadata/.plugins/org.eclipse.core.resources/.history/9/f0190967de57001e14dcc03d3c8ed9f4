@@ -1,0 +1,5 @@
+package com.gms.demo.payloads;
+
+public class TicketUpdateStatusInDto {
+
+}

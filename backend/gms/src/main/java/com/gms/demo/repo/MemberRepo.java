@@ -2,7 +2,6 @@ package com.gms.demo.repo;
 
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,9 +22,11 @@ public interface MemberRepo extends JpaRepository<Member, Integer> {
    */
   Member findByEmail(String email);
 
-boolean existsByEmailAndPasswordAndRole(String email, String password, Role admin);
+  boolean existsByEmailAndPasswordAndRole(
+    String email,
+    String password,
+    Role admin
+  );
 
-boolean existsByEmailAndPassword(String email, String password);
-  
-  
+  boolean existsByEmailAndPassword(String email, String password);
 }

@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 /**
@@ -43,7 +45,7 @@ public class Comment {
   /**
    * The date and time when the comment was created.
    */
-  @CreatedDate
+  @CreationTimestamp // Automatically set the creation timestamp
   @Temporal(TemporalType.TIMESTAMP)
   private Date date;
 
@@ -98,7 +100,7 @@ public class Comment {
    *
    * @param commentId The comment's unique identifier.
    */
-  public void setCommentId(Integer commentId) {
+  public void setCommentId(final Integer commentId) {
     this.commentId = commentId;
   }
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DepartmentDtoTest" project="grievance" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.payload.DepartmentDtoTest" time="0.067" displayname="DepartmentDtoTest" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]">
+    <testcase name="testGetAndSetDepartmentId" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.052" displayname="testGetAndSetDepartmentId()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testGetAndSetDepartmentId()]"/>
+    <testcase name="testHashCodeAndEquals" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.004" displayname="testHashCodeAndEquals()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testHashCodeAndEquals()]"/>
+    <testcase name="testGetAndSetName" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.002" displayname="testGetAndSetName()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testGetAndSetName()]"/>
+    <testcase name="testDefaultConstructor" classname="com.gms.demo.payload.DepartmentDtoTest" time="0.004" displayname="testDefaultConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.payload.DepartmentDtoTest]/[method:testDefaultConstructor()]"/>
+  </testsuite>
+</testrun>

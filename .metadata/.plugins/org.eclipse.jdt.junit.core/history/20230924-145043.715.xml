@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DepartmentServiceImplTest.testGetAllDepartmentNoPage" project="grievance" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="1.03" displayname="DepartmentServiceImplTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]">
+    <testcase name="testGetAllDepartmentNoPage" classname="com.gms.demo.serviceImpl.DepartmentServiceImplTest" time="1.029" displayname="testGetAllDepartmentNoPage" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.DepartmentServiceImplTest]/[test:testGetAllDepartmentNoPage(com.gms.demo.serviceImpl.DepartmentServiceImplTest)]"/>
+  </testsuite>
+</testrun>

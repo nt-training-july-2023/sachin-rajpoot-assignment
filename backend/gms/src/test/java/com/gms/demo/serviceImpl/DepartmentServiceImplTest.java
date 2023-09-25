@@ -2,7 +2,6 @@ package com.gms.demo.serviceImpl;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
@@ -24,7 +23,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -46,39 +49,13 @@ public class DepartmentServiceImplTest {
   @InjectMocks
   private DepartmentServiceImpl departmentService;
 
-//  @Before
-//  public void setUp() {
-//    MockitoAnnotations.initMocks(this);
-//  }
+  List<Department> departments = new ArrayList<>();
+  Department department = new Department();
+  List<DepartmentOutDto> departmentDtos = new ArrayList<>();
+  DepartmentOutDto departmentOutDto = new DepartmentOutDto();
 
   @Test
-  public void testCreateDepartment() {
-
-    DepartmentDto departmentDto = new DepartmentDto();
-    departmentDto.setDepartmentId(1);
-    departmentDto.setDepartmentName("test");
-    
-    Department department = new Department();
-    department.setDepartmentId(1);
-    department.setDepartmentName("test");
-    department.setMembers(null);
-    department.setTickets(null);
-    
-    when(modelMapper.map(departmentDto, Department.class)).thenReturn(department);
-    when(departmentRepo.save(department)).thenReturn(department);
-    when(modelMapper.map(department, DepartmentDto.class)).thenReturn(departmentDto);
-
-
-    DepartmentDto createdDepartment = departmentService.createDepartment(departmentDto);
-
-
-    assertNotNull(createdDepartment);
-
-  }
-
-  @Test
-  public void testGetAllDepartment() {
-
+  public void testGetAllDepartmentNoPage() {
     List<Department> departments = new ArrayList<>();
     Department department = new Department();
     department.setDepartmentId(1);
@@ -89,38 +66,35 @@ public class DepartmentServiceImplTest {
     when(departmentRepo.findAll()).thenReturn(departments);
     when(modelMapper.map(any(), eq(DepartmentOutDto.class)))
         .thenReturn(new DepartmentOutDto());
-
-
-    List<DepartmentOutDto> departmentOutDtos = departmentService.getAllDepartment();
-
-
-    assertNotNull(departmentOutDtos);
-   
+    List<DepartmentOutDto> departmentOutDtos = departmentService.getAllDepartmentNoPage();
+    assertNotNull(departmentOutDtos); 
   }
+  
+  @Test
+  public void testGetAllDepartmentWithPage() {	  
+    Pageable pageable = PageRequest.of(0, 6);
+    Page<Department> departmentPage = new PageImpl<>(departments, pageable, departments.size());
+	 when(this.departmentRepo.findAll(
+          PageRequest.of(0, 6, Sort.by("departmentName")))).thenReturn(departmentPage);
+	 List<DepartmentOutDto> departmentOutDtos = departmentService.getAllDepartment(0);
+    assertNotNull(departmentOutDtos);
+  }
+  
 
   @Test
   public void testGetDepartmentByIdValidId() {
-
     Integer departmentId = 1;
     Department department = new Department();
     when(departmentRepo.findById(departmentId)).thenReturn(Optional.of(department));
     when(modelMapper.map(department, DepartmentOutDto.class)).thenReturn(new DepartmentOutDto());
-
-
     DepartmentOutDto departmentOutDto = departmentService.getDepartmentById(departmentId);
-
-
-    assertNotNull(departmentOutDto);
-   
+    assertNotNull(departmentOutDto); 
   }
 
   @Test
   public void testGetDepartmentByIdInvalidId() {
-
     Integer departmentId = 1;
     when(departmentRepo.findById(departmentId)).thenReturn(Optional.empty());
-
-
     assertThrows(
         ResourceNotFoundException.class,
         () -> departmentService.getDepartmentById(departmentId)
@@ -129,58 +103,39 @@ public class DepartmentServiceImplTest {
 
   @Test
   public void testCreateDepartment2ValidAdminCredentials() {
- 
     String email = "admin@nucleusteq.com";
-    String password = "adminPassword";
-    
+    String password = "adminPassword";    
     DepartmentDto departmentDto = new DepartmentDto();
     departmentDto.setDepartmentId(1);
-    departmentDto.setDepartmentName("test");
-
-    
+    departmentDto.setDepartmentName("test");    
     Department department = new Department();
     department.setDepartmentId(1);
     department.setDepartmentName("test");
     department.setMembers(null);
-    department.setTickets(null);
-    
+    department.setTickets(null);  
     DepartmentOutDto departmentOutDto = new DepartmentOutDto();
     departmentOutDto.setDepartmentName("test");
     departmentOutDto.setMembers(null);
-    departmentOutDto.setTickets(null);
-
-    
+    departmentOutDto.setTickets(null);   
     Member adminMember = new Member();
     adminMember.setRole(Role.ADMIN);
     adminMember.setEmail(email);
-    adminMember.setPassword(password);
-    
+    adminMember.setPassword(password);    
     when(memberRepo.findByEmail(email)).thenReturn(adminMember);
     when(modelMapper.map(departmentDto, Department.class)).thenReturn(department);
     when(departmentRepo.save(department)).thenReturn(department);
     when(modelMapper.map(department, DepartmentOutDto.class)).thenReturn(departmentOutDto);
-
-
     DepartmentOutDto createdDepartment = departmentService.createDepartment2(departmentDto, email, password);
-
-
     assertNotNull(createdDepartment);
-   
   }
 
   @Test
   public void testCreateDepartment2InvalidAdminCredentials() {
-
     String email = "user@example.com";
     String password = "userPassword";
     DepartmentDto departmentDto = new DepartmentDto();
     when(memberRepo.findByEmail(email)).thenReturn(null);
-
-
     DepartmentOutDto createdDepartment = departmentService.createDepartment2(departmentDto, email, password);
-
-
     assertNull(createdDepartment);
- 
   }
 }

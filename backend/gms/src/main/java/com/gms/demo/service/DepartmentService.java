@@ -6,8 +6,6 @@ import com.gms.demo.payloads.DepartmentOutDto;
 import java.util.List;
 
 public interface DepartmentService {
-
-
   /**
    * Creates a new department based on the provided department DTO, email, and password.
    *
@@ -36,8 +34,8 @@ public interface DepartmentService {
    * @return A list of DepartmentOutDto objects representing all departments.
    */
   List<DepartmentOutDto> getAllDepartment(Integer pageNumber);
-  
+
   List<DepartmentOutDto> getAllDepartmentNoPage();
-  
+
   ApiResponse deleteDepartment(Integer departmentId);
 }

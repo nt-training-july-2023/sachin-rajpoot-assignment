@@ -1,0 +1,81 @@
+package com.gms.demo.payloads;
+
+import java.util.Objects;
+
+import javax.validation.constraints.NotEmpty;
+
+import com.gms.demo.entity.Status;
+
+public class TicketUpdateStatusInDto {
+
+//	@NotEmpty
+	Status status;
+
+
+	@NotEmpty
+	CommentOutDto comment;
+
+
+	public Status getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+
+	public CommentOutDto getComment() {
+		return comment;
+	}
+
+
+	public void setComment(CommentOutDto comment) {
+		this.comment = comment;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(comment, status);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TicketUpdateStatusInDto other = (TicketUpdateStatusInDto) obj;
+		return Objects.equals(comment, other.comment) && status == other.status;
+	}
+
+
+	@Override
+	public String toString() {
+		return "TicketUpdateStatusInDto [status=" + status + ", comment=" + comment + "]";
+	}
+
+
+	public TicketUpdateStatusInDto(@NotEmpty Status status, @NotEmpty CommentOutDto comment) {
+		super();
+		this.status = status;
+		this.comment = comment;
+	}
+
+
+	public TicketUpdateStatusInDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+
+	
+}

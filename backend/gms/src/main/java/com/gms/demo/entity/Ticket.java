@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -69,14 +67,14 @@ public class Ticket {
    * The status of the ticket.
    */
   //  @NotEmpty
-//  @Enumerated(EnumType.STRING)
+  //  @Enumerated(EnumType.STRING)
   private Status status;
 
   /**
    * The type of the ticket.
    */
   //  @NotEmpty
-//  @Enumerated(EnumType.STRING)
+  //  @Enumerated(EnumType.STRING)
   private TicketType ticketType;
 
   /**
@@ -281,6 +279,14 @@ public class Ticket {
    */
   public void setComments(final List<Comment> comments) {
     this.comments = comments;
+  }
+
+  public final void addComment(final Comment comment) {
+    if (this.comments == null) {
+      this.comments = new ArrayList<>();
+    } else {
+      this.comments.add(comment);
+    }
   }
 
   /**

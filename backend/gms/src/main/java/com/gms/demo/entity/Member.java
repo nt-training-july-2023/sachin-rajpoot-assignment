@@ -97,7 +97,7 @@ public class Member {
    *
    * @param memberId The member's unique identifier.
    */
-  public final void setMemberId(Integer memberId) {
+  public final void setMemberId(final Integer memberId) {
     this.memberId = memberId;
   }
 

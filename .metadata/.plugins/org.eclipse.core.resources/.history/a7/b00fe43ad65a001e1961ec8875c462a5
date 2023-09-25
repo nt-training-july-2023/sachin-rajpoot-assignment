@@ -1,0 +1,147 @@
+package com.gms.demo.payload;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.Test;
+
+import com.gms.demo.entity.Status;
+import com.gms.demo.entity.TicketType;
+import com.gms.demo.payloads.DepartmentDto;
+import com.gms.demo.payloads.MemberDto;
+import com.gms.demo.payloads.TicketDto;
+import com.gms.demo.payloads.TicketGetAllOutDto;
+
+public class TicketGetAllOutDtoTest {
+	  private TicketGetAllOutDto getAllOutDto = new TicketGetAllOutDto();
+
+	  @Test
+	  public void testGetAndSetTicketId() {
+		  getAllOutDto.setTicketId(1);
+	    assertEquals(1, getAllOutDto.getTicketId());
+	  }
+
+	  @Test
+	  public void testGetAndSetTitle() {
+		  getAllOutDto.setTitle("Sample Ticket");
+	    assertEquals("Sample Ticket", getAllOutDto.getTitle());
+	  }
+
+	  @Test
+	  public void testGetAndSetDescription() {
+		  getAllOutDto.setDescription("This is a sample ticket description.");
+	    assertEquals(
+	      "This is a sample ticket description.",
+	      getAllOutDto.getDescription()
+	    );
+	  }
+
+	  @Test
+	  public void testGetAndSetCreatedOn() {
+	    Date createdOn = new Date();
+	    getAllOutDto.setCreatedOn(createdOn);
+	    assertEquals(createdOn, getAllOutDto.getCreatedOn());
+	  }
+
+	  @Test
+	  public void testGetAndSetLastUpdatedOn() {
+	    Date lastUpdatedOn = new Date();
+	    getAllOutDto.setLastUpdatedOn(lastUpdatedOn);
+	    assertEquals(lastUpdatedOn, getAllOutDto.getLastUpdatedOn());
+	  }
+
+	  @Test
+	  public void testGetAndSetStatus() {
+		  getAllOutDto.setStatus(Status.OPEN);
+	    assertEquals(Status.OPEN, getAllOutDto.getStatus());
+	  }
+
+	  @Test
+	  public void testGetAndSetTicketType() {
+		  getAllOutDto.setTicketType(TicketType.FEEDBACK);
+	    assertEquals(TicketType.FEEDBACK, getAllOutDto.getTicketType());
+	  }
+
+	  @Test
+	  public void testGetAndSetDepartment() {
+	    getAllOutDto.setDepartmentName("IT Department");
+	    assertEquals("IT Department", getAllOutDto.getDepartmentName());
+	  }
+
+	  @Test
+	  public void testGetAndSetMember() {
+	    getAllOutDto.setMemberName("kingkong");
+	    assertEquals("kingkong", getAllOutDto.getMemberName());
+	  }
+
+	  @Test
+	  public void testToString() {
+		  getAllOutDto.setTicketId(1);
+		  getAllOutDto.setTitle("Sample Ticket");
+		  getAllOutDto.setDescription("This is a sample ticket description.");
+		  getAllOutDto.setStatus(Status.OPEN);
+		  getAllOutDto.setTicketType(TicketType.FEEDBACK);
+		  getAllOutDto.setDepartmentName("IT Department");
+		  getAllOutDto.setMemberName("kingkong");
+	    String expected =
+	    		"TicketGetAllOutDto [ticketId=" +
+	    				getAllOutDto.getTicketId() +
+	    	      ", title=" +
+	    	      getAllOutDto.getTitle() +
+	    	      ", description=" +
+	    	      getAllOutDto.getDescription() +
+	    	      ", createdOn=" +
+	    	      getAllOutDto.getCreatedOn() +
+	    	      ", lastUpdatedOn=" +
+	    	      getAllOutDto.getLastUpdatedOn() +
+	    	      ", status=" +
+	    	      getAllOutDto.getStatus() +
+	    	      ", ticketType=" +
+	    	      getAllOutDto.getTicketType() +
+	    	      ", departmentName=" +
+	    	      getAllOutDto.getDepartmentName() +
+	    	      ", memberName=" +
+	    	      getAllOutDto.getMemberName() +
+	    	      "]";
+	    assertEquals(expected, getAllOutDto.toString());
+	  }
+
+	  @Test
+	  public void testParameterizedConstructor() {
+	    Date createdOn = new Date();
+	    Date lastUpdatedOn = new Date();
+	    DepartmentDto departmentDto = new DepartmentDto();
+	    departmentDto.setDepartmentName("IT Department");
+	    MemberDto memberDto = new MemberDto();
+	    memberDto.setName("kingkong");
+
+	    TicketDto ticket = new TicketDto(
+	      1,
+	      "Sample Ticket",
+	      "Description",
+	      createdOn,
+	      lastUpdatedOn,
+	      Status.OPEN,
+	      TicketType.FEEDBACK,
+	      departmentDto,
+	      memberDto
+	    );
+
+	    assertEquals(1, ticket.getTicketId());
+	    assertEquals("Sample Ticket", ticket.getTitle());
+	    assertEquals("Description", ticket.getDescription());
+	    assertEquals(createdOn, ticket.getCreatedOn());
+	    assertEquals(lastUpdatedOn, ticket.getLastUpdatedOn());
+	    assertEquals(Status.OPEN, ticket.getStatus());
+	    assertEquals(TicketType.FEEDBACK, ticket.getTicketType());
+	    assertEquals(departmentDto, ticket.getDepartment());
+	    assertEquals(memberDto, ticket.getMember());
+	  }
+
+	  @Test
+	  public void testDefaultConstructor() {
+	    assertNotNull(new TicketDto());
+	  }
+}

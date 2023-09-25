@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberControllerTest" project="grievance" tests="5" started="5" failures="0" errors="1" ignored="0">
+  <testsuite name="com.gms.demo.controller.MemberControllerTest" time="5.755" displayname="MemberControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]">
+    <testcase name="testLogin_Success" classname="com.gms.demo.controller.MemberControllerTest" time="5.472" displayname="testLogin_Success" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testLogin_Success(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testCreateMember2_Success" classname="com.gms.demo.controller.MemberControllerTest" time="0.13" displayname="testCreateMember2_Success" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testCreateMember2_Success(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testLogin_InvalidCredentials" classname="com.gms.demo.controller.MemberControllerTest" time="0.071" displayname="testLogin_InvalidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testLogin_InvalidCredentials(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="changePassword_Test" classname="com.gms.demo.controller.MemberControllerTest" time="0.078" displayname="changePassword_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:changePassword_Test(com.gms.demo.controller.MemberControllerTest)]"/>
+  </testsuite>
+  <testsuite name="Unrooted Tests" time="0.007" displayname="Unrooted Tests">
+    <testcase name="com.gms.demo.controller.MemberControllerTest" classname="com.gms.demo.controller.MemberControllerTest" time="0.007" dynamicTest="true" displayname="unnecessary Mockito stubbings" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[dynamic:unnecessary Mockito stubbings(com.gms.demo.controller.MemberControllerTest)]">
+      <error>org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+Unnecessary stubbings detected in test class: MemberControllerTest
+Clean &amp; maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -&gt; at com.gms.demo.controller.MemberControllerTest.testCreateMember2_Success(MemberControllerTest.java:142)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.&#13;
+	at org.mockito.internal.runners.StrictRunner.run(StrictRunner.java:49)&#13;
+	at org.mockito.junit.MockitoJUnitRunner.run(MockitoJUnitRunner.java:163)&#13;
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)&#13;
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)&#13;
+	at org.junit.vintage.engine.execution.RunnerExecutor.execute(RunnerExecutor.java:40)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)&#13;
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)&#13;
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)&#13;
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)&#13;
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)&#13;
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)&#13;
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)&#13;
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)&#13;
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.executeAllChildren(VintageTestEngine.java:80)&#13;
+	at org.junit.vintage.engine.VintageTestEngine.execute(VintageTestEngine.java:71)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191)&#13;
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:137)&#13;
+	at org.eclipse.jdt.internal.junit5.runner.JUnit5TestReference.run(JUnit5TestReference.java:98)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

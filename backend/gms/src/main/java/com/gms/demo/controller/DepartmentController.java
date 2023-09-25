@@ -55,7 +55,7 @@ public class DepartmentController {
     @RequestHeader final String email,
     @RequestHeader final String password
   ) {
-	  DepartmentOutDto departmentDto2 =
+    DepartmentOutDto departmentDto2 =
       this.departmentService.createDepartment2(departmentDto, email, password);
     if (departmentDto2 != null) {
       return new ResponseEntity<>(departmentDto2, HttpStatus.CREATED);
@@ -71,32 +71,45 @@ public class DepartmentController {
    */
   @CrossOrigin
   @GetMapping("getAll/pageNumber/{pageNumber}")
-  ResponseEntity<List<DepartmentOutDto>> getAllDepartment(@PathVariable Integer pageNumber) {
+  ResponseEntity<List<DepartmentOutDto>> getAllDepartment(
+    @PathVariable final Integer pageNumber
+  ) {
     return new ResponseEntity<>(
       this.departmentService.getAllDepartment(pageNumber),
       HttpStatus.OK
     );
   }
-  
+
+  /**
+   * Retrieves all departments without pagination.
+   *
+   * @return A ResponseEntity containing a list of DepartmentOutDto and an HTTP status code.
+   */
   @CrossOrigin
   @GetMapping("getAll/noPage")
-  ResponseEntity<List<DepartmentOutDto>> getAllDepartment() {
+  final ResponseEntity<List<DepartmentOutDto>> getAllDepartment() {
     return new ResponseEntity<>(
       this.departmentService.getAllDepartmentNoPage(),
       HttpStatus.OK
     );
   }
-  
+
+  /**
+   * Deletes a department by its ID.
+   *
+   * @param departmentId The ID of the department to be deleted.
+   * @return A ResponseEntity containing an ApiResponse and an HTTP status code.
+   */
   @CrossOrigin
   @DeleteMapping("/delete/departmentId/{departmentId}")
-  ResponseEntity<ApiResponse> deleteDepartment(@PathVariable @Valid Integer departmentId) {
-	  ApiResponse apiResponse = this.departmentService.deleteDepartment(departmentId);
-	  if(apiResponse != null) {
-		  return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
-	  }
-	  return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST);
+  final ResponseEntity<ApiResponse> deleteDepartment(
+    @PathVariable @Valid final Integer departmentId
+  ) {
+    ApiResponse apiResponse =
+      this.departmentService.deleteDepartment(departmentId);
+    if (apiResponse != null) {
+      return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
+    }
+    return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST);
   }
-  
-  
 }
-

@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -48,12 +49,16 @@ public class TicketDto {
   /**
    * The status of the ticket.
    */
+
+  //  @NotEmpty
+  @NotNull
   @Enumerated(EnumType.STRING)
   private Status status;
 
   /**
    * The type of the ticket.
    */
+  @NotNull
   @Enumerated(EnumType.STRING)
   private TicketType ticketType;
 

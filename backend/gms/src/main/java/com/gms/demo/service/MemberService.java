@@ -1,6 +1,7 @@
 package com.gms.demo.service;
 
 import com.gms.demo.payloads.ApiResponse;
+import com.gms.demo.payloads.MemberChangePasswordDto;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
 import com.gms.demo.payloads.MemberLoginDto;
@@ -16,19 +17,17 @@ import java.util.List;
  * @since Begining of time
  */
 public interface MemberService {
-
-
-
-
   MemberOutDto createMember3(
     MemberDto memberDto,
     String email,
     String password
   );
 
-
-  
-  List<MemberGetAllOutDto> getAllMemberAuth(String email, String password, Integer pageNumber);
+  List<MemberGetAllOutDto> getAllMemberAuth(
+    String email,
+    String password,
+    Integer pageNumber
+  );
 
   /**
    * Perform member login.
@@ -47,17 +46,11 @@ public interface MemberService {
    * @return true if the email and password combination is valid, false otherwise.
    */
   Boolean verifyEmailAndPassword(String email, String password);
-  
-  
-  
-  
-  MemberOutDto changePassword(Integer memberId, String oldPassword, String newPassword);
-  
-  
-  
+
+  MemberOutDto changePassword(
+    Integer memberId,
+    MemberChangePasswordDto changePasswordDto
+  );
+
   ApiResponse deleteMember(Integer memberId);
-  
-  
-	  
-  
 }

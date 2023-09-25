@@ -1,37 +1,34 @@
 package com.gms.demo.payloads;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gms.demo.entity.Status;
 import com.gms.demo.entity.TicketType;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 public class TicketOutDto {
-	
-	  /**
-	   * The unique identifier for the ticket.
-	   */
-	  private Integer ticketId;
 
-  public Integer getTicketId() {
-		return ticketId;
-	}
+  /**
+   * The unique identifier for the ticket.
+   */
+  private Integer ticketId;
 
-	public void setTicketId(Integer ticketId) {
-		this.ticketId = ticketId;
-	}
+  public final Integer getTicketId() {
+    return ticketId;
+  }
 
-/**
+  public final void setTicketId(final Integer ticketId) {
+    this.ticketId = ticketId;
+  }
+
+  /**
    * The title of the ticket.
    */
   private String title;
@@ -46,6 +43,7 @@ public class TicketOutDto {
    */
   @CreationTimestamp // Automatically set the creation timestamp
   @Temporal(TemporalType.TIMESTAMP)
+  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
   private Date createdOn;
 
   /**
@@ -53,6 +51,7 @@ public class TicketOutDto {
    */
   @UpdateTimestamp // Automatically set the update timestamp
   @Temporal(TemporalType.TIMESTAMP)
+  @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
   private Date lastUpdatedOn;
 
   /**
@@ -317,42 +316,70 @@ public class TicketOutDto {
     // TODO Auto-generated constructor stub
   }
 
-@Override
-public int hashCode() {
-	return Objects.hash(comments, createdOn, departmentName, description, lastUpdatedOn, memberName, status, ticketId,
-			ticketType, title);
-}
+  @Override
+  public final int hashCode() {
+    return Objects.hash(
+      comments,
+      createdOn,
+      departmentName,
+      description,
+      lastUpdatedOn,
+      memberName,
+      status,
+      ticketId,
+      ticketType,
+      title
+    );
+  }
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	TicketOutDto other = (TicketOutDto) obj;
-	return Objects.equals(comments, other.comments) && Objects.equals(createdOn, other.createdOn)
-			&& Objects.equals(departmentName, other.departmentName) && Objects.equals(description, other.description)
-			&& Objects.equals(lastUpdatedOn, other.lastUpdatedOn) && Objects.equals(memberName, other.memberName)
-			&& status == other.status && Objects.equals(ticketId, other.ticketId) && ticketType == other.ticketType
-			&& Objects.equals(title, other.title);
-}
+  @Override
+  public final boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    TicketOutDto other = (TicketOutDto) obj;
+    return (
+      Objects.equals(comments, other.comments) &&
+      Objects.equals(createdOn, other.createdOn) &&
+      Objects.equals(departmentName, other.departmentName) &&
+      Objects.equals(description, other.description) &&
+      Objects.equals(lastUpdatedOn, other.lastUpdatedOn) &&
+      Objects.equals(memberName, other.memberName) &&
+      status == other.status &&
+      Objects.equals(ticketId, other.ticketId) &&
+      ticketType == other.ticketType &&
+      Objects.equals(title, other.title)
+    );
+  }
 
-public TicketOutDto(Integer ticketId, String title, String description, Date createdOn, Date lastUpdatedOn,
-		Status status, TicketType ticketType, String departmentName, String memberName, List<CommentOutDto> comments) {
-	super();
-	this.ticketId = ticketId;
-	this.title = title;
-	this.description = description;
-	this.createdOn = createdOn;
-	this.lastUpdatedOn = lastUpdatedOn;
-	this.status = status;
-	this.ticketType = ticketType;
-	this.departmentName = departmentName;
-	this.memberName = memberName;
-	this.comments = comments;
-}
-  
-  
+  public TicketOutDto(
+    final Integer ticketId,
+    final String title,
+    final String description,
+    final Date createdOn,
+    final Date lastUpdatedOn,
+    final Status status,
+    final TicketType ticketType,
+    final String departmentName,
+    final String memberName,
+    final List<CommentOutDto> comments
+  ) {
+    super();
+    this.ticketId = ticketId;
+    this.title = title;
+    this.description = description;
+    this.createdOn = createdOn;
+    this.lastUpdatedOn = lastUpdatedOn;
+    this.status = status;
+    this.ticketType = ticketType;
+    this.departmentName = departmentName;
+    this.memberName = memberName;
+    this.comments = comments;
+  }
 }

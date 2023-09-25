@@ -1,0 +1,17 @@
+package com.gms.demo.validators;
+
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import javax.validation.constraints.Pattern;
+import java.lang.annotation.*;
+
+@Documented
+@Constraint(validatedBy = {})
+@Target({ElementType.FIELD, ElementType.PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+@Pattern(regexp = "^(OPEN|CLOSED|PROGRESS|FEEDBACK|GRIEVANCE)$", message = "Invalid value")
+public @interface ValidateEnum {
+    String message() default "Invalid value";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}

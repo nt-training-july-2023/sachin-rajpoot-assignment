@@ -1,10 +1,6 @@
 package com.gms.demo.repo;
 
+import com.gms.demo.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.gms.demo.entity.Comment;
-import com.gms.demo.entity.Department;
-
-public interface CommentRepo extends JpaRepository<Comment, Integer> {
-
-}
+public interface CommentRepo extends JpaRepository<Comment, Integer> {}

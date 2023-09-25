@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DepartmentControllerTest" project="grievance" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.controller.DepartmentControllerTest" time="0.713" displayname="DepartmentControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]">
+    <testcase name="testGetAllDepartment" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.707" displayname="testGetAllDepartment" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testGetAllDepartment(com.gms.demo.controller.DepartmentControllerTest)]"/>
+    <testcase name="testCreateDepartment2_InvalidCredentials" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.002" displayname="testCreateDepartment2_InvalidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testCreateDepartment2_InvalidCredentials(com.gms.demo.controller.DepartmentControllerTest)]"/>
+    <testcase name="testCreateDepartment2_ValidCredentials" classname="com.gms.demo.controller.DepartmentControllerTest" time="0.002" displayname="testCreateDepartment2_ValidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.DepartmentControllerTest]/[test:testCreateDepartment2_ValidCredentials(com.gms.demo.controller.DepartmentControllerTest)]"/>
+  </testsuite>
+</testrun>

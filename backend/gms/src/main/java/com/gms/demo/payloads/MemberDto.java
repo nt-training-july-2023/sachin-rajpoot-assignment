@@ -1,6 +1,5 @@
 package com.gms.demo.payloads;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gms.demo.entity.Role;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -71,7 +70,7 @@ public class MemberDto {
   /**
    * The department associated with the member.
    */
-//  @JsonIgnore
+  //  @JsonIgnore
   private DepartmentDto department;
 
   /**

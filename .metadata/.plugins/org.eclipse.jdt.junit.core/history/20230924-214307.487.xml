@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GmsApplicationTests" project="grievance" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.GmsApplicationTests" time="0.046" displayname="GmsApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.GmsApplicationTests]">
+    <testcase name="contextLoads" classname="com.gms.demo.GmsApplicationTests" time="0.029" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.GmsApplicationTests]/[method:contextLoads()]"/>
+    <testcase name="testModelMapperBeanCreation" classname="com.gms.demo.GmsApplicationTests" time="0.014" displayname="testModelMapperBeanCreation()" uniqueid="[engine:junit-jupiter]/[class:com.gms.demo.GmsApplicationTests]/[method:testModelMapperBeanCreation()]"/>
+  </testsuite>
+</testrun>

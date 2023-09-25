@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberServiceImplTest.changePassword_Test" project="grievance" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.449" displayname="MemberServiceImplTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]">
+    <testcase name="changePassword_Test" classname="com.gms.demo.serviceImpl.MemberServiceImplTest" time="0.449" displayname="changePassword_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.serviceImpl.MemberServiceImplTest]/[test:changePassword_Test(com.gms.demo.serviceImpl.MemberServiceImplTest)]"/>
+  </testsuite>
+</testrun>

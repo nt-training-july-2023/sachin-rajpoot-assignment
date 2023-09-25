@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MemberControllerTest" project="grievance" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.controller.MemberControllerTest" time="6.102" displayname="MemberControllerTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]">
+    <testcase name="testLogin_Success" classname="com.gms.demo.controller.MemberControllerTest" time="5.787" displayname="testLogin_Success" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testLogin_Success(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testCreateMember2_Success" classname="com.gms.demo.controller.MemberControllerTest" time="0.143" displayname="testCreateMember2_Success" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testCreateMember2_Success(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="testLogin_InvalidCredentials" classname="com.gms.demo.controller.MemberControllerTest" time="0.071" displayname="testLogin_InvalidCredentials" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:testLogin_InvalidCredentials(com.gms.demo.controller.MemberControllerTest)]"/>
+    <testcase name="changePassword_Test" classname="com.gms.demo.controller.MemberControllerTest" time="0.097" displayname="changePassword_Test" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.controller.MemberControllerTest]/[test:changePassword_Test(com.gms.demo.controller.MemberControllerTest)]"/>
+  </testsuite>
+</testrun>

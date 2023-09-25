@@ -1,0 +1,22 @@
+package com.gms.demo.exception;
+
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import java.util.Arrays;
+import java.util.Objects;
+
+public class EnumValidator implements ConstraintValidator<ValidateEnum, String> {
+
+    private String[] validValues;
+
+    @Override
+    public void initialize(ValidateEnum constraintAnnotation) {
+        validValues = constraintAnnotation.validValues();
+    }
+
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return value != null && Arrays.stream(validValues)
+                .anyMatch(enumValue -> Objects.equals(enumValue, value));
+    }
+}

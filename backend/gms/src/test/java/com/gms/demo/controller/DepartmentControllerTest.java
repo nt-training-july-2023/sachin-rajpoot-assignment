@@ -16,7 +16,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
+import com.gms.demo.payloads.ApiResponse;
 import com.gms.demo.payloads.DepartmentDto;
 import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
@@ -33,6 +36,7 @@ import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import javax.validation.Valid;
 import javax.validation.ValidationException;
 import java.util.Arrays;
 import java.util.List;
@@ -52,22 +56,11 @@ public class DepartmentControllerTest {
 
     @InjectMocks
     private DepartmentController departmentController;
-
-    @Test
-    public void testCreateDepartment_ValidInput() {
-
-        DepartmentDto departmentDto = new DepartmentDto();
-        departmentDto.setDepartmentId(1);
-        departmentDto.setDepartmentName("HR");
-        when(departmentService.createDepartment(departmentDto)).thenReturn(departmentDto);
-
-
-        ResponseEntity<DepartmentDto> response = departmentController.createDepartment(departmentDto);
-
     
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(departmentDto, response.getBody());
-    }
+    final String email = "naruto@nucleysteq.com";
+	final String password = "12345678";
+	DepartmentOutDto departmentOutDto = new DepartmentOutDto();
+	
 
     @Test
     public void testCreateDepartment2_ValidCredentials() {
@@ -77,11 +70,7 @@ public class DepartmentControllerTest {
         String password = "password";
         DepartmentOutDto departmentOutDto = new DepartmentOutDto();
         when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(departmentOutDto);
-
-  
         ResponseEntity<DepartmentOutDto> response = departmentController.createDepartment2(departmentDto, email, password);
-
-    
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
         assertEquals(departmentOutDto, response.getBody());
     }
@@ -92,9 +81,7 @@ public class DepartmentControllerTest {
         DepartmentDto departmentDto = new DepartmentDto();
         String email = "invalid@example.com";
         String password = "invalidPassword";
-        when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(null);
-
-    
+        when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(null); 
         ResponseEntity<DepartmentOutDto> response = departmentController.createDepartment2(departmentDto, email, password);
 
  
@@ -105,13 +92,28 @@ public class DepartmentControllerTest {
     public void testGetAllDepartment() {
   
         List<DepartmentOutDto> departmentOutDtoList = Arrays.asList(new DepartmentOutDto(), new DepartmentOutDto());
-        when(departmentService.getAllDepartment()).thenReturn(departmentOutDtoList);
-
-
-        ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment();
-
-   
+        when(departmentService.getAllDepartment(10)).thenReturn(departmentOutDtoList);
+        ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment(10);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(departmentOutDtoList, response.getBody());
+    }
+    
+    @Test
+    public void testGetAllDepartmentNoPage() {
+  
+        List<DepartmentOutDto> departmentOutDtoList = Arrays.asList(new DepartmentOutDto(), new DepartmentOutDto());
+        when(departmentService.getAllDepartmentNoPage()).thenReturn(departmentOutDtoList);
+        ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment();
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(departmentOutDtoList, response.getBody());
+    }
+    @Test
+    public void testDeleteDepartment() {
+    	DepartmentDto departmentDto = new DepartmentDto();
+    	departmentDto.setDepartmentId(1);
+    	when(departmentService.deleteDepartment(1)).thenReturn(new ApiResponse("PASS", true));
+    	ResponseEntity<ApiResponse> response = departmentController.deleteDepartment(1);
+    	 assertEquals(HttpStatus.OK, response.getStatusCode());
+         assertEquals(new ApiResponse("PASS", true), response.getBody());
     }
 }

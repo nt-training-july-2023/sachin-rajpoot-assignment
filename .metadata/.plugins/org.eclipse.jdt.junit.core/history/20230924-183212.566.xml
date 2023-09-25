@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TicketUpdateStatusInDtoTest" project="grievance" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.001" displayname="TicketUpdateStatusInDtoTest" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]">
+    <testcase name="testGettersAndSetters" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.001" displayname="testGettersAndSetters" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testGettersAndSetters(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testToString" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testToString" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testToString(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testHashCode" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testHashCode" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testHashCode(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+    <testcase name="testEquals" classname="com.gms.demo.payload.TicketUpdateStatusInDtoTest" time="0.0" displayname="testEquals" uniqueid="[engine:junit-vintage]/[runner:com.gms.demo.payload.TicketUpdateStatusInDtoTest]/[test:testEquals(com.gms.demo.payload.TicketUpdateStatusInDtoTest)]"/>
+  </testsuite>
+</testrun>
