@@ -1,0 +1,14 @@
+com\gms\demo\GmsApplication.class
+com\gms\demo\serviceimpl\MemberServiceImpl.class
+com\gms\demo\payloads\MemberLoginDto.class
+com\gms\demo\entity\Role.class
+com\gms\demo\repo\MemberRepo.class
+com\gms\demo\service\MemberService.class
+com\gms\demo\payloads\MemberDto.class
+com\gms\demo\entity\TicketType.class
+com\gms\demo\entity\Ticket.class
+com\gms\demo\controller\MemberController.class
+com\gms\demo\entity\Comment.class
+com\gms\demo\entity\Member.class
+com\gms\demo\entity\Status.class
+com\gms\demo\entity\Department.class
