@@ -1,8 +1,0 @@
-package com.gms.demo.serviceimpl;
-
-import com.gms.demo.payloads.CommentOutDto;
-
-public interface CommentServiceImpl {
-
-	CommentOutDto createComment(Integer ticketId);
-}
