@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommentDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">grievance</a> &gt; <a href="index.source.html" class="el_package">com.gms.demo.payloads</a> &gt; <span class="el_source">CommentDto.java</span></div><h1>CommentDto.java</h1><pre class="source lang-java linenums">package com.gms.demo.payloads;
+
+import java.util.Date;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.data.annotation.CreatedDate;
+
+public class CommentDto {
+
+    /**
+     * The unique identifier for the comment.
+     */
+    private Integer commentId;
+
+    /**
+     * The content of the comment.
+     */
+    @NotEmpty
+    private String content;
+
+    /**
+     * The username associated with the comment.
+     */
+    @NotEmpty
+    private String userName;
+
+    /**
+     * The date and time when the comment was created.
+     */
+    @CreatedDate
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+
+    /**
+     * The ticket to which this comment belongs.
+     */
+    @ManyToOne
+    @JoinColumn(name = &quot;ticket_id&quot;)
+    private TicketDto ticketDto;
+
+    /**
+     * Get the comment's unique identifier.
+     *
+     * @return The comment ID.
+     */
+    public Integer getCommentId() {
+<span class="nc" id="L52">        return commentId;</span>
+    }
+
+    /**
+     * Set the comment's unique identifier.
+     *
+     * @param commentId The comment ID to set.
+     */
+    public void setCommentId(final Integer commentId) {
+<span class="nc" id="L61">        this.commentId = commentId;</span>
+<span class="nc" id="L62">    }</span>
+
+    /**
+     * Get the content of the comment.
+     *
+     * @return The comment content.
+     */
+    public String getContent() {
+<span class="nc" id="L70">        return content;</span>
+    }
+
+    /**
+     * Set the content of the comment.
+     *
+     * @param content The comment content to set.
+     */
+    public void setContent(final String content) {
+<span class="nc" id="L79">        this.content = content;</span>
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Get the username associated with the comment.
+     *
+     * @return The username.
+     */
+    public String getUserName() {
+<span class="nc" id="L88">        return userName;</span>
+    }
+
+    /**
+     * Set the username associated with the comment.
+     *
+     * @param userName The username to set.
+     */
+    public void setUserName(final String userName) {
+<span class="nc" id="L97">        this.userName = userName;</span>
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Get the date when the comment was created.
+     *
+     * @return The creation date.
+     */
+    public Date getDate() {
+<span class="nc" id="L106">        return date;</span>
+    }
+
+    /**
+     * Set the date when the comment was created.
+     *
+     * @param date The creation date to set.
+     */
+    public void setDate(final Date date) {
+<span class="nc" id="L115">        this.date = date;</span>
+<span class="nc" id="L116">    }</span>
+
+    /**
+     * Get the associated ticket DTO.
+     *
+     * @return The associated ticket DTO.
+     */
+    public TicketDto getTicketDto() {
+<span class="nc" id="L124">        return ticketDto;</span>
+    }
+
+    /**
+     * Set the associated ticket DTO.
+     *
+     * @param ticketDto The ticket DTO to set.
+     */
+    public void setTicketDto(final TicketDto ticketDto) {
+<span class="nc" id="L133">        this.ticketDto = ticketDto;</span>
+<span class="nc" id="L134">    }</span>
+
+    /**
+     * Constructs a new CommentDto with the specified details.
+     *
+     * @param commentId The unique identifier for the comment.
+     * @param content   The content of the comment.
+     * @param userName  The username associated with the comment.
+     * @param date      The date when the comment was created.
+     * @param ticketDto The associated ticket DTO.
+     */
+    public CommentDto(final Integer commentId, @NotEmpty final String content, @NotEmpty final String userName,
+            final Date date,
+<span class="nc" id="L147">            final TicketDto ticketDto) {</span>
+<span class="nc" id="L148">        this.commentId = commentId;</span>
+<span class="nc" id="L149">        this.content = content;</span>
+<span class="nc" id="L150">        this.userName = userName;</span>
+<span class="nc" id="L151">        this.date = date;</span>
+<span class="nc" id="L152">        this.ticketDto = ticketDto;</span>
+<span class="nc" id="L153">    }</span>
+
+    /**
+     * Generate a hash code for the CommentDto.
+     *
+     * @return The hash code.
+     */
+    @Override
+    public int hashCode() {
+<span class="nc" id="L162">        final int prime = 31;</span>
+<span class="nc" id="L163">        int result = 1;</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">        result = prime * result + ((commentId == null) ? 0 : commentId.hashCode());</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        result = prime * result + ((content == null) ? 0 : content.hashCode());</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        result = prime * result + ((userName == null) ? 0 : userName.hashCode());</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">        result = prime * result + ((date == null) ? 0 : date.hashCode());</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">        result = prime * result + ((ticketDto == null) ? 0 : ticketDto.hashCode());</span>
+<span class="nc" id="L169">        return result;</span>
+    }
+
+    /**
+     * Check if this CommentDto is equal to another object.
+     *
+     * @param obj The object to compare.
+     * @return True if the objects are equal, false otherwise.
+     */
+    @Override
+    public boolean equals(final Object obj) {
+<span class="nc bnc" id="L180" title="All 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L181">            return true;</span>
+        }
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L184">            return false;</span>
+        }
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L187">            return false;</span>
+        }
+<span class="nc" id="L189">        CommentDto other = (CommentDto) obj;</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">        if (commentId == null) {</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">            if (other.commentId != null) {</span>
+<span class="nc" id="L192">                return false;</span>
+            }
+<span class="nc bnc" id="L194" title="All 2 branches missed.">        } else if (!commentId.equals(other.commentId)) {</span>
+<span class="nc" id="L195">            return false;</span>
+        }
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        if (content == null) {</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">            if (other.content != null) {</span>
+<span class="nc" id="L199">                return false;</span>
+            }
+<span class="nc bnc" id="L201" title="All 2 branches missed.">        } else if (!content.equals(other.content)) {</span>
+<span class="nc" id="L202">            return false;</span>
+        }
+<span class="nc bnc" id="L204" title="All 2 branches missed.">        if (userName == null) {</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">            if (other.userName != null) {</span>
+<span class="nc" id="L206">                return false;</span>
+            }
+<span class="nc bnc" id="L208" title="All 2 branches missed.">        } else if (!userName.equals(other.userName)) {</span>
+<span class="nc" id="L209">            return false;</span>
+        }
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        if (date == null) {</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">            if (other.date != null) {</span>
+<span class="nc" id="L213">                return false;</span>
+            }
+<span class="nc bnc" id="L215" title="All 2 branches missed.">        } else if (!date.equals(other.date)) {</span>
+<span class="nc" id="L216">            return false;</span>
+        }
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        if (ticketDto == null) {</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">            if (other.ticketDto != null) {</span>
+<span class="nc" id="L220">                return false;</span>
+            }
+<span class="nc bnc" id="L222" title="All 2 branches missed.">        } else if (!ticketDto.equals(other.ticketDto)) {</span>
+<span class="nc" id="L223">            return false;</span>
+        }
+<span class="nc" id="L225">        return true;</span>
+    }
+
+    /**
+     * Generate a string representation of the CommentDto.
+     *
+     * @return The string representation.
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L235">        return &quot;CommentDto [commentId=&quot; + commentId + &quot;, content=&quot; + content + &quot;, userName=&quot; + userName + &quot;, date=&quot;</span>
+                + date + &quot;, ticketDto=&quot; + ticketDto + &quot;]&quot;;
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

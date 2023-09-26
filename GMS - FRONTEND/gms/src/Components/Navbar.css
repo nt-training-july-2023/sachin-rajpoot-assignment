@@ -1,0 +1,138 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap');
+
+
+
+.nav_bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    /* background-color: #abc1bb; */
+    background-color: black;
+    padding: 2rem;
+    height: 10vh;
+}
+
+.logo p {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Tilt Prism', cursive;
+    color: aliceblue;
+}
+.link,a {
+    text-decoration: none;
+    color: aliceblue;
+}
+.link:hover, a:hover{
+    color: grey;
+}
+
+
+
+.nav_links{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2.5rem;
+    text-decoration: none;
+    margin-right: 4.5rem;
+}
+
+
+
+.dropbtn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: aliceblue;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background-color: aliceblue;
+    /* color: black; */
+  }
+  
+  .dropdown:hover .dropdown-content{
+    display: block;
+  }
+  .dropdown-content a{
+    display: block;
+    color: black;
+    margin: .7rem;
+  }
+  
+  .dropdown-content a:hover{
+    color: gray;
+  }
+
+  a{
+    text-decoration: none;
+    color: aliceblue;
+  }
+
+
+  /* MODAL CSS  */
+
+  body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+       /* padding: 10px 20px; */
+    /* display: block; */
+    /* margin: 100px auto 0; */
+    /* font-size: 18px; */
+    border: none;
+    FONT-SIZE: 1rem;
+    background-color: black;
+    color: aliceblue;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(49,49,49,0.8);
+}
+
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 350px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+.modal-content form {
+  margin-top: 27px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.modal-content form input {
+  padding: .5rem;
+  margin-bottom: 10px;
+}
