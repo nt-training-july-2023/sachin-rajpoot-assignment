@@ -51,6 +51,8 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
         email: data.email,
         password: btoa(data.password),
       };
+      console.log("Login Data Sent : ")
+      console.log(logindata)
       await axios
         .post("http://localhost:8080/api/login", logindata)
         .then((response) => {
@@ -63,9 +65,15 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
             "memberPassword",
             JSON.stringify(btoa(data.password))
           );
+          // setIsLoggedIn(true);
+          // setPopup(true)
           setIsLoggedIn(true);
-          setPopup(true)
-          navigate("/tickettable");
+          if(response.data.isFirstLogin === true){
+            navigate("/changepassword");
+          }
+          else {
+            navigate("/tickettable");
+          } 
         })
         .catch((err) => {
           setError(true)

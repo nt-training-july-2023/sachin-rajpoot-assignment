@@ -128,6 +128,7 @@ public class MemberServiceImpl implements MemberService {
     );
     if (member.getPassword().equals(changePasswordDto.getOldpassword())) {
       member.setPassword(changePasswordDto.getNewPassword());
+      member.setIsFirstLogin(false);
       Member savedMember = this.memberRepo.save(member);
       return this.mapper.map(savedMember, MemberOutDto.class);
     }

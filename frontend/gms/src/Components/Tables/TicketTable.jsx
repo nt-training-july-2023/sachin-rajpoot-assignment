@@ -271,7 +271,7 @@ function TicketTable({ isLoggedIn }) {
             <th className="ticket-table-head">Status</th>
             <th className="ticket-table-head">Created by</th>
             <th className="ticket-table-head">Last Updated</th>
-            <th className="ticket-table-head">View Details</th>
+            <th className="ticket-table-head">Details</th>
           </tr>
         </thead>
 
@@ -290,7 +290,7 @@ function TicketTable({ isLoggedIn }) {
                       className="ticket-table-view-btn-modal"
                       onClick={() => toggleModal(e.ticketId)}
                     >
-                      view details
+                      details
                     </button>
                       {/* VIEW TICKET MODAL  */}
                     {modal && (

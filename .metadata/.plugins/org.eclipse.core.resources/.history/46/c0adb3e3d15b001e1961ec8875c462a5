@@ -1,0 +1,28 @@
+package com.gms.demo.entity;
+
+/**
+ * 
+ * @version 1.0
+ * 
+ * @since Beginning of time
+ * 
+ *     Enumerates the possible statuses for a ticket.
+ *     Represents the different states that a task or ticket can be in.
+ *     The possible values are OPEN, PROGRESS, and CLOSED.
+ */
+public enum Status {
+  /**
+   * Indicates that the task/ticket is open and pending.
+   */
+  OPEN,
+  /**
+   * Indicates that the task/ticket is in progress.
+   */
+  PROGRESS,
+  /**
+   * Indicates that the task/ticket is closed or resolved.
+   */
+  CLOSED,
+  
+  ALL
+}

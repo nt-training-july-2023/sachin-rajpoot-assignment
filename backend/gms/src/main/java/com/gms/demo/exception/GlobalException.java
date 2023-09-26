@@ -30,8 +30,8 @@ public class GlobalException {
    */
   @ExceptionHandler(ResourceNotFoundException.class)
 public
-  ResponseEntity<ApiResponse> resourceNotFoundHandler(
-    final ResourceNotFoundException ex
+      ResponseEntity<ApiResponse> resourceNotFoundHandler(
+      final ResourceNotFoundException ex
   ) {
     String message = ex.getMessage();
     ApiResponse api = new ApiResponse(message, false);
@@ -42,22 +42,22 @@ public
    * Exception handler for MethodArgumentNotValidException.
    *
    * @param ex The MethodArgumentNotValidException instance.
-   * @return ResponseEntity containing a Map of field validation errors with HTTP status 400 (Bad Request).
+   * @return ResponseEntity containing a Map of field validation errors .
    */
   @ExceptionHandler(MethodArgumentNotValidException.class)
 public
-  ResponseEntity<Map<String, String>> methodArgumentNotValidExceptionHandler(
-    final MethodArgumentNotValidException ex
+      ResponseEntity<Map<String, String>> methodArgumentNotValidExceptionHandler(
+      final MethodArgumentNotValidException ex
   ) {
     Map<String, String> res = new HashMap<String, String>();
     ex
-      .getBindingResult()
-      .getAllErrors()
-      .forEach(err -> {
-        String fieldName = ((FieldError) err).getField();
-        String message = err.getDefaultMessage();
-        res.put(fieldName, message);
-      });
+        .getBindingResult()
+        .getAllErrors()
+        .forEach(err -> {
+          String fieldName = ((FieldError) err).getField();
+          String message = err.getDefaultMessage();
+          res.put(fieldName, message);
+        });
 
     return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
   }
@@ -70,8 +70,8 @@ public
    */
   @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 public
-  final ResponseEntity<ApiResponse> httpRequestMethodNotSupportedExceptionHandler(
-    final HttpRequestMethodNotSupportedException ex
+      final ResponseEntity<ApiResponse> httpRequestMethodNotSupportedExceptionHandler(
+      final HttpRequestMethodNotSupportedException ex
   ) {
     String message = "Enter a valid category Id";
 
@@ -79,10 +79,14 @@ public
     return new ResponseEntity<>(api, HttpStatus.NOT_FOUND);
   }
 
+  /**
+   * Exception handler for DataIntegrityViolationException.
+   *
+   */
   @ExceptionHandler(DataIntegrityViolationException.class)
 public
-  final ResponseEntity<ApiResponse> DataIntegrityViolationExceptionHandler(
-    final DataIntegrityViolationException ex
+        final ResponseEntity<ApiResponse> dataIntegrityViolationExceptionHandler(
+        final DataIntegrityViolationException ex
   ) {
     String message = "THIS FIELD ALREADY EXISTS, CHECK FOR UNIQUE FIELDS.";
 

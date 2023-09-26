@@ -20,45 +20,77 @@ function App() {
   }, []);
 
   const user = JSON.parse(localStorage.getItem("member"));
-  // const role = user ? user.role : "GUEST";
-  const role = JSON.parse(localStorage.getItem("member"))?.role;
+  const role = user ? user.role : "GUEST";
+  const isFirstLogin = user ? user.isFirstLogin : false;
+  console.log("isFirstLogin : ");
+  console.log(isFirstLogin);
+  console.log("Role");
+  console.log(role);
 
   return (
     <div className="App">
-      {JSON.parse(localStorage.getItem("member")) !== null ? (
+      {/* {isFirstLogin == false  && isLoggedIn ? (
         <Navbar setIsLoggedIn={setIsLoggedIn} />
       ) : (
         <Navigate to="/login" />
+      )} */}
+      {isFirstLogin === false && isLoggedIn && (
+        <Navbar setIsLoggedIn={setIsLoggedIn} />
       )}
 
       <Routes>
-        {isLoggedIn ? (
-          <>
-            {role === "ADMIN" && (
-              <>
-                <Route path="/newuser" element={<UserRegistration />} />
-                <Route path="/newticket" element={<NewTicket />} />
-                <Route path="/userTable" element={<UserTable />} />
-                <Route path="/departmenttable" element={<DepartmentTable />} />
-                <Route path="/tickettable" element={<TicketTable />} />
-                <Route
-                  path="/changepassword"
-                  element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />}
-                />
-              </>
-            )}
-            {role === "ADMIN" || role === "USER" && (
-              <>
-                <Route path="/tickettable" element={<TicketTable />} />
-                <Route path="/newticket" element={<NewTicket />} />
-                <Route path="/changepassword" element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />}/>
-              </>
-            )}
-          </>
-        ) : (
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        {isLoggedIn === false && (
+          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         )}
 
+        {console.log(isFirstLogin, "isFirstLoginisFirstLoginisFirstLogin")}
+        {isFirstLogin === true ? (
+          <Route
+            path="/changepassword"
+            element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />}
+          />
+        ) : (
+          <>
+            {isLoggedIn ? (
+              <>
+                {role === "ADMIN" && (
+                  <>
+                    <Route path="/newuser" element={<UserRegistration />} />
+                    <Route path="/newticket" element={<NewTicket />} />
+                    <Route path="/userTable" element={<UserTable />} />
+                    <Route
+                      path="/departmenttable"
+                      element={<DepartmentTable />}
+                    />
+                    <Route path="/tickettable" element={<TicketTable />} />
+                    <Route
+                      path="/changepassword"
+                      element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />}
+                    />
+                  </>
+                )}
+                {role === "ADMIN" ||
+                  (role === "USER" && (
+                    <>
+                      <Route path="/tickettable" element={<TicketTable />} />
+                      <Route path="/newticket" element={<NewTicket />} />
+                      <Route
+                        path="/changepassword"
+                        element={
+                          <ChangePassword setIsLoggedIn={setIsLoggedIn} />
+                        }
+                      />
+                    </>
+                  ))}
+              </>
+            ) : (
+              <Route
+                path="/login"
+                element={<Login setIsLoggedIn={setIsLoggedIn} />}
+              />
+            )}
+          </>
+        )}
         {/* Catch-all route for unauthorized access */}
         <Route
           path="*"
@@ -70,6 +102,3 @@ function App() {
 }
 
 export default App;
-
-
-

@@ -51,12 +51,12 @@ public class DepartmentController {
   @CrossOrigin
   @PostMapping("create/auth")
   ResponseEntity<DepartmentOutDto> createDepartment2(
-    @RequestBody @Valid final DepartmentDto departmentDto,
-    @RequestHeader final String email,
-    @RequestHeader final String password
+      @RequestBody @Valid final DepartmentDto departmentDto,
+      @RequestHeader final String email,
+      @RequestHeader final String password
   ) {
     DepartmentOutDto departmentDto2 =
-      this.departmentService.createDepartment2(departmentDto, email, password);
+        this.departmentService.createDepartment2(departmentDto, email, password);
     if (departmentDto2 != null) {
       return new ResponseEntity<>(departmentDto2, HttpStatus.CREATED);
     }
@@ -72,7 +72,7 @@ public class DepartmentController {
   @CrossOrigin
   @GetMapping("getAll/pageNumber/{pageNumber}")
   ResponseEntity<List<DepartmentOutDto>> getAllDepartment(
-    @PathVariable final Integer pageNumber
+      @PathVariable final Integer pageNumber
   ) {
     return new ResponseEntity<>(
       this.departmentService.getAllDepartment(pageNumber),
@@ -103,10 +103,10 @@ public class DepartmentController {
   @CrossOrigin
   @DeleteMapping("/delete/departmentId/{departmentId}")
   final ResponseEntity<ApiResponse> deleteDepartment(
-    @PathVariable @Valid final Integer departmentId
+      @PathVariable @Valid final Integer departmentId
   ) {
     ApiResponse apiResponse =
-      this.departmentService.deleteDepartment(departmentId);
+        this.departmentService.deleteDepartment(departmentId);
     if (apiResponse != null) {
       return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
     }

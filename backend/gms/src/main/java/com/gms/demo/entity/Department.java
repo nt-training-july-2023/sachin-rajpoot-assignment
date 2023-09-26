@@ -42,9 +42,9 @@ public class Department {
    * The list of members associated with this department.
    */
   @OneToMany(
-    mappedBy = "department",
-    cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY
+      mappedBy = "department",
+      cascade = CascadeType.ALL,
+      fetch = FetchType.LAZY
   )
   private List<Member> members = new ArrayList<>();
 
@@ -52,9 +52,9 @@ public class Department {
    * The list of tickets associated with this department.
    */
   @OneToMany(
-    mappedBy = "department",
-    cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY
+      mappedBy = "department",
+      cascade = CascadeType.ALL,
+      fetch = FetchType.LAZY
   )
   private List<Ticket> tickets = new ArrayList<>();
 
@@ -138,12 +138,16 @@ public class Department {
   @Override
   public final String toString() {
     return (
-      "Department [departmentId=" +
-      departmentId +
-      ", departmentName=" +
-      departmentName +
+      "Department [departmentId=" 
+      +
+      departmentId 
+      +
+      ", departmentName=" 
+      +
+      departmentName 
+      +
       "]"
-    );
+      );
   }
 
   /**
@@ -154,10 +158,10 @@ public class Department {
    * @param tickets      The list of tickets associated with the department.
    */
   public Department(
-    final Integer departmentId,
-    @NotEmpty final String departmentName,
-    final List<Member> members,
-    final List<Ticket> tickets
+      final Integer departmentId,
+      @NotEmpty final String departmentName,
+      final List<Member> members,
+      final List<Ticket> tickets
   ) {
     super();
     this.departmentId = departmentId;

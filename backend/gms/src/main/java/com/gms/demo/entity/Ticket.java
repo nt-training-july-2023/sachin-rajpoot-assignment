@@ -95,9 +95,9 @@ public class Ticket {
    * The list of comments associated with this ticket.
    */
   @OneToMany(
-    mappedBy = "ticket",
-    cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY
+      mappedBy = "ticket",
+      cascade = CascadeType.ALL,
+      fetch = FetchType.LAZY
   )
   private List<Comment> comments = new ArrayList<>();
 
@@ -281,6 +281,11 @@ public class Ticket {
     this.comments = comments;
   }
 
+  /**
+   * Add new comment.
+   *
+   * @param comment to set.
+   */
   public final void addComment(final Comment comment) {
     if (this.comments == null) {
       this.comments = new ArrayList<>();
@@ -297,28 +302,49 @@ public class Ticket {
   @Override
   public String toString() {
     return (
-      "Ticket [ticketId=" +
-      ticketId +
-      ", title=" +
-      title +
-      ", description=" +
-      description +
-      ", createdOn=" +
-      createdOn +
-      ", lastUpdatedOn=" +
-      lastUpdatedOn +
-      ", status=" +
-      status +
-      ", ticketType=" +
-      ticketType +
-      ", department=" +
-      department +
-      ", member=" +
-      member +
-      ", comments=" +
-      comments +
+      "Ticket [ticketId=" 
+      +
+      ticketId 
+      +
+      ", title=" 
+      +
+      title 
+      
+      +
+      ", description=" 
+      +
+      description 
+      +
+      ", createdOn=" 
+      +
+      createdOn 
+      +
+      ", lastUpdatedOn=" 
+      +
+      lastUpdatedOn 
+      +
+      ", status=" 
+      +
+      status 
+      +
+      ", ticketType=" 
+      +
+      ticketType 
+      +
+      ", department=" 
+      +
+      department 
+      +
+      ", member=" 
+      +
+      member 
+      +
+      ", comments=" 
+      +
+      comments 
+      +
       "]"
-    );
+      );
   }
 
   /**
@@ -336,16 +362,16 @@ public class Ticket {
    * @param comments      The list of comments associated with the ticket.
    */
   public Ticket(
-    final Integer ticketId,
-    @NotEmpty final String title,
-    @NotEmpty final String description,
-    final Date createdOn,
-    final Date lastUpdatedOn,
-    @NotEmpty final Status status,
-    @NotEmpty final TicketType ticketType,
-    final Department department,
-    final Member member,
-    final List<Comment> comments
+      final Integer ticketId,
+      @NotEmpty final String title,
+      @NotEmpty final String description,
+      final Date createdOn,
+      final Date lastUpdatedOn,
+      @NotEmpty final Status status,
+      @NotEmpty final TicketType ticketType,
+      final Department department,
+      final Member member,
+      final List<Comment> comments
   ) {
     super();
     this.ticketId = ticketId;

@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,9 +48,9 @@ public class TicketController {
   @CrossOrigin
   @PostMapping("create/memberId/{memberId}/departmentId/{departmentId}")
   public ResponseEntity<?> createTicket(
-    @Valid @RequestBody final TicketDto ticketDto,
-    @PathVariable final Integer memberId,
-    @PathVariable final Integer departmentId
+      @Valid @RequestBody final TicketDto ticketDto,
+      @PathVariable final Integer memberId,
+      @PathVariable final Integer departmentId
   ) {
     System.out.println("INSIDE CREATE MEMBER");
     System.out.println(ticketDto.getStatus().equals(Status.OPEN));
@@ -69,18 +68,18 @@ public class TicketController {
    * @param pageNumber  The page number for pagination.
    * @param myTickets   Flag indicating whether to retrieve only the member's tickets.
    * @param adminDept   Flag indicating whether to include tickets from admin department.
-   * @return A ResponseEntity containing a list of TicketGetAllOutDto objects and an HTTP status code.
+   * @return A ResponseEntity containing a list of TicketGetAllOutDto objects.
    */
   @CrossOrigin
   @GetMapping(
-    "getAll/auth/memberId/{memberId}/filter/{filter}/pageNumber/{pageNumber}"
+      "getAll/auth/memberId/{memberId}/filter/{filter}/pageNumber/{pageNumber}"
   )
   public final ResponseEntity<List<TicketGetAllOutDto>> getAllTicketAuth(
-    @PathVariable final Integer memberId,
-    @PathVariable final Status filter,
-    @PathVariable final Integer pageNumber,
-    @RequestParam(required = false) final boolean myTickets,
-    @RequestParam(required = false) final boolean adminDept
+      @PathVariable final Integer memberId,
+      @PathVariable final Status filter,
+      @PathVariable final Integer pageNumber,
+      @RequestParam(required = false) final boolean myTickets,
+      @RequestParam(required = false) final boolean adminDept
   ) {
     System.out.println(myTickets + "          " + adminDept);
     return new ResponseEntity<List<TicketGetAllOutDto>>(
@@ -105,8 +104,8 @@ public class TicketController {
   @CrossOrigin
   @PutMapping("update/ticketId/{ticketId}")
   public final ResponseEntity<TicketOutDto> updateTicket(
-    @Valid @RequestBody final TicketUpdateStatusInDto ticketDto,
-    @PathVariable final Integer ticketId
+      @Valid @RequestBody final TicketUpdateStatusInDto ticketDto,
+      @PathVariable final Integer ticketId
   ) {
     return new ResponseEntity<TicketOutDto>(
       this.ticketService.updateTicket(ticketDto, ticketId),
@@ -123,7 +122,7 @@ public class TicketController {
   @CrossOrigin
   @GetMapping("getbyId/ticketId/{ticketId}")
   public final ResponseEntity<TicketOutDto> getTicketById(
-    @PathVariable @Valid final Integer ticketId
+      @PathVariable @Valid final Integer ticketId
   ) {
     return new ResponseEntity<TicketOutDto>(
       this.ticketService.getTicketBtId(ticketId),

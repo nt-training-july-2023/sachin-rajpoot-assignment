@@ -77,9 +77,9 @@ public class Member {
    * The list of tickets associated with this member.
    */
   @OneToMany(
-    mappedBy = "member",
-    cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY
+      mappedBy = "member",
+      cascade = CascadeType.ALL,
+      fetch = FetchType.LAZY
   )
   private List<Ticket> tickets = new ArrayList<>();
 
@@ -235,20 +235,32 @@ public class Member {
   @Override
   public final String toString() {
     return (
-      "Member [memberId=" +
-      memberId +
-      ", name=" +
-      name +
-      ", email=" +
-      email +
-      ", password=" +
-      password +
-      ", isFirstLogin=" +
-      isFirstLogin +
-      ", role=" +
-      role +
+      "Member [memberId=" 
+      +
+      memberId 
+      +
+      ", name=" 
+      +
+      name 
+      +
+      ", email=" 
+      +
+      email 
+      +
+      ", password=" 
+      +
+      password 
+      +
+      ", isFirstLogin=" 
+      +
+      isFirstLogin 
+      +
+      ", role=" 
+      +
+      role 
+      +
       "]"
-    );
+      );
   }
 
   /**
@@ -264,14 +276,14 @@ public class Member {
    * @param tickets      The list of tickets associated with the member.
    */
   public Member(
-    final Integer memberId,
-    @NotEmpty final String name,
-    @NotEmpty @Email final String email,
-    @NotEmpty final String password,
-    final Boolean isFirstLogin,
-    final Role role,
-    final Department department,
-    final List<Ticket> tickets
+      final Integer memberId,
+      @NotEmpty final String name,
+      @NotEmpty @Email final String email,
+      @NotEmpty final String password,
+      final Boolean isFirstLogin,
+      final Role role,
+      final Department department,
+      final List<Ticket> tickets
   ) {
     super();
     this.memberId = memberId;

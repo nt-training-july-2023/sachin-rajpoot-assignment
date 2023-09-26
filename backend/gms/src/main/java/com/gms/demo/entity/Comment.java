@@ -10,9 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
-
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
+
 
 /**
  * Represents a Comment Entity.
@@ -66,11 +65,11 @@ public class Comment {
    * @param ticket    The ticket to which this comment belongs.
    */
   public Comment(
-    final Integer commentId,
-    @NotEmpty final String content,
-    @NotEmpty final String userName,
-    final Date date,
-    final Ticket ticket
+      final Integer commentId,
+      @NotEmpty final String content,
+      @NotEmpty final String userName,
+      final Date date,
+      final Ticket ticket
   ) {
     this.commentId = commentId;
     this.content = content;
@@ -184,15 +183,23 @@ public class Comment {
   @Override
   public String toString() {
     return (
-      "Comment [commentId=" +
-      commentId +
-      ", content=" +
-      content +
-      ", userName=" +
-      userName +
-      ", date=" +
-      date +
+      "Comment [commentId=" 
+      +
+      commentId 
+      +
+      ", content=" 
+      +
+      content 
+      +
+      ", userName=" 
+      +
+      userName 
+      +
+      ", date=" 
+      +
+      date 
+      +
       "]"
-    );
+      );
   }
 }

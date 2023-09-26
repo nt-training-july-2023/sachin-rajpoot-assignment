@@ -26,21 +26,24 @@ public class FilterConfiguration {
 
   /**
    * Constructor.
-   *
-   * @param MemberRepo memberRepo
    */
   public FilterConfiguration(final MemberRepo memberRepo) {
     super();
     this.memberRepo = memberRepo;
   }
+  
+  /**
+   * filter method.
+   * 
+   */
 
   @Bean
   public CorsFilter corsFilter() {
     org.springframework.web.cors.UrlBasedCorsConfigurationSource source =
-    new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+        new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
     CorsConfiguration config = new CorsConfiguration();
-    config.addAllowedOrigin("http://localhost:3000"); // Replace with your frontend URL
-    config.addAllowedHeader("*"); // Allow all headers for demonstration purposes; restrict as needed
+    config.addAllowedOrigin("http://localhost:3000");
+    config.addAllowedHeader("*"); 
     config.addAllowedMethod("GET");
     config.addAllowedMethod("POST");
     config.addAllowedMethod("PUT");

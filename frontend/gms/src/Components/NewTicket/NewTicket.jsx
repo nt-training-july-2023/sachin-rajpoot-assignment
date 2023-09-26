@@ -239,7 +239,7 @@ function DeptRegistration() {
         {modal && (
           <PopUp
             openPopup={modal}
-            customHeading="Member Deleted Successfully"
+            customHeading="Created Successfully"
             customImageSrc="404-Tick.png"
             toggleModal={toggleModal}
           />

@@ -48,7 +48,7 @@ function ChangePassword({ setIsLoggedIn }) {
   const handleLogOut = () => {
     localStorage.clear();
     setIsLoggedIn(false);
-    navigate("/login");
+    navigate("/");
   };
 
   //  HANDLE SUBMIT -> CHANGE PASSWORD
@@ -90,7 +90,7 @@ function ChangePassword({ setIsLoggedIn }) {
         config
       )
       .then((response) => {
-        localStorage.clear();
+        // localStorage.clear();
         setModal(true);
         console.log("DATA RECEIVED");
         console.log(response.data);

@@ -2,9 +2,8 @@ package com.gms.demo.exception;
 
 /**
  * Custom exception class for resource not found scenarios.
- *
- * This exception is thrown when a requested resource of a specified type and field value is not found.
- * It provides information about the resource type, the field name, and the field value that led to the exception.
+ * This exception is thrown when a requested resource is not found.
+ * It provides information  that led to the exception.
  *
  * @version 1.0
  * @since 28-08-2023
@@ -34,12 +33,12 @@ public class ResourceNotFoundException extends RuntimeException {
    * @param fieldValue   The field value that was used in the query.
    */
   public ResourceNotFoundException(
-    final String resourceName,
-    final String fieldName,
-    final long fieldValue
+      final String resourceName,
+      final String fieldName,
+      final long fieldValue
   ) {
     super(
-      String.format(
+        String.format(
         "%s not found with %s : %s",
         resourceName,
         fieldName,

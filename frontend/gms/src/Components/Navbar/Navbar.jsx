@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -18,6 +18,14 @@ function Navbar({ setIsLoggedIn }) {
   const memberName = JSON.parse(localStorage.getItem("member"))?.name;
   const memberRole = JSON.parse(localStorage.getItem("member"))?.role;
   const memberDept = JSON.parse(localStorage.getItem("member"))?.departmentName;
+
+  const location = useLocation();
+
+  // Define a function to determine if a link is active
+  const isActive = (path) => {
+    if (location.pathname === path) return true;
+    else return false;
+  };
 
   // TOGGLES THE MODAL FOR CREATE NEW DEPARTMENT
   const toggleModal = () => {
@@ -113,7 +121,13 @@ function Navbar({ setIsLoggedIn }) {
         {/* DEPARTMENT BUTTON  */}
         {role === "ADMIN" && (
           <div className="dropdown">
-            <button className="dropbtn">Department</button>
+            <button
+              className={`dropbtn ${
+                isActive("/departmenttable") ? "active-link" : ""
+              }`}
+            >
+              Department
+            </button>
             <div className="dropdown-content">
               <Link to={"departmenttable"} className="link">
                 Department Table
@@ -195,7 +209,15 @@ function Navbar({ setIsLoggedIn }) {
         {/* USER BUTTON  */}
         {role === "ADMIN" && (
           <div className="dropdown">
-            <button className="dropbtn">User</button>
+            <button
+              className={`dropbtn ${
+                isActive("/usertable") || isActive("/newuser")
+                  ? "active-link"
+                  : ""
+              }`}
+            >
+              User
+            </button>
             <div className="dropdown-content">
               <Link to={"usertable"} className="link">
                 User Table
@@ -209,7 +231,15 @@ function Navbar({ setIsLoggedIn }) {
 
         {/* TICKET BUTTON  */}
         <div className="dropdown">
-          <button className="dropbtn">Ticket</button>
+          <button
+            className={`dropbtn ${
+              isActive("/tickettable") || isActive("/newticket")
+                ? "active-link"
+                : ""
+            }`}
+          >
+            Ticket
+          </button>
           <div className="dropdown-content">
             <Link to={"tickettable"} className="link">
               Ticket Table

@@ -50,7 +50,7 @@ public class MemberController {
    */
   @Autowired
   public final MemberService setMemberService(
-    final MemberService memberService
+      final MemberService memberService
   ) {
     this.memberService = memberService;
     return memberService;
@@ -66,28 +66,28 @@ public class MemberController {
   @CrossOrigin
   @PostMapping("login")
   public ResponseEntity<?> login(
-    @RequestBody @Valid final MemberLoginDto memberLoginDto
+      @RequestBody @Valid final MemberLoginDto memberLoginDto
   ) throws Exception {
     System.out.println(
-      "Verify email and password"
-      + this.memberService.verifyEmailAndPassword(
+        "Verify email and password"
+        +   this.memberService.verifyEmailAndPassword(
           memberLoginDto.getEmail(),
           memberLoginDto.getPassword()
         )
     );
 
-    if (
-      this.memberService.verifyEmailAndPassword(
-          memberLoginDto.getEmail(),
-          memberLoginDto.getPassword()
-        )
-    ) {
+//    if (
+//        this.memberService.verifyEmailAndPassword(
+//          memberLoginDto.getEmail(),
+//          memberLoginDto.getPassword()
+//        )
+//    ) {
       MemberOutDto memberOutDto = this.memberService.login(memberLoginDto);
       System.out.println("Member Out Dto received back " + memberOutDto);
       if (memberOutDto != null) {
         return new ResponseEntity<>(memberOutDto, HttpStatus.ACCEPTED);
       }
-    }
+//    }
     return new ResponseEntity<>(
       "Invalid Credentials, Please try again.",
       HttpStatus.BAD_REQUEST
@@ -105,12 +105,13 @@ public class MemberController {
   @CrossOrigin
   @PostMapping("create/nodept")
   public final ResponseEntity<?> createMember3(
-    @RequestBody @Valid final MemberDto memberDto,
-    @RequestHeader final String email,
-    @RequestHeader final String password
+      @RequestBody @Valid final MemberDto memberDto,
+      @RequestHeader final String email,
+      @RequestHeader final String password
   ) {
     
-    return new ResponseEntity<>(this.memberService.createMember3(memberDto, email, password), HttpStatus.OK);
+    return new ResponseEntity<>(this.memberService.createMember3(memberDto, email, password),
+     HttpStatus.OK);
   }
   /**
    * Retrieves a list of authenticated members with pagination.
@@ -118,14 +119,15 @@ public class MemberController {
    * @param email      The email header used for authentication.
    * @param password   The password header used for authentication.
    * @param pageNumber The page number for pagination.
-   * @return A ResponseEntity containing a list of authenticated MemberGetAllOutDto objects and an HTTP status code.
+   * @return A ResponseEntity containing a list of authenticated MemberGetAllOutDto.
    */
+  
   @CrossOrigin
   @GetMapping("member/getAll/auth/pageNumber/{pageNumber}")
   public final ResponseEntity<List<MemberGetAllOutDto>> getAllMemberAuth(
-    @RequestHeader final String email,
-    @RequestHeader final String password,
-    @PathVariable final Integer pageNumber
+      @RequestHeader final String email,
+      @RequestHeader final String password,
+      @PathVariable final Integer pageNumber
   ) {
     return new ResponseEntity<>(
       this.memberService.getAllMemberAuth(email, password, pageNumber),
@@ -138,25 +140,25 @@ public class MemberController {
    *
    * @param memberId           The ID of the member whose password will be changed.
    * @param changePasswordDto  The DTO containing the new password information.
-   * @return A ResponseEntity containing the updated MemberOutDto or an error ApiResponse and an HTTP status code.
+   * @return A ResponseEntity containing the updated MemberOutDto .
    */
   @CrossOrigin
   @PutMapping("changepassword/memberId/{memberId}")
   public final ResponseEntity<?> changePassword(
-    @PathVariable final Integer memberId,
-    @RequestBody final MemberChangePasswordDto changePasswordDto
+      @PathVariable final Integer memberId,
+      @RequestBody final MemberChangePasswordDto changePasswordDto
   ) {
     System.out.println("inside controller");
 
     MemberOutDto memberOutDto =
-      this.memberService.changePassword(memberId, changePasswordDto);
+        this.memberService.changePassword(memberId, changePasswordDto);
 
     if (memberOutDto != null) {
       return new ResponseEntity<>(memberOutDto, HttpStatus.OK);
     }
 
     return new ResponseEntity<>(
-      new ApiResponse("Incorrect Password, Please try again.", false),
+        new ApiResponse("Incorrect Password, Please try again.", false),
       HttpStatus.BAD_REQUEST
     );
   }
@@ -170,7 +172,7 @@ public class MemberController {
   @CrossOrigin
   @DeleteMapping("member/delete/memberId/{memberId}")
   public final ResponseEntity<ApiResponse> deleteMember(
-    @PathVariable @Valid final Integer memberId
+      @PathVariable @Valid final Integer memberId
   ) {
     ApiResponse apiResponse = this.memberService.deleteMember(memberId);
     if (apiResponse != null) {
