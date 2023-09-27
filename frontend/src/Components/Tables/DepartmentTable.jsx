@@ -101,6 +101,7 @@ function DepartmentTable() {
       <table>
         <thead>
           <tr className="ticket-table-row">
+            <th className="ticket-table-head">Serial No.</th>
             <th className="ticket-table-head">Name</th>
             <th className="ticket-table-head">Remove</th>
           </tr>
@@ -109,8 +110,9 @@ function DepartmentTable() {
           {departmentsData &&
             departmentsData
               .filter((e) => e.departmentName !== memberDept)
-              .map((e) => (
+              .map((e, index) => (
                 <tr key={e.departmentId}>
+                  <td className="ticket-table-data">{index + 1}</td>
                   <td className="ticket-table-data">{e.departmentName}</td>
                   <td className="ticket-table-data">
                     <button

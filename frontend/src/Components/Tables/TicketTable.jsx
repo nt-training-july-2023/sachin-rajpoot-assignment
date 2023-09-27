@@ -25,6 +25,9 @@ function TicketTable({ isLoggedIn }) {
   const memberId = JSON.parse(localStorage.getItem("member"))?.memberId;
   const memberEmail = JSON.parse(localStorage.getItem("member"))?.email;
   const memberUserName = JSON.parse(localStorage.getItem("member"))?.name;
+  const memberDepartmentName = JSON.parse(
+    localStorage.getItem("member")
+  )?.departmentName;
   const memberPassword = JSON.parse(localStorage.getItem("memberPassword"));
 
   const formRef = useRef(null);
@@ -266,6 +269,7 @@ function TicketTable({ isLoggedIn }) {
         <thead>
           {/* TABLE HEADS  */}
           <tr className="ticket-table-row">
+            <th className="ticket-table-head">Serial No.</th>
             <th className="ticket-table-head">Title</th>
             <th className="ticket-table-head">Department</th>
             <th className="ticket-table-head">Status</th>
@@ -277,9 +281,10 @@ function TicketTable({ isLoggedIn }) {
 
         <tbody>
           {ticketsData &&
-            ticketsData?.map((e) => {
+            ticketsData?.map((e, index) => {
               return (
                 <tr key={e.ticketId}>
+                  <td className="ticket-table-data">{index + 1}</td>
                   <td className="ticket-table-data">{e.title}</td>
                   <td className="ticket-table-data">{e.departmentName}</td>
                   <td className="ticket-table-data">{e.status}</td>
@@ -412,7 +417,12 @@ function TicketTable({ isLoggedIn }) {
                                 ></textarea>
                               </form>
 
-                              <button onClick={handleUpdateTicket}>
+                              <button
+                                onClick={handleUpdateTicket}
+                                disabled={
+                                  ticket.departmentName !== memberDepartmentName
+                                }
+                              >
                                 Update
                               </button>
                             </div>

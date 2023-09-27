@@ -53,7 +53,7 @@ public class DepartmentServiceImpl implements DepartmentService {
   public final List<DepartmentOutDto> getAllDepartment(final Integer pageNumber) {
     Page<Department> departments =
         this.departmentRepo.findAll(
-          PageRequest.of(pageNumber, 6, Sort.by("departmentName"))
+          PageRequest.of(pageNumber, 8, Sort.by("departmentName"))
         );
     List<DepartmentOutDto> departmentDtos = new ArrayList<>();
     departments.forEach(department ->

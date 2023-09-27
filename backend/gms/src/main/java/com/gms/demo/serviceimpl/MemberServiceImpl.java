@@ -114,7 +114,7 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public final List<MemberGetAllOutDto> getAllMemberAuth(final String email, final String password,
       final Integer pageNumber) {
-    Page<Member> members = this.memberRepo.findAll(PageRequest.of(pageNumber, 6, Sort.by("name")));
+    Page<Member> members = this.memberRepo.findAll(PageRequest.of(pageNumber, 8, Sort.by("name")));
     List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
     members.forEach(m -> memberOutDtos.add(this.mapper.map(m, MemberGetAllOutDto.class)));
     return memberOutDtos;

@@ -6,6 +6,9 @@ import com.gms.demo.payloads.DepartmentOutDto;
 import com.gms.demo.service.DepartmentService;
 import java.util.List;
 import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +39,12 @@ public class DepartmentController {
   private DepartmentService departmentService;
 
   /**
+   * Logger for logging.
+   */
+  private static final Logger log = LoggerFactory
+      .getLogger(DepartmentController.class);
+
+  /**
    * Creates a new department with email and password authentication.
    *
    * @param departmentDto The DepartmentDto object containing department
@@ -55,6 +64,7 @@ public class DepartmentController {
       @RequestHeader final String email,
       @RequestHeader final String password
   ) {
+    log.info("Inside Create Department method");
     DepartmentOutDto departmentDto2 =
         this.departmentService.createDepartment2(departmentDto,
           email, password);

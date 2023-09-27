@@ -96,6 +96,7 @@ function UserTable() {
       <table>
         <thead>
           <tr className="ticket-table-row">
+          <th className="ticket-table-head">Serial No.</th>
             <th className="ticket-table-head">Name</th>
             <th className="ticket-table-head">Department</th>
             <th className="ticket-table-head">Role</th>
@@ -107,8 +108,9 @@ function UserTable() {
           {usersData &&
             usersData
               ?.filter((e) => e.email !== memberEmail)
-              .map((user) => (
+              .map((user, index) => (
                 <tr key={user.memberId}>
+                   <td className="ticket-table-data">{index + 1}</td>
                   <td className="ticket-table-data">{user.name}</td>
                   <td className="ticket-table-data">{user.departmentName}</td>
                   <td className="ticket-table-data">{user.role}</td>

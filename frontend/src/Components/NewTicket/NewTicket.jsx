@@ -216,7 +216,7 @@ function DeptRegistration() {
           <div className="dept_registration_form_btn">
             <input
               type="submit"
-              value="Register"
+              value="ADD"
               className={isButtonDisabled ? "disabled-button" : ""}
             />
           </div>

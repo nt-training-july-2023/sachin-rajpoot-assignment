@@ -43,7 +43,20 @@ function UserRegistration() {
   const handleNameChange = (event) => {
     const newName = event.target.value;
     setName(newName);
-    setNameError(newName.trim() === "" ? "Name cannot be empty" : "");
+    const usernameregex = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
+    if(newName.trim() === ""){
+      setNameError("Name cannot be empty");
+    }
+    else if(newName.trim().length > 3){
+      setNameError("Name must be minimum 3 letter")
+    }
+    else if(usernameregex.test(newName) == false){
+      setNameError("Name must not contain digits")
+    }
+    else{
+      setNameError("")
+    }
+    
   };
 
   // HANDLE EMAIL CHANGE
@@ -64,11 +77,20 @@ function UserRegistration() {
   const handlePasswordChange = (event) => {
     const newPassword = event.target.value;
     setPassword(newPassword);
-    setPasswordError(
-      newPassword.length < 8
-        ? "Password must be at least 8 characters long."
-        : ""
+    const passwordRegex = new RegExp(
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).*$/
     );
+    if (newPassword.trim() === "") {
+      setPasswordError("Password can not be empty.");
+    } else if (newPassword.trim().length < 8) {
+      setPasswordError("Password must be at least 8 characters long.");
+    } else if (passwordRegex.test(newPassword) === false) {
+      setPasswordError(
+        "password must contain capital, small letter, digit and specail character"
+      );
+    } else {
+      setPasswordError("");
+    }
   };
 
   // CHANGE USER TYPE CHANGE
@@ -243,7 +265,7 @@ function UserRegistration() {
 
           {/* SUBMIT BUTTON  */}
           <div className="user_registration_form_btn">
-            <input type="submit" value="Register" />
+            <input type="submit" value="ADD" />
           </div>
         </form>
 

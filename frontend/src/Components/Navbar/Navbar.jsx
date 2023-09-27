@@ -87,6 +87,7 @@ function Navbar({ setIsLoggedIn }) {
         if (response.data.success === false) {
           // setError(true);
         }
+        setModal(false);
         setModal2(true);
         console.log(department);
         console.log("Form submitted successfully!");
@@ -95,7 +96,9 @@ function Navbar({ setIsLoggedIn }) {
         // alert(response.data.message);
       })
       .catch((err) => {
+        setModal(false);
         setError(true);
+
         console.log(err);
         if (err?.response?.data?.message) {
           // alert(err.response.data.message);
@@ -111,13 +114,6 @@ function Navbar({ setIsLoggedIn }) {
       </div>
 
       <div className="nav_links topnav" id="myTopnav">
-        {/* HOME BUTTON  */}
-        {/* <div className="nav_link active">
-          <Link to="/" className="link">
-            Home
-          </Link>
-        </div> */}
-
         {/* DEPARTMENT BUTTON  */}
         {role === "ADMIN" && (
           <div className="dropdown">
@@ -134,7 +130,7 @@ function Navbar({ setIsLoggedIn }) {
               </Link>
 
               <a href="#" onClick={toggleModal} className="dept-btn-modal">
-                New Department
+                Add Department
               </a>
               {modal && (
                 <div className="dept-modal">
@@ -151,7 +147,7 @@ function Navbar({ setIsLoggedIn }) {
                       />
                       <input
                         type="submit"
-                        value="Submit"
+                        value="ADD"
                         className="dept-form-submit-btn"
                       />
                     </form>
@@ -159,47 +155,6 @@ function Navbar({ setIsLoggedIn }) {
                       CLOSE
                     </button>
                   </div>
-
-                  {/* DISPLAY SUCCESS OR ERROR MESSAGE */}
-                  {/* {modal2 && (
-                    <div className="dept-modal">
-                      <div className="dept-modal-content">
-                        {!error && <h2>Department Created Successfully</h2>}
-                        {error && (
-                          <h2>
-                            THIS FIELD ALREADY EXISTS,
-                            <br /> CHECK FOR UNIQUE FIELDS
-                          </h2>
-                        )}
-                        <button
-                          className="dept-close-modal"
-                          onClick={toggleModal2}
-                        >
-                          CLOSE
-                        </button>
-                      </div>
-                    </div>
-                  )} */}
-
-                  {/* POP UP ON SUCCESS  */}
-                  {modal2 && (
-                    <PopUp
-                      openPopup={modal2}
-                      customHeading="Created Successfully"
-                      customImageSrc="404-Tick.png"
-                      toggleModal={toggleModal2}
-                    />
-                  )}
-
-                  {/* POP UP ON FAIL  */}
-                  {error && (
-                    <PopUp
-                      openPopup={error}
-                      customHeading="Department Already Exists"
-                      customImageSrc="fail.png"
-                      toggleError={toggleError}
-                    />
-                  )}
                 </div>
               )}
             </div>
@@ -223,7 +178,7 @@ function Navbar({ setIsLoggedIn }) {
                 User Table
               </Link>
               <Link to={"newuser"} className="link">
-                Add new user
+                Add User
               </Link>
             </div>
           </div>
@@ -246,14 +201,20 @@ function Navbar({ setIsLoggedIn }) {
             </Link>
 
             <Link to={"newticket"} className="link">
-              Add new ticket
+              Add Ticket
             </Link>
           </div>
         </div>
 
         {/* PROFILE BUTTON  */}
         <div className="dropdown">
-          <button className="dropbtn">Profile</button>
+          <button
+            className={`dropbtn ${
+              isActive("/changepassword") ? "active-link" : ""
+            }`}
+          >
+            Profile
+          </button>
           <div className="dropdown-content">
             <a href="#" onClick={toggleModal} className="dept-btn-modal">
               Profile
@@ -262,10 +223,18 @@ function Navbar({ setIsLoggedIn }) {
               <div className="dept-modal">
                 <div onClick={toggleModal} className="overlay"></div>
                 <div className="dept-modal-content">
-                  <h2>Name : {memberName}</h2>
-                  <h2>Role : {memberRole}</h2>
-                  <h2>Email : {memberEmail}</h2>
-                  <h2>Department : {memberDept}</h2>
+                  <h2 style={{ textDecoration: "none" }}>
+                    Name : {memberName}
+                  </h2>
+                  <h2 style={{ textDecoration: "none" }}>
+                    Role : {memberRole}
+                  </h2>
+                  <h2 style={{ textDecoration: "none" }}>
+                    Email : {memberEmail}
+                  </h2>
+                  <h2 style={{ textDecoration: "none" }}>
+                    Department : {memberDept}
+                  </h2>
                   <button className="dept-close-modal" onClick={toggleModal}>
                     CLOSE
                   </button>
@@ -286,6 +255,26 @@ function Navbar({ setIsLoggedIn }) {
           </button>
         </div>
       </div>
+
+      {/* POP UP ON SUCCESS  */}
+      {modal2 && (
+        <PopUp
+          openPopup={modal2}
+          customHeading="Created Successfully"
+          customImageSrc="404-Tick.png"
+          toggleModal={toggleModal2}
+        />
+      )}
+
+      {/* POP UP ON FAIL  */}
+      {error && (
+        <PopUp
+          openPopup={error}
+          customHeading="Department Already Exists"
+          customImageSrc="fail.png"
+          toggleError={toggleError}
+        />
+      )}
     </div>
   );
 }
