@@ -28,10 +28,21 @@ function ChangePassword({ setIsLoggedIn }) {
   const handleNewPasswordChange = (e) => {
     const v = e.target.value;
     setNewPassword(v);
-    setNewPasswordError(v.trim() === "" ? "Field cannot be empty" : "");
-    setNewPasswordError(
-      v.length < 5 ? "Password must be at least 5 characters long." : ""
+    const passwordRegex = new RegExp(
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).*$/
     );
+    if (v.trim() === "") {
+      setNewPasswordError("Password can not be empty.");
+    } else if (v.trim().length < 8) {
+      setNewPasswordError("Password must be at least 8 characters long.");
+    } else if (passwordRegex.test(v) === false) {
+      setNewPasswordError(
+        "password must contain capital, small letter,"+
+        "digit and special character"
+      );
+    } else {
+      setNewPasswordError("");
+    }
   };
 
   // SET CONFRIM PASSWORD
@@ -128,7 +139,7 @@ function ChangePassword({ setIsLoggedIn }) {
           <div className="change-password-input-area">
             <label htmlFor="oldpassword">Old Password :</label>
             <input
-              type="text"
+              type="password"
               placeholder="Enter old password"
               onChange={(e) => handleOldPasswordChange(e)}
               required
@@ -141,7 +152,7 @@ function ChangePassword({ setIsLoggedIn }) {
           <div className="change-password-input-area">
             <label htmlFor="newpassword">New Password :</label>
             <input
-              type="text"
+              type="password"
               placeholder="Enter new password"
               onChange={(e) => handleNewPasswordChange(e)}
               required
@@ -154,7 +165,7 @@ function ChangePassword({ setIsLoggedIn }) {
           <div className="change-password-input-area">
             <label htmlFor="conpassword">Confirm Password :</label>
             <input
-              type="text"
+              type="password"
               placeholder="confirm new password"
               onChange={(e) => handleconfirmPasswordChange(e)}
               required

@@ -86,7 +86,7 @@ function UserRegistration() {
       setPasswordError("Password must be at least 8 characters long.");
     } else if (passwordRegex.test(newPassword) === false) {
       setPasswordError(
-        "password must contain capital, small letter, digit and specail character"
+        "password must contain capital, small letter, digit and special character"
       );
     } else {
       setPasswordError("");
