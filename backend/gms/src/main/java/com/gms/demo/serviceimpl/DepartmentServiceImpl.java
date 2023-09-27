@@ -16,10 +16,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+/**
+ *Sevive Implementation for department.
+ * 
+ */
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
@@ -47,15 +50,14 @@ public class DepartmentServiceImpl implements DepartmentService {
    * @return A list of DepartmentOutDto objects representing all departments.
    */
   @Override
-  public List<DepartmentOutDto> getAllDepartment(final Integer pageNumber) {
-    Pageable pageable = PageRequest.of(pageNumber, 6);
+  public final List<DepartmentOutDto> getAllDepartment(final Integer pageNumber) {
     Page<Department> departments =
-      this.departmentRepo.findAll(
+        this.departmentRepo.findAll(
           PageRequest.of(pageNumber, 6, Sort.by("departmentName"))
         );
     List<DepartmentOutDto> departmentDtos = new ArrayList<>();
     departments.forEach(department ->
-      departmentDtos.add(
+        departmentDtos.add(
         this.modelMapper.map(department, DepartmentOutDto.class)
       )
     );
@@ -65,15 +67,17 @@ public class DepartmentServiceImpl implements DepartmentService {
   /**
    * Retrieves a department by its unique identifier.
    *
-   * @param departmentId The unique identifier of the department to retrieve.
+   * @param departmentId The unique identifier of the
+   *     department to retrieve.
    * @return The department represented as a DepartmentDto.
-   * @throws ResourceNotFoundException If the department with the specified ID is
-   *                                   not found.
+   * @throws ResourceNotFoundException If the
+   *     department with the specified ID is not found.
    */
   @Override
-  public DepartmentOutDto getDepartmentById(final Integer departmentId) {
+  public final DepartmentOutDto 
+      getDepartmentById(final Integer departmentId) {
     Department department =
-      this.departmentRepo.findById(departmentId)
+        this.departmentRepo.findById(departmentId)
         .orElseThrow(() ->
           new ResourceNotFoundException(
             "Department",
@@ -85,7 +89,8 @@ public class DepartmentServiceImpl implements DepartmentService {
   }
 
   /**
-   * Creates a new department if the provided credentials match those of an admin
+   * Creates a new department if the provided credentials
+   *     match those of an admin
    * member. This method requires administrator privileges.
    *
    * @param departmentDto The data transfer object containing department
@@ -97,22 +102,22 @@ public class DepartmentServiceImpl implements DepartmentService {
    */
   @Override
   public DepartmentOutDto createDepartment2(
-    final DepartmentDto departmentDto,
-    final String email,
-    final String password
+      final DepartmentDto departmentDto,
+      final String email,
+      final String password
   ) {
     Member member = this.memberRepo.findByEmail(email);
 
     if (member != null) {
-      // decoding
-      //    	String decodedPassword = new String(Base64.getDecoder().decode(member.getPassword()));
       if (
-        member.getPassword().equals(password) &&
-        member.getRole() != null &&
-        member.getRole().equals(Role.ADMIN)
+          member.getPassword().equals(password)
+          &&
+          member.getRole() != null
+          &&
+          member.getRole().equals(Role.ADMIN)
       ) {
         Department department =
-          this.modelMapper.map(departmentDto, Department.class);
+            this.modelMapper.map(departmentDto, Department.class);
         return this.modelMapper.map(
             this.departmentRepo.save(department),
             DepartmentOutDto.class
@@ -124,8 +129,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
   @Override
   public final ApiResponse deleteDepartment(final Integer departmentId) {
-    Department department =
-      this.departmentRepo.findById(departmentId)
+    this.departmentRepo.findById(departmentId)
         .orElseThrow(() ->
           new ResourceNotFoundException(
             "Department",
@@ -135,9 +139,11 @@ public class DepartmentServiceImpl implements DepartmentService {
         );
     this.departmentRepo.deleteById(departmentId);
     return new ApiResponse(
-      "Department with departmentId : " +
-      departmentId +
-      " is deleted successfullY",
+      "Department with departmentId : "
+       +
+      departmentId
+       +
+      " is deleted successfully",
       true
     );
   }
@@ -147,7 +153,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     List<Department> departments = this.departmentRepo.findAll();
     List<DepartmentOutDto> departmentDtos = new ArrayList<>();
     departments.forEach(department ->
-      departmentDtos.add(
+        departmentDtos.add(
         this.modelMapper.map(department, DepartmentOutDto.class)
       )
     );

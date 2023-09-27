@@ -113,9 +113,16 @@
 } */
 
 .error-message {
+  /* color: red;
+  font-size: 12px;
+  margin-top: 4px; */
+
+
+  background-color: aliceblue;
   color: red;
   font-size: 12px;
-  margin-top: 4px;
+  position: absolute;
+  margin-top: 65px;
 }
 
 .dept_input_area label,

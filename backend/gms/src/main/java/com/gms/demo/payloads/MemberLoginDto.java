@@ -30,13 +30,14 @@ public class MemberLoginDto {
   private static final int MIN_SIZE_PASSWORD = 5;
 
   /**
-   * The password associated with the member's account. Password must be between 5
+   * The password associated with the member's account.
+   * Password must be between 5
    * and 12 characters in length.
    */
   @NotEmpty
   @Size(
-    min = MIN_SIZE_PASSWORD,
-    message = "Password must be between 5 and 12 characters."
+      min = MIN_SIZE_PASSWORD,
+      message = "Password must be between 5 and 12 characters."
   )
   private String password;
 
@@ -45,7 +46,7 @@ public class MemberLoginDto {
    *
    * @return The email used for member login.
    */
-  public String getEmail() {
+  public final String getEmail() {
     return email;
   }
 
@@ -54,7 +55,7 @@ public class MemberLoginDto {
    *
    * @param email The email to set for member login.
    */
-  public void setEmail(final String email) {
+  public final void setEmail(final String email) {
     this.email = email;
   }
 
@@ -63,7 +64,7 @@ public class MemberLoginDto {
    *
    * @return The password used for member login.
    */
-  public String getPassword() {
+  public final String getPassword() {
     return password;
   }
 
@@ -72,7 +73,7 @@ public class MemberLoginDto {
    *
    * @param password The password to set for member login.
    */
-  public void setPassword(final String password) {
+  public final void setPassword(final String password) {
     this.password = password;
   }
 
@@ -91,7 +92,7 @@ public class MemberLoginDto {
    * @return A string containing member login details.
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return "MemberLoginDto [email=" + email + ", password=" + password + "]";
   }
 
@@ -102,11 +103,13 @@ public class MemberLoginDto {
    * @param password The password for member login.
    */
   public MemberLoginDto(
-    @NotEmpty @Email final String email,
-    @NotEmpty @Size(
+      @NotEmpty @Email final String email,
+      @NotEmpty @Size(
       min = MIN_SIZE_PASSWORD,
-      message = "Password must be between " +
-      MIN_SIZE_PASSWORD +
+      message = "Password must be between "
+      +
+      MIN_SIZE_PASSWORD
+      +
       " and 12 characters."
     ) final String password
   ) {

@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The `DepartmentOutDto` class represents a Data Transfer Object (DTO) for outbound department information.
- * It contains details about a department, including its name, associated members, and associated tickets.
+ * The `DepartmentOutDto` class represents a Data Transfer Object
+ * (DTO) for outbound department information.
+ * It contains details about a department, including its name,
+ * associated members, and associated tickets.
  *
  * @version 1.0
  * @since 28-08-2023
@@ -19,10 +21,16 @@ public class DepartmentOutDto {
    */
   private Integer departmentId;
 
+  /**
+   * get the department ID.
+   */
   public final Integer getDepartmentId() {
     return departmentId;
   }
 
+  /**
+   * sets the department ID.
+   */
   public final void setDepartmentId(final Integer departmentId) {
     this.departmentId = departmentId;
   }
@@ -49,7 +57,7 @@ public class DepartmentOutDto {
    *
    * @return The name of the department.
    */
-  public String getDepartmentName() {
+  public final String getDepartmentName() {
     return departmentName;
   }
 
@@ -58,7 +66,7 @@ public class DepartmentOutDto {
    *
    * @param departmentName The name to set for the department.
    */
-  public void setDepartmentName(final String departmentName) {
+  public final void setDepartmentName(final String departmentName) {
     this.departmentName = departmentName;
   }
 
@@ -67,7 +75,7 @@ public class DepartmentOutDto {
    *
    * @return The list of associated members as MemberOutDto objects.
    */
-  public List<MemberOutDto> getMembers() {
+  public final List<MemberOutDto> getMembers() {
     return members;
   }
 
@@ -76,7 +84,7 @@ public class DepartmentOutDto {
    *
    * @param members The list of associated members as MemberOutDto objects.
    */
-  public void setMembers(final List<MemberOutDto> members) {
+  public final void setMembers(final List<MemberOutDto> members) {
     this.members = members;
   }
 
@@ -85,7 +93,7 @@ public class DepartmentOutDto {
    *
    * @return The list of associated tickets as TicketOutDto objects.
    */
-  public List<TicketOutDto> getTickets() {
+  public final List<TicketOutDto> getTickets() {
     return tickets;
   }
 
@@ -94,7 +102,7 @@ public class DepartmentOutDto {
    *
    * @param tickets The list of associated tickets as TicketOutDto objects.
    */
-  public void setTickets(final List<TicketOutDto> tickets) {
+  public final void setTickets(final List<TicketOutDto> tickets) {
     this.tickets = tickets;
   }
 
@@ -104,21 +112,24 @@ public class DepartmentOutDto {
    * @return A string containing department details.
    */
   @Override
-  public String toString() {
-    return "DepartmentOutDto [departmentName=" + departmentName + "]";
+  public final String toString() {
+    return "DepartmentOutDto [departmentName="
+       + departmentName + "]";
   }
 
   /**
-   * Constructs a DepartmentOutDto object with the specified department name, associated members, and associated tickets.
+   * Constructs a DepartmentOutDto object with the
+   * specified department name,
+   * associated members, and associated tickets.
    *
    * @param departmentName The name of the department.
-   * @param members        The list of associated members as MemberOutDto objects.
-   * @param tickets        The list of associated tickets as TicketOutDto objects.
+   * @param members     The list of associated members as MemberOutDto objects.
+   * @param tickets     The list of associated tickets as TicketOutDto objects.
    */
   public DepartmentOutDto(
-    final String departmentName,
-    final List<MemberOutDto> members,
-    final List<TicketOutDto> tickets
+      final String departmentName,
+      final List<MemberOutDto> members,
+      final List<TicketOutDto> tickets
   ) {
     super();
     this.departmentName = departmentName;
@@ -135,7 +146,8 @@ public class DepartmentOutDto {
 
   @Override
   public final int hashCode() {
-    return Objects.hash(departmentId, departmentName, members, tickets);
+    return Objects.hash(departmentId, departmentName,
+    members, tickets);
   }
 
   @Override
@@ -151,18 +163,29 @@ public class DepartmentOutDto {
     }
     DepartmentOutDto other = (DepartmentOutDto) obj;
     return (
-      Objects.equals(departmentId, other.departmentId) &&
-      Objects.equals(departmentName, other.departmentName) &&
-      Objects.equals(members, other.members) &&
+      Objects.equals(departmentId, other.departmentId)
+      &&
+      Objects.equals(departmentName, other.departmentName)
+      &&
+      Objects.equals(members, other.members)
+      &&
       Objects.equals(tickets, other.tickets)
-    );
+      );
   }
-
+  
+  /**
+   * Constructs a DepartmentOutDto object. 
+   *
+   *@param departmentId department Id
+   *@param departmentName department Name
+   *@param members list of members
+   *@param tickets list of tickets
+   */
   public DepartmentOutDto(
-    final Integer departmentId,
-    final String departmentName,
-    final List<MemberOutDto> members,
-    final List<TicketOutDto> tickets
+      final Integer departmentId,
+      final String departmentName,
+      final List<MemberOutDto> members,
+      final List<TicketOutDto> tickets
   ) {
     super();
     this.departmentId = departmentId;

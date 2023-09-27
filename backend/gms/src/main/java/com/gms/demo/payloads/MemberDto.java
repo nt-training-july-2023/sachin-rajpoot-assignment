@@ -44,13 +44,14 @@ public class MemberDto {
   private static final int MIN_SIZE_PASSWORD = 5;
 
   /**
-   * The password associated with the member's account. Password must be between 5
+   * The password associated with the member's account.
+   * Password must be between 5.
    * and 12 characters in length.
    */
   @NotEmpty
   @Size(
-    min = MIN_SIZE_PASSWORD,
-    message = "PASSWORD MUST BE MINIMUM 5 CHARACTER."
+      min = MIN_SIZE_PASSWORD,
+      message = "PASSWORD MUST BE MINIMUM 5 CHARACTER."
   )
   private String password;
 
@@ -78,7 +79,7 @@ public class MemberDto {
    *
    * @return The member's unique identifier.
    */
-  public Integer getMemberId() {
+  public final Integer getMemberId() {
     return memberId;
   }
 
@@ -87,7 +88,7 @@ public class MemberDto {
    *
    * @param memberId The member's unique identifier.
    */
-  public void setMemberId(final Integer memberId) {
+  public final void setMemberId(final Integer memberId) {
     this.memberId = memberId;
   }
 
@@ -96,7 +97,7 @@ public class MemberDto {
    *
    * @return The name of the member.
    */
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
@@ -105,7 +106,7 @@ public class MemberDto {
    *
    * @param name The name of the member.
    */
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
@@ -114,7 +115,7 @@ public class MemberDto {
    *
    * @return The email of the member.
    */
-  public String getEmail() {
+  public final String getEmail() {
     return email;
   }
 
@@ -123,7 +124,7 @@ public class MemberDto {
    *
    * @param email The email of the member.
    */
-  public void setEmail(final String email) {
+  public final void setEmail(final String email) {
     this.email = email;
   }
 
@@ -132,7 +133,7 @@ public class MemberDto {
    *
    * @return The password of the member.
    */
-  public String getPassword() {
+  public final String getPassword() {
     return password;
   }
 
@@ -141,7 +142,7 @@ public class MemberDto {
    *
    * @param password The password of the member.
    */
-  public void setPassword(final String password) {
+  public final void setPassword(final String password) {
     this.password = password;
   }
 
@@ -150,7 +151,7 @@ public class MemberDto {
    *
    * @return `true` if it's the member's first login; otherwise, `false`.
    */
-  public Boolean getIsFirstLogin() {
+  public final Boolean getIsFirstLogin() {
     return isFirstLogin;
   }
 
@@ -159,7 +160,7 @@ public class MemberDto {
    *
    * @param isFirstLogin `true` if it's the member's first login; otherwise, `false`.
    */
-  public void setIsFirstLogin(final Boolean isFirstLogin) {
+  public final void setIsFirstLogin(final Boolean isFirstLogin) {
     this.isFirstLogin = isFirstLogin;
   }
 
@@ -168,7 +169,7 @@ public class MemberDto {
    *
    * @return The role of the member.
    */
-  public Role getRole() {
+  public final Role getRole() {
     return role;
   }
 
@@ -177,7 +178,7 @@ public class MemberDto {
    *
    * @param role The role of the member.
    */
-  public void setRole(final Role role) {
+  public final void setRole(final Role role) {
     this.role = role;
   }
 
@@ -186,16 +187,15 @@ public class MemberDto {
    *
    * @return The department DTO associated with the member.
    */
-  public DepartmentDto getDepartment() {
+  public final DepartmentDto getDepartment() {
     return department;
   }
 
   /**
    * Sets the department DTO associated with the member.
    *
-   * @param departmentDto The department DTO associated with the member.
    */
-  public void setDepartment(final DepartmentDto department) {
+  public final void setDepartment(final DepartmentDto department) {
     this.department = department;
   }
 
@@ -205,22 +205,34 @@ public class MemberDto {
    * @return A string containing member details.
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return (
-      "MemberDto [memberId=" +
-      memberId +
-      ", name=" +
-      name +
-      ", email=" +
-      email +
-      ", password=" +
-      password +
-      ", isFirstLogin=" +
-      isFirstLogin +
-      ", role=" +
-      role +
+      "MemberDto [memberId="
+      +
+      memberId
+      +
+      ", name="
+      +
+      name
+      +
+      ", email="
+      +
+      email
+      +
+      ", password="
+      +
+      password
+      +
+      ", isFirstLogin="
+      +
+      isFirstLogin
+      +
+      ", role="
+      +
+      role
+      +
       "]"
-    );
+      );
   }
 
   /**
@@ -230,21 +242,22 @@ public class MemberDto {
    * @param name          The name of the member.
    * @param email         The email of the member.
    * @param password      The password of the member.
-   * @param isFirstLogin  Indicates if the member is logging in for the first time.
+   * @param isFirstLogin  Indicates if the member is logging in
+   *     for the first time.
    * @param role          The role of the member.
-   * @param departmentDto The department DTO associated with the member.
+   * @param department department
    */
   public MemberDto(
-    final Integer memberId,
-    @NotEmpty final String name,
-    @NotEmpty @Email(message = "Email is not valid.") final String email,
-    @NotEmpty @Size(
+      final Integer memberId,
+      @NotEmpty final String name,
+      @NotEmpty @Email(message = "Email is not valid.") final String email,
+      @NotEmpty @Size(
       min = MIN_SIZE_PASSWORD,
       message = "PASSWORD MUST BE MINIMUM " + MIN_SIZE_PASSWORD + " CHARACTERS."
     ) final String password,
-    final Boolean isFirstLogin,
-    final Role role,
-    final DepartmentDto department
+      final Boolean isFirstLogin,
+      final Role role,
+      final DepartmentDto department
   ) {
     super();
     this.memberId = memberId;

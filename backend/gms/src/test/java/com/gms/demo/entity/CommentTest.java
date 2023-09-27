@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 public class CommentTest {
 
   private Comment comment = new Comment();
+  Comment comment2 = new Comment(1, "test", "content", 
+		  new Date(), new Ticket());
 
   @Test
   public void testGetAndSetCommentId() {

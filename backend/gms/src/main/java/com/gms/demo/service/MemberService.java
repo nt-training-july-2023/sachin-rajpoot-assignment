@@ -17,16 +17,33 @@ import java.util.List;
  * @since Begining of time
  */
 public interface MemberService {
+
+  /**
+   * creates the member.
+   *
+   * @param memberDto member Dto
+   * @param email email
+   * @param password password
+   * @return MemberOutDto Member Out Dto
+   */
   MemberOutDto createMember3(
-    MemberDto memberDto,
-    String email,
-    String password
+      MemberDto memberDto,
+      String email,
+      String password
   );
 
+  /**
+   * get All Members.
+   *
+   * @param email email
+   * @param password password
+   * @param pageNumber pageNumber
+   * @return MemberGetAllOutDto MemberGet All Out Dto
+   */
   List<MemberGetAllOutDto> getAllMemberAuth(
-    String email,
-    String password,
-    Integer pageNumber
+      String email,
+      String password,
+      Integer pageNumber
   );
 
   /**
@@ -34,7 +51,7 @@ public interface MemberService {
    *
    * @param memberLoginDto The MemberLoginDto containing login credentials.
    * @return True if login is successful, false otherwise.
-   * @throws Exception
+   * @throws Exception Exception
    */
   MemberOutDto login(MemberLoginDto memberLoginDto) throws Exception;
 
@@ -47,10 +64,23 @@ public interface MemberService {
    */
   Boolean verifyEmailAndPassword(String email, String password);
 
+  /**
+   * change Password.
+   *
+   * @param memberId member Id
+   * @param changePasswordDto change Password Dto
+   * @return MemberOutDto Member Out Dto
+   */
   MemberOutDto changePassword(
-    Integer memberId,
-    MemberChangePasswordDto changePasswordDto
+      Integer memberId,
+      MemberChangePasswordDto changePasswordDto
   );
 
+  /**
+   *delete Member .
+   *
+   * @param memberId member Id
+   * @return ApiResponse Api Response
+   */
   ApiResponse deleteMember(Integer memberId);
 }

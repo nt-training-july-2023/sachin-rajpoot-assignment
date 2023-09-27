@@ -4,10 +4,15 @@ import com.gms.demo.payloads.ApiResponse;
 import com.gms.demo.payloads.DepartmentDto;
 import com.gms.demo.payloads.DepartmentOutDto;
 import java.util.List;
+/**
+ * Service Implementation for depaertment.
+ */
 
 public interface DepartmentService {
   /**
-   * Creates a new department based on the provided department DTO, email, and password.
+   * Creates a new department based on the
+   * provided department DTO, email, and
+   * password.
    *
    * @param departmentDto The DTO containing department information.
    * @param email         The email associated with the department.
@@ -15,9 +20,9 @@ public interface DepartmentService {
    * @return The created department as a DTO.
    */
   DepartmentOutDto createDepartment2(
-    DepartmentDto departmentDto,
-    String email,
-    String password
+      DepartmentDto departmentDto,
+      String email,
+      String password
   );
 
   /**
@@ -31,11 +36,23 @@ public interface DepartmentService {
   /**
    * Retrieves a list of all departments as DepartmentOutDto objects.
    *
-   * @return A list of DepartmentOutDto objects representing all departments.
+   *@param pageNumber page Number.
+   *@return A list of DepartmentOutDto objects representing all departments.
    */
   List<DepartmentOutDto> getAllDepartment(Integer pageNumber);
 
+  /**
+   * get All Department No Page.
+   *
+   * @return DepartmentOutDto Department Out Dto
+   */
   List<DepartmentOutDto> getAllDepartmentNoPage();
 
+  /**
+   * delete Department.
+   *
+   * @param departmentId department Id
+   * @return ApiResponse ApiResponse
+   */
   ApiResponse deleteDepartment(Integer departmentId);
 }

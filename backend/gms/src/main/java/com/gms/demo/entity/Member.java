@@ -158,7 +158,8 @@ public class Member {
   /**
    * Gets whether the member is logging in for the first time.
    *
-   * @return True if the member is logging in for the first time; false otherwise.
+   * @return True if the member is logging in for the first time
+   *     false otherwise.
    */
   public final Boolean getIsFirstLogin() {
     return isFirstLogin;
@@ -167,7 +168,8 @@ public class Member {
   /**
    * Sets whether the member is logging in for the first time.
    *
-   * @param isFirstLogin True if the member is logging in for the first time; false otherwise.
+   * @param isFirstLogin True if the member is logging in
+   *     for the first time; false otherwise.
    */
   public final void setIsFirstLogin(final Boolean isFirstLogin) {
     this.isFirstLogin = isFirstLogin;
@@ -235,29 +237,29 @@ public class Member {
   @Override
   public final String toString() {
     return (
-      "Member [memberId=" 
+      "Member [memberId="
       +
-      memberId 
+      memberId
       +
-      ", name=" 
+      ", name="
       +
-      name 
+      name
       +
-      ", email=" 
+      ", email="
       +
-      email 
+      email
       +
-      ", password=" 
+      ", password="
       +
-      password 
+      password
       +
-      ", isFirstLogin=" 
+      ", isFirstLogin="
       +
-      isFirstLogin 
+      isFirstLogin
       +
-      ", role=" 
+      ", role="
       +
-      role 
+      role
       +
       "]"
       );

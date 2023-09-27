@@ -43,29 +43,16 @@ public class MemberController {
   private MemberService memberService;
 
   /**
-   * Setter method for injecting  MemberService.
-   *
-   * @param memberService The MemberService to be injected.
-   * @return The injected  MemberService.
-   */
-  @Autowired
-  public final MemberService setMemberService(
-      final MemberService memberService
-  ) {
-    this.memberService = memberService;
-    return memberService;
-  }
-
-  /**
    * Handles member login.
    *
-   * @param memberLoginDto The data transfer object containing login credentials.
+   * @param memberLoginDto The data transfer object containing 
+   *     login credentials.
    * @return ResponseEntity indicating the status of the login attempt.
    * @throws Exception If an error occurs during the login process.
    */
   @CrossOrigin
   @PostMapping("login")
-  public ResponseEntity<?> login(
+  public final ResponseEntity<?> login(
       @RequestBody @Valid final MemberLoginDto memberLoginDto
   ) throws Exception {
     System.out.println(
@@ -75,19 +62,11 @@ public class MemberController {
           memberLoginDto.getPassword()
         )
     );
-
-//    if (
-//        this.memberService.verifyEmailAndPassword(
-//          memberLoginDto.getEmail(),
-//          memberLoginDto.getPassword()
-//        )
-//    ) {
-      MemberOutDto memberOutDto = this.memberService.login(memberLoginDto);
-      System.out.println("Member Out Dto received back " + memberOutDto);
-      if (memberOutDto != null) {
-        return new ResponseEntity<>(memberOutDto, HttpStatus.ACCEPTED);
-      }
-//    }
+    MemberOutDto memberOutDto = this.memberService.login(memberLoginDto);
+    System.out.println("Member Out Dto received back " + memberOutDto);
+    if (memberOutDto != null) {
+      return new ResponseEntity<>(memberOutDto, HttpStatus.ACCEPTED);
+    }
     return new ResponseEntity<>(
       "Invalid Credentials, Please try again.",
       HttpStatus.BAD_REQUEST
@@ -100,7 +79,8 @@ public class MemberController {
    * @param memberDto The MemberDto containing member data.
    * @param email     The email header used for verification.
    * @param password  The password header used for verification.
-   * @return A ResponseEntity containing the created MemberOutDto and an HTTP status code.
+   * @return A ResponseEntity containing the created MemberOutDto 
+   *     and an HTTP status code.
    */
   @CrossOrigin
   @PostMapping("create/nodept")
@@ -110,7 +90,8 @@ public class MemberController {
       @RequestHeader final String password
   ) {
     
-    return new ResponseEntity<>(this.memberService.createMember3(memberDto, email, password),
+    return new ResponseEntity<>(this.memberService
+      .createMember3(memberDto, email, password),
      HttpStatus.OK);
   }
   /**
@@ -119,9 +100,10 @@ public class MemberController {
    * @param email      The email header used for authentication.
    * @param password   The password header used for authentication.
    * @param pageNumber The page number for pagination.
-   * @return A ResponseEntity containing a list of authenticated MemberGetAllOutDto.
+   * @return A ResponseEntity containing a list of 
+   *     authenticated MemberGetAllOutDto.
    */
-  
+
   @CrossOrigin
   @GetMapping("member/getAll/auth/pageNumber/{pageNumber}")
   public final ResponseEntity<List<MemberGetAllOutDto>> getAllMemberAuth(
@@ -130,7 +112,8 @@ public class MemberController {
       @PathVariable final Integer pageNumber
   ) {
     return new ResponseEntity<>(
-      this.memberService.getAllMemberAuth(email, password, pageNumber),
+      this.memberService
+      .getAllMemberAuth(email, password, pageNumber),
       HttpStatus.OK
     );
   }
@@ -138,9 +121,11 @@ public class MemberController {
   /**
    * Changes the password of a member.
    *
-   * @param memberId           The ID of the member whose password will be changed.
-   * @param changePasswordDto  The DTO containing the new password information.
-   * @return A ResponseEntity containing the updated MemberOutDto .
+   * @param memberId The ID of the member whose password will
+   *     be changed.
+   * @param changePasswordDto The DTO containing the 
+   *     new password information.
+   * @return A ResponseEntity containing the updated MemberOutDto 
    */
   @CrossOrigin
   @PutMapping("changepassword/memberId/{memberId}")
@@ -167,7 +152,8 @@ public class MemberController {
    * Deletes a member by their ID.
    *
    * @param memberId The ID of the member to be deleted.
-   * @return A ResponseEntity containing an ApiResponse and an HTTP status code.
+   * @return A ResponseEntity containing an ApiResponse and
+   *     an HTTP status code.
    */
   @CrossOrigin
   @DeleteMapping("member/delete/memberId/{memberId}")

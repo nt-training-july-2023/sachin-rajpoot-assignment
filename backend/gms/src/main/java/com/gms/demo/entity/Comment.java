@@ -90,7 +90,7 @@ public class Comment {
    *
    * @return The comment's unique identifier.
    */
-  public Integer getCommentId() {
+  public final Integer getCommentId() {
     return commentId;
   }
 
@@ -99,7 +99,7 @@ public class Comment {
    *
    * @param commentId The comment's unique identifier.
    */
-  public void setCommentId(final Integer commentId) {
+  public final void setCommentId(final Integer commentId) {
     this.commentId = commentId;
   }
 
@@ -108,7 +108,7 @@ public class Comment {
    *
    * @return The content of the comment.
    */
-  public String getContent() {
+  public final String getContent() {
     return content;
   }
 
@@ -117,7 +117,7 @@ public class Comment {
    *
    * @param content The content of the comment.
    */
-  public void setContent(final String content) {
+  public final void setContent(final String content) {
     this.content = content;
   }
 
@@ -126,7 +126,7 @@ public class Comment {
    *
    * @return The username associated with the comment.
    */
-  public String getUserName() {
+  public final String getUserName() {
     return userName;
   }
 
@@ -135,7 +135,7 @@ public class Comment {
    *
    * @param userName The username associated with the comment.
    */
-  public void setUserName(final String userName) {
+  public final void setUserName(final String userName) {
     this.userName = userName;
   }
 
@@ -144,7 +144,7 @@ public class Comment {
    *
    * @return The date and time of comment creation.
    */
-  public Date getDate() {
+  public final Date getDate() {
     return date;
   }
 
@@ -153,7 +153,7 @@ public class Comment {
    *
    * @param date The date and time of comment creation.
    */
-  public void setDate(final Date date) {
+  public final void setDate(final Date date) {
     this.date = date;
   }
 
@@ -162,7 +162,7 @@ public class Comment {
    *
    * @return The ticket associated with the comment.
    */
-  public Ticket getTicket() {
+  public final Ticket getTicket() {
     return ticket;
   }
 
@@ -171,7 +171,7 @@ public class Comment {
    *
    * @param ticket The ticket associated with the comment.
    */
-  public void setTicket(final Ticket ticket) {
+  public final void setTicket(final Ticket ticket) {
     this.ticket = ticket;
   }
 
@@ -181,23 +181,23 @@ public class Comment {
    * @return A string containing comment details.
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return (
-      "Comment [commentId=" 
+      "Comment [commentId="
       +
       commentId 
       +
-      ", content=" 
+      ", content="
       +
-      content 
+      content
       +
-      ", userName=" 
+      ", userName="
       +
-      userName 
+      userName
       +
-      ", date=" 
+      ", date="
       +
-      date 
+      date
       +
       "]"
       );

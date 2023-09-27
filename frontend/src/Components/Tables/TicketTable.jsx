@@ -4,7 +4,7 @@ import "./TicketTable.css";
 import PopUp from "../PopUp/PopUp";
 
 function TicketTable({ isLoggedIn }) {
-  console.log("TTTTTTTTTTTTTTTTTTTTTTTT")
+  console.log("TTTTTTTTTTTTTTTTTTTTTTTT");
   // STATE VARIABLES
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
@@ -129,7 +129,7 @@ function TicketTable({ isLoggedIn }) {
       console.log("Ticket data received");
       console.log(res.data);
 
-      setTicketStatus(res.data.status)
+      setTicketStatus(res.data.status);
     } catch (e) {
       console.log(e);
     }
@@ -202,7 +202,6 @@ function TicketTable({ isLoggedIn }) {
     console.log(comment);
     // setTicketStatus("");
     console.log(ticketStatus);
-    
   };
 
   // ONCHANGE FOR TICKET TYPE
@@ -265,6 +264,7 @@ function TicketTable({ isLoggedIn }) {
       {/* TICKET TABLE  */}
       <table>
         <thead>
+          {/* TABLE HEADS  */}
           <tr className="ticket-table-row">
             <th className="ticket-table-head">Title</th>
             <th className="ticket-table-head">Department</th>
@@ -292,13 +292,12 @@ function TicketTable({ isLoggedIn }) {
                     >
                       details
                     </button>
-                      {/* VIEW TICKET MODAL  */}
+                    {/* VIEW TICKET MODAL  */}
                     {modal && (
                       <div className="view-ticket-modal">
                         <div onClick={toggleModal} className="overlay"></div>
                         <div className="view-ticket-modal-content">
-
-                           {/* TICKET DETAILS  */}
+                          {/* TICKET DETAILS  */}
                           <div className="view-ticket-modal-left">
                             <form
                               action=""
@@ -382,9 +381,8 @@ function TicketTable({ isLoggedIn }) {
                             </form>
                           </div>
 
-                           {/* COMMENT AREA  */}
+                          {/* COMMENT AREA  */}
                           <div className="view-ticket-modal-right">
-
                             {/* TICKET COMMENTS  */}
                             <div className="view-ticket-comment-list">
                               {ticket.comments.map((c) => {
@@ -409,6 +407,7 @@ function TicketTable({ isLoggedIn }) {
                                   id="comment"
                                   cols="30"
                                   rows="10"
+                                  value={comment}
                                   onChange={(e) => setComment(e.target.value)}
                                 ></textarea>
                               </form>
@@ -417,9 +416,8 @@ function TicketTable({ isLoggedIn }) {
                                 Update
                               </button>
                             </div>
-
                           </div>
-                          
+
                           {/* TOGGLE CLOSE BUTTON  */}
                           <button
                             className="view-ticket-close-modal"
@@ -433,7 +431,16 @@ function TicketTable({ isLoggedIn }) {
                         {modal2 && (
                           <div className="dept-modal">
                             <div className="dept-modal-content">
-                              <h3>Comment first</h3>
+                              <h3
+                                style={{
+                                  color: "red",
+                                  padding: 0,
+                                  backgroundColor: "#f1f1f1",
+                                  marginTop: "10px",
+                                }}
+                              >
+                                comment and change status if open
+                              </h3>
                               <button
                                 className="dept-close-modal"
                                 onClick={toggleModal2}

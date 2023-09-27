@@ -26,28 +26,32 @@ public class FilterConfiguration {
 
   /**
    * Constructor.
+   *
+   * @param memberRepo member repo
+   *
    */
   public FilterConfiguration(final MemberRepo memberRepo) {
     super();
     this.memberRepo = memberRepo;
   }
-  
+
   /**
-   * filter method.
-   * 
+   *filter method.
+   *
+   * @return CorsFilter     filter
    */
 
   @Bean
   public CorsFilter corsFilter() {
-    org.springframework.web.cors.UrlBasedCorsConfigurationSource source =
-        new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
     CorsConfiguration config = new CorsConfiguration();
     config.addAllowedOrigin("http://localhost:3000");
-    config.addAllowedHeader("*"); 
+    config.addAllowedHeader("*");
     config.addAllowedMethod("GET");
     config.addAllowedMethod("POST");
     config.addAllowedMethod("PUT");
     config.addAllowedMethod("DELETE");
+    org.springframework.web.cors.UrlBasedCorsConfigurationSource source =
+            new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", config);
     return new CorsFilter(source);
   }
@@ -60,7 +64,8 @@ public class FilterConfiguration {
   @Bean
   @DependsOn("corsFilter")
   FilterRegistrationBean<SecurityFilter> registrationBeanAdmin() {
-    FilterRegistrationBean<SecurityFilter> registrationBean = new FilterRegistrationBean<SecurityFilter>();
+    FilterRegistrationBean<SecurityFilter> registrationBean =
+        new FilterRegistrationBean<SecurityFilter>();
     registrationBean.setFilter(new SecurityFilter(memberRepo));
     registrationBean.addUrlPatterns("/*");
     return registrationBean;

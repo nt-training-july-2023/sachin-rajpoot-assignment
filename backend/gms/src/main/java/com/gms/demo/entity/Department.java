@@ -138,13 +138,13 @@ public class Department {
   @Override
   public final String toString() {
     return (
-      "Department [departmentId=" 
+      "Department [departmentId="
       +
-      departmentId 
+      departmentId
       +
-      ", departmentName=" 
+      ", departmentName="
       +
-      departmentName 
+      departmentName
       +
       "]"
       );
@@ -156,6 +156,7 @@ public class Department {
    * @param departmentId The unique identifier for the department.
    * @param members      The list of members associated with the department.
    * @param tickets      The list of tickets associated with the department.
+   * @param departmentName  Department name
    */
   public Department(
       final Integer departmentId,

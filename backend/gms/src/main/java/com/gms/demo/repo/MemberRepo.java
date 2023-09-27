@@ -22,11 +22,26 @@ public interface MemberRepo extends JpaRepository<Member, Integer> {
    */
   Member findByEmail(String email);
 
+  /**
+ * Checks if valid user.
+ *
+ * @param email email
+ * @param password password
+ * @param admin admin
+ * @return boolean value
+ */
   boolean existsByEmailAndPasswordAndRole(
-    String email,
-    String password,
-    Role admin
+      String email,
+      String password,
+      Role admin
   );
 
+  /**
+ * Checks if valid user.
+ *
+ * @param email email
+ * @param password password
+ * @return boolean valye
+ */
   boolean existsByEmailAndPassword(String email, String password);
 }

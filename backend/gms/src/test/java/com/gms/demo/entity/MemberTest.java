@@ -21,6 +21,9 @@ import org.junit.Test;
 public class MemberTest {
 
   private Member member = new Member();
+  Member member2 = new Member(1, "test", "test@nucleusteq.com", 
+		  "11111111", true, Role.ADMIN, new Department(), 
+		  new ArrayList<Ticket>());
 
   //    @BeforeEach
   //    public void setUp() {
@@ -70,15 +73,15 @@ public class MemberTest {
     assertEquals(department, member.getDepartment());
   }
 
-//  @Test
-//  public void testGetAndSetTickets() {
-//    Ticket ticket1 = new Ticket();
-//    Ticket ticket2 = new Ticket();
-////    member.setTickets(new ArrayList<>(List.of(ticket1, ticket2)));
-//    List<Ticket> tickets = new ArrayList<>();
-//    tickets.add(ticket1); tickets.add(ticket2);
-//    assertEquals(tickets, member.getTickets());
-//  }
+  @Test
+  public void testGetAndSetTickets() {
+    Ticket ticket1 = new Ticket();
+    Ticket ticket2 = new Ticket();
+    List<Ticket> tickets = new ArrayList<>();
+    tickets.add(ticket1); tickets.add(ticket2);
+    member.setTickets(tickets);
+    assertEquals(tickets, member.getTickets());
+  }
 
   @Test
   public void testToString() {

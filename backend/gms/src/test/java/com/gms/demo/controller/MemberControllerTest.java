@@ -59,7 +59,6 @@ public class MemberControllerTest {
     memberService = mock(MemberService.class);
     memberRepo = mock(MemberRepo.class);
     memberController = new MemberController();
-    memberController.setMemberService(memberService);
     mockMvc = MockMvcBuilders.standaloneSetup(memberController).build();
   }
   MemberDto memberDto = new MemberDto();

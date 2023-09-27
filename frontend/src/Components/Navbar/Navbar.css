@@ -140,6 +140,11 @@ body.active-modal {
   min-width: 350px;
 }
 
+/* .dept-btn-modal h1 {
+  background-color: white;
+  margin-top: 10px;
+} */
+
 .dept-btn-modal:hover {
   color: gray;
 }

@@ -3,7 +3,7 @@ package com.gms.demo.payloads;
 import java.util.Objects;
 
 /**
- * The `ApiResponse` class represents a response from an API, containing a message and a success indicator.
+ * The `ApiResponse` class represents a response from an API.
  *
  * @version 1.0
  * @since 28-08-2023
@@ -11,26 +11,27 @@ import java.util.Objects;
 public class ApiResponse {
 
   /**
-   * The message contained in the API response.
+   *The message contained in the API response.
    */
   private String message;
 
   /**
-   * The success indicator, which is true for successful responses and false for errors.
+   *The success indicator, which is true
+   *    for successful responses and false for errors.
    */
   private boolean success;
 
   /**
-   * Gets the message contained in the API response.
+   *Gets the message contained in the API response.
    *
-   * @return The message.
+   *@return The message.
    */
   public final String getMessage() {
     return message;
   }
 
   /**
-   * Sets the message to be included in the API response.
+   *Sets the message to be included in the API response.
    *
    * @param message The message to be set.
    */
@@ -57,7 +58,9 @@ public class ApiResponse {
   }
 
   /**
-   * Calculates the hash code for this API response based on its message and success indicator.
+   * Calculates the hash code for this API
+   * response based on its message and success
+   * indicator.
    *
    * @return The hash code.
    */
@@ -67,7 +70,8 @@ public class ApiResponse {
   }
 
   /**
-   * Checks if this API response is equal to another object. Two API responses are considered equal
+   * Checks if this API response is equal to another object.
+   * Two API responses are considered equal
    * if they have the same message and success indicator.
    *
    * @param obj The object to compare with.
@@ -82,11 +86,14 @@ public class ApiResponse {
       return false;
     }
     ApiResponse other = (ApiResponse) obj;
-    return Objects.equals(message, other.message) && success == other.success;
+    return Objects.equals(message, other.message)
+        &&
+        success == other.success;
   }
 
   /**
-   * Constructs an ApiResponse object with the specified message and success indicator.
+   * Constructs an ApiResponse object with the specified message
+   *    and success indicator.
    *
    * @param message The message to include in the response.
    * @param success True for successful responses, false for errors.

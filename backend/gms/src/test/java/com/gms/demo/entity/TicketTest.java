@@ -11,6 +11,10 @@ import org.junit.jupiter.api.Test;
 public class TicketTest {
 
   private Ticket ticket = new Ticket();
+  Ticket ticket2 = new Ticket(1, "test", "desc", 
+		  new Date(), new Date(), Status.CLOSED, 
+		  TicketType.FEEDBACK, new Department(), 
+		  new Member(), new ArrayList<Comment>());
 
   @Test
   public void testGetAndSetTicketId() {
@@ -73,15 +77,24 @@ public class TicketTest {
     assertEquals(member, ticket.getMember());
   }
 
-//  @Test
-//  public void testGetAndSetComments() {
-//    Comment comment1 = new Comment();
-//    Comment comment2 = new Comment();
-////    ticket.setComments(new ArrayList<>(List.of(comment1, comment2)));
-//    List<Comment> comments = new ArrayList<>();
-//    comments.add(comment1); comments.add(comment2);
-//    assertEquals(comments, ticket.getComments());
-//  }
+  @Test
+  public void testGetAndSetComments() {
+    Comment comment1 = new Comment();
+    Comment comment2 = new Comment();
+    List<Comment> comments = new ArrayList<>();
+    comments.add(comment1); comments.add(comment2);
+    ticket.setComments(comments);
+    assertEquals(comments, ticket.getComments());
+  }
+  
+  @Test
+  public void testAddComments() {
+    Comment comment2 = new Comment();
+    List<Comment> comments = new ArrayList<>();
+    ticket.setComments(comments);
+    this.ticket.addComment(comment2);  
+    assertEquals(comment2, ticket.getComments().get(0));
+  }
 
   @Test
   public void testToString() {

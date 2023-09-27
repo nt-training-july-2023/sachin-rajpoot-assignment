@@ -11,6 +11,11 @@ package com.gms.demo.exception;
 public class ResourceNotFoundException extends RuntimeException {
 
   /**
+ * The serialVersionUID.
+ */
+  private static final long serialVersionUID = 1L;
+
+  /**
    * The name of the resource that was not found.
    */
   private String resourceName;
@@ -55,7 +60,7 @@ public class ResourceNotFoundException extends RuntimeException {
    *
    * @return The name of the resource.
    */
-  public String getResourceName() {
+  public final String getResourceName() {
     return resourceName;
   }
 
@@ -64,7 +69,7 @@ public class ResourceNotFoundException extends RuntimeException {
    *
    * @return The name of the field.
    */
-  public String getFieldName() {
+  public final String getFieldName() {
     return fieldName;
   }
 
@@ -73,7 +78,7 @@ public class ResourceNotFoundException extends RuntimeException {
    *
    * @return The field value.
    */
-  public long getFieldValue() {
+  public final long getFieldValue() {
     return fieldValue;
   }
 }

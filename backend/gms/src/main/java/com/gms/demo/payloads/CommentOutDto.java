@@ -7,7 +7,8 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 
 /**
- * The `CommentOutDto` class represents a Data Transfer Object (DTO) for comment information.
+ * The `CommentOutDto` class represents a Data
+ *    Transfer Object (DTO) for comment information.
  * It contains details about a comment, such as content, author username, and creation date.
  *
  * @version 1.0
@@ -20,10 +21,16 @@ public class CommentOutDto {
    */
   private Integer commentId;
 
+  /**
+   * Gets the comment.
+   */
   public final Integer getCommentId() {
     return commentId;
   }
 
+  /**
+   * Sets the comment.
+   */
   public final void setCommentId(final Integer commentId) {
     this.commentId = commentId;
   }
@@ -50,7 +57,7 @@ public class CommentOutDto {
    *
    * @return The content of the comment.
    */
-  public String getContent() {
+  public final String getContent() {
     return content;
   }
 
@@ -59,7 +66,7 @@ public class CommentOutDto {
    *
    * @param content The content to set for the comment.
    */
-  public void setContent(final String content) {
+  public final void setContent(final String content) {
     this.content = content;
   }
 
@@ -68,7 +75,7 @@ public class CommentOutDto {
    *
    * @return The username of the comment's author.
    */
-  public String getUserName() {
+  public final String getUserName() {
     return userName;
   }
 
@@ -77,7 +84,7 @@ public class CommentOutDto {
    *
    * @param userName The username to set for the comment's author.
    */
-  public void setUserName(final String userName) {
+  public final void setUserName(final String userName) {
     this.userName = userName;
   }
 
@@ -86,48 +93,55 @@ public class CommentOutDto {
    *
    * @return The creation timestamp of the comment.
    */
-  public Date getDate() {
+  public final Date getDate() {
     return date;
   }
 
   /**
-   * Sets the creation timestamp of the comment.
+   *Sets the creation timestamp of the comment.
    *
-   * @param date The creation timestamp to set for the comment.
+   *@param date The creation timestamp to set for the comment.
    */
   public void setDate(final Date date) {
     this.date = date;
   }
 
   /**
-   * Returns a string representation of the CommentOutDto object.
+   *Returns a string representation of the CommentOutDto object.
    *
-   * @return A string containing comment details.
+   *@return A string containing comment details.
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return (
-      "CommentOutDto [content=" +
-      content +
-      ", userName=" +
-      userName +
-      ", date=" +
-      date +
+      "CommentOutDto [content="
+       +
+      content
+      +
+      ", userName="
+      +
+      userName
+      +
+      ", date="
+      +
+      date
+      +
       "]"
-    );
+      );
   }
 
   /**
-   * Constructs a CommentOutDto object with the specified content, author username, and creation date.
+   *Constructs a CommentOutDto object with the specified content, author username, 
+   *and creation date.
    *
-   * @param content  The content of the comment.
-   * @param userName The username of the comment's author.
-   * @param date     The creation date of the comment.
+   *@param content  The content of the comment.
+   *@param userName The username of the comment's author.
+   *@param date     The creation date of the comment.
    */
   public CommentOutDto(
-    final String content,
-    final String userName,
-    final Date date
+      final String content,
+      final String userName,
+      final Date date
   ) {
     super();
     this.content = content;
@@ -141,12 +155,20 @@ public class CommentOutDto {
   public CommentOutDto() {
     // Default constructor
   }
+  
+  /**
+   *constructor for CommentOutDto class.
+   *@param commentId  comment
+   *@param content  content
+   *@param userName user Name
+   *@param date date
+   */
 
   public CommentOutDto(
-    final Integer commentId,
-    final String content,
-    final String userName,
-    final Date date
+      final Integer commentId,
+      final String content,
+      final String userName,
+      final Date date
   ) {
     super();
     this.commentId = commentId;
@@ -155,11 +177,17 @@ public class CommentOutDto {
     this.date = date;
   }
 
+  /**
+   *hashCode for CommentOutDto class.
+   */
   @Override
   public final int hashCode() {
     return Objects.hash(commentId, content, date, userName);
   }
 
+  /**
+   *equals for CommentOutDto class.
+   */
   @Override
   public final boolean equals(final Object obj) {
     if (this == obj) {
@@ -173,10 +201,13 @@ public class CommentOutDto {
     }
     CommentOutDto other = (CommentOutDto) obj;
     return (
-      Objects.equals(commentId, other.commentId) &&
-      Objects.equals(content, other.content) &&
-      Objects.equals(date, other.date) &&
+      Objects.equals(commentId, other.commentId) 
+      &&
+      Objects.equals(content, other.content) 
+      &&
+      Objects.equals(date, other.date) 
+      &&
       Objects.equals(userName, other.userName)
-    );
+      );
   }
 }

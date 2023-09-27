@@ -9,17 +9,14 @@ import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
 import com.gms.demo.payloads.MemberLoginDto;
 import com.gms.demo.payloads.MemberOutDto;
-import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.service.MemberService;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -44,10 +41,6 @@ public class MemberServiceImpl implements MemberService {
   @Autowired
   private MemberRepo memberRepo;
 
-  /** The DepartmentService instance. */
-  @Autowired
-  private DepartmentRepo departmentRepo;
-
   /**
    * The minimum sixe for password.
    */
@@ -58,7 +51,7 @@ public class MemberServiceImpl implements MemberService {
    *
    * @param memberLoginDto The MemberLoginDto containing login credentials.
    * @return True if login is successful, false otherwise.
-   * @throws Exception
+   * @throws Exception Exception
    */
   @Override
   public MemberOutDto login(final MemberLoginDto memberLoginDto) {
@@ -66,11 +59,7 @@ public class MemberServiceImpl implements MemberService {
     System.out.println("member found by email " + member);
 
     if (member != null) {
-      // decoding
-      //    	String decodedPassword = new String(Base64.getDecoder().decode(member.getPassword()));
-      System.out.println(
-        member.getPassword() + "  " + memberLoginDto.getPassword()
-      );
+      System.out.println(member.getPassword() + "  " + memberLoginDto.getPassword());
       if (member.getPassword().equals(memberLoginDto.getPassword())) {
         System.out.println(memberLoginDto);
         return this.mapper.map(member, MemberOutDto.class);
@@ -82,25 +71,20 @@ public class MemberServiceImpl implements MemberService {
   /**
    * Verify valid email and password.
    *
-   * @param email
-   * @param password
+   * @param email    email
+   * @param password password
    * @return True if valid email and password.
-   * @throws Exception
+   * @throws Exception Exception
    */
   @Override
-  public Boolean verifyEmailAndPassword(
-    final String email,
-    final String password
-  ) {
+  public Boolean verifyEmailAndPassword(final String email, final String password) {
     String emailPattern = "^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$";
-    //    String passwordPattern = "^[a-zA-Z0-9]*$";
+    // String passwordPattern = "^[a-zA-Z0-9]*$";
 
     boolean isValidEmail = email.matches(emailPattern);
-    //    boolean isValidPassword = password.matches(passwordPattern);
+    // boolean isValidPassword = password.matches(passwordPattern);
     boolean isValidEmail2 = email.endsWith("@nucleusteq.com");
-    boolean isValidPassword2 = password.length() >= MIN_SIZE_PASSWORD
-      ? true
-      : false;
+    boolean isValidPassword2 = password.length() >= MIN_SIZE_PASSWORD ? true : false;
 
     if (isValidEmail && isValidEmail2 && isValidPassword2) {
       return true;
@@ -109,23 +93,15 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public final MemberOutDto changePassword(
-    final Integer memberId,
-    MemberChangePasswordDto changePasswordDto
-  ) {
+  public final MemberOutDto changePassword(final Integer memberId,
+      final MemberChangePasswordDto changePasswordDto) {
     System.out.println("member id received -> " + memberId);
-    Member member =
-      this.memberRepo.findById(memberId)
-        .orElseThrow(() ->
-          new ResourceNotFoundException("member", "member ID", memberId)
-        );
+    Member member = this.memberRepo.findById(memberId)
+        .orElseThrow(() -> new ResourceNotFoundException("member", "member ID", memberId));
     System.out.println("MemberChangePasswordDto -> " + changePasswordDto);
     System.out.println(
-      "Real Password : " +
-      member.getPassword() +
-      " Password Received -> " +
-      changePasswordDto.getOldpassword()
-    );
+        "Real Password : " + member.getPassword() + " Password Received -> "
+        + changePasswordDto.getOldpassword());
     if (member.getPassword().equals(changePasswordDto.getOldpassword())) {
       member.setPassword(changePasswordDto.getNewPassword());
       member.setIsFirstLogin(false);
@@ -136,37 +112,25 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public final List<MemberGetAllOutDto> getAllMemberAuth(
-    final String email,
-    final String password,
-    Integer pageNumber
-  ) {
-    Page<Member> members =
-      this.memberRepo.findAll(PageRequest.of(pageNumber, 6, Sort.by("name")));
+  public final List<MemberGetAllOutDto> getAllMemberAuth(final String email, final String password,
+      final Integer pageNumber) {
+    Page<Member> members = this.memberRepo.findAll(PageRequest.of(pageNumber, 6, Sort.by("name")));
     List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
-    members.forEach(m ->
-      memberOutDtos.add(this.mapper.map(m, MemberGetAllOutDto.class))
-    );
+    members.forEach(m -> memberOutDtos.add(this.mapper.map(m, MemberGetAllOutDto.class)));
     return memberOutDtos;
   }
 
   @Override
-  public final MemberOutDto createMember3(
-    final MemberDto memberDto,
-    final String email,
-    final String password
-  ) {
+  public final MemberOutDto createMember3(final MemberDto memberDto,
+      final String email, final String password) {
     Member member = this.memberRepo.findByEmail(email);
     if (member != null) {
-      if (
-        member.getPassword().equals(password) &&
-        member.getRole() != null &&
-        member.getRole().equals(Role.ADMIN)
-      ) {
+      if (member.getPassword().equals(password)
+          && member.getRole() != null
+          && member.getRole().equals(Role.ADMIN)) {
         Member member2 = this.mapper.map(memberDto, Member.class);
         Member savedMember = this.memberRepo.save(member2);
-        MemberOutDto memberOutDto2 =
-          this.mapper.map(savedMember, MemberOutDto.class);
+        MemberOutDto memberOutDto2 = this.mapper.map(savedMember, MemberOutDto.class);
         return memberOutDto2;
       }
     }
@@ -174,17 +138,12 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public ApiResponse deleteMember(Integer memberId) {
-    Member member =
-      this.memberRepo.findById(memberId)
-        .orElseThrow(() ->
-          new ResourceNotFoundException("member", "member ID", memberId)
-        );
+  public final ApiResponse deleteMember(final Integer memberId) {
+    this.memberRepo.findById(memberId)
+        .orElseThrow(() -> new ResourceNotFoundException("member", "member ID", memberId));
     this.memberRepo.deleteById(memberId);
 
-    return new ApiResponse(
-      "Member with member ID : " + memberId + " is deleted successfully",
-      true
-    );
+    return new ApiResponse("Member with member ID : "
+    + memberId + " is deleted successfully", true);
   }
 }

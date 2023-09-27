@@ -24,7 +24,7 @@ public class GmsApplication {
   public static void main(final String[] args) {
     SpringApplication.run(GmsApplication.class, args);
   }
- 
+
   /**
    * Create a new instance of ModelMapper to be used as a Spring bean.
    *

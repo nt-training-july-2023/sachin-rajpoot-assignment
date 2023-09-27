@@ -12,6 +12,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+/**
+ * TicketDto for the ticket entity.
+ */
 
 public class TicketDto {
 
@@ -79,7 +82,7 @@ public class TicketDto {
    *
    * @return The ticket's unique identifier.
    */
-  public Integer getTicketId() {
+  public final Integer getTicketId() {
     return ticketId;
   }
 
@@ -88,7 +91,7 @@ public class TicketDto {
    *
    * @param ticketId The unique identifier to set for the ticket.
    */
-  public void setTicketId(final Integer ticketId) {
+  public final void setTicketId(final Integer ticketId) {
     this.ticketId = ticketId;
   }
 
@@ -97,7 +100,7 @@ public class TicketDto {
    *
    * @return The title of the ticket.
    */
-  public String getTitle() {
+  public final String getTitle() {
     return title;
   }
 
@@ -106,7 +109,7 @@ public class TicketDto {
    *
    * @param title The title to set for the ticket.
    */
-  public void setTitle(final String title) {
+  public final void setTitle(final String title) {
     this.title = title;
   }
 
@@ -115,7 +118,7 @@ public class TicketDto {
    *
    * @return The description of the ticket.
    */
-  public String getDescription() {
+  public final String getDescription() {
     return description;
   }
 
@@ -124,7 +127,7 @@ public class TicketDto {
    *
    * @param description The description to set for the ticket.
    */
-  public void setDescription(final String description) {
+  public final void setDescription(final String description) {
     this.description = description;
   }
 
@@ -133,7 +136,7 @@ public class TicketDto {
    *
    * @return The creation date and time of the ticket.
    */
-  public Date getCreatedOn() {
+  public final Date getCreatedOn() {
     return createdOn;
   }
 
@@ -142,7 +145,7 @@ public class TicketDto {
    *
    * @param createdOn The creation date and time to set for the ticket.
    */
-  public void setCreatedOn(final Date createdOn) {
+  public final void setCreatedOn(final Date createdOn) {
     this.createdOn = createdOn;
   }
 
@@ -151,7 +154,7 @@ public class TicketDto {
    *
    * @return The last updated date and time of the ticket.
    */
-  public Date getLastUpdatedOn() {
+  public final Date getLastUpdatedOn() {
     return lastUpdatedOn;
   }
 
@@ -160,7 +163,7 @@ public class TicketDto {
    *
    * @param lastUpdatedOn The last updated date and time to set for the ticket.
    */
-  public void setLastUpdatedOn(final Date lastUpdatedOn) {
+  public final void setLastUpdatedOn(final Date lastUpdatedOn) {
     this.lastUpdatedOn = lastUpdatedOn;
   }
 
@@ -169,7 +172,7 @@ public class TicketDto {
    *
    * @return The status of the ticket.
    */
-  public Status getStatus() {
+  public final Status getStatus() {
     return status;
   }
 
@@ -178,7 +181,7 @@ public class TicketDto {
    *
    * @param status The status to set for the ticket.
    */
-  public void setStatus(final Status status) {
+  public final void setStatus(final Status status) {
     this.status = status;
   }
 
@@ -187,7 +190,7 @@ public class TicketDto {
    *
    * @return The type of the ticket.
    */
-  public TicketType getTicketType() {
+  public final TicketType getTicketType() {
     return ticketType;
   }
 
@@ -196,7 +199,7 @@ public class TicketDto {
    *
    * @param ticketType The type to set for the ticket.
    */
-  public void setTicketType(final TicketType ticketType) {
+  public final void setTicketType(final TicketType ticketType) {
     this.ticketType = ticketType;
   }
 
@@ -205,7 +208,7 @@ public class TicketDto {
    *
    * @return The department associated with the ticket.
    */
-  public DepartmentDto getDepartment() {
+  public final DepartmentDto getDepartment() {
     return department;
   }
 
@@ -214,7 +217,7 @@ public class TicketDto {
    *
    * @param department The department to set for the ticket.
    */
-  public void setDepartment(final DepartmentDto department) {
+  public final void setDepartment(final DepartmentDto department) {
     this.department = department;
   }
 
@@ -223,7 +226,7 @@ public class TicketDto {
    *
    * @return The member associated with the ticket.
    */
-  public MemberDto getMember() {
+  public final MemberDto getMember() {
     return member;
   }
 
@@ -232,7 +235,7 @@ public class TicketDto {
    *
    * @param member The member to set for the ticket.
    */
-  public void setMember(final MemberDto member) {
+  public final void setMember(final MemberDto member) {
     this.member = member;
   }
 
@@ -250,15 +253,15 @@ public class TicketDto {
    * @param member        The member associated with the ticket.
    */
   public TicketDto(
-    final Integer ticketId,
-    @NotEmpty final String title,
-    @NotEmpty final String description,
-    final Date createdOn,
-    final Date lastUpdatedOn,
-    final Status status,
-    final TicketType ticketType,
-    final DepartmentDto departmentDto,
-    final MemberDto member
+      final Integer ticketId,
+      @NotEmpty final String title,
+      @NotEmpty final String description,
+      final Date createdOn,
+      final Date lastUpdatedOn,
+      final Status status,
+      final TicketType ticketType,
+      final DepartmentDto departmentDto,
+      final MemberDto member
   ) {
     super();
     this.ticketId = ticketId;
@@ -280,28 +283,43 @@ public class TicketDto {
   }
 
   /**
-   * Overrides the default toString() method to provide a custom string representation of the object.
+   * Overrides the default toString() method to provide a
+   * custom string representation of the object.
    *
    * @return A string representation of the TicketDto object.
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return (
-      "TicketDto [ticketId=" +
-      ticketId +
-      ", title=" +
-      title +
-      ", description=" +
-      description +
-      ", createdOn=" +
-      createdOn +
-      ", lastUpdatedOn=" +
-      lastUpdatedOn +
-      ", status=" +
-      status +
-      ", ticketType=" +
-      ticketType +
+      "TicketDto [ticketId="
+      +
+      ticketId
+      +
+      ", title="
+      +
+      title
+      +
+      ", description="
+      +
+      description
+      +
+      ", createdOn="
+      +
+      createdOn
+      +
+      ", lastUpdatedOn="
+      +
+      lastUpdatedOn
+      +
+      ", status="
+      +
+      status
+      +
+      ", ticketType="
+      +
+      ticketType
+      +
       "]"
-    );
+      );
   }
 }

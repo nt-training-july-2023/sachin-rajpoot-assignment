@@ -7,6 +7,9 @@ import com.gms.demo.payloads.TicketOutDto;
 import com.gms.demo.payloads.TicketUpdateStatusInDto;
 import java.util.List;
 
+/**
+ * Service Implementation for ticket.
+ */
 public interface TicketService {
   /**
    * Creates a new ticket based on the provided ticket DTO, member ID, and
@@ -19,28 +22,48 @@ public interface TicketService {
    * @return The created ticket as a TicketOutDto if successful, otherwise null.
    */
   TicketOutDto createTicket(
-    TicketDto ticketDto,
-    Integer memberId,
-    Integer departmentId
+      TicketDto ticketDto,
+      Integer memberId,
+      Integer departmentId
   );
 
+  /**
+   * get All Ticket.
+   *
+   * @param memberId member Id
+   * @param myTickets my Tickets
+   * @param filter filter
+   * @param pageNumber page Number
+   * @param adminDept adminDept
+   * @return TicketGetAllOutDto
+   *     Ticket Get All Out Dto
+   */
   List<TicketGetAllOutDto> getAllTicketAuth(
-    Integer memberId,
-    boolean myTickets,
-    Status filter,
-    Integer pageNumber,
-    boolean adminDept
+      Integer memberId,
+      boolean myTickets,
+      Status filter,
+      Integer pageNumber,
+      boolean adminDept
   );
 
   /**
    * Updates a tickets.
    *
+   *@param ticketDto ticket Dto
+   *@param ticketId ticket Id
+   *
    * @return Updated TicketOutDto.
    */
   TicketOutDto updateTicket(
-    TicketUpdateStatusInDto ticketDto,
-    Integer ticketId
+      TicketUpdateStatusInDto ticketDto,
+      Integer ticketId
   );
 
+  /**
+   * get Ticket Bt Id.
+   *
+   * @param ticketId ticket Id
+   * @return TicketOutDto Ticket Out Dto
+   */
   TicketOutDto getTicketBtId(Integer ticketId);
 }

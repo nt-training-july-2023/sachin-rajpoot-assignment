@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
+import com.gms.demo.payloads.ApiResponse;
 import com.gms.demo.payloads.MemberChangePasswordDto;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
@@ -185,7 +186,7 @@ public class MemberServiceImplTest {
   
   @Test
   public void changePasswordFail_Test() {
-	  
+	 
 	  Integer memberId = 1;
 	  String oldPassword ="12345678";
 	  String newPassword ="11111111";
@@ -214,4 +215,17 @@ public class MemberServiceImplTest {
 	    
 	    
   }
+  
+  @Test
+  public void testDeleteExistingMember() {
+      Integer memberId = 1;
+      member.setMemberId(memberId);
+      when(memberRepo.findById(memberId)).thenReturn(Optional.of(member));
+      ApiResponse response = memberService.deleteMember(memberId);
+      verify(memberRepo, times(1)).deleteById(memberId);
+      assertNotNull(response);
+      assertTrue(response.isSuccess());
+      assertEquals("Member with member ID : " + memberId + " is deleted successfully", response.getMessage());
+  }
+
 }

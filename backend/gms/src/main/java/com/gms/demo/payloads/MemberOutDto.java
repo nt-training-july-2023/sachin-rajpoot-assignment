@@ -7,6 +7,10 @@ import java.util.Objects;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+/**
+ * MemberOutDto -> member in DTO for the member.
+ */
+
 public class MemberOutDto {
 
   /**
@@ -82,11 +86,21 @@ public class MemberOutDto {
     this.email = email;
   }
 
-  public Integer getMemberId() {
+  /**
+   * Gets the getMemberId of the member.
+   *
+   * @return The getMemberId of the member.
+   */
+  public final Integer getMemberId() {
     return memberId;
   }
 
-  public void setMemberId(Integer memberId) {
+  /**
+   * Sets the memberId of the member.
+   *
+   * @param memberId The memberId to set for the member.
+   */
+  public void setMemberId(final Integer memberId) {
     this.memberId = memberId;
   }
 
@@ -171,38 +185,51 @@ public class MemberOutDto {
   @Override
   public final String toString() {
     return (
-      "MemberOutDto [name=" +
-      name +
-      ", email=" +
-      email +
-      ", role=" +
-      role +
-      ", departmentName=" +
-      departmentName +
-      ", isFirstLogin=" +
-      isFirstLogin +
+      "MemberOutDto [name="
+      +
+      name
+      +
+      ", email="
+      +
+      email
+      +
+      ", role="
+      +
+      role
+      +
+      ", departmentName="
+      +
+      departmentName
+      +
+      ", isFirstLogin="
+      +
+      isFirstLogin
+      +
       "]"
-    );
+      );
   }
 
   /**
-   * Constructs a MemberOutDto object with the specified member details.
+   * Constructs a MemberOutDto object with the
+   * specified member details.
    *
    * @param name           The name of the member.
    * @param email          The email of the member.
    * @param role           The role of the member.
-   * @param departmentName The name of the department to which the member belongs.
-   * @param isFirstLogin   Indicates if it's the member's first login.
-   * @param ticketOutDtos  A list of TicketOutDto objects associated with the
-   *                       member.
+   * @param departmentName The name of the department to
+   *     which the member belongs.
+   * @param isFirstLogin   Indicates if it's the member's
+   *     first login.
+   * @param ticketOutDtos  A list of TicketOutDto objects
+   *     associated with the member.
    */
   public MemberOutDto(
-    final String name,
-    final String email,
-    final Role role,
-    final String departmentName,
-    final Boolean isFirstLogin,
-    final List<TicketOutDto> ticketOutDtos
+      final String name,
+      final String email,
+      final Role role,
+      final String departmentName,
+      final Boolean isFirstLogin,
+      final List<TicketOutDto> ticketOutDtos
   ) {
     super();
     this.name = name;
@@ -220,8 +247,12 @@ public class MemberOutDto {
     super();
   }
 
+  /**
+   * Returns hashcode.
+   *
+   */
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     return Objects.hash(
       departmentName,
       email,
@@ -233,31 +264,58 @@ public class MemberOutDto {
     );
   }
 
+  /**
+   * compares the object.
+   *
+   */
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null) return false;
-    if (getClass() != obj.getClass()) return false;
+  public final boolean equals(final Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
     MemberOutDto other = (MemberOutDto) obj;
     return (
-      Objects.equals(departmentName, other.departmentName) &&
-      Objects.equals(email, other.email) &&
-      Objects.equals(isFirstLogin, other.isFirstLogin) &&
-      Objects.equals(memberId, other.memberId) &&
-      Objects.equals(name, other.name) &&
-      role == other.role &&
+      Objects.equals(departmentName, other.departmentName)
+      &&
+      Objects.equals(email, other.email)
+      &&
+      Objects.equals(isFirstLogin, other.isFirstLogin)
+      &&
+      Objects.equals(memberId, other.memberId)
+      &&
+      Objects.equals(name, other.name)
+      &&
+      role == other.role 
+      &&
       Objects.equals(tickets, other.tickets)
-    );
+      );
   }
 
+  /**
+   * constructor.
+   *
+   *@param memberId memberId
+   *@param name name
+   *@param email email
+   *@param role role
+   *@param departmentName departmentName
+   *@param isFirstLogin is First Login
+   *@param tickets tickets
+   */
   public MemberOutDto(
-    Integer memberId,
-    String name,
-    String email,
-    Role role,
-    String departmentName,
-    Boolean isFirstLogin,
-    List<TicketOutDto> tickets
+      final Integer memberId,
+      final String name,
+      final String email,
+      final Role role,
+      final String departmentName,
+      final Boolean isFirstLogin,
+      final List<TicketOutDto> tickets
   ) {
     super();
     this.memberId = memberId;

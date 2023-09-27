@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * The GlobalException class handles global exception handling for the application.
+ * The GlobalException class handles global exception
+ *     handling for the application.
  * It provides exception handlers for specific exception types.
  *
  * @version 1.0
@@ -26,10 +27,11 @@ public class GlobalException {
    * Exception handler for ResourceNotFoundException.
    *
    * @param ex The ResourceNotFoundException instance.
-   * @return ResponseEntity containing an ApiResponse with HTTP status 404 (Not Found).
+   * @return ResponseEntity containing an ApiResponse
+   *     with HTTP status 404 (Not Found).
    */
   @ExceptionHandler(ResourceNotFoundException.class)
-public
+public final
       ResponseEntity<ApiResponse> resourceNotFoundHandler(
       final ResourceNotFoundException ex
   ) {
@@ -42,11 +44,13 @@ public
    * Exception handler for MethodArgumentNotValidException.
    *
    * @param ex The MethodArgumentNotValidException instance.
-   * @return ResponseEntity containing a Map of field validation errors .
+   * @return ResponseEntity containing a Map of field
+   *     validation errors .
    */
   @ExceptionHandler(MethodArgumentNotValidException.class)
-public
-      ResponseEntity<Map<String, String>> methodArgumentNotValidExceptionHandler(
+public final
+      ResponseEntity<Map<String, String>>
+      methodArgumentNotValidExceptionHandler(
       final MethodArgumentNotValidException ex
   ) {
     Map<String, String> res = new HashMap<String, String>();
@@ -63,14 +67,17 @@ public
   }
 
   /**
-   * Exception handler for HttpRequestMethodNotSupportedException.
+   * Exception handler for 
+   *     HttpRequestMethodNotSupportedException.
    *
    * @param ex The HttpRequestMethodNotSupportedException instance.
-   * @return ResponseEntity containing an ApiResponse with HTTP status 405 (Method Not Allowed).
+   * @return ResponseEntity containing an ApiResponse with HTTP
+   *     status 405 (Method Not Allowed).
    */
   @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
 public
-      final ResponseEntity<ApiResponse> httpRequestMethodNotSupportedExceptionHandler(
+      final ResponseEntity<ApiResponse>
+      httpRequestMethodNotSupportedExceptionHandler(
       final HttpRequestMethodNotSupportedException ex
   ) {
     String message = "Enter a valid category Id";
@@ -82,10 +89,13 @@ public
   /**
    * Exception handler for DataIntegrityViolationException.
    *
+   *@param ex    exception
+   *@return ApiResponse for voilation
    */
   @ExceptionHandler(DataIntegrityViolationException.class)
 public
-        final ResponseEntity<ApiResponse> dataIntegrityViolationExceptionHandler(
+        final ResponseEntity<ApiResponse>
+      dataIntegrityViolationExceptionHandler(
         final DataIntegrityViolationException ex
   ) {
     String message = "THIS FIELD ALREADY EXISTS, CHECK FOR UNIQUE FIELDS.";

@@ -69,11 +69,6 @@
     background-color: white;
 }
 
-
-
-.input_fields form {
-}
-
 .content {
   display: flex;
   flex-direction: column;
@@ -158,6 +153,12 @@ h1 {
 }
 
 
-
+.login-error {
+  background-color: white;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  margin-top: 60px;
+}
 
 

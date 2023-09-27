@@ -6,6 +6,7 @@ import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
 import com.gms.demo.exception.ResourceNotFoundException;
+import com.gms.demo.payloads.ApiResponse;
 import com.gms.demo.payloads.DepartmentDto;
 import com.gms.demo.payloads.DepartmentOutDto;
 import com.gms.demo.repo.DepartmentRepo;
@@ -138,4 +139,18 @@ public class DepartmentServiceImplTest {
     DepartmentOutDto createdDepartment = departmentService.createDepartment2(departmentDto, email, password);
     assertNull(createdDepartment);
   }
+
+  @Test
+  public void testDeleteDepartment() {
+      Integer departmentId = 1;
+      department.setDepartmentId(departmentId);
+      when(departmentRepo.findById(departmentId)).thenReturn(Optional.of(department));
+      ApiResponse response = departmentService.deleteDepartment(departmentId);
+      verify(departmentRepo, times(1)).deleteById(departmentId);
+      assertNotNull(response);
+      assertTrue(response.isSuccess());
+      assertEquals("Department with departmentId : " + departmentId + " is deleted successfully", response.getMessage());
+  }
+  
+
 }

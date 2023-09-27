@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 public class DepartmentTest {
 
   private Department department = new Department();
+  Department department2 = new Department(1, "test", 
+		  new ArrayList<Member>(), new ArrayList<Ticket>());
 
   @Test
   public void testGetAndSetDepartmentId() {
@@ -24,27 +26,25 @@ public class DepartmentTest {
     assertEquals("HR Department", department.getDepartmentName());
   }
 
-//  @Test
-//  public void testGetAndSetMembers() {
-//    Member member1 = new Member();
-//    Member member2 = new Member();
-////    department.setMembers(new ArrayList<>(List.of(member1, member2)));
-//    List<Member> members = new ArrayList<>();
-//    members.add(member2); members.add(member1);
-//    assertEquals(members, department.getMembers());
-//  }
+  @Test
+  public void testGetAndSetMembers() {
+    Member member1 = new Member();
+    Member member2 = new Member();
+    List<Member> members = new ArrayList<>();
+    members.add(member2); members.add(member1);
+    department.setMembers(members);
+    assertEquals(members, department.getMembers());
+  }
 
-//  @Test
-//  public void testGetAndSetTickets() {
-//    Ticket ticket1 = new Ticket();
-//    Ticket ticket2 = new Ticket();
-////    department.setTickets(new ArrayList<>(List.of(ticket1, ticket2)));
-//    
-////    assertEquals(List.of(ticket1, ticket2), department.getTickets());
-//    List<Ticket> tickets = new ArrayList<>();
-//    tickets.add(ticket1); tickets.add(ticket2);
-//    assertEquals(tickets, department.getTickets());
-//  }
+  @Test
+  public void testGetAndSetTickets() {
+    Ticket ticket1 = new Ticket();
+    Ticket ticket2 = new Ticket();
+    List<Ticket> tickets = new ArrayList<>();
+    tickets.add(ticket1); tickets.add(ticket2);
+    department.setTickets(tickets);
+    assertEquals(tickets, department.getTickets());
+  }
 
 //  @Test
 //  public void testToString() {

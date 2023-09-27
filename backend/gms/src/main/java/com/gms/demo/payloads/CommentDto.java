@@ -6,6 +6,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * Class for Comment In DTO.
+ */
 public class CommentDto {
 
   /**
@@ -135,16 +138,24 @@ public class CommentDto {
   @Override
   public final String toString() {
     return (
-      "CommentDto [commentId=" +
-      commentId +
-      ", content=" +
-      content +
-      ", userName=" +
-      userName +
-      ", date=" +
-      date +
+      "CommentDto [commentId="
+      +
+      commentId
+      +
+      ", content="
+      +
+      content
+      +
+      ", userName="
+      +
+      userName
+      +
+      ", date="
+      +
+      date
+      +
       "]"
-    );
+      );
   }
 
   /**
@@ -157,11 +168,11 @@ public class CommentDto {
    * @param ticket    The associated ticket as a TicketDto object.
    */
   public CommentDto(
-    final Integer commentId,
-    @NotEmpty final String content,
-    @NotEmpty final String userName,
-    final Date date,
-    final TicketDto ticket
+      final Integer commentId,
+      @NotEmpty final String content,
+      @NotEmpty final String userName,
+      final Date date,
+      final TicketDto ticket
   ) {
     super();
     this.commentId = commentId;

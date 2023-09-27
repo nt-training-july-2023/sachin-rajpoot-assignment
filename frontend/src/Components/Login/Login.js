@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Login.css";
-import axios, { HttpStatusCode } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp/PopUp";
 
 function Login({ setIsLoggedIn, isLoggedIn }) {
   console.log("Login Component");
   const navigate = useNavigate();
-  const memberEmail = JSON.parse(localStorage.getItem("member"))?.email;
   const [Popup, setPopup] = useState(false);
   const [Error, setError] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -36,23 +37,38 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
   };
 
   const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
     setData({ ...data, email: e.target.value });
+    if (newEmail.trim() == "") {
+      setEmailError("Email cannot be empty");
+    }
+    else if (newEmail.endsWith("@nucleusteq.com") == false) {
+      setEmailError("Domain should be @nucleusteq.com");  
+    }
+    else if (newEmail.endsWith("@nucleusteq.com") == true) {
+      setEmailError("");  
+    }
   };
 
   const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
     setData({ ...data, password: e.target.value });
+    setPasswordError(
+      newPassword.trim() === "" ? "Password cannot be empty" : ""
+    );
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (!verifyEmailHandlder()) {
-      alert("Enter Valid Email Address.");
+    if (!verifyEmailHandlder() || passwordError !== "" || emailError !== "") {
+      // alert("Enter Valid Email Address.");
+      // setEmailError("Enter Valid Email Address.")
     } else {
       const logindata = {
         email: data.email,
         password: btoa(data.password),
       };
-      console.log("Login Data Sent : ")
-      console.log(logindata)
+      console.log("Login Data Sent : ");
+      console.log(logindata);
       await axios
         .post("http://localhost:8080/api/login", logindata)
         .then((response) => {
@@ -68,15 +84,14 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
           // setIsLoggedIn(true);
           // setPopup(true)
           setIsLoggedIn(true);
-          if(response.data.isFirstLogin === true){
+          if (response.data.isFirstLogin === true) {
             navigate("/changepassword");
-          }
-          else {
+          } else {
             navigate("/tickettable");
-          } 
+          }
         })
         .catch((err) => {
-          setError(true)
+          setError(true);
           console.log(err);
           if (err?.message) {
             // alert(err.message);
@@ -106,6 +121,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                 onChange={handleEmailChange}
                 required
               />
+              {emailError && <span className="login-error">{emailError}</span>}
             </div>
 
             <div className="input_area">
@@ -118,6 +134,9 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                 onChange={handlePasswordChange}
                 required
               />
+              {passwordError && (
+                <span className="login-error">{passwordError}</span>
+              )}
             </div>
 
             <div className="registraction_btn">

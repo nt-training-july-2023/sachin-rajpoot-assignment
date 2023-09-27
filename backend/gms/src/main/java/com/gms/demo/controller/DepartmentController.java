@@ -50,13 +50,14 @@ public class DepartmentController {
    */
   @CrossOrigin
   @PostMapping("create/auth")
-  ResponseEntity<DepartmentOutDto> createDepartment2(
+  final ResponseEntity<DepartmentOutDto> createDepartment2(
       @RequestBody @Valid final DepartmentDto departmentDto,
       @RequestHeader final String email,
       @RequestHeader final String password
   ) {
     DepartmentOutDto departmentDto2 =
-        this.departmentService.createDepartment2(departmentDto, email, password);
+        this.departmentService.createDepartment2(departmentDto,
+          email, password);
     if (departmentDto2 != null) {
       return new ResponseEntity<>(departmentDto2, HttpStatus.CREATED);
     }
@@ -66,12 +67,13 @@ public class DepartmentController {
   /**
    * Retrieves a list of all departments.
    *
+   *@param pageNumber Page number to send.
    * @return A ResponseEntity containing a list of DepartmentOutDto objects with
    *         HTTP status 200 (OK).
    */
   @CrossOrigin
   @GetMapping("getAll/pageNumber/{pageNumber}")
-  ResponseEntity<List<DepartmentOutDto>> getAllDepartment(
+  final ResponseEntity<List<DepartmentOutDto>> getAllDepartment(
       @PathVariable final Integer pageNumber
   ) {
     return new ResponseEntity<>(
@@ -83,7 +85,8 @@ public class DepartmentController {
   /**
    * Retrieves all departments without pagination.
    *
-   * @return A ResponseEntity containing a list of DepartmentOutDto and an HTTP status code.
+   * @return A ResponseEntity containing a list of DepartmentOutDto 
+   *     and an HTTP status code.
    */
   @CrossOrigin
   @GetMapping("getAll/noPage")

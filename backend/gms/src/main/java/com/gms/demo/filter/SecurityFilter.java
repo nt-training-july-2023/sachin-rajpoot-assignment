@@ -45,21 +45,21 @@ public class SecurityFilter implements Filter {
   }
 
   /**
-   * Constructor.
+   *Constructor.
    *
-   * @param MemberRepo memberRepo Repository
+   *@param memberRepo member repo.
    */
   public SecurityFilter(final MemberRepo memberRepo) {
     this.memberRepo = memberRepo;
   }
 
   /**
-   * Chack if url is in the admin urls or not.
+   * Checkk if url is in the admin urls or not.
    *
    * @param currentUrl String
    * @return Boolean
    */
-  public Boolean checkAdminUrl(final String currentUrl) {
+  public final Boolean checkAdminUrl(final String currentUrl) {
     if (adminUrls.contains(currentUrl)) {
       return true;
     }
@@ -70,17 +70,20 @@ public class SecurityFilter implements Filter {
    * Filter for urls.
    */
   @Override
-  public void doFilter(
-    final ServletRequest request,
-    final ServletResponse response,
-    final FilterChain chain
+  public final void doFilter(
+      final ServletRequest request,
+      final ServletResponse response,
+      final FilterChain chain
   ) throws IOException, ServletException {
     HttpServletRequest httpServletRequest = (HttpServletRequest) request;
     System.out.println(
-      "HEADERS RECEIVED -> EMAIL : " +
-      httpServletRequest.getHeader("email") +
-      " AND PASSWORD : " +
-      httpServletRequest.getHeader("password")
+        "HEADERS RECEIVED -> EMAIL : "
+         +
+        httpServletRequest.getHeader("email")
+         +
+        " AND PASSWORD : "
+         +
+        httpServletRequest.getHeader("password")
     );
     String email = httpServletRequest.getHeader("email");
     String password = httpServletRequest.getHeader("password");
@@ -93,12 +96,12 @@ public class SecurityFilter implements Filter {
     } else if (httpServletRequest.getMethod().equals("OPTIONS")) {
       httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
       httpServletResponse.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE"
+          "Access-Control-Allow-Methods",
+          "GET, POST, PUT, DELETE"
       );
       httpServletResponse.setHeader(
-        "Access-Control-Allow-Headers",
-        "Authorization, Content-Type, email, password"
+          "Access-Control-Allow-Headers",
+          "Authorization, Content-Type, email, password"
       );
       httpServletResponse.setContentType("application/json");
       httpServletResponse.setStatus(HttpServletResponse.SC_OK);
@@ -107,20 +110,22 @@ public class SecurityFilter implements Filter {
         ((HttpServletResponse) response).sendError(
             HttpServletResponse.SC_UNAUTHORIZED,
             "Invalid User"
-          );
+        );
       } else if (
-        memberRepo.existsByEmailAndPasswordAndRole(
+          memberRepo.existsByEmailAndPasswordAndRole(
           email,
           password,
           Role.ADMIN
-        ) &&
-        checkAdminUrl(currentUrl)
+        )
+          &&
+          checkAdminUrl(currentUrl)
       ) {
         System.out.println("Inside admin");
         chain.doFilter(request, response);
       } else if (
-        memberRepo.existsByEmailAndPassword(email, password) &&
-        !(checkAdminUrl(currentUrl))
+          memberRepo.existsByEmailAndPassword(email, password)
+          &&
+          !(checkAdminUrl(currentUrl))
       ) {
         chain.doFilter(request, response);
       } else {
@@ -128,7 +133,7 @@ public class SecurityFilter implements Filter {
         ((HttpServletResponse) response).sendError(
             HttpServletResponse.SC_UNAUTHORIZED,
             "Unauthorized User"
-          );
+        );
       }
     }
   }

@@ -106,7 +106,7 @@ public class Ticket {
    *
    * @return The ticket ID.
    */
-  public Integer getTicketId() {
+  public final Integer getTicketId() {
     return ticketId;
   }
 
@@ -115,7 +115,7 @@ public class Ticket {
    *
    * @param ticketId The ticket ID to set.
    */
-  public void setTicketId(final Integer ticketId) {
+  public final void setTicketId(final Integer ticketId) {
     this.ticketId = ticketId;
   }
 
@@ -124,7 +124,7 @@ public class Ticket {
    *
    * @return The ticket title.
    */
-  public String getTitle() {
+  public final String getTitle() {
     return title;
   }
 
@@ -133,7 +133,7 @@ public class Ticket {
    *
    * @param title The ticket title to set.
    */
-  public void setTitle(final String title) {
+  public final void setTitle(final String title) {
     this.title = title;
   }
 
@@ -142,7 +142,7 @@ public class Ticket {
    *
    * @return The ticket description.
    */
-  public String getDescription() {
+  public final String getDescription() {
     return description;
   }
 
@@ -151,7 +151,7 @@ public class Ticket {
    *
    * @param description The ticket description to set.
    */
-  public void setDescription(final String description) {
+  public final void setDescription(final String description) {
     this.description = description;
   }
 
@@ -160,7 +160,7 @@ public class Ticket {
    *
    * @return The creation date.
    */
-  public Date getCreatedOn() {
+  public final Date getCreatedOn() {
     return createdOn;
   }
 
@@ -169,7 +169,7 @@ public class Ticket {
    *
    * @param createdOn The creation date to set.
    */
-  public void setCreatedOn(final Date createdOn) {
+  public final void setCreatedOn(final Date createdOn) {
     this.createdOn = createdOn;
   }
 
@@ -178,7 +178,7 @@ public class Ticket {
    *
    * @return The last updated date.
    */
-  public Date getLastUpdatedOn() {
+  public final Date getLastUpdatedOn() {
     return lastUpdatedOn;
   }
 
@@ -187,7 +187,7 @@ public class Ticket {
    *
    * @param lastUpdatedOn The last updated date to set.
    */
-  public void setLastUpdatedOn(final Date lastUpdatedOn) {
+  public final void setLastUpdatedOn(final Date lastUpdatedOn) {
     this.lastUpdatedOn = lastUpdatedOn;
   }
 
@@ -196,7 +196,7 @@ public class Ticket {
    *
    * @return The ticket status.
    */
-  public Status getStatus() {
+  public final Status getStatus() {
     return status;
   }
 
@@ -205,7 +205,7 @@ public class Ticket {
    *
    * @param status The ticket status to set.
    */
-  public void setStatus(final Status status) {
+  public final void setStatus(final Status status) {
     this.status = status;
   }
 
@@ -214,7 +214,7 @@ public class Ticket {
    *
    * @return The ticket type.
    */
-  public TicketType getTicketType() {
+  public final TicketType getTicketType() {
     return ticketType;
   }
 
@@ -223,7 +223,7 @@ public class Ticket {
    *
    * @param ticketType The ticket type to set.
    */
-  public void setTicketType(final TicketType ticketType) {
+  public final void setTicketType(final TicketType ticketType) {
     this.ticketType = ticketType;
   }
 
@@ -232,7 +232,7 @@ public class Ticket {
    *
    * @return The department.
    */
-  public Department getDepartment() {
+  public final Department getDepartment() {
     return department;
   }
 
@@ -241,7 +241,7 @@ public class Ticket {
    *
    * @param department The department to set.
    */
-  public void setDepartment(final Department department) {
+  public final void setDepartment(final Department department) {
     this.department = department;
   }
 
@@ -250,7 +250,7 @@ public class Ticket {
    *
    * @return The member.
    */
-  public Member getMember() {
+  public final Member getMember() {
     return member;
   }
 
@@ -259,7 +259,7 @@ public class Ticket {
    *
    * @param member The member to set.
    */
-  public void setMember(final Member member) {
+  public final void setMember(final Member member) {
     this.member = member;
   }
 
@@ -268,7 +268,7 @@ public class Ticket {
    *
    * @return The list of comments.
    */
-  public List<Comment> getComments() {
+  public final List<Comment> getComments() {
     return comments;
   }
 
@@ -277,7 +277,7 @@ public class Ticket {
    *
    * @param comments The list of comments to set.
    */
-  public void setComments(final List<Comment> comments) {
+  public final void setComments(final List<Comment> comments) {
     this.comments = comments;
   }
 
@@ -300,48 +300,47 @@ public class Ticket {
    * @return The string representation.
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return (
-      "Ticket [ticketId=" 
+      "Ticket [ticketId="
       +
-      ticketId 
+      ticketId
       +
-      ", title=" 
+      ", title="
       +
-      title 
-      
+      title
       +
-      ", description=" 
+      ", description="
       +
-      description 
+      description
       +
-      ", createdOn=" 
+      ", createdOn="
       +
-      createdOn 
+      createdOn
       +
-      ", lastUpdatedOn=" 
+      ", lastUpdatedOn="
       +
-      lastUpdatedOn 
+      lastUpdatedOn
       +
-      ", status=" 
+      ", status="
       +
-      status 
+      status
       +
-      ", ticketType=" 
+      ", ticketType="
       +
-      ticketType 
+      ticketType
       +
-      ", department=" 
+      ", department="
       +
-      department 
+      department
       +
-      ", member=" 
+      ", member="
       +
-      member 
+      member
       +
-      ", comments=" 
+      ", comments="
       +
-      comments 
+      comments
       +
       "]"
       );

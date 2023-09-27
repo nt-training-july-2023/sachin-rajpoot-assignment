@@ -7,11 +7,11 @@ import java.util.Date;
 import java.util.Objects;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
+
+/**
+ * TicketGetAllOutDto for ticket entity.
+ */
 public class TicketGetAllOutDto {
 
   /**
@@ -32,16 +32,12 @@ public class TicketGetAllOutDto {
   /**
    * The date and time when the ticket was created.
    */
-//  @CreationTimestamp // Automatically set the creation timestamp
-//  @Temporal(TemporalType.TIMESTAMP)
   @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
   private Date createdOn;
 
   /**
    * The date and time when the ticket was last updated.
    */
-//  @UpdateTimestamp // Automatically set the update timestamp
-//  @Temporal(TemporalType.TIMESTAMP)
   @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
   private Date lastUpdatedOn;
 
@@ -67,54 +63,93 @@ public class TicketGetAllOutDto {
    */
   private String memberName;
 
+  /**
+   * gets ticketId of the the ticket.
+   */
   public final Integer getTicketId() {
     return ticketId;
   }
 
+  /**
+   * sets ticketId of the the ticket.
+   */
   public final void setTicketId(final Integer ticketId) {
     this.ticketId = ticketId;
   }
 
+  /**
+   * gets title of the the ticket.
+   */
   public final String getTitle() {
     return title;
   }
 
+  /**
+   * sets title of the the ticket.
+   */
   public final void setTitle(final String title) {
     this.title = title;
   }
 
+  /**
+   * gets description of the the ticket.
+   */
   public final String getDescription() {
     return description;
   }
 
+  /**
+   * sets description of the the ticket.
+   */
   public final void setDescription(final String description) {
     this.description = description;
   }
 
+  /**
+   * gets createdOn of the the ticket.
+   */
   public final Date getCreatedOn() {
     return createdOn;
   }
 
+  /**
+   * sets createdOn of the the ticket.
+   */
   public final void setCreatedOn(final Date createdOn) {
     this.createdOn = createdOn;
   }
 
+  /**
+   * gets lastUpdatedOn of the the ticket.
+   */
   public final Date getLastUpdatedOn() {
     return lastUpdatedOn;
   }
 
+  /**
+   * sets lastUpdatedOn of the the ticket.
+   */
   public final void setLastUpdatedOn(final Date lastUpdatedOn) {
     this.lastUpdatedOn = lastUpdatedOn;
   }
 
+  /**
+   * gets status of the the ticket.
+   */
   public final Status getStatus() {
     return status;
   }
 
+  /**
+   * sets status of the the ticket.
+   */
   public final void setStatus(final Status status) {
     this.status = status;
   }
 
+  /**
+   * gets status of the the ticket.
+   */
   public final TicketType getTicketType() {
     return ticketType;
   }
@@ -167,41 +202,67 @@ public class TicketGetAllOutDto {
     }
     TicketGetAllOutDto other = (TicketGetAllOutDto) obj;
     return (
-      Objects.equals(createdOn, other.createdOn) &&
-      Objects.equals(departmentName, other.departmentName) &&
-      Objects.equals(description, other.description) &&
-      Objects.equals(lastUpdatedOn, other.lastUpdatedOn) &&
-      Objects.equals(memberName, other.memberName) &&
-      status == other.status &&
-      Objects.equals(ticketId, other.ticketId) &&
-      ticketType == other.ticketType &&
+      Objects.equals(createdOn, other.createdOn)
+      &&
+      Objects.equals(departmentName, other.departmentName)
+      &&
+      Objects.equals(description, other.description)
+      &&
+      Objects.equals(lastUpdatedOn, other.lastUpdatedOn)
+      &&
+      Objects.equals(memberName, other.memberName)
+      &&
+      status == other.status
+      &&
+      Objects.equals(ticketId, other.ticketId)
+      &&
+      ticketType == other.ticketType
+      &&
       Objects.equals(title, other.title)
-    );
+      );
   }
 
   @Override
   public final String toString() {
     return (
-      "TicketGetAllOutDto [ticketId=" +
-      ticketId +
-      ", title=" +
-      title +
-      ", description=" +
-      description +
-      ", createdOn=" +
-      createdOn +
-      ", lastUpdatedOn=" +
-      lastUpdatedOn +
-      ", status=" +
-      status +
-      ", ticketType=" +
-      ticketType +
-      ", departmentName=" +
-      departmentName +
-      ", memberName=" +
-      memberName +
+      "TicketGetAllOutDto [ticketId="
+      +
+      ticketId
+      +
+      ", title="
+      +
+      title
+      +
+      ", description="
+      +
+      description
+      +
+      ", createdOn="
+      +
+      createdOn
+      +
+      ", lastUpdatedOn="
+      +
+      lastUpdatedOn
+      +
+      ", status="
+      +
+      status
+      +
+      ", ticketType="
+      +
+      ticketType
+      +
+      ", departmentName="
+      +
+      departmentName
+      +
+      ", memberName="
+      +
+      memberName
+      +
       "]"
-    );
+      );
   }
 
   

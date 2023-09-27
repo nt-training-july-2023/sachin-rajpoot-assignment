@@ -24,7 +24,7 @@ public class DepartmentDto {
    *
    * @return The department ID.
    */
-  public Integer getDepartmentId() {
+  public final Integer getDepartmentId() {
     return departmentId;
   }
 
@@ -33,7 +33,7 @@ public class DepartmentDto {
    *
    * @param departmentId The department ID to set.
    */
-  public void setDepartmentId(final Integer departmentId) {
+  public final void setDepartmentId(final Integer departmentId) {
     this.departmentId = departmentId;
   }
 
@@ -51,7 +51,7 @@ public class DepartmentDto {
    *
    * @param departmentName The department name to set.
    */
-  public void setDepartmentName(final String departmentName) {
+  public final void setDepartmentName(final String departmentName) {
     this.departmentName = departmentName;
   }
 
@@ -61,14 +61,17 @@ public class DepartmentDto {
    * @return The hash code.
    */
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     final int prime = 31;
     int result = 1;
     result =
-      prime * result + ((departmentId == null) ? 0 : departmentId.hashCode());
+      prime * result + ((departmentId == null) ? 0
+          : departmentId.hashCode());
     result =
-      prime *
-      result +
+      prime
+      *
+      result
+      +
       ((departmentName == null) ? 0 : departmentName.hashCode());
     return result;
   }
@@ -80,7 +83,7 @@ public class DepartmentDto {
    * @return True if the objects are equal, false otherwise.
    */
   @Override
-  public boolean equals(final Object obj) {
+  public final boolean equals(final Object obj) {
     if (this == obj) {
       return true;
     }
@@ -117,7 +120,8 @@ public class DepartmentDto {
 
   /**
    * Default constructor for the DepartmentDto class.
-   * This constructor initializes an instance of DepartmentDto with default values.
+   * This constructor initializes an instance of
+   * DepartmentDto with default values.
    *
    */
   public DepartmentDto() {
