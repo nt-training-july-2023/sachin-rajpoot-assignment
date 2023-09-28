@@ -8,6 +8,8 @@ import com.gms.demo.payloads.TicketUpdateStatusInDto;
 import com.gms.demo.service.TicketService;
 import java.util.List;
 import javax.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +39,12 @@ public class TicketController {
   private TicketService ticketService;
 
   /**
+   * Logger for logging.
+   */
+  private static final Logger DISPLAY = LoggerFactory
+      .getLogger(DepartmentController.class);
+
+  /**
    * Creates a new ticket associated with a member and a department.
    *
    * @param ticketDto    The data transfer object containing ticket information.
@@ -52,9 +60,7 @@ public class TicketController {
       @PathVariable final Integer memberId,
       @PathVariable final Integer departmentId
   ) {
-    System.out.println("INSIDE CREATE MEMBER");
-    System.out.println(ticketDto.getStatus()
-        .equals(Status.OPEN));
+    DISPLAY.info("Inside controller");
     return new ResponseEntity<>(
       this.ticketService.createTicket(ticketDto, memberId, departmentId),
       HttpStatus.CREATED
@@ -86,7 +92,7 @@ public class TicketController {
       @RequestParam(required = false) final boolean myTickets,
       @RequestParam(required = false) final boolean adminDept
   ) {
-    System.out.println(myTickets + "          " + adminDept);
+    DISPLAY.info("Inside controller");
     return new ResponseEntity<List<TicketGetAllOutDto>>(
       this.ticketService.getAllTicketAuth(
           memberId,
@@ -114,6 +120,7 @@ public class TicketController {
       @Valid @RequestBody final TicketUpdateStatusInDto ticketDto,
       @PathVariable final Integer ticketId
   ) {
+    DISPLAY.info("Inside controller");
     return new ResponseEntity<TicketOutDto>(
       this.ticketService.updateTicket(ticketDto, ticketId),
       HttpStatus.OK
@@ -132,6 +139,7 @@ public class TicketController {
   public final ResponseEntity<TicketOutDto> getTicketById(
       @PathVariable @Valid final Integer ticketId
   ) {
+    DISPLAY.info("Inside controller");
     return new ResponseEntity<TicketOutDto>(
       this.ticketService.getTicketBtId(ticketId),
       HttpStatus.OK

@@ -18,8 +18,9 @@
 .nav_links button {
   border: none;
   font-size: 1rem;
+  cursor: pointer;
 }
-.logo p {
+.logo a {
   font-size: 2rem;
   font-weight: 700;
   font-family: "Tilt Prism", cursive;
@@ -200,6 +201,7 @@ body.active-modal {
   background-color: black;
   color: aliceblue;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .dept-form-submit-btn:hover {

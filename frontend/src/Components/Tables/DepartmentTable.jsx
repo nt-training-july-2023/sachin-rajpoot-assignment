@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../App.css";
-import TicketTable from "./TicketTable";
 import PopUp from "../PopUp/PopUp";
 
 function DepartmentTable() {
@@ -9,10 +8,11 @@ function DepartmentTable() {
   const [tableRender, setTableRender] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const memberEmail = JSON.parse(localStorage.getItem("member"))?.email;
+  const loggedInUserDeptName = JSON.parse(localStorage.getItem("member"))?.departmentName;
   const memberPassword = JSON.parse(localStorage.getItem("memberPassword"));
-  const memberDept = JSON.parse(localStorage.getItem("member"))?.departmentName;
   const [modal, setModal] = useState(false);
   const [Error, setError] = useState(false);
+  const[customMessage, setCustomMessage] = useState(""); 
 
   // GETTING ALL DEPARTMENT DATA
   useEffect(() => {
@@ -38,8 +38,13 @@ function DepartmentTable() {
   }, [tableRender, currentPage]);
 
   // DELETING DEPARTMENT
-  const handleDeletedepartment = (departmentId) => {
+  const handleDeletedepartment = (departmentId, departmentName) => {
     console.log(departmentId);
+    if(departmentName === loggedInUserDeptName) {
+      setCustomMessage("Can not delete your department.")
+      setError(true)
+      return;
+    }
     const headers = {
       email: memberEmail,
       password: memberPassword,
@@ -59,6 +64,7 @@ function DepartmentTable() {
         console.log(response);
       })
       .catch((err) => {
+        setCustomMessage("Something went wrong,Check network connection");
         setError(true);
         console.log(err);
       });
@@ -109,7 +115,6 @@ function DepartmentTable() {
         <tbody>
           {departmentsData &&
             departmentsData
-              .filter((e) => e.departmentName !== memberDept)
               .map((e, index) => (
                 <tr key={e.departmentId}>
                   <td className="ticket-table-data">{index + 1}</td>
@@ -117,7 +122,7 @@ function DepartmentTable() {
                   <td className="ticket-table-data">
                     <button
                       className="delete-btn"
-                      onClick={() => handleDeletedepartment(e.departmentId)}
+                      onClick={() => handleDeletedepartment(e.departmentId, e.departmentName)}
                     >
                       Delete
                     </button>
@@ -173,8 +178,7 @@ function DepartmentTable() {
       {Error && (
         <PopUp
           openPopup={Error}
-          customHeading="Something went wrong,
-          Check network connection"
+          customHeading={customMessage}
           customImageSrc="fail.png"
           toggleError={toggleError}
         />

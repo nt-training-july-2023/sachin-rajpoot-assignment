@@ -105,6 +105,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
 
   return (
     <div className="container pt1 patterns">
+      <h1>Grievance Management System</h1>
       <div className="registration_form">
         <div className="heading">
           <h1 id="heading">Login</h1>

@@ -9,6 +9,9 @@ import com.gms.demo.payloads.MemberOutDto;
 import com.gms.demo.service.MemberService;
 import java.util.List;
 import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +60,12 @@ public class MemberController {
   }
 
   /**
+   * Logger for logging.
+   */
+  private static final Logger DISPLAY = LoggerFactory
+      .getLogger(DepartmentController.class);
+
+  /**
    * Handles member login.
    *
    * @param memberLoginDto The data transfer object containing
@@ -69,13 +78,7 @@ public class MemberController {
   public final ResponseEntity<?> login(
       @RequestBody @Valid final MemberLoginDto memberLoginDto
   ) throws Exception {
-    System.out.println(
-        "Verify email and password"
-        +   this.memberService.verifyEmailAndPassword(
-          memberLoginDto.getEmail(),
-          memberLoginDto.getPassword()
-        )
-    );
+    DISPLAY.info("Inside Controller");
     MemberOutDto memberOutDto = this.memberService.login(memberLoginDto);
     System.out.println("Member Out Dto received back " + memberOutDto);
     if (memberOutDto != null) {
@@ -97,15 +100,24 @@ public class MemberController {
    *     and an HTTP status code.
    */
   @CrossOrigin
-  @PostMapping("create/nodept")
+  @PostMapping("create/")
   public final ResponseEntity<?> createMember3(
       @RequestBody @Valid final MemberDto memberDto,
       @RequestHeader final String email,
       @RequestHeader final String password
   ) {
-    return new ResponseEntity<>(this.memberService
-      .createMember3(memberDto, email, password),
-     HttpStatus.OK);
+    DISPLAY.info("Inside Controller");
+    MemberOutDto dto = this.memberService
+        .createMember3(memberDto, email, password);
+    if (dto != null) {
+      return new ResponseEntity<>(new
+              ApiResponse("Created Successfully", true),
+          HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(new
+          ApiResponse("Failed", false),
+      HttpStatus.BAD_REQUEST);
+    }
   }
   /**
    * Retrieves a list of authenticated members with pagination.
@@ -124,6 +136,7 @@ public class MemberController {
       @RequestHeader final String password,
       @PathVariable final Integer pageNumber
   ) {
+    DISPLAY.info("Inside Controller");
     return new ResponseEntity<>(
       this.memberService
       .getAllMemberAuth(email, password, pageNumber),
@@ -146,15 +159,12 @@ public class MemberController {
       @PathVariable final Integer memberId,
       @RequestBody final MemberChangePasswordDto changePasswordDto
   ) {
-    System.out.println("inside controller");
-
+    DISPLAY.info("Inside Controller");
     MemberOutDto memberOutDto =
         this.memberService.changePassword(memberId, changePasswordDto);
-
     if (memberOutDto != null) {
       return new ResponseEntity<>(memberOutDto, HttpStatus.OK);
     }
-
     return new ResponseEntity<>(
         new ApiResponse("Incorrect Password, Please try again.", false),
       HttpStatus.BAD_REQUEST
@@ -173,6 +183,7 @@ public class MemberController {
   public final ResponseEntity<ApiResponse> deleteMember(
       @PathVariable @Valid final Integer memberId
   ) {
+    DISPLAY.info("Inside Controller");
     ApiResponse apiResponse = this.memberService.deleteMember(memberId);
     if (apiResponse != null) {
       return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);

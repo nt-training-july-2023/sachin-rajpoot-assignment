@@ -98,6 +98,7 @@
     transition: .2s ease-in-out;
     font-weight: 500;
     /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+    cursor: pointer;
 }
 .user_registration_form_btn input:hover{
     color: black;

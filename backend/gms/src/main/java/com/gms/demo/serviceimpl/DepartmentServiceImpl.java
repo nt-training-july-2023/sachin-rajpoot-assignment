@@ -1,5 +1,6 @@
 package com.gms.demo.serviceimpl;
 
+import com.gms.demo.controller.DepartmentController;
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
@@ -13,6 +14,8 @@ import com.gms.demo.service.DepartmentService;
 import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -49,6 +52,12 @@ public class DepartmentServiceImpl implements DepartmentService {
    */
   private final Integer numberOfItemToSend = 8;
 
+  /**
+   * Logger for logging.
+   */
+  private static final Logger DISPLAY = LoggerFactory
+      .getLogger(DepartmentController.class);
+
   /*
    * Retrieves a list of all departments.
    *
@@ -58,6 +67,7 @@ public class DepartmentServiceImpl implements DepartmentService {
   @Override
   public final List<DepartmentOutDto>
         getAllDepartment(final Integer pageNumber) {
+    DISPLAY.info("Inside Department Service");
     Integer numberOfPages = numberOfItemToSend;
     Page<Department> departments =
         this.departmentRepo.findAll(
@@ -84,6 +94,7 @@ public class DepartmentServiceImpl implements DepartmentService {
   @Override
   public final DepartmentOutDto
       getDepartmentById(final Integer departmentId) {
+    DISPLAY.info("Inside Department Service");
     Department department =
         this.departmentRepo.findById(departmentId)
         .orElseThrow(() ->
@@ -114,6 +125,7 @@ public class DepartmentServiceImpl implements DepartmentService {
       final String email,
       final String password
   ) {
+    DISPLAY.info("Inside Department Service");
     Member member = this.memberRepo.findByEmail(email);
 
     if (member != null) {
@@ -137,6 +149,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
   @Override
   public final ApiResponse deleteDepartment(final Integer departmentId) {
+    DISPLAY.info("Inside Department Service");
     this.departmentRepo.findById(departmentId)
         .orElseThrow(() ->
           new ResourceNotFoundException(
@@ -158,6 +171,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
   @Override
   public final List<DepartmentOutDto> getAllDepartmentNoPage() {
+    DISPLAY.info("Inside Department Service");
     List<Department> departments = this.departmentRepo.findAll();
     List<DepartmentOutDto> departmentDtos = new ArrayList<>();
     departments.forEach(department ->

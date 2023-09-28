@@ -110,7 +110,9 @@ function Navbar({ setIsLoggedIn }) {
     <div className="nav_bar">
       {/* NAV LOGO  */}
       <div className="logo">
-        <p>GMS</p>
+        <Link to={"/tickettable"} className="link">
+          GMS
+        </Link>
       </div>
 
       <div className="nav_links topnav" id="myTopnav">
@@ -244,7 +246,6 @@ function Navbar({ setIsLoggedIn }) {
             <Link to="/changepassword" className="link">
               Change Password
             </Link>
-            <a href="#">Link 3</a>
           </div>
         </div>
 

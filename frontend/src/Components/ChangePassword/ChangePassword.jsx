@@ -102,13 +102,15 @@ function ChangePassword({ setIsLoggedIn }) {
       )
       .then((response) => {
         // localStorage.clear();
-        setModal(true);
         console.log("DATA RECEIVED");
         console.log(response.data);
         console.log("Log Out Function");
         handleLogOut();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setModal(true)
+        console.log(err)
+      });
 
     console.log("Form submitted successfully!");
   };
@@ -185,7 +187,7 @@ function ChangePassword({ setIsLoggedIn }) {
           <div className="dept-modal">
             <div onClick={toggleModal} className="overlay"></div>
             <div className="dept-modal-content">
-              <h2>Password Changed Successfully</h2>
+              <h2>Invalid Credentials</h2>
               <button className="dept-close-modal" onClick={toggleModal}>
                 CLOSE
               </button>

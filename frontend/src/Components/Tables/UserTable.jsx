@@ -6,12 +6,13 @@ import PopUp from "../PopUp/PopUp";
 function UserTable() {
   const [usersData, setUsersData] = useState([]);
   const memberEmail = JSON.parse(localStorage.getItem("member"))?.email;
+  const loggedInUserId = JSON.parse(localStorage.getItem("member"))?.memberId;
   const memberPassword = JSON.parse(localStorage.getItem("memberPassword"));
   const [tableRender, setTableRender] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [modal, setModal] = useState(false);
   const [Error, setError] = useState(false);
-  const [showImage, setShowImage] = useState(false);
+  const[customMessage, setCustomMessage] = useState(""); 
 
   // GETTNG ALL MEMBER DATA
   useEffect(() => {
@@ -37,6 +38,11 @@ function UserTable() {
   // HANDLE DELETE USER
   const handleDeleteUser = (memberId) => {
     console.log(memberId);
+    if(memberId === loggedInUserId) {
+      setCustomMessage("Can not delete yourself.")
+      setError(true)
+      return;
+    }
     const headers = {
       email: memberEmail,
       password: memberPassword,
@@ -55,6 +61,7 @@ function UserTable() {
         console.log(response);
       })
       .catch((err) => {
+        setCustomMessage("something went wrong check network connections");
         setError(true)
         console.log(err)
       });
@@ -107,7 +114,6 @@ function UserTable() {
         <tbody>
           {usersData &&
             usersData
-              ?.filter((e) => e.email !== memberEmail)
               .map((user, index) => (
                 <tr key={user.memberId}>
                    <td className="ticket-table-data">{index + 1}</td>
@@ -173,8 +179,8 @@ function UserTable() {
       {Error && (
         <PopUp
           openPopup={Error}
-          customText="something went wrong
-          check network connections"
+          customImageSrc="fail.png"
+          customText={customMessage}
           toggleError={toggleError}
         />
       )}

@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "./TicketTable.css";
-import PopUp from "../PopUp/PopUp";
 
 function TicketTable({ isLoggedIn }) {
-  console.log("TTTTTTTTTTTTTTTTTTTTTTTT");
+  console.log("Inside Ticket Table");
   // STATE VARIABLES
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
@@ -472,7 +471,7 @@ function TicketTable({ isLoggedIn }) {
       {/* NOT FOUND IMAGE  */}
       {ticketsData && ticketsData?.length === 0 && (
         <div className="not-found-img-div">
-          <img src="NoDataFound.jpg" className="not-found-img" />
+          <img src="NoDataFound.jpg" className="not-found-img" alt="no data found image" />
           <h3>Go Back</h3>
         </div>
       )}

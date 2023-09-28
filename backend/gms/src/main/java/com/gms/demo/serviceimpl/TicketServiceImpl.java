@@ -1,5 +1,6 @@
 package com.gms.demo.serviceimpl;
 
+import com.gms.demo.controller.DepartmentController;
 import com.gms.demo.entity.Comment;
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
@@ -19,6 +20,8 @@ import com.gms.demo.service.TicketService;
 import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -64,6 +67,12 @@ public class TicketServiceImpl implements TicketService {
   private DepartmentRepo departmentRepo;
 
   /**
+   * Logger for logging.
+   */
+  private static final Logger DISPLAY = LoggerFactory
+      .getLogger(DepartmentController.class);
+
+  /**
    * Number of items sent.
    */
   private final Integer numberOfItemToSend = 8;
@@ -82,18 +91,20 @@ public class TicketServiceImpl implements TicketService {
   @Override
   public final TicketOutDto createTicket(final TicketDto ticketDto,
       final Integer memberId, final Integer departmentId) {
+    DISPLAY.info("Inside service");
     Member member = this.memberRepo.findById(memberId)
         .orElseThrow(() -> new
                 ResourceNotFoundException("Member", "member ID", memberId));
+    DISPLAY.info("Member found");
     Department department = this.departmentRepo.findById(departmentId)
         .orElseThrow(() ->
         new ResourceNotFoundException("Department", "department ID",
             departmentId));
+    DISPLAY.info("Department found");
     Ticket ticket = this.modelMapper.map(ticketDto, Ticket.class);
     ticket.setMember(member);
     ticket.setDepartment(department);
     Ticket savedTicket = this.ticketRepo.save(ticket);
-    System.out.println(savedTicket);
     return this.modelMapper.map(savedTicket, TicketOutDto.class);
   }
 
@@ -106,6 +117,7 @@ public class TicketServiceImpl implements TicketService {
   public final TicketOutDto
       updateTicket(final TicketUpdateStatusInDto ticketDto,
           final Integer ticketId) {
+    DISPLAY.info("Inside service");
     Ticket ticket = this.ticketRepo.findById(ticketId)
         .orElseThrow(() -> new ResourceNotFoundException("ticket",
             "ticket ID", ticketId));
@@ -123,30 +135,21 @@ public class TicketServiceImpl implements TicketService {
       getAllTicketAuth(final Integer memberId,
       final boolean myTickets, final Status filter,
       final Integer pageNumber, final boolean adminDept) {
-    System.out.println("inside");
+    DISPLAY.info("Inside service");
+    DISPLAY.info("Param received -> adminDept : " + adminDept
+            + ", myTickets : " + myTickets);
+    DISPLAY.info("Filter received : " + filter);
+    DISPLAY.info("Page Number : " + pageNumber);
+    DISPLAY.info("Member Id : " + memberId);
     Member member = this.memberRepo.findById(memberId)
         .orElseThrow(() -> new
                 ResourceNotFoundException("Member",
             "member ID", memberId));
     String departmentName =
             member.getDepartment().getDepartmentName();
-    Integer status = 0;
     Integer numberOfPages = numberOfItemToSend;
     Pageable pageable = PageRequest.of(pageNumber, numberOfPages);
-    //    if (filter.toString().equals("OPEN")) {
-    //      status = 0;
-    //    }
-    //    if (filter.toString().equals("PROGRESS")) {
-    //      status = 1;
-    //    }
-    //    if (filter.toString().equals("CLOSED")) {
-    //      status = 2;
-    //    }
-    //    if (filter.toString().equals("ALL")) {
-    //      status = 3;
-    //    }
     Role role = member.getRole();
-    System.out.println("Status is set to : " + status);
     if (myTickets) {
       if (filter.toString().equals("ALL")) {
         Page<Ticket> pageTickets =
@@ -205,12 +208,10 @@ public class TicketServiceImpl implements TicketService {
                 .add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
         return ticketOutDtos;
       }
-      System.out.println("Before Repo");
       Page<Ticket> tickets =
           this.ticketRepo.findByStatus(filter,
                   PageRequest.of(pageNumber,
                           numberOfPages, Sort.by("status")));
-      System.out.println("After Repo");
       List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
       tickets
           .forEach(t -> ticketOutDtos.add(this.modelMapper
@@ -218,7 +219,6 @@ public class TicketServiceImpl implements TicketService {
       return ticketOutDtos;
     } else {
       if (filter.toString().equals("ALL")) {
-        System.out.println("Inside user all");
         Page<Ticket> pagetickets =
             this.ticketRepo.findAllByDepartmentId(member
                     .getDepartment().getDepartmentId(),
@@ -235,7 +235,6 @@ public class TicketServiceImpl implements TicketService {
         });
         return ticketOutDtos;
       }
-      System.out.println("inside user -> not all");
       Page<Ticket> tickets =
           this.ticketRepo
               .findAllByDepartmentIdAndStatus(member.getDepartment()
@@ -251,10 +250,10 @@ public class TicketServiceImpl implements TicketService {
 
   @Override
   public final TicketOutDto getTicketBtId(final Integer ticketId) {
+    DISPLAY.info("Inside service");
     Ticket ticket = this.ticketRepo.findById(ticketId)
         .orElseThrow(() -> new
                 ResourceNotFoundException("Ticket", "Ticket ID", ticketId));
-
     return this.modelMapper.map(ticket, TicketOutDto.class);
   }
 }

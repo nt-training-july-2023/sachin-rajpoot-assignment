@@ -70,9 +70,10 @@ public class DepartmentControllerTest {
         String password = "password";
         DepartmentOutDto departmentOutDto = new DepartmentOutDto();
         when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(departmentOutDto);
-        ResponseEntity<DepartmentOutDto> response = departmentController.createDepartment2(departmentDto, email, password);
+        ResponseEntity<?> response = departmentController.createDepartment2(departmentDto, email, password);
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(departmentOutDto, response.getBody());
+        assertEquals(new 
+            ApiResponse("Created Successfully", true), response.getBody());
     }
 
     @Test
@@ -82,7 +83,7 @@ public class DepartmentControllerTest {
         String email = "invalid@example.com";
         String password = "invalidPassword";
         when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(null); 
-        ResponseEntity<DepartmentOutDto> response = departmentController.createDepartment2(departmentDto, email, password);
+        ResponseEntity<?> response = departmentController.createDepartment2(departmentDto, email, password);
 
  
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());

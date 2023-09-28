@@ -1,5 +1,6 @@
 package com.gms.demo.serviceimpl;
 
+import com.gms.demo.controller.DepartmentController;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
 import com.gms.demo.exception.ResourceNotFoundException;
@@ -14,6 +15,8 @@ import com.gms.demo.service.MemberService;
 import java.util.ArrayList;
 import java.util.List;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -52,6 +55,12 @@ public class MemberServiceImpl implements MemberService {
   private static final int MIN_SIZE_PASSWORD = 8;
 
   /**
+   * Logger for logging.
+   */
+  private static final Logger DISPLAY = LoggerFactory
+      .getLogger(DepartmentController.class);
+
+  /**
    * Perform member login.
    *
    * @param memberLoginDto The MemberLoginDto containing login credentials.
@@ -61,19 +70,18 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public final MemberOutDto
       login(final MemberLoginDto memberLoginDto) {
+    DISPLAY.info("Inside Service");
     Member member = this.memberRepo
             .findByEmail(memberLoginDto.getEmail());
-    System.out.println("member found by email " + member);
-
+    DISPLAY.info("Member Found");
     if (member != null) {
-      System.out.println(member.getPassword() + "  "
-            + memberLoginDto.getPassword());
       if (member.getPassword()
               .equals(memberLoginDto.getPassword())) {
-        System.out.println(memberLoginDto);
+        DISPLAY.info("Password Matched");
         return this.mapper.map(member, MemberOutDto.class);
       }
     }
+    DISPLAY.info("Password does not Matched");
     return null;
   }
 
@@ -88,12 +96,10 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public final Boolean verifyEmailAndPassword(final String email,
           final String password) {
+    DISPLAY.info("Inside Service");
     String emailPattern =
             "^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$";
-    // String passwordPattern = "^[a-zA-Z0-9]*$";
-
     boolean isValidEmail = email.matches(emailPattern);
-    // boolean isValidPassword = password.matches(passwordPattern);
     boolean isValidEmail2 = email.endsWith("@nucleusteq.com");
     boolean isValidPassword2 = false;
     if (password.length() >= MIN_SIZE_PASSWORD) {
@@ -102,31 +108,30 @@ public class MemberServiceImpl implements MemberService {
     if (isValidEmail
         && isValidEmail2
         && isValidPassword2) {
+      DISPLAY.info("Verify success");
       return true;
     }
+    DISPLAY.info("Verify failed");
     return false;
   }
 
   @Override
   public final MemberOutDto changePassword(final Integer memberId,
       final MemberChangePasswordDto changePasswordDto) {
-    System.out.println("member id received -> " + memberId);
+    DISPLAY.info("Inside Service");
     Member member = this.memberRepo.findById(memberId)
         .orElseThrow(() -> new
             ResourceNotFoundException("member", "member ID", memberId));
-    System.out.println("MemberChangePasswordDto -> " + changePasswordDto);
-    System.out.println(
-        "Real Password : " + member.getPassword()
-        +
-            " Password Received -> "
-        + changePasswordDto.getOldpassword());
+    DISPLAY.info("Member found");
     if (member.getPassword().equals(changePasswordDto
             .getOldpassword())) {
+      DISPLAY.info("Password Matched");
       member.setPassword(changePasswordDto.getNewPassword());
       member.setIsFirstLogin(false);
       Member savedMember = this.memberRepo.save(member);
       return this.mapper.map(savedMember, MemberOutDto.class);
     }
+    DISPLAY.info("Password Matched Failed");
     return null;
   }
 
@@ -135,6 +140,7 @@ public class MemberServiceImpl implements MemberService {
       getAllMemberAuth(final String email,
               final String password,
       final Integer pageNumber) {
+    DISPLAY.info("Inside Service");
     Integer numberOfPages = numberOfItemToSend;
     Page<Member> members =
         this.memberRepo
@@ -149,11 +155,14 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public final MemberOutDto createMember3(final MemberDto memberDto,
       final String email, final String password) {
+    DISPLAY.info("Inside Service");
     Member member = this.memberRepo.findByEmail(email);
+    DISPLAY.info("member found");
     if (member != null) {
       if (member.getPassword().equals(password)
           && member.getRole() != null
           && member.getRole().equals(Role.ADMIN)) {
+        DISPLAY.info("Role is Admin");
         Member member2 = this.mapper.map(memberDto, Member.class);
         Member savedMember = this.memberRepo.save(member2);
         MemberOutDto memberOutDto2 =
@@ -161,16 +170,19 @@ public class MemberServiceImpl implements MemberService {
         return memberOutDto2;
       }
     }
+    DISPLAY.info("Null returned");
     return null;
   }
 
   @Override
   public final ApiResponse deleteMember(final Integer memberId) {
+    DISPLAY.info("Inside Service");
     this.memberRepo.findById(memberId)
         .orElseThrow(() -> new
                 ResourceNotFoundException("member", "member ID", memberId));
+    DISPLAY.info("member found");
     this.memberRepo.deleteById(memberId);
-
+    DISPLAY.info("member deleted");
     return new ApiResponse("Member with member ID : "
     + memberId + " is deleted successfully", true);
   }

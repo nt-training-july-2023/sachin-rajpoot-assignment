@@ -1,19 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
 
 .ticket-table-container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #d0dae3;
-  height: 90vh;
+  height: 90vh; */
+
+
+  display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-color: #d0dae3;
+    height: 90vh;
+    /* top: 25%; */
+    position: absolute;
+    top: 15%;
+    /* left: 6%; */
+    /* width: 80%; */
+    width: 98vw;
+    overflow-x: hidden;
+    align-items: center;
 }
+
 
 .ticket-table-container table {
   border-collapse: collapse;
-  width: 80%;
+  /* width: 80%; */
   background-color: aliceblue;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  width: 90%;
 }
 
 .ticket-table-heading {
@@ -33,12 +52,20 @@
 
 .ticket-table-select-div select {
   padding: 0rem 0.7rem;
+  cursor: pointer;
+  border-radius: 7px;
 }
 .ticket-table-data,
 .ticket-table-head {
   border: 1px solid grey;
   text-align: center;
+  
+}
+.ticket-table-head{
   padding: 6px;
+}
+.ticket-table-data {
+  padding: 4px;
 }
 
 .ticket-table-head {
@@ -53,6 +80,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   background-color: beige;
+  font-size: 15px;
 }
 
 .ticket-table-view-btn {
@@ -63,6 +91,7 @@
   border-radius: 5px;
   border: none;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .ticket-table-view-btn:hover {
@@ -79,6 +108,7 @@
   border: none;
   background-color: #1d2b36;
   border: 1px solid lightslategray;
+  cursor: pointer;
 }
 
 .ticket-table-view-btn-modal:hover {
@@ -251,13 +281,14 @@ body.active-modal {
   padding: 0.5rem;
   color: aliceblue;
   /* background-color: black; */
-  background-color: #3ad935;
+  background-color: #1d2b36;
   transition: 0.2s ease-in-out;
   /* background-color: aliceblue; */
   border-radius: 10px;
   border: none;
 
   border: 1px solid lightslategray;
+  cursor: pointer;
 }
 
 .view-ticket-create-comment-area button:hover,
@@ -278,6 +309,7 @@ body.active-modal {
   border: none;
 
   border: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
 }
 
 /* TICKET TABLE VIEW TICKET CSS END  */

@@ -144,7 +144,7 @@ function UserRegistration() {
     console.log("DATA SENT : ");
     console.log(data);
     await axios
-      .post("http://localhost:8080/api/create/nodept", data, config)
+      .post("http://localhost:8080/api/create/", data, config)
       .then((response) => {
         setModal(true);
         setName("");

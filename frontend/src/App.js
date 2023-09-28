@@ -1,12 +1,10 @@
 import Login from "./Components/Login/Login";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
-import Home from "./Components/Home/Home";
 import UserRegistration from "./Components/NewUser/UserRegistration";
 import NewTicket from "./Components/NewTicket/NewTicket";
 import TicketTable from "./Components/Tables/TicketTable";
 import ChangePassword from "./Components/ChangePassword/ChangePassword";
-import Profile from "./Components/Profile";
 import UserTable from "./Components/Tables/UserTable";
 import DepartmentTable from "./Components/Tables/DepartmentTable";
 import { useEffect, useState } from "react";

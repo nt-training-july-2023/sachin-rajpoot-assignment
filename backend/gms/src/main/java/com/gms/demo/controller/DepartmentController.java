@@ -59,7 +59,7 @@ public class DepartmentController {
    */
   @CrossOrigin
   @PostMapping("create/auth")
-  final ResponseEntity<DepartmentOutDto> createDepartment2(
+  final ResponseEntity<?> createDepartment2(
       @RequestBody @Valid final DepartmentDto departmentDto,
       @RequestHeader final String email,
       @RequestHeader final String password
@@ -69,9 +69,12 @@ public class DepartmentController {
         this.departmentService.createDepartment2(departmentDto,
           email, password);
     if (departmentDto2 != null) {
-      return new ResponseEntity<>(departmentDto2, HttpStatus.CREATED);
+      DISPLAY.info("Department created success");
+      return new ResponseEntity<>(new
+              ApiResponse("Created Successfully", true), HttpStatus.CREATED);
     }
-    return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    return new ResponseEntity<>(new ApiResponse("Failed", false),
+            HttpStatus.UNAUTHORIZED);
   }
 
   /**
@@ -86,6 +89,7 @@ public class DepartmentController {
   final ResponseEntity<List<DepartmentOutDto>> getAllDepartment(
       @PathVariable final Integer pageNumber
   ) {
+    DISPLAY.info("Inside Get All Page Department method");
     return new ResponseEntity<>(
       this.departmentService.getAllDepartment(pageNumber),
       HttpStatus.OK
@@ -101,6 +105,7 @@ public class DepartmentController {
   @CrossOrigin
   @GetMapping("getAll/noPage")
   final ResponseEntity<List<DepartmentOutDto>> getAllDepartment() {
+    DISPLAY.info("Inside Get All No Page Department method");
     return new ResponseEntity<>(
       this.departmentService.getAllDepartmentNoPage(),
       HttpStatus.OK
@@ -118,11 +123,14 @@ public class DepartmentController {
   final ResponseEntity<ApiResponse> deleteDepartment(
       @PathVariable @Valid final Integer departmentId
   ) {
+    DISPLAY.info("Inside Delete Department method");
     ApiResponse apiResponse =
         this.departmentService.deleteDepartment(departmentId);
     if (apiResponse != null) {
+      DISPLAY.info("Department Deleted Success");
       return new ResponseEntity<ApiResponse>(apiResponse, HttpStatus.OK);
     }
+    DISPLAY.info("Department Delete Fail");
     return new ResponseEntity<ApiResponse>(HttpStatus.BAD_REQUEST);
   }
 }

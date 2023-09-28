@@ -1,5 +1,6 @@
 package com.gms.demo.filter;
 
+import com.gms.demo.controller.DepartmentController;
 import com.gms.demo.entity.Role;
 import com.gms.demo.repo.MemberRepo;
 import java.io.IOException;
@@ -12,6 +13,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +30,12 @@ public class SecurityFilter implements Filter {
    */
   @Autowired
   private MemberRepo memberRepo;
+
+  /**
+   * Logger for logging.
+   */
+  private static final Logger DISPLAY = LoggerFactory
+      .getLogger(DepartmentController.class);
 
   /**
    * List to store Admin urls.
@@ -76,7 +86,7 @@ public class SecurityFilter implements Filter {
       final FilterChain chain
   ) throws IOException, ServletException {
     HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-    System.out.println(
+    DISPLAY.info(
         "HEADERS RECEIVED -> EMAIL : "
          +
         httpServletRequest.getHeader("email")
@@ -90,7 +100,7 @@ public class SecurityFilter implements Filter {
 
     String currentUrl = httpServletRequest.getRequestURI();
     HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-    System.out.println(currentUrl + email + password);
+    DISPLAY.info(currentUrl + email + password);
     if (currentUrl.equals("/api/login")) {
       chain.doFilter(request, response);
     } else if (httpServletRequest.getMethod().equals("OPTIONS")) {
@@ -120,7 +130,6 @@ public class SecurityFilter implements Filter {
           &&
           checkAdminUrl(currentUrl)
       ) {
-        System.out.println("Inside admin");
         chain.doFilter(request, response);
       } else if (
           memberRepo.existsByEmailAndPassword(email, password)
@@ -129,7 +138,7 @@ public class SecurityFilter implements Filter {
       ) {
         chain.doFilter(request, response);
       } else {
-        System.out.println("unauthorized");
+        DISPLAY.info("Unauthorized");
         ((HttpServletResponse) response).sendError(
             HttpServletResponse.SC_UNAUTHORIZED,
             "Unauthorized User"
