@@ -17,7 +17,7 @@ function ChangePassword({ setIsLoggedIn }) {
   const [errorAlert, setErrorAlert] = useState(true);
   const [modal, setModal] = useState(false);
 
-  // SET OLD PASSWOED
+  // SET OLD PASSWORD
   const handleOldPasswordChange = (e) => {
     const v = e.target.value;
     setOldPassword(v);
@@ -37,8 +37,8 @@ function ChangePassword({ setIsLoggedIn }) {
       setNewPasswordError("Password must be at least 8 characters long.");
     } else if (passwordRegex.test(v) === false) {
       setNewPasswordError(
-        "password must contain capital, small letter,"+
-        "digit and special character"
+        "password must contain capital, small letter," +
+          "digit and special character"
       );
     } else {
       setNewPasswordError("");
@@ -101,20 +101,19 @@ function ChangePassword({ setIsLoggedIn }) {
         config
       )
       .then((response) => {
-        // localStorage.clear();
         console.log("DATA RECEIVED");
         console.log(response.data);
         console.log("Log Out Function");
         handleLogOut();
       })
       .catch((err) => {
-        setModal(true)
-        console.log(err)
+        setModal(true);
+        console.log(err);
       });
-
     console.log("Form submitted successfully!");
   };
 
+  // TOGGLES THE MODAL
   const toggleModal = () => {
     setModal(!modal);
   };
@@ -138,6 +137,7 @@ function ChangePassword({ setIsLoggedIn }) {
           method="POST"
           onSubmit={(e) => handleSubmit(e)}
         >
+          {/* OLD PASSWORD  */}
           <div className="change-password-input-area">
             <label htmlFor="oldpassword">Old Password :</label>
             <input
@@ -151,6 +151,7 @@ function ChangePassword({ setIsLoggedIn }) {
             )}
           </div>
 
+          {/* NEW PASSWORD  */}
           <div className="change-password-input-area">
             <label htmlFor="newpassword">New Password :</label>
             <input
@@ -164,6 +165,7 @@ function ChangePassword({ setIsLoggedIn }) {
             )}
           </div>
 
+          {/* CONFIRM PASSWORD  */}
           <div className="change-password-input-area">
             <label htmlFor="conpassword">Confirm Password :</label>
             <input
@@ -177,12 +179,13 @@ function ChangePassword({ setIsLoggedIn }) {
             )}
           </div>
 
+          {/* SUBMIT BUTTON  */}
           <div className="change-password-input-area">
             <input type="submit" className="change-password-btn" />
           </div>
         </form>
 
-        {/* DISPLAY SUCCESS OR ERROR MESSAGE */}
+        {/* DISPLAY FAIL OR ERROR MESSAGE */}
         {modal && (
           <div className="dept-modal">
             <div onClick={toggleModal} className="overlay"></div>

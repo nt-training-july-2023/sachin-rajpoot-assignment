@@ -41,6 +41,7 @@ function Navbar({ setIsLoggedIn }) {
   const toggleError = () => {
     setError(!error);
   };
+
   // TOGGLE MODAL2 -> ERROR MESSAGE
   const toggleModal2 = () => {
     setModal2(!modal2);
@@ -85,24 +86,17 @@ function Navbar({ setIsLoggedIn }) {
       )
       .then((response) => {
         if (response.data.success === false) {
-          // setError(true);
         }
         setModal(false);
         setModal2(true);
         console.log(department);
         console.log("Form submitted successfully!");
-        // navigate("/");
         console.log(response.data);
-        // alert(response.data.message);
       })
       .catch((err) => {
         setModal(false);
         setError(true);
-
         console.log(err);
-        if (err?.response?.data?.message) {
-          // alert(err.response.data.message);
-        }
       });
   };
 

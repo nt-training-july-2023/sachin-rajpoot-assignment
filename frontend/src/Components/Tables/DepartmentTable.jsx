@@ -8,11 +8,13 @@ function DepartmentTable() {
   const [tableRender, setTableRender] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const memberEmail = JSON.parse(localStorage.getItem("member"))?.email;
-  const loggedInUserDeptName = JSON.parse(localStorage.getItem("member"))?.departmentName;
+  const loggedInUserDeptName = JSON.parse(
+    localStorage.getItem("member")
+  )?.departmentName;
   const memberPassword = JSON.parse(localStorage.getItem("memberPassword"));
   const [modal, setModal] = useState(false);
   const [Error, setError] = useState(false);
-  const[customMessage, setCustomMessage] = useState(""); 
+  const [customMessage, setCustomMessage] = useState("");
 
   // GETTING ALL DEPARTMENT DATA
   useEffect(() => {
@@ -40,9 +42,9 @@ function DepartmentTable() {
   // DELETING DEPARTMENT
   const handleDeletedepartment = (departmentId, departmentName) => {
     console.log(departmentId);
-    if(departmentName === loggedInUserDeptName) {
-      setCustomMessage("Can not delete your department.")
-      setError(true)
+    if (departmentName === loggedInUserDeptName) {
+      setCustomMessage("Can not delete your department.");
+      setError(true);
       return;
     }
     const headers = {
@@ -114,21 +116,22 @@ function DepartmentTable() {
         </thead>
         <tbody>
           {departmentsData &&
-            departmentsData
-              .map((e, index) => (
-                <tr key={e.departmentId}>
-                  <td className="ticket-table-data">{index + 1}</td>
-                  <td className="ticket-table-data">{e.departmentName}</td>
-                  <td className="ticket-table-data">
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDeletedepartment(e.departmentId, e.departmentName)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
+            departmentsData.map((e, index) => (
+              <tr key={e.departmentId}>
+                <td className="ticket-table-data">{index + 1}</td>
+                <td className="ticket-table-data">{e.departmentName}</td>
+                <td className="ticket-table-data">
+                  <button
+                    className="delete-btn"
+                    onClick={() =>
+                      handleDeletedepartment(e.departmentId, e.departmentName)
+                    }
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
 
@@ -151,18 +154,6 @@ function DepartmentTable() {
           </button>
         </div>
       )}
-      {/* DISPLAY SUCCESS OR ERROR MESSAGE
-      {modal && (
-        <div className="dept-modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="dept-modal-content">
-            <h2>Ticket Deleted Successfully</h2>
-            <button className="dept-close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
-          </div>
-        </div>
-      )} */}
 
       {/* POP UP ON SUCCESS  */}
       {modal && (

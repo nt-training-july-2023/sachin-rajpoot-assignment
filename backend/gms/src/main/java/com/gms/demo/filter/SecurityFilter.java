@@ -44,7 +44,7 @@ public class SecurityFilter implements Filter {
 
   static {
     //    MEMBER URLS
-    adminUrls.add("/api/create/nodept");
+    adminUrls.add("/api/create/");
     adminUrls.add("/api/member/getAll/auth");
     adminUrls.add("/api/member/delete/memberId/{memberId}");
 

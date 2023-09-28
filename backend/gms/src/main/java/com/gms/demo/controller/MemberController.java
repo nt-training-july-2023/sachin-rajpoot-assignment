@@ -124,7 +124,7 @@ public class MemberController {
    *
    * @param email      The email header used for authentication.
    * @param password   The password header used for authentication.
-   * @param pageNumber The page number for pagination.
+   * @param pageNumber The page number for pagination. an
    * @return A ResponseEntity containing a list of
    *     authenticated MemberGetAllOutDto.
    */

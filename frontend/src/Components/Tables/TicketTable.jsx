@@ -188,7 +188,6 @@ function TicketTable({ isLoggedIn }) {
       );
 
       formRef.current.reset();
-      // setTicketStatus(res.data.status)
     } catch (e) {
       console.log(e);
     }
@@ -202,7 +201,6 @@ function TicketTable({ isLoggedIn }) {
     setComment("");
     console.log("Comment after");
     console.log(comment);
-    // setTicketStatus("");
     console.log(ticketStatus);
   };
 
@@ -471,7 +469,11 @@ function TicketTable({ isLoggedIn }) {
       {/* NOT FOUND IMAGE  */}
       {ticketsData && ticketsData?.length === 0 && (
         <div className="not-found-img-div">
-          <img src="NoDataFound.jpg" className="not-found-img" alt="no data found image" />
+          <img
+            src="NoDataFound.jpg"
+            className="not-found-img"
+            alt="no data found image"
+          />
           <h3>Go Back</h3>
         </div>
       )}
@@ -485,14 +487,6 @@ function TicketTable({ isLoggedIn }) {
           Next
         </button>
       </div>
-
-      {/* {isLoggedIn && (
-        <PopUp
-          openPopup={isLoggedIn}
-          customHeading="Login Successfull"
-          customText={`Welcome ${memberUserName}`}
-        />
-      )} */}
     </div>
   );
 }

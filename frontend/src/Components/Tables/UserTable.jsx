@@ -152,19 +152,6 @@ function UserTable() {
         </button>
       </div>
 
-      {/* DISPLAY SUCCESS OR ERROR MESSAGE
-      {modal && (
-        <div className="dept-modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="dept-modal-content">
-            <h2>User Deleted Successfully</h2>
-            <button className="dept-close-modal" onClick={toggleModal}>
-              CLOSE
-            </button>
-          </div>
-        </div>
-      )} */}
-
       {/* POP UP ON SUCCESS  */}
       {modal && (
         <PopUp

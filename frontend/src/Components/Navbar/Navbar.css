@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
 
-  /* NAVBAR CSS  */
+/* NAVBAR CSS  */
 .nav_bar {
   display: flex;
   justify-content: space-between;
@@ -52,7 +52,7 @@ a:hover {
 }
 
 .active-link {
-  color: #fff; 
+  color: #fff;
   text-decoration: underline;
 }
 
@@ -61,7 +61,6 @@ a:hover {
   border: none;
   font-size: 1rem;
   color: aliceblue;
-  /* background-color: black; */
   background-color: #435463;
 }
 .dropbtn:hover {
@@ -71,30 +70,24 @@ a:hover {
   display: none;
   position: absolute;
   min-width: 150px;
-  /* margin-top: 5px; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   background-color: aliceblue;
-  /* background-color: #ebefd9; */
   border-radius: 10px;
-  transition: .2s ease-in-out;
-  /* color: black; */
+  transition: 0.2s ease-in-out;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
-  
 }
 .dropdown-content a {
   display: block;
-  /* color: black; */
-  /* color: #2e4558; */
   color: #1d2b36;
   margin: 0.7rem;
 }
 
 .dropdown-content a:hover {
-  color: #9ca2a7;;
+  color: #9ca2a7;
 }
 
 a {
@@ -135,16 +128,9 @@ body.active-modal {
   line-height: 1.4;
   background: #f1f1f1;
   border-radius: 10px;
-  /* max-width: 600px; */
   padding: 2rem;
-  /* max-width: 600px; */
   min-width: 350px;
 }
-
-/* .dept-btn-modal h1 {
-  background-color: white;
-  margin-top: 10px;
-} */
 
 .dept-btn-modal:hover {
   color: gray;
@@ -185,11 +171,9 @@ body.active-modal {
 .dept-modal-content form input {
   padding: 0.5rem;
   margin-bottom: 10px;
-  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   border-radius: 10px;
-  /* background: #f1f1f1; */
 }
 
 .dept-modal-content form label {

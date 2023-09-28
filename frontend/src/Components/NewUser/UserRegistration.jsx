@@ -47,9 +47,6 @@ function UserRegistration() {
     if (newName.trim() === "") {
       setNameError("Name cannot be empty");
     }
-    // else if(usernameregex.test(newName) === false){
-    //   setNameError("Name must not contain digits")
-    // }
     else if (newName.trim().length < 3) {
       setNameError("Name must be minimum 3 letter");
     } else {
@@ -159,7 +156,6 @@ function UserRegistration() {
       .catch((err) => {
         setError(true);
         console.log(err);
-        // if (err?.message) alert(err.message);
       });
   };
 

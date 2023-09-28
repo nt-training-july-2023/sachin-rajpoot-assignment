@@ -8,23 +8,21 @@
   background-color: #d0dae3;
   height: 90vh; */
 
-
   display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
-    background-color: #d0dae3;
-    height: 90vh;
-    /* top: 25%; */
-    position: absolute;
-    top: 15%;
-    /* left: 6%; */
-    /* width: 80%; */
-    width: 98vw;
-    overflow-x: hidden;
-    align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  background-color: #d0dae3;
+  height: 90vh;
+  /* top: 25%; */
+  position: absolute;
+  top: 15%;
+  /* left: 6%; */
+  /* width: 80%; */
+  width: 98vw;
+  overflow-x: hidden;
+  align-items: center;
 }
-
 
 .ticket-table-container table {
   border-collapse: collapse;
@@ -59,9 +57,8 @@
 .ticket-table-head {
   border: 1px solid grey;
   text-align: center;
-  
 }
-.ticket-table-head{
+.ticket-table-head {
   padding: 6px;
 }
 .ticket-table-data {
@@ -71,7 +68,6 @@
 .ticket-table-head {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  /* color: #1d2b36; */
 
   background-color: #152f45;
   color: white;
@@ -86,7 +82,6 @@
 .ticket-table-view-btn {
   color: white;
   background-color: black;
-  /* background-color: #1d2b36; */
   padding: 5px;
   border-radius: 5px;
   border: none;
@@ -122,9 +117,7 @@ body.active-modal {
 }
 
 .ticket-table-view-btn-modal {
-  /* border: none; */
   font-size: 1rem;
-  /* background-color: black; */
   color: aliceblue;
 }
 
@@ -143,26 +136,21 @@ body.active-modal {
 .view-ticket-modal-content {
   display: flex;
   padding: 3rem 3rem;
-  /* border: 1px solid black; */
   margin-top: 70px;
 
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* line-height: 1.4; */
   border-radius: 10px;
   min-width: 350px;
-  /* background-color: aliceblue; */
-  /* background-color: #4d5a65; */
+
   background-color: #61707d;
 }
 
 .view-ticket-modal-left {
   text-align: left;
-  /* background-color: aliceblue; */
-  /* border: 1px solid black; */
-  /* padding: 2rem; */
+
   padding: 1.5rem;
   min-width: 332px;
   border-radius: 10px 0 0 10px;
@@ -173,18 +161,12 @@ body.active-modal {
 .view-ticket-form {
   display: flex;
   gap: 1rem;
-  /* background-color: aliceblue; */
   flex-direction: column;
 
   background-color: #d0dae3;
 }
 
 .view-ticket-input-area {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* gap: 0.5rem; */
-  /* background-color: aliceblue; */
-
   background-color: #d0dae3;
 
   display: flex;
@@ -210,7 +192,6 @@ body.active-modal {
 .view-ticket-comment h3,
 .view-ticket-close-modal,
 .view-ticket-create-comment-area label {
-  /* background-color: aliceblue; */
   background-color: #d0dae3;
 }
 .view-ticket-modal-right {
@@ -218,20 +199,15 @@ body.active-modal {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* padding: 2rem; */
   padding: 1.5rem;
-  /* border: 1px solid black; */
-  /* background-color: aliceblue; */
+
   border-radius: 0 10px 10px 0;
 
   background-color: #d0dae3;
 }
 .view-ticket-comment-list {
-  /* height: 260px; */
-  /* height: 360px; */
   height: 315px;
   overflow-y: scroll;
-  /* background-color: aliceblue; */
   background-color: #d0dae3;
 }
 
@@ -249,7 +225,6 @@ body.active-modal {
   font-weight: 400;
   font-size: 1rem;
 
-  /* background-color: #d0dae3; */
   background-color: white;
 }
 
@@ -257,7 +232,6 @@ body.active-modal {
   font-weight: 100;
   font-size: 0.8rem;
 
-  /* background-color: #d0dae3; */
   background-color: white;
 }
 
@@ -265,7 +239,6 @@ body.active-modal {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  /* background-color: aliceblue; */
 
   background-color: #d0dae3;
 }
@@ -280,10 +253,8 @@ body.active-modal {
 .view-ticket-create-comment-area button {
   padding: 0.5rem;
   color: aliceblue;
-  /* background-color: black; */
   background-color: #1d2b36;
   transition: 0.2s ease-in-out;
-  /* background-color: aliceblue; */
   border-radius: 10px;
   border: none;
 
@@ -351,8 +322,6 @@ body.active-modal {
 
 .not-found-img-div img {
   height: 340px;
-  /* width: 105%; */
-  /* width: 713px; */
   width: 80%;
 }
 

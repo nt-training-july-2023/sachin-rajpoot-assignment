@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./NewTicket.css";
 import axios from "axios";
-import SuccessModal from "../Modal/SuccessModal ";
 import PopUp from "../PopUp/PopUp";
 
 function DeptRegistration() {
@@ -52,7 +51,6 @@ function DeptRegistration() {
     const newTitle = event.target.value;
     setTitle(newTitle);
     setTitleError(newTitle.trim() === "" ? "Title cannot be empty" : "");
-    updateButtonStatus();
   };
 
   // ONCHANGE FOR DESCRIPTION
@@ -60,7 +58,6 @@ function DeptRegistration() {
     const newDesc = event.target.value;
     setDesc(newDesc);
     setDescError(newDesc.trim() === "" ? "Description cannot be empty" : "");
-    updateButtonStatus();
   };
 
   // ONCHANGE FOR TICKET TYPE
@@ -74,10 +71,6 @@ function DeptRegistration() {
     const { name, value } = e.target;
     console.log(value);
     setDepartmentId(Number(value));
-  };
-
-  const updateButtonStatus = () => {
-    setIsButtonDisabled(title.trim() === "" || desc.trim() === "");
   };
 
   // SUBMIT BUTTON HANDLER
@@ -123,6 +116,7 @@ function DeptRegistration() {
   } else {
     document.body.classList.remove("active-modal");
   }
+
   // TOGGLES THE FAIL MODAL -> POP UP
   const toggleError = () => {
     setError(!Error);
@@ -143,6 +137,7 @@ function DeptRegistration() {
           method="POST"
           ref={formRef}
         >
+          {/* TITLE  */}
           <div className={`dept_input_area ${titleError ? "error" : ""}`}>
             <label htmlFor="title">Title:</label>
             <input
@@ -157,6 +152,7 @@ function DeptRegistration() {
             {titleError && <span className="error-message">{titleError}</span>}
           </div>
 
+          {/* DESCRIPTION  */}
           <div className={`dept_input_area ${descError ? "error" : ""}`}>
             <label htmlFor="desc">Description:</label>
             <textarea
@@ -170,6 +166,7 @@ function DeptRegistration() {
             {descError && <span className="error-message">{descError}</span>}
           </div>
 
+          {/* TICKET TYPE  */}
           <div className="dept_input_area">
             <label htmlFor="tickettype">Ticket Type:</label>
             <select
@@ -185,6 +182,7 @@ function DeptRegistration() {
             </select>
           </div>
 
+          {/* DEPARTMENT NAME  */}
           <div className="dept_input_area">
             <label htmlFor="dept">Department:</label>
             <select
@@ -204,6 +202,7 @@ function DeptRegistration() {
             </select>
           </div>
 
+          {/* DEFAULT STATUS  */}
           <div className="dept_input_area">
             <label htmlFor="status">Ticket Status:</label>
             <select name="status" id="status" disabled>
@@ -213,6 +212,7 @@ function DeptRegistration() {
             </select>
           </div>
 
+          {/* SUBMIT BUTTON  */}
           <div className="dept_registration_form_btn">
             <input
               type="submit"
@@ -221,19 +221,6 @@ function DeptRegistration() {
             />
           </div>
         </form>
-
-        {/* DISPLAY SUCCESS OR ERROR MESSAGE
-        {modal && (
-          <div className="dept-modal">
-            <div onClick={toggleModal} className="overlay"></div>
-            <div className="dept-modal-content">
-              <h2>Ticket Created Successfully</h2>
-              <button className="dept-close-modal" onClick={toggleModal}>
-                CLOSE
-              </button>
-            </div>
-          </div>
-        )} */}
 
         {/* POP UP ON SUCCESS  */}
         {modal && (

@@ -16,40 +16,37 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
     password: "",
   });
 
+  // TOGGLE POPUP -> SUCCESS
   const toggleModal = () => {
     setPopup(!Popup);
   };
-  if (Popup) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
 
   // TOGGLES THE FAIL MODAL -> POP UP
   const toggleError = () => {
     setError(!Error);
   };
 
+  // EMAIL CHECK
   const verifyEmailHandlder = (e) => {
     const email = document.getElementById("email").value;
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email) && email.endsWith("@nucleusteq.com");
   };
 
+  // EMAIL CHANGE
   const handleEmailChange = (e) => {
     const newEmail = e.target.value;
     setData({ ...data, email: e.target.value });
     if (newEmail.trim() == "") {
       setEmailError("Email cannot be empty");
-    }
-    else if (newEmail.endsWith("@nucleusteq.com") == false) {
-      setEmailError("Domain should be @nucleusteq.com");  
-    }
-    else if (newEmail.endsWith("@nucleusteq.com") == true) {
-      setEmailError("");  
+    } else if (newEmail.endsWith("@nucleusteq.com") == false) {
+      setEmailError("Domain should be @nucleusteq.com");
+    } else if (newEmail.endsWith("@nucleusteq.com") == true) {
+      setEmailError("");
     }
   };
 
+  // PASSWORD CHANGE
   const handlePasswordChange = (e) => {
     const newPassword = e.target.value;
     setData({ ...data, password: e.target.value });
@@ -57,6 +54,8 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
       newPassword.trim() === "" ? "Password cannot be empty" : ""
     );
   };
+
+  // SUBMIT LOGIN
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!verifyEmailHandlder() || passwordError !== "" || emailError !== "") {
@@ -106,12 +105,15 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
   return (
     <div className="container pt1 patterns">
       <h1>Grievance Management System</h1>
+      {/* LOGIN FORM  */}
       <div className="registration_form">
+        {/* HEADING  */}
         <div className="heading">
           <h1 id="heading">Login</h1>
         </div>
         <div className="input_fields">
           <form className="content" onSubmit={submitHandler}>
+            {/* EMAIL  */}
             <div className="input_area">
               <label htmlFor="email">Email:</label>
               <input
@@ -124,7 +126,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
               />
               {emailError && <span className="login-error">{emailError}</span>}
             </div>
-
+            {/* PASSWORD  */}
             <div className="input_area">
               <label htmlFor="password">Password:</label>
               <input
@@ -139,7 +141,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                 <span className="login-error">{passwordError}</span>
               )}
             </div>
-
+            {/* SUBMIT BUTTON */}
             <div className="registraction_btn">
               <input type="submit" value="Login" />
             </div>
