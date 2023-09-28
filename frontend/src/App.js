@@ -27,11 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* {isFirstLogin == false  && isLoggedIn ? (
-        <Navbar setIsLoggedIn={setIsLoggedIn} />
-      ) : (
-        <Navigate to="/login" />
-      )} */}
       {isFirstLogin === false && isLoggedIn && (
         <Navbar setIsLoggedIn={setIsLoggedIn} />
       )}
