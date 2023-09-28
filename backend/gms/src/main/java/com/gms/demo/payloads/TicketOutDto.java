@@ -36,10 +36,10 @@ public class TicketOutDto {
   /**
    * sets ticketId of the ticket.
    *
-   * @param ticketId ticket Id
+   * @param ticketIdx ticket Id
    */
-  public final void setTicketId(final Integer ticketId) {
-    this.ticketId = ticketId;
+  public final void setTicketId(final Integer ticketIdx) {
+    this.ticketId = ticketIdx;
   }
 
   /**
@@ -92,7 +92,8 @@ public class TicketOutDto {
   private String memberName;
 
   /**
-   * A list of CommentOutDto objects representing comments associated with the ticket.
+   * A list of CommentOutDto objects representing comments
+   *     associated with the ticket.
    */
   private List<CommentOutDto> comments;
 
@@ -108,10 +109,10 @@ public class TicketOutDto {
   /**
    * Sets the title of the ticket.
    *
-   * @param title The title of the ticket to set.
+   * @param titlex The title of the ticket to set.
    */
-  public final void setTitle(final String title) {
-    this.title = title;
+  public final void setTitle(final String titlex) {
+    this.title = titlex;
   }
 
   /**
@@ -126,10 +127,10 @@ public class TicketOutDto {
   /**
    * Sets the description of the ticket.
    *
-   * @param description The description of the ticket to set.
+   * @param descriptionx The description of the ticket to set.
    */
-  public final void setDescription(final String description) {
-    this.description = description;
+  public final void setDescription(final String descriptionx) {
+    this.description = descriptionx;
   }
 
   /**
@@ -144,10 +145,10 @@ public class TicketOutDto {
   /**
    * Sets the date when the ticket was created.
    *
-   * @param createdOn The date when the ticket was created to set.
+   * @param createdOnx The date when the ticket was created to set.
    */
-  public final void setCreatedOn(final Date createdOn) {
-    this.createdOn = createdOn;
+  public final void setCreatedOn(final Date createdOnx) {
+    this.createdOn = createdOnx;
   }
 
   /**
@@ -162,10 +163,10 @@ public class TicketOutDto {
   /**
    * Sets the date when the ticket was last updated.
    *
-   * @param lastUpdatedOn The date when the ticket was last updated to set.
+   * @param lastUpdatedOnx The date when the ticket was last updated to set.
    */
-  public final void setLastUpdatedOn(final Date lastUpdatedOn) {
-    this.lastUpdatedOn = lastUpdatedOn;
+  public final void setLastUpdatedOn(final Date lastUpdatedOnx) {
+    this.lastUpdatedOn = lastUpdatedOnx;
   }
 
   /**
@@ -180,10 +181,10 @@ public class TicketOutDto {
   /**
    * Sets the status of the ticket.
    *
-   * @param status The status of the ticket to set.
+   * @param statusx The status of the ticket to set.
    */
-  public final void setStatus(final Status status) {
-    this.status = status;
+  public final void setStatus(final Status statusx) {
+    this.status = statusx;
   }
 
   /**
@@ -198,10 +199,10 @@ public class TicketOutDto {
   /**
    * Sets the type of the ticket.
    *
-   * @param ticketType The type of the ticket to set.
+   * @param ticketTypex The type of the ticket to set.
    */
-  public final void setTicketType(final TicketType ticketType) {
-    this.ticketType = ticketType;
+  public final void setTicketType(final TicketType ticketTypex) {
+    this.ticketType = ticketTypex;
   }
 
   /**
@@ -216,10 +217,10 @@ public class TicketOutDto {
   /**
    * Sets the name of the department associated with the ticket.
    *
-   * @param departmentName The name of the department to set.
+   * @param departmentNamex The name of the department to set.
    */
-  public final void setDepartmentName(final String departmentName) {
-    this.departmentName = departmentName;
+  public final void setDepartmentName(final String departmentNamex) {
+    this.departmentName = departmentNamex;
   }
 
   /**
@@ -234,10 +235,10 @@ public class TicketOutDto {
   /**
    * Sets the name of the member associated with the ticket.
    *
-   * @param memberName The name of the member to set.
+   * @param memberNamex The name of the member to set.
    */
-  public final void setMemberName(final String memberName) {
-    this.memberName = memberName;
+  public final void setMemberName(final String memberNamex) {
+    this.memberName = memberNamex;
   }
 
   /**
@@ -253,11 +254,11 @@ public class TicketOutDto {
    * Sets the list of comments associated
    * with the ticket.
    *
-   * @param comments The list of comments to set.
+   * @param commentsx The list of comments to set.
    */
   public final void setComments(
-      final List<CommentOutDto> comments) {
-    this.comments = comments;
+      final List<CommentOutDto> commentsx) {
+    this.comments = commentsx;
   }
 
   /**
@@ -292,7 +293,7 @@ public class TicketOutDto {
       +
       ", ticketType="
       +
-      ticketType 
+      ticketType
       +
       ", departmentName="
       +
@@ -304,42 +305,6 @@ public class TicketOutDto {
       +
       "]"
       );
-  }
-
-  /**
-   * Constructs a new TicketOutDto object with the specified attributes.
-   *
-   * @param title The title of the ticket.
-   * @param description The description of the ticket.
-   * @param createdOn The date when the ticket was created.
-   * @param lastUpdatedOn The date when the ticket was last updated.
-   * @param status The status of the ticket.
-   * @param ticketType The type of the ticket.
-   * @param departmentName The name of the department associated with the ticket.
-   * @param memberName The name of the member associated with the ticket.
-   * @param comments The list of comments associated with the ticket.
-   */
-  public TicketOutDto(
-      final String title,
-      final String description,
-      final Date createdOn,
-      final Date lastUpdatedOn,
-      final Status status,
-      final TicketType ticketType,
-      final String departmentName,
-      final String memberName,
-      final List<CommentOutDto> comments
-  ) {
-    super();
-    this.title = title;
-    this.description = description;
-    this.createdOn = createdOn;
-    this.lastUpdatedOn = lastUpdatedOn;
-    this.status = status;
-    this.ticketType = ticketType;
-    this.departmentName = departmentName;
-    this.memberName = memberName;
-    this.comments = comments;
   }
 
   /**
@@ -368,7 +333,6 @@ public class TicketOutDto {
     );
   }
 
-  
   /**
    * compares the object.
    */
@@ -407,42 +371,5 @@ public class TicketOutDto {
       );
   }
 
-  /**
-   * Constructor.
-   *
-   *@param ticketId ticket Id
-   *@param title title
-   *@param description description
-   *@param createdOn created On
-   *@param lastUpdatedOn lastUpdated On
-   *@param status status
-   *@param ticketType ticket Type
-   *@param departmentName department Name
-   *@param memberName member Name
-   **@param comments comments
-   */
-  public TicketOutDto(
-      final Integer ticketId,
-      final String title,
-      final String description,
-      final Date createdOn,
-      final Date lastUpdatedOn,
-      final Status status,
-      final TicketType ticketType,
-      final String departmentName,
-      final String memberName,
-      final List<CommentOutDto> comments
-  ) {
-    super();
-    this.ticketId = ticketId;
-    this.title = title;
-    this.description = description;
-    this.createdOn = createdOn;
-    this.lastUpdatedOn = lastUpdatedOn;
-    this.status = status;
-    this.ticketType = ticketType;
-    this.departmentName = departmentName;
-    this.memberName = memberName;
-    this.comments = comments;
-  }
 }
+

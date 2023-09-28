@@ -31,10 +31,10 @@ public class DepartmentDto {
   /**
    * Set the ID of the department.
    *
-   * @param departmentId The department ID to set.
+   * @param departmentIdx The department ID to set.
    */
-  public final void setDepartmentId(final Integer departmentId) {
-    this.departmentId = departmentId;
+  public final void setDepartmentId(final Integer departmentIdx) {
+    this.departmentId = departmentIdx;
   }
 
   /**
@@ -42,17 +42,17 @@ public class DepartmentDto {
    *
    * @return The department name.
    */
-  public String getDepartmentName() {
+  public final String getDepartmentName() {
     return departmentName;
   }
 
   /**
    * Set the name of the department.
    *
-   * @param departmentName The department name to set.
+   * @param departmentNamex The department name to set.
    */
-  public final void setDepartmentName(final String departmentName) {
-    this.departmentName = departmentName;
+  public final void setDepartmentName(final String departmentNamex) {
+    this.departmentName = departmentNamex;
   }
 
   /**
@@ -64,15 +64,20 @@ public class DepartmentDto {
   public final int hashCode() {
     final int prime = 31;
     int result = 1;
-    result =
-      prime * result + ((departmentId == null) ? 0
-          : departmentId.hashCode());
-    result =
-      prime
-      *
-      result
-      +
-      ((departmentName == null) ? 0 : departmentName.hashCode());
+    if (departmentId == null) {
+      result =
+          prime * result + 0;
+    } else {
+      result =
+          prime * result + departmentId.hashCode();
+    }
+    if (departmentName == null) {
+      result =
+          prime * result + 0;
+    } else {
+      result =
+          prime * result + departmentName.hashCode();
+    }
     return result;
   }
 

@@ -54,12 +54,19 @@ public class TicketServiceImpl implements TicketService {
   private MemberRepo memberRepo;
 
   /**
-   * The DepartmentRepo interface represents a repository for Department entities
-   * in the database. It provides methods for querying and manipulating department
+   * The DepartmentRepo interface represents a repository
+   *     for Department entities
+   * in the database. It provides methods for querying
+   *     and manipulating department
    * data.
    */
   @Autowired
   private DepartmentRepo departmentRepo;
+
+  /**
+   * Number of items sent.
+   */
+  private final Integer numberOfItemToSend = 8;
 
   /**
    * Creates a new ticket based on the provided TicketDto, associating it with a
@@ -76,7 +83,8 @@ public class TicketServiceImpl implements TicketService {
   public final TicketOutDto createTicket(final TicketDto ticketDto,
       final Integer memberId, final Integer departmentId) {
     Member member = this.memberRepo.findById(memberId)
-        .orElseThrow(() -> new ResourceNotFoundException("Member", "member ID", memberId));
+        .orElseThrow(() -> new
+                ResourceNotFoundException("Member", "member ID", memberId));
     Department department = this.departmentRepo.findById(departmentId)
         .orElseThrow(() ->
         new ResourceNotFoundException("Department", "department ID",
@@ -95,8 +103,9 @@ public class TicketServiceImpl implements TicketService {
    * @return Updated TicketOutDto.
    */
   @Override
-  public final TicketOutDto updateTicket(final TicketUpdateStatusInDto ticketDto,
-          Integer ticketId) {
+  public final TicketOutDto
+      updateTicket(final TicketUpdateStatusInDto ticketDto,
+          final Integer ticketId) {
     Ticket ticket = this.ticketRepo.findById(ticketId)
         .orElseThrow(() -> new ResourceNotFoundException("ticket",
             "ticket ID", ticketId));
@@ -110,99 +119,132 @@ public class TicketServiceImpl implements TicketService {
   }
 
   @Override
-  public List<TicketGetAllOutDto> getAllTicketAuth(final Integer memberId,
+  public final List<TicketGetAllOutDto>
+      getAllTicketAuth(final Integer memberId,
       final boolean myTickets, final Status filter,
       final Integer pageNumber, final boolean adminDept) {
     System.out.println("inside");
     Member member = this.memberRepo.findById(memberId)
-        .orElseThrow(() -> new ResourceNotFoundException("Member",
+        .orElseThrow(() -> new
+                ResourceNotFoundException("Member",
             "member ID", memberId));
-    String departmentName = member.getDepartment().getDepartmentName();
+    String departmentName =
+            member.getDepartment().getDepartmentName();
     Integer status = 0;
-    Pageable pageable = PageRequest.of(pageNumber, 8);
-    if (filter.toString().equals("OPEN")) {
-      status = 0;
-    }
-    if (filter.toString().equals("PROGRESS")) {
-      status = 1;
-    }
-    if (filter.toString().equals("CLOSED")) {
-      status = 2;
-    }
-    if (filter.toString().equals("ALL")) {
-      status = 3;
-    }
+    Integer numberOfPages = numberOfItemToSend;
+    Pageable pageable = PageRequest.of(pageNumber, numberOfPages);
+    //    if (filter.toString().equals("OPEN")) {
+    //      status = 0;
+    //    }
+    //    if (filter.toString().equals("PROGRESS")) {
+    //      status = 1;
+    //    }
+    //    if (filter.toString().equals("CLOSED")) {
+    //      status = 2;
+    //    }
+    //    if (filter.toString().equals("ALL")) {
+    //      status = 3;
+    //    }
     Role role = member.getRole();
     System.out.println("Status is set to : " + status);
     if (myTickets) {
       if (filter.toString().equals("ALL")) {
         Page<Ticket> pageTickets =
-            ticketRepo.findAllByMemberIdOrderByStatusAsc(member.getMemberId(),
-            PageRequest.of(pageNumber, 8, Sort.by("status")));
+            ticketRepo
+                .findAllByMemberIdOrderByStatusAsc(member.getMemberId(),
+            PageRequest.of(pageNumber, numberOfPages, Sort.by("status")));
         List<Ticket> tickets = pageTickets.getContent();
         List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-        tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+        tickets.forEach(t -> ticketOutDtos
+                .add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
         return ticketOutDtos;
       }
-      Page<Ticket> pageTickets = 
-          ticketRepo.findAllByMemberIdAndStatus(member.getMemberId(), filter, pageable);
+      Page<Ticket> pageTickets =
+          ticketRepo.findAllByMemberIdAndStatus(member.getMemberId(),
+                  filter, pageable);
       List<Ticket> tickets = pageTickets.getContent();
       List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-      tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+      tickets
+          .forEach(t -> ticketOutDtos.add(this.modelMapper
+                  .map(t, TicketGetAllOutDto.class)));
       return ticketOutDtos;
     } else if (adminDept && role.equals(Role.ADMIN)) {
       if (filter.equals(Status.ALL)) {
-        Page<Ticket> pagetickets = 
-            this.ticketRepo.findAllByDepartmentId(member.getDepartment().getDepartmentId(),
-            PageRequest.of(pageNumber, 8, Sort.by("status")));
+        Page<Ticket> pagetickets =
+            this.ticketRepo
+                .findAllByDepartmentId(member.getDepartment()
+                        .getDepartmentId(),
+            PageRequest.of(pageNumber, numberOfPages, Sort.by("status")));
         List<Ticket> tickets = pagetickets.getContent();
         List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-        tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+        tickets
+            .forEach(t -> ticketOutDtos
+                    .add(this.modelMapper.map(t,
+                            TicketGetAllOutDto.class)));
         return ticketOutDtos;
       }
-      Page<Ticket> pagetickets = this.ticketRepo.findAllByDepartmentIdAndStatus(
+      Page<Ticket> pagetickets = this.ticketRepo
+              .findAllByDepartmentIdAndStatus(
           member.getDepartment().getDepartmentId(),
-          filter, PageRequest.of(pageNumber, 8, Sort.by("status")));
+          filter, PageRequest.of(pageNumber, numberOfPages,
+                  Sort.by("status")));
       List<Ticket> tickets = pagetickets.getContent();
       List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-      tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+      tickets
+          .forEach(t -> ticketOutDtos.add(this.modelMapper.map(t,
+                  TicketGetAllOutDto.class)));
       return ticketOutDtos;
     } else if (role.equals(Role.ADMIN)) {
       if (filter.toString().equals("ALL")) {
         Page<Ticket> tickets =
-            this.ticketRepo.findAll(PageRequest.of(pageNumber, 8, Sort.by("status")));
+            this.ticketRepo
+                .findAll(PageRequest.of(pageNumber, numberOfPages,
+                        Sort.by("status")));
         List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-        tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+        tickets.forEach(t -> ticketOutDtos
+                .add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
         return ticketOutDtos;
       }
       System.out.println("Before Repo");
       Page<Ticket> tickets =
-          this.ticketRepo.findByStatus(filter, PageRequest.of(pageNumber, 8, Sort.by("status")));
+          this.ticketRepo.findByStatus(filter,
+                  PageRequest.of(pageNumber,
+                          numberOfPages, Sort.by("status")));
       System.out.println("After Repo");
       List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-      tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+      tickets
+          .forEach(t -> ticketOutDtos.add(this.modelMapper
+                  .map(t, TicketGetAllOutDto.class)));
       return ticketOutDtos;
     } else {
       if (filter.toString().equals("ALL")) {
         System.out.println("Inside user all");
         Page<Ticket> pagetickets =
-            this.ticketRepo.findAllByDepartmentId(member.getDepartment().getDepartmentId(),
-            PageRequest.of(pageNumber, 8, Sort.by("status")));
+            this.ticketRepo.findAllByDepartmentId(member
+                    .getDepartment().getDepartmentId(),
+            PageRequest.of(pageNumber, numberOfPages,
+                    Sort.by("status")));
         List<Ticket> tickets = pagetickets.getContent();
         List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
         tickets.forEach(t -> {
-          if (departmentName.equals(t.getDepartment().getDepartmentName())) {
-            ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class));
+          if (departmentName
+                  .equals(t.getDepartment().getDepartmentName())) {
+            ticketOutDtos
+                .add(this.modelMapper.map(t, TicketGetAllOutDto.class));
           }
         });
         return ticketOutDtos;
       }
       System.out.println("inside user -> not all");
       Page<Ticket> tickets =
-          this.ticketRepo.findAllByDepartmentIdAndStatus(member.getDepartment().getDepartmentId(),
-          filter, PageRequest.of(pageNumber, 8, Sort.by("status")));
+          this.ticketRepo
+              .findAllByDepartmentIdAndStatus(member.getDepartment()
+                      .getDepartmentId(),
+          filter, PageRequest.of(pageNumber,
+                  numberOfPages, Sort.by("status")));
       List<TicketGetAllOutDto> ticketOutDtos = new ArrayList<>();
-      tickets.forEach(t -> ticketOutDtos.add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
+      tickets.forEach(t -> ticketOutDtos
+              .add(this.modelMapper.map(t, TicketGetAllOutDto.class)));
       return ticketOutDtos;
     }
   }
@@ -210,7 +252,8 @@ public class TicketServiceImpl implements TicketService {
   @Override
   public final TicketOutDto getTicketBtId(final Integer ticketId) {
     Ticket ticket = this.ticketRepo.findById(ticketId)
-        .orElseThrow(() -> new ResourceNotFoundException("Ticket", "Ticket ID", ticketId));
+        .orElseThrow(() -> new
+                ResourceNotFoundException("Ticket", "Ticket ID", ticketId));
 
     return this.modelMapper.map(ticket, TicketOutDto.class);
   }

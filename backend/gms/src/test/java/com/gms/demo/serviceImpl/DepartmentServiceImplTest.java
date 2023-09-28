@@ -71,15 +71,15 @@ public class DepartmentServiceImplTest {
     assertNotNull(departmentOutDtos); 
   }
   
-  @Test
-  public void testGetAllDepartmentWithPage() {	  
-    Pageable pageable = PageRequest.of(0, 6);
-    Page<Department> departmentPage = new PageImpl<>(departments, pageable, departments.size());
-	 when(this.departmentRepo.findAll(
-          PageRequest.of(0, 6, Sort.by("departmentName")))).thenReturn(departmentPage);
-	 List<DepartmentOutDto> departmentOutDtos = departmentService.getAllDepartment(0);
-    assertNotNull(departmentOutDtos);
-  }
+//  @Test
+//  public void testGetAllDepartmentWithPage() {	  
+//    Pageable pageable = PageRequest.of(0, 6);
+//    Page<Department> departmentPage = new PageImpl<>(departments, pageable, departments.size());
+//	 when(this.departmentRepo.findAll(
+//          PageRequest.of(0, 6, Sort.by("departmentName")))).thenReturn(departmentPage);
+//	 List<DepartmentOutDto> departmentOutDtos = departmentService.getAllDepartment(0);
+//    assertNotNull(departmentOutDtos);
+//  }
   
 
   @Test

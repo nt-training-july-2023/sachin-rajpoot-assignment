@@ -89,10 +89,10 @@ public class TicketDto {
   /**
    * Sets the unique identifier for the ticket.
    *
-   * @param ticketId The unique identifier to set for the ticket.
+   * @param ticketIdx The unique identifier to set for the ticket.
    */
-  public final void setTicketId(final Integer ticketId) {
-    this.ticketId = ticketId;
+  public final void setTicketId(final Integer ticketIdx) {
+    this.ticketId = ticketIdx;
   }
 
   /**
@@ -107,10 +107,10 @@ public class TicketDto {
   /**
    * Sets the title of the ticket.
    *
-   * @param title The title to set for the ticket.
+   * @param titlex The title to set for the ticket.
    */
-  public final void setTitle(final String title) {
-    this.title = title;
+  public final void setTitle(final String titlex) {
+    this.title = titlex;
   }
 
   /**
@@ -125,10 +125,10 @@ public class TicketDto {
   /**
    * Sets the description of the ticket.
    *
-   * @param description The description to set for the ticket.
+   * @param descriptionx The description to set for the ticket.
    */
-  public final void setDescription(final String description) {
-    this.description = description;
+  public final void setDescription(final String descriptionx) {
+    this.description = descriptionx;
   }
 
   /**
@@ -143,10 +143,10 @@ public class TicketDto {
   /**
    * Sets the date and time when the ticket was created.
    *
-   * @param createdOn The creation date and time to set for the ticket.
+   * @param createdOnx The creation date and time to set for the ticket.
    */
-  public final void setCreatedOn(final Date createdOn) {
-    this.createdOn = createdOn;
+  public final void setCreatedOn(final Date createdOnx) {
+    this.createdOn = createdOnx;
   }
 
   /**
@@ -161,10 +161,10 @@ public class TicketDto {
   /**
    * Sets the date and time when the ticket was last updated.
    *
-   * @param lastUpdatedOn The last updated date and time to set for the ticket.
+   * @param lastUpdatedOnx The last updated date and time to set for the ticket.
    */
-  public final void setLastUpdatedOn(final Date lastUpdatedOn) {
-    this.lastUpdatedOn = lastUpdatedOn;
+  public final void setLastUpdatedOn(final Date lastUpdatedOnx) {
+    this.lastUpdatedOn = lastUpdatedOnx;
   }
 
   /**
@@ -179,10 +179,10 @@ public class TicketDto {
   /**
    * Sets the status of the ticket.
    *
-   * @param status The status to set for the ticket.
+   * @param statusx The status to set for the ticket.
    */
-  public final void setStatus(final Status status) {
-    this.status = status;
+  public final void setStatus(final Status statusx) {
+    this.status = statusx;
   }
 
   /**
@@ -197,10 +197,10 @@ public class TicketDto {
   /**
    * Sets the type of the ticket.
    *
-   * @param ticketType The type to set for the ticket.
+   * @param ticketTypex The type to set for the ticket.
    */
-  public final void setTicketType(final TicketType ticketType) {
-    this.ticketType = ticketType;
+  public final void setTicketType(final TicketType ticketTypex) {
+    this.ticketType = ticketTypex;
   }
 
   /**
@@ -215,10 +215,10 @@ public class TicketDto {
   /**
    * Sets the department associated with the ticket.
    *
-   * @param department The department to set for the ticket.
+   * @param departmentx The department to set for the ticket.
    */
-  public final void setDepartment(final DepartmentDto department) {
-    this.department = department;
+  public final void setDepartment(final DepartmentDto departmentx) {
+    this.department = departmentx;
   }
 
   /**
@@ -233,46 +233,10 @@ public class TicketDto {
   /**
    * Sets the member associated with the ticket.
    *
-   * @param member The member to set for the ticket.
+   * @param memberx The member to set for the ticket.
    */
-  public final void setMember(final MemberDto member) {
-    this.member = member;
-  }
-
-  /**
-   * Creates a new TicketDto object with the specified parameters.
-   *
-   * @param ticketId      The unique identifier for the ticket.
-   * @param title         The title of the ticket.
-   * @param description   The description of the ticket.
-   * @param createdOn     The date and time when the ticket was created.
-   * @param lastUpdatedOn The date and time when the ticket was last updated.
-   * @param status        The status of the ticket.
-   * @param ticketType    The type of the ticket.
-   * @param departmentDto The department associated with the ticket.
-   * @param member        The member associated with the ticket.
-   */
-  public TicketDto(
-      final Integer ticketId,
-      @NotEmpty final String title,
-      @NotEmpty final String description,
-      final Date createdOn,
-      final Date lastUpdatedOn,
-      final Status status,
-      final TicketType ticketType,
-      final DepartmentDto departmentDto,
-      final MemberDto member
-  ) {
-    super();
-    this.ticketId = ticketId;
-    this.title = title;
-    this.description = description;
-    this.createdOn = createdOn;
-    this.lastUpdatedOn = lastUpdatedOn;
-    this.status = status;
-    this.ticketType = ticketType;
-    this.department = departmentDto;
-    this.member = member;
+  public final void setMember(final MemberDto memberx) {
+    this.member = memberx;
   }
 
   /**

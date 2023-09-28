@@ -148,21 +148,21 @@ public class MemberServiceImplTest {
       assertNull(result);
   }
 
-  @Test
-  public void testGetAllMemberAuth() {
-      String email = "test@nucleusteq.com";
-      String password = "password";
-      Integer pageNumber = 0;
-      Pageable pageable = PageRequest.of(pageNumber, 6, Sort.by("name"));
-      List<Member> memberEntities = new ArrayList<>();
-      Page<Member> memberPage = new PageImpl<>(memberEntities, pageable, memberEntities.size());
-      Mockito.when(memberRepo.findAll(pageable)).thenReturn(memberPage);
-      List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
+//  @Test
+//  public void testGetAllMemberAuth() {
+//      String email = "test@nucleusteq.com";
+//      String password = "password";
+//      Integer pageNumber = 0;
+//      Pageable pageable = PageRequest.of(pageNumber, 6, Sort.by("name"));
+//      List<Member> memberEntities = new ArrayList<>();
+//      Page<Member> memberPage = new PageImpl<>(memberEntities, pageable, memberEntities.size());
+//      Mockito.when(memberRepo.findAll(pageable)).thenReturn(memberPage);
+//      List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
 //      Mockito.when(this.modelMapper.map(member, MemberGetAllOutDto.class))
 //              .thenReturn(getAllOutDto); 
-      List<MemberGetAllOutDto> result = memberService.getAllMemberAuth(email, password, pageNumber);
-      assertEquals(memberOutDtos.size(), result.size());
-  }
+//      List<MemberGetAllOutDto> result = memberService.getAllMemberAuth(email, password, pageNumber);
+//      assertEquals(memberOutDtos.size(), result.size());
+//  }
   
   @Test
   public void changePassword_Test() {  

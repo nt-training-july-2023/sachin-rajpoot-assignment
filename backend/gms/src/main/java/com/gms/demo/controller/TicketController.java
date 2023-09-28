@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * The TicketController class handles API endpoints related to ticket
+ * The TicketController class handles API endpoints related to ticket.
  * operations. This controller provides functionality for creating and
  * retrieving tickets.
  */
@@ -138,3 +138,4 @@ public class TicketController {
     );
   }
 }
+

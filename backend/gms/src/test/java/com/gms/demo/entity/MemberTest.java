@@ -21,9 +21,6 @@ import org.junit.Test;
 public class MemberTest {
 
   private Member member = new Member();
-  Member member2 = new Member(1, "test", "test@nucleusteq.com", 
-		  "11111111", true, Role.ADMIN, new Department(), 
-		  new ArrayList<Ticket>());
 
   //    @BeforeEach
   //    public void setUp() {

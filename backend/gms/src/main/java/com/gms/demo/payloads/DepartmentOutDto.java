@@ -23,6 +23,8 @@ public class DepartmentOutDto {
 
   /**
    * get the department ID.
+   *
+   * @return departmentId  department Id
    */
   public final Integer getDepartmentId() {
     return departmentId;
@@ -30,9 +32,11 @@ public class DepartmentOutDto {
 
   /**
    * sets the department ID.
+   *
+   *@param  departmentIdx department Id
    */
-  public final void setDepartmentId(final Integer departmentId) {
-    this.departmentId = departmentId;
+  public final void setDepartmentId(final Integer departmentIdx) {
+    this.departmentId = departmentIdx;
   }
 
   /**
@@ -64,10 +68,10 @@ public class DepartmentOutDto {
   /**
    * Sets the name of the department.
    *
-   * @param departmentName The name to set for the department.
+   * @param departmentNamex The name to set for the department.
    */
-  public final void setDepartmentName(final String departmentName) {
-    this.departmentName = departmentName;
+  public final void setDepartmentName(final String departmentNamex) {
+    this.departmentName = departmentNamex;
   }
 
   /**
@@ -82,10 +86,10 @@ public class DepartmentOutDto {
   /**
    * Sets the list of members associated with the department.
    *
-   * @param members The list of associated members as MemberOutDto objects.
+   * @param membersx The list of associated members as MemberOutDto objects.
    */
-  public final void setMembers(final List<MemberOutDto> members) {
-    this.members = members;
+  public final void setMembers(final List<MemberOutDto> membersx) {
+    this.members = membersx;
   }
 
   /**
@@ -100,10 +104,10 @@ public class DepartmentOutDto {
   /**
    * Sets the list of tickets associated with the department.
    *
-   * @param tickets The list of associated tickets as TicketOutDto objects.
+   * @param ticketsx The list of associated tickets as TicketOutDto objects.
    */
-  public final void setTickets(final List<TicketOutDto> tickets) {
-    this.tickets = tickets;
+  public final void setTickets(final List<TicketOutDto> ticketsx) {
+    this.tickets = ticketsx;
   }
 
   /**
@@ -122,19 +126,19 @@ public class DepartmentOutDto {
    * specified department name,
    * associated members, and associated tickets.
    *
-   * @param departmentName The name of the department.
-   * @param members     The list of associated members as MemberOutDto objects.
-   * @param tickets     The list of associated tickets as TicketOutDto objects.
+   * @param departmentNamex The name of the department.
+   * @param membersx     The list of associated members as MemberOutDto objects.
+   * @param ticketsx     The list of associated tickets as TicketOutDto objects.
    */
   public DepartmentOutDto(
-      final String departmentName,
-      final List<MemberOutDto> members,
-      final List<TicketOutDto> tickets
+      final String departmentNamex,
+      final List<MemberOutDto> membersx,
+      final List<TicketOutDto> ticketsx
   ) {
     super();
-    this.departmentName = departmentName;
-    this.members = members;
-    this.tickets = tickets;
+    this.departmentName = departmentNamex;
+    this.members = membersx;
+    this.tickets = ticketsx;
   }
 
   /**
@@ -172,25 +176,25 @@ public class DepartmentOutDto {
       Objects.equals(tickets, other.tickets)
       );
   }
-  
+
   /**
-   * Constructs a DepartmentOutDto object. 
+   * Constructs a DepartmentOutDto object.
    *
-   *@param departmentId department Id
-   *@param departmentName department Name
-   *@param members list of members
-   *@param tickets list of tickets
+   *@param departmentIdx department Id
+   *@param departmentNamex department Name
+   *@param membersx list of members
+   *@param ticketsx list of tickets
    */
   public DepartmentOutDto(
-      final Integer departmentId,
-      final String departmentName,
-      final List<MemberOutDto> members,
-      final List<TicketOutDto> tickets
+      final Integer departmentIdx,
+      final String departmentNamex,
+      final List<MemberOutDto> membersx,
+      final List<TicketOutDto> ticketsx
   ) {
     super();
-    this.departmentId = departmentId;
-    this.departmentName = departmentName;
-    this.members = members;
-    this.tickets = tickets;
+    this.departmentId = departmentIdx;
+    this.departmentName = departmentNamex;
+    this.members = membersx;
+    this.tickets = ticketsx;
   }
 }

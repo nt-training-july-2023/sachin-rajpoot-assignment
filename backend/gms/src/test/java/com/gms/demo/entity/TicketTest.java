@@ -11,10 +11,6 @@ import org.junit.jupiter.api.Test;
 public class TicketTest {
 
   private Ticket ticket = new Ticket();
-  Ticket ticket2 = new Ticket(1, "test", "desc", 
-		  new Date(), new Date(), Status.CLOSED, 
-		  TicketType.FEEDBACK, new Department(), 
-		  new Member(), new ArrayList<Comment>());
 
   @Test
   public void testGetAndSetTicketId() {

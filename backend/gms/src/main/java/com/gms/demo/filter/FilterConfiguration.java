@@ -27,12 +27,12 @@ public class FilterConfiguration {
   /**
    * Constructor.
    *
-   * @param memberRepo member repo
+   * @param memberRepox member repo
    *
    */
-  public FilterConfiguration(final MemberRepo memberRepo) {
+  public FilterConfiguration(final MemberRepo memberRepox) {
     super();
-    this.memberRepo = memberRepo;
+    this.memberRepo = memberRepox;
   }
 
   /**

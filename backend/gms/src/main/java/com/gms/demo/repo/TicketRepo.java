@@ -27,9 +27,9 @@ public interface TicketRepo extends JpaRepository<Ticket, Integer> {
    * @return members
    */
   @Query(
-      "SELECT t FROM Ticket t " 
+      "SELECT t FROM Ticket t "
        +
-      "WHERE t.member.id = :memberId " 
+      "WHERE t.member.id = :memberId "
        +
       "ORDER BY t.status ASC"
   )
@@ -47,9 +47,9 @@ public interface TicketRepo extends JpaRepository<Ticket, Integer> {
    * @return members
    */
   @Query(
-      "SELECT t FROM Ticket t " 
+      "SELECT t FROM Ticket t "
        +
-      "WHERE t.member.id = :memberId " 
+      "WHERE t.member.id = :memberId "
        +
       "AND t.status = :status"
   )
@@ -77,9 +77,9 @@ public interface TicketRepo extends JpaRepository<Ticket, Integer> {
    * @return members
    */
   @Query(
-      "SELECT t FROM Ticket t " 
+      "SELECT t FROM Ticket t "
        +
-      "WHERE t.department.id = :departmentId " 
+      "WHERE t.department.id = :departmentId "
        +
       "AND t.status = :status"
   )

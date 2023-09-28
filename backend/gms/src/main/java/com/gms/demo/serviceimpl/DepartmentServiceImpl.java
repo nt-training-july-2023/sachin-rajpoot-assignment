@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *Sevive Implementation for department.
- * 
+ *
  */
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -45,15 +45,23 @@ public class DepartmentServiceImpl implements DepartmentService {
   private MemberRepo memberRepo;
 
   /**
+   * Number of items sent.
+   */
+  private final Integer numberOfItemToSend = 8;
+
+  /*
    * Retrieves a list of all departments.
    *
-   * @return A list of DepartmentOutDto objects representing all departments.
+   * @return A list of DepartmentOutDto objects
+   *     representing all departments.
    */
   @Override
-  public final List<DepartmentOutDto> getAllDepartment(final Integer pageNumber) {
+  public final List<DepartmentOutDto>
+        getAllDepartment(final Integer pageNumber) {
+    Integer numberOfPages = numberOfItemToSend;
     Page<Department> departments =
         this.departmentRepo.findAll(
-          PageRequest.of(pageNumber, 8, Sort.by("departmentName"))
+          PageRequest.of(pageNumber, numberOfPages, Sort.by("departmentName"))
         );
     List<DepartmentOutDto> departmentDtos = new ArrayList<>();
     departments.forEach(department ->
@@ -74,7 +82,7 @@ public class DepartmentServiceImpl implements DepartmentService {
    *     department with the specified ID is not found.
    */
   @Override
-  public final DepartmentOutDto 
+  public final DepartmentOutDto
       getDepartmentById(final Integer departmentId) {
     Department department =
         this.departmentRepo.findById(departmentId)
@@ -101,7 +109,7 @@ public class DepartmentServiceImpl implements DepartmentService {
    *         credentials match; otherwise, returns null.
    */
   @Override
-  public DepartmentOutDto createDepartment2(
+  public final DepartmentOutDto createDepartment2(
       final DepartmentDto departmentDto,
       final String email,
       final String password

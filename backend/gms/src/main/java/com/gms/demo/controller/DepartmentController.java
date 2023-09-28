@@ -41,7 +41,7 @@ public class DepartmentController {
   /**
    * Logger for logging.
    */
-  private static final Logger log = LoggerFactory
+  private static final Logger DISPLAY = LoggerFactory
       .getLogger(DepartmentController.class);
 
   /**
@@ -64,7 +64,7 @@ public class DepartmentController {
       @RequestHeader final String email,
       @RequestHeader final String password
   ) {
-    log.info("Inside Create Department method");
+    DISPLAY.info("Inside Create Department method");
     DepartmentOutDto departmentDto2 =
         this.departmentService.createDepartment2(departmentDto,
           email, password);
@@ -95,7 +95,7 @@ public class DepartmentController {
   /**
    * Retrieves all departments without pagination.
    *
-   * @return A ResponseEntity containing a list of DepartmentOutDto 
+   * @return A ResponseEntity containing a list of DepartmentOutDto
    *     and an HTTP status code.
    */
   @CrossOrigin

@@ -48,10 +48,10 @@ public class MemberGetAllOutDto {
   /**
    * sets ID of the member.
    *
-   *@param memberId member Id
+   *@param memberIdx member Id
    */
-  public final void setMemberId(final Integer memberId) {
-    this.memberId = memberId;
+  public final void setMemberId(final Integer memberIdx) {
+    this.memberId = memberIdx;
   }
 
   /**
@@ -66,10 +66,10 @@ public class MemberGetAllOutDto {
   /**
    * sets name of the member.
    *
-   * @param name name
+   * @param namex name
    */
-  public final void setName(final String name) {
-    this.name = name;
+  public final void setName(final String namex) {
+    this.name = namex;
   }
 
 
@@ -82,14 +82,13 @@ public class MemberGetAllOutDto {
     return email;
   }
 
-  
   /**
    * sets email of the member.
    *
-   * @param email email
+   * @param emailx email
    */
-  public final void setEmail(final String email) {
-    this.email = email;
+  public final void setEmail(final String emailx) {
+    this.email = emailx;
   }
 
   /**
@@ -101,14 +100,13 @@ public class MemberGetAllOutDto {
     return role;
   }
 
-  
   /**
    * sets Role of the member.
    *
-   *@param role role
+   *@param rolex role
    */
-  public final void setRole(final Role role) {
-    this.role = role;
+  public final void setRole(final Role rolex) {
+    this.role = rolex;
   }
 
   /**
@@ -120,14 +118,13 @@ public class MemberGetAllOutDto {
     return departmentName;
   }
 
-  
   /**
    * sets department name of the member.
    *
-   *@param departmentName department Name
+   *@param departmentNamex department Name
    */
-  public final void setDepartmentName(final String departmentName) {
-    this.departmentName = departmentName;
+  public final void setDepartmentName(final String departmentNamex) {
+    this.departmentName = departmentNamex;
   }
 
   /**
@@ -166,7 +163,7 @@ public class MemberGetAllOutDto {
       role == other.role
       );
   }
-  
+
   /**
    * To string of the member.
    *
@@ -202,25 +199,25 @@ public class MemberGetAllOutDto {
   /**
    * constructor  of the member.
    *
-   * @param memberId memberId
-   * @param name name
-   * @param email email
-   * @param role role
-   * @param departmentName department Name
+   * @param memberIdx memberId
+   * @param namex name
+   * @param emailx email
+   * @param rolex role
+   * @param departmentNamex department Name
    */
   public MemberGetAllOutDto(
-      final Integer memberId,
-      final String name,
-      final String email,
-      final Role role,
-      final String departmentName
+      final Integer memberIdx,
+      final String namex,
+      final String emailx,
+      final Role rolex,
+      final String departmentNamex
   ) {
     super();
-    this.memberId = memberId;
-    this.name = name;
-    this.email = email;
-    this.role = role;
-    this.departmentName = departmentName;
+    this.memberId = memberIdx;
+    this.name = namex;
+    this.email = emailx;
+    this.role = rolex;
+    this.departmentName = departmentNamex;
   }
 
   /**
@@ -228,6 +225,5 @@ public class MemberGetAllOutDto {
    */
   public MemberGetAllOutDto() {
     super();
-    // TODO Auto-generated constructor stub
   }
 }

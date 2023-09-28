@@ -53,10 +53,10 @@ public class MemberLoginDto {
   /**
    * Sets the email of the member for login.
    *
-   * @param email The email to set for member login.
+   * @param emailx The email to set for member login.
    */
-  public final void setEmail(final String email) {
-    this.email = email;
+  public final void setEmail(final String emailx) {
+    this.email = emailx;
   }
 
   /**
@@ -71,10 +71,10 @@ public class MemberLoginDto {
   /**
    * Sets the password of the member for login.
    *
-   * @param password The password to set for member login.
+   * @param passwordx The password to set for member login.
    */
-  public final void setPassword(final String password) {
-    this.password = password;
+  public final void setPassword(final String passwordx) {
+    this.password = passwordx;
   }
 
   /**
@@ -99,11 +99,11 @@ public class MemberLoginDto {
   /**
    * Constructs a MemberLoginDto object with the specified email and password.
    *
-   * @param email    The email for member login.
-   * @param password The password for member login.
+   * @param emailx    The email for member login.
+   * @param passwordx The password for member login.
    */
   public MemberLoginDto(
-      @NotEmpty @Email final String email,
+      @NotEmpty @Email final String emailx,
       @NotEmpty @Size(
       min = MIN_SIZE_PASSWORD,
       message = "Password must be between "
@@ -111,11 +111,11 @@ public class MemberLoginDto {
       MIN_SIZE_PASSWORD
       +
       " and 12 characters."
-    ) final String password
+    ) final String passwordx
   ) {
     super();
-    this.email = email;
-    this.password = password;
+    this.email = emailx;
+    this.password = passwordx;
   }
 
   /**

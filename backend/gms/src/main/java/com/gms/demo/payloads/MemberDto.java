@@ -86,10 +86,10 @@ public class MemberDto {
   /**
    * Sets the unique identifier for the member.
    *
-   * @param memberId The member's unique identifier.
+   * @param memberIdx The member's unique identifier.
    */
-  public final void setMemberId(final Integer memberId) {
-    this.memberId = memberId;
+  public final void setMemberId(final Integer memberIdx) {
+    this.memberId = memberIdx;
   }
 
   /**
@@ -104,10 +104,10 @@ public class MemberDto {
   /**
    * Sets the name of the member.
    *
-   * @param name The name of the member.
+   * @param namex The name of the member.
    */
-  public final void setName(final String name) {
-    this.name = name;
+  public final void setName(final String namex) {
+    this.name = namex;
   }
 
   /**
@@ -122,10 +122,10 @@ public class MemberDto {
   /**
    * Sets the email of the member.
    *
-   * @param email The email of the member.
+   * @param emailx The email of the member.
    */
-  public final void setEmail(final String email) {
-    this.email = email;
+  public final void setEmail(final String emailx) {
+    this.email = emailx;
   }
 
   /**
@@ -140,10 +140,10 @@ public class MemberDto {
   /**
    * Sets the password of the member.
    *
-   * @param password The password of the member.
+   * @param passwordx The password of the member.
    */
-  public final void setPassword(final String password) {
-    this.password = password;
+  public final void setPassword(final String passwordx) {
+    this.password = passwordx;
   }
 
   /**
@@ -158,10 +158,11 @@ public class MemberDto {
   /**
    * Sets whether the member is logging in for the first time.
    *
-   * @param isFirstLogin `true` if it's the member's first login; otherwise, `false`.
+   * @param isFirstLoginx `true` if it's the member's first login;
+   *     otherwise, `false`.
    */
-  public final void setIsFirstLogin(final Boolean isFirstLogin) {
-    this.isFirstLogin = isFirstLogin;
+  public final void setIsFirstLogin(final Boolean isFirstLoginx) {
+    this.isFirstLogin = isFirstLoginx;
   }
 
   /**
@@ -176,10 +177,10 @@ public class MemberDto {
   /**
    * Sets the role of the member.
    *
-   * @param role The role of the member.
+   * @param rolex The role of the member.
    */
-  public final void setRole(final Role role) {
-    this.role = role;
+  public final void setRole(final Role rolex) {
+    this.role = rolex;
   }
 
   /**
@@ -194,9 +195,10 @@ public class MemberDto {
   /**
    * Sets the department DTO associated with the member.
    *
+   *@param departmentx department
    */
-  public final void setDepartment(final DepartmentDto department) {
-    this.department = department;
+  public final void setDepartment(final DepartmentDto departmentx) {
+    this.department = departmentx;
   }
 
   /**
@@ -238,41 +240,41 @@ public class MemberDto {
   /**
    * Constructs a MemberDto object with the specified member details.
    *
-   * @param memberId      The unique identifier for the member.
-   * @param name          The name of the member.
-   * @param email         The email of the member.
-   * @param password      The password of the member.
-   * @param isFirstLogin  Indicates if the member is logging in
+   * @param memberIdx      The unique identifier for the member.
+   * @param namex          The name of the member.
+   * @param emailx         The email of the member.
+   * @param passwordx      The password of the member.
+   * @param isFirstLoginx  Indicates if the member is logging in
    *     for the first time.
-   * @param role          The role of the member.
-   * @param department department
+   * @param rolex          The role of the member.
+   * @param departmentx department
    */
   public MemberDto(
-      final Integer memberId,
-      @NotEmpty final String name,
-      @NotEmpty @Email(message = "Email is not valid.") final String email,
+      final Integer memberIdx,
+      @NotEmpty final String namex,
+      @NotEmpty @Email(message = "Email is not valid.") final String emailx,
       @NotEmpty @Size(
       min = MIN_SIZE_PASSWORD,
       message = "PASSWORD MUST BE MINIMUM " + MIN_SIZE_PASSWORD + " CHARACTERS."
-    ) final String password,
-      final Boolean isFirstLogin,
-      final Role role,
-      final DepartmentDto department
+    ) final String passwordx,
+      final Boolean isFirstLoginx,
+      final Role rolex,
+      final DepartmentDto departmentx
   ) {
     super();
-    this.memberId = memberId;
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    this.isFirstLogin = isFirstLogin;
-    this.role = role;
-    this.department = department;
+    this.memberId = memberIdx;
+    this.name = namex;
+    this.email = emailx;
+    this.password = passwordx;
+    this.isFirstLogin = isFirstLoginx;
+    this.role = rolex;
+    this.department = departmentx;
   }
 
   /**
    * Default constructor for the MemberDto class.
    */
   public MemberDto() {
-    // Default constructor
+    super();
   }
 }

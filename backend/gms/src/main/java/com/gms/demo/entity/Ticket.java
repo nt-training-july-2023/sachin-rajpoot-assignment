@@ -113,10 +113,10 @@ public class Ticket {
   /**
    * Set the ticket ID.
    *
-   * @param ticketId The ticket ID to set.
+   * @param ticketIdx The ticket ID to set.
    */
-  public final void setTicketId(final Integer ticketId) {
-    this.ticketId = ticketId;
+  public final void setTicketId(final Integer ticketIdx) {
+    this.ticketId = ticketIdx;
   }
 
   /**
@@ -131,10 +131,10 @@ public class Ticket {
   /**
    * Set the title of the ticket.
    *
-   * @param title The ticket title to set.
+   * @param titlex The ticket title to set.
    */
-  public final void setTitle(final String title) {
-    this.title = title;
+  public final void setTitle(final String titlex) {
+    this.title = titlex;
   }
 
   /**
@@ -149,10 +149,10 @@ public class Ticket {
   /**
    * Set the description of the ticket.
    *
-   * @param description The ticket description to set.
+   * @param descriptionx The ticket description to set.
    */
-  public final void setDescription(final String description) {
-    this.description = description;
+  public final void setDescription(final String descriptionx) {
+    this.description = descriptionx;
   }
 
   /**
@@ -167,10 +167,10 @@ public class Ticket {
   /**
    * Set the creation date of the ticket.
    *
-   * @param createdOn The creation date to set.
+   * @param createdOnx The creation date to set.
    */
-  public final void setCreatedOn(final Date createdOn) {
-    this.createdOn = createdOn;
+  public final void setCreatedOn(final Date createdOnx) {
+    this.createdOn = createdOnx;
   }
 
   /**
@@ -185,10 +185,10 @@ public class Ticket {
   /**
    * Set the last updated date of the ticket.
    *
-   * @param lastUpdatedOn The last updated date to set.
+   * @param lastUpdatedOnx The last updated date to set.
    */
-  public final void setLastUpdatedOn(final Date lastUpdatedOn) {
-    this.lastUpdatedOn = lastUpdatedOn;
+  public final void setLastUpdatedOn(final Date lastUpdatedOnx) {
+    this.lastUpdatedOn = lastUpdatedOnx;
   }
 
   /**
@@ -203,10 +203,10 @@ public class Ticket {
   /**
    * Set the status of the ticket.
    *
-   * @param status The ticket status to set.
+   * @param statusx The ticket status to set.
    */
-  public final void setStatus(final Status status) {
-    this.status = status;
+  public final void setStatus(final Status statusx) {
+    this.status = statusx;
   }
 
   /**
@@ -221,10 +221,10 @@ public class Ticket {
   /**
    * Set the ticket type.
    *
-   * @param ticketType The ticket type to set.
+   * @param ticketTypex The ticket type to set.
    */
-  public final void setTicketType(final TicketType ticketType) {
-    this.ticketType = ticketType;
+  public final void setTicketType(final TicketType ticketTypex) {
+    this.ticketType = ticketTypex;
   }
 
   /**
@@ -239,10 +239,10 @@ public class Ticket {
   /**
    * Set the department associated with the ticket.
    *
-   * @param department The department to set.
+   * @param departmentx The department to set.
    */
-  public final void setDepartment(final Department department) {
-    this.department = department;
+  public final void setDepartment(final Department departmentx) {
+    this.department = departmentx;
   }
 
   /**
@@ -257,10 +257,10 @@ public class Ticket {
   /**
    * Set the member associated with the ticket.
    *
-   * @param member The member to set.
+   * @param memberx The member to set.
    */
-  public final void setMember(final Member member) {
-    this.member = member;
+  public final void setMember(final Member memberx) {
+    this.member = memberx;
   }
 
   /**
@@ -275,22 +275,22 @@ public class Ticket {
   /**
    * Set the list of comments associated with the ticket.
    *
-   * @param comments The list of comments to set.
+   * @param commentsx The list of comments to set.
    */
-  public final void setComments(final List<Comment> comments) {
-    this.comments = comments;
+  public final void setComments(final List<Comment> commentsx) {
+    this.comments = commentsx;
   }
 
   /**
    * Add new comment.
    *
-   * @param comment to set.
+   * @param commentx to set.
    */
-  public final void addComment(final Comment comment) {
+  public final void addComment(final Comment commentx) {
     if (this.comments == null) {
       this.comments = new ArrayList<>();
     } else {
-      this.comments.add(comment);
+      this.comments.add(commentx);
     }
   }
 
@@ -344,45 +344,6 @@ public class Ticket {
       +
       "]"
       );
-  }
-
-  /**
-   * Constructor for creating a Ticket object.
-   *
-   * @param ticketId      The ticket ID.
-   * @param title         The title of the ticket.
-   * @param description   The description of the ticket.
-   * @param createdOn     The creation date of the ticket.
-   * @param lastUpdatedOn The last updated date of the ticket.
-   * @param status        The status of the ticket.
-   * @param ticketType    The type of the ticket.
-   * @param department    The department associated with the ticket.
-   * @param member        The member associated with the ticket.
-   * @param comments      The list of comments associated with the ticket.
-   */
-  public Ticket(
-      final Integer ticketId,
-      @NotEmpty final String title,
-      @NotEmpty final String description,
-      final Date createdOn,
-      final Date lastUpdatedOn,
-      @NotEmpty final Status status,
-      @NotEmpty final TicketType ticketType,
-      final Department department,
-      final Member member,
-      final List<Comment> comments
-  ) {
-    super();
-    this.ticketId = ticketId;
-    this.title = title;
-    this.description = description;
-    this.createdOn = createdOn;
-    this.lastUpdatedOn = lastUpdatedOn;
-    this.status = status;
-    this.ticketType = ticketType;
-    this.department = department;
-    this.member = member;
-    this.comments = comments;
   }
 
   /**

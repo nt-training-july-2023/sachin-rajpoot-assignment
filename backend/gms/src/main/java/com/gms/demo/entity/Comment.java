@@ -58,24 +58,24 @@ public class Comment {
   /**
    * Constructs a Comment object with the specified parameters.
    *
-   * @param commentId The unique identifier for the comment.
-   * @param content   The content of the comment.
-   * @param userName  The username associated with the comment.
-   * @param date      The date and time when the comment was created.
-   * @param ticket    The ticket to which this comment belongs.
+   * @param commentIdx The unique identifier for the comment.
+   * @param contentx   The content of the comment.
+   * @param userNamex  The username associated with the comment.
+   * @param datex      The date and time when the comment was created.
+   * @param ticketx    The ticket to which this comment belongs.
    */
   public Comment(
-      final Integer commentId,
-      @NotEmpty final String content,
-      @NotEmpty final String userName,
-      final Date date,
-      final Ticket ticket
+      final Integer commentIdx,
+      @NotEmpty final String contentx,
+      @NotEmpty final String userNamex,
+      final Date datex,
+      final Ticket ticketx
   ) {
-    this.commentId = commentId;
-    this.content = content;
-    this.userName = userName;
-    this.date = date;
-    this.ticket = ticket;
+    this.commentId = commentIdx;
+    this.content = contentx;
+    this.userName = userNamex;
+    this.date = datex;
+    this.ticket = ticketx;
   }
 
   /**
@@ -97,10 +97,10 @@ public class Comment {
   /**
    * Sets the unique identifier for the comment.
    *
-   * @param commentId The comment's unique identifier.
+   * @param commentIdx The comment's unique identifier.
    */
-  public final void setCommentId(final Integer commentId) {
-    this.commentId = commentId;
+  public final void setCommentId(final Integer commentIdx) {
+    this.commentId = commentIdx;
   }
 
   /**
@@ -115,10 +115,10 @@ public class Comment {
   /**
    * Sets the content of the comment.
    *
-   * @param content The content of the comment.
+   * @param contentx The content of the comment.
    */
-  public final void setContent(final String content) {
-    this.content = content;
+  public final void setContent(final String contentx) {
+    this.content = contentx;
   }
 
   /**
@@ -133,10 +133,10 @@ public class Comment {
   /**
    * Sets the username associated with the comment.
    *
-   * @param userName The username associated with the comment.
+   * @param userNamex The username associated with the comment.
    */
-  public final void setUserName(final String userName) {
-    this.userName = userName;
+  public final void setUserName(final String userNamex) {
+    this.userName = userNamex;
   }
 
   /**
@@ -151,10 +151,10 @@ public class Comment {
   /**
    * Sets the date and time when the comment was created.
    *
-   * @param date The date and time of comment creation.
+   * @param datex The date and time of comment creation.
    */
-  public final void setDate(final Date date) {
-    this.date = date;
+  public final void setDate(final Date datex) {
+    this.date = datex;
   }
 
   /**
@@ -169,10 +169,10 @@ public class Comment {
   /**
    * Sets the ticket to which this comment belongs.
    *
-   * @param ticket The ticket associated with the comment.
+   * @param ticketx The ticket associated with the comment.
    */
-  public final void setTicket(final Ticket ticket) {
-    this.ticket = ticket;
+  public final void setTicket(final Ticket ticketx) {
+    this.ticket = ticketx;
   }
 
   /**
@@ -185,7 +185,7 @@ public class Comment {
     return (
       "Comment [commentId="
       +
-      commentId 
+      commentId
       +
       ", content="
       +

@@ -13,8 +13,6 @@ import javax.validation.constraints.NotEmpty;
 
 public class TicketUpdateStatusInDto {
 
-
-
   /**
   * The ticket Id for ticket.
   */
@@ -41,10 +39,10 @@ public class TicketUpdateStatusInDto {
   /**
    * Set the new status.
    *
-   * @param status The new status to set.
+   * @param statusx The new status to set.
    */
-  public final void setStatus(final Status status) {
-    this.status = status;
+  public final void setStatus(final Status statusx) {
+    this.status = statusx;
   }
 
   /**
@@ -59,10 +57,10 @@ public class TicketUpdateStatusInDto {
   /**
    * Set the associated comment.
    *
-   * @param comment The comment to associate with the status update.
+   * @param commentx The comment to associate with the status update.
    */
-  public final void setComment(final CommentDto comment) {
-    this.comment = comment;
+  public final void setComment(final CommentDto commentx) {
+    this.comment = commentx;
   }
 
   /**
@@ -113,17 +111,17 @@ public class TicketUpdateStatusInDto {
    * Create a new instance of TicketUpdateStatusInDto
    *     with the specified status and comment.
    *
-   * @param status The new status for the ticket.
-   * @param comment An optional comment associated
+   * @param statusx The new status for the ticket.
+   * @param commentx An optional comment associated
    *     with the status update.
    */
   public TicketUpdateStatusInDto(
-      @NotEmpty final Status status,
-      @NotEmpty final CommentDto comment
+      @NotEmpty final Status statusx,
+      @NotEmpty final CommentDto commentx
   ) {
     super();
-    this.status = status;
-    this.comment = comment;
+    this.status = statusx;
+    this.comment = commentx;
   }
 
   /**

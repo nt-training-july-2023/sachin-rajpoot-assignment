@@ -33,26 +33,26 @@ public class ResourceNotFoundException extends RuntimeException {
   /**
    * Constructs a ResourceNotFoundException with the specified parameters.
    *
-   * @param resourceName The name of the resource that was not found.
-   * @param fieldName    The name of the field that was used in the query.
-   * @param fieldValue   The field value that was used in the query.
+   * @param resourceNamex The name of the resource that was not found.
+   * @param fieldNamex    The name of the field that was used in the query.
+   * @param fieldValuex   The field value that was used in the query.
    */
   public ResourceNotFoundException(
-      final String resourceName,
-      final String fieldName,
-      final long fieldValue
+      final String resourceNamex,
+      final String fieldNamex,
+      final long fieldValuex
   ) {
     super(
         String.format(
         "%s not found with %s : %s",
-        resourceName,
-        fieldName,
-        fieldValue
+        resourceNamex,
+        fieldNamex,
+        fieldValuex
       )
     );
-    this.resourceName = resourceName;
-    this.fieldName = fieldName;
-    this.fieldValue = fieldValue;
+    this.resourceName = resourceNamex;
+    this.fieldName = fieldNamex;
+    this.fieldValue = fieldValuex;
   }
 
   /**

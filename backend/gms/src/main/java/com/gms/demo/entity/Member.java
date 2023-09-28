@@ -95,10 +95,10 @@ public class Member {
   /**
    * Sets the unique identifier for the member.
    *
-   * @param memberId The member's unique identifier.
+   * @param memberIdx The member's unique identifier.
    */
-  public final void setMemberId(final Integer memberId) {
-    this.memberId = memberId;
+  public final void setMemberId(final Integer memberIdx) {
+    this.memberId = memberIdx;
   }
 
   /**
@@ -113,10 +113,10 @@ public class Member {
   /**
    * Sets the name of the member.
    *
-   * @param name The name of the member.
+   * @param namex The name of the member.
    */
-  public final void setName(final String name) {
-    this.name = name;
+  public final void setName(final String namex) {
+    this.name = namex;
   }
 
   /**
@@ -131,10 +131,10 @@ public class Member {
   /**
    * Sets the email address of the member.
    *
-   * @param email The email address of the member.
+   * @param emailx The email address of the member.
    */
-  public final void setEmail(final String email) {
-    this.email = email;
+  public final void setEmail(final String emailx) {
+    this.email = emailx;
   }
 
   /**
@@ -149,10 +149,10 @@ public class Member {
   /**
    * Sets the password of the member.
    *
-   * @param password The password of the member.
+   * @param passwordx The password of the member.
    */
-  public final void setPassword(final String password) {
-    this.password = password;
+  public final void setPassword(final String passwordx) {
+    this.password = passwordx;
   }
 
   /**
@@ -168,11 +168,11 @@ public class Member {
   /**
    * Sets whether the member is logging in for the first time.
    *
-   * @param isFirstLogin True if the member is logging in
+   * @param isFirstLoginx True if the member is logging in
    *     for the first time; false otherwise.
    */
-  public final void setIsFirstLogin(final Boolean isFirstLogin) {
-    this.isFirstLogin = isFirstLogin;
+  public final void setIsFirstLogin(final Boolean isFirstLoginx) {
+    this.isFirstLogin = isFirstLoginx;
   }
 
   /**
@@ -187,10 +187,10 @@ public class Member {
   /**
    * Sets the role of the member.
    *
-   * @param role The role of the member.
+   * @param rolex The role of the member.
    */
-  public final void setRole(final Role role) {
-    this.role = role;
+  public final void setRole(final Role rolex) {
+    this.role = rolex;
   }
 
   /**
@@ -205,10 +205,10 @@ public class Member {
   /**
    * Sets the department to which the member belongs.
    *
-   * @param department The department to which the member belongs.
+   * @param departmentx The department to which the member belongs.
    */
-  public final void setDepartment(final Department department) {
-    this.department = department;
+  public final void setDepartment(final Department departmentx) {
+    this.department = departmentx;
   }
 
   /**
@@ -223,10 +223,10 @@ public class Member {
   /**
    * Sets the list of tickets associated with the member.
    *
-   * @param tickets The list of tickets associated with the member.
+   * @param ticketsx The list of tickets associated with the member.
    */
-  public final void setTickets(final List<Ticket> tickets) {
-    this.tickets = tickets;
+  public final void setTickets(final List<Ticket> ticketsx) {
+    this.tickets = ticketsx;
   }
 
   /**
@@ -266,42 +266,9 @@ public class Member {
   }
 
   /**
-   * Constructs a Member object with the specified parameters.
-   *
-   * @param memberId     The unique identifier for the member.
-   * @param name         The name of the member.
-   * @param email        The email address of the member.
-   * @param password     The password of the member.
-   * @param isFirstLogin Whether the member is logging in for the first time.
-   * @param role         The role of the member.
-   * @param department   The department to which the member belongs.
-   * @param tickets      The list of tickets associated with the member.
-   */
-  public Member(
-      final Integer memberId,
-      @NotEmpty final String name,
-      @NotEmpty @Email final String email,
-      @NotEmpty final String password,
-      final Boolean isFirstLogin,
-      final Role role,
-      final Department department,
-      final List<Ticket> tickets
-  ) {
-    super();
-    this.memberId = memberId;
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    this.isFirstLogin = isFirstLogin;
-    this.role = role;
-    this.department = department;
-    this.tickets = tickets;
-  }
-
-  /**
    * Default constructor for Member class.
    */
   public Member() {
-    // Default constructor
+    super();
   }
 }

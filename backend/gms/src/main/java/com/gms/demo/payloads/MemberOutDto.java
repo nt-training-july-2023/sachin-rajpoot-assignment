@@ -62,10 +62,10 @@ public class MemberOutDto {
   /**
    * Sets the name of the member.
    *
-   * @param name The name to set for the member.
+   * @param namex The name to set for the member.
    */
-  public final void setName(final String name) {
-    this.name = name;
+  public final void setName(final String namex) {
+    this.name = namex;
   }
 
   /**
@@ -80,10 +80,10 @@ public class MemberOutDto {
   /**
    * Sets the email of the member.
    *
-   * @param email The email to set for the member.
+   * @param emailx The email to set for the member.
    */
-  public final void setEmail(final String email) {
-    this.email = email;
+  public final void setEmail(final String emailx) {
+    this.email = emailx;
   }
 
   /**
@@ -98,10 +98,10 @@ public class MemberOutDto {
   /**
    * Sets the memberId of the member.
    *
-   * @param memberId The memberId to set for the member.
+   * @param memberIdx The memberId to set for the member.
    */
-  public void setMemberId(final Integer memberId) {
-    this.memberId = memberId;
+  public final void setMemberId(final Integer memberIdx) {
+    this.memberId = memberIdx;
   }
 
   /**
@@ -116,10 +116,10 @@ public class MemberOutDto {
   /**
    * Sets the role of the member.
    *
-   * @param role The role to set for the member.
+   * @param rolex The role to set for the member.
    */
-  public final void setRole(final Role role) {
-    this.role = role;
+  public final void setRole(final Role rolex) {
+    this.role = rolex;
   }
 
   /**
@@ -134,10 +134,10 @@ public class MemberOutDto {
   /**
    * Sets the name of the department to which the member belongs.
    *
-   * @param departmentName The department name to set for the member.
+   * @param departmentNamex The department name to set for the member.
    */
-  public final void setDepartmentName(final String departmentName) {
-    this.departmentName = departmentName;
+  public final void setDepartmentName(final String departmentNamex) {
+    this.departmentName = departmentNamex;
   }
 
   /**
@@ -152,11 +152,11 @@ public class MemberOutDto {
   /**
    * Sets whether it's the member's first login.
    *
-   * @param isFirstLogin `true` if it's the member's first login; otherwise,
+   * @param isFirstLoginx `true` if it's the member's first login; otherwise,
    *                     `false`.
    */
-  public final void setIsFirstLogin(final Boolean isFirstLogin) {
-    this.isFirstLogin = isFirstLogin;
+  public final void setIsFirstLogin(final Boolean isFirstLoginx) {
+    this.isFirstLogin = isFirstLoginx;
   }
 
   /**
@@ -171,10 +171,10 @@ public class MemberOutDto {
   /**
    * Sets a list of TicketOutDto objects associated with the member.
    *
-   * @param ticketOutDtos The list of TicketOutDto objects to set.
+   * @param ticketOutDtosx The list of TicketOutDto objects to set.
    */
-  public final void setTickets(final List<TicketOutDto> ticketOutDtos) {
-    this.tickets = ticketOutDtos;
+  public final void setTickets(final List<TicketOutDto> ticketOutDtosx) {
+    this.tickets = ticketOutDtosx;
   }
 
   /**
@@ -213,31 +213,31 @@ public class MemberOutDto {
    * Constructs a MemberOutDto object with the
    * specified member details.
    *
-   * @param name           The name of the member.
-   * @param email          The email of the member.
-   * @param role           The role of the member.
-   * @param departmentName The name of the department to
+   * @param namex           The name of the member.
+   * @param emailx          The email of the member.
+   * @param rolex           The role of the member.
+   * @param departmentNamex The name of the department to
    *     which the member belongs.
-   * @param isFirstLogin   Indicates if it's the member's
+   * @param isFirstLoginx   Indicates if it's the member's
    *     first login.
-   * @param ticketOutDtos  A list of TicketOutDto objects
+   * @param ticketOutDtosx  A list of TicketOutDto objects
    *     associated with the member.
    */
   public MemberOutDto(
-      final String name,
-      final String email,
-      final Role role,
-      final String departmentName,
-      final Boolean isFirstLogin,
-      final List<TicketOutDto> ticketOutDtos
+      final String namex,
+      final String emailx,
+      final Role rolex,
+      final String departmentNamex,
+      final Boolean isFirstLoginx,
+      final List<TicketOutDto> ticketOutDtosx
   ) {
     super();
-    this.name = name;
-    this.email = email;
-    this.role = role;
-    this.departmentName = departmentName;
-    this.isFirstLogin = isFirstLogin;
-    this.tickets = ticketOutDtos;
+    this.name = namex;
+    this.email = emailx;
+    this.role = rolex;
+    this.departmentName = departmentNamex;
+    this.isFirstLogin = isFirstLoginx;
+    this.tickets = ticketOutDtosx;
   }
 
   /**
@@ -291,7 +291,7 @@ public class MemberOutDto {
       &&
       Objects.equals(name, other.name)
       &&
-      role == other.role 
+      role == other.role
       &&
       Objects.equals(tickets, other.tickets)
       );
@@ -300,30 +300,30 @@ public class MemberOutDto {
   /**
    * constructor.
    *
-   *@param memberId memberId
-   *@param name name
-   *@param email email
-   *@param role role
-   *@param departmentName departmentName
-   *@param isFirstLogin is First Login
-   *@param tickets tickets
+   *@param memberIdx memberId
+   *@param namex name
+   *@param emailx email
+   *@param rolex role
+   *@param departmentNamex departmentName
+   *@param isFirstLoginx is First Login
+   *@param ticketsx tickets
    */
   public MemberOutDto(
-      final Integer memberId,
-      final String name,
-      final String email,
-      final Role role,
-      final String departmentName,
-      final Boolean isFirstLogin,
-      final List<TicketOutDto> tickets
+      final Integer memberIdx,
+      final String namex,
+      final String emailx,
+      final Role rolex,
+      final String departmentNamex,
+      final Boolean isFirstLoginx,
+      final List<TicketOutDto> ticketsx
   ) {
     super();
-    this.memberId = memberId;
-    this.name = name;
-    this.email = email;
-    this.role = role;
-    this.departmentName = departmentName;
-    this.isFirstLogin = isFirstLogin;
-    this.tickets = tickets;
+    this.memberId = memberIdx;
+    this.name = namex;
+    this.email = emailx;
+    this.role = rolex;
+    this.departmentName = departmentNamex;
+    this.isFirstLogin = isFirstLoginx;
+    this.tickets = ticketsx;
   }
 }

@@ -33,10 +33,10 @@ public class ApiResponse {
   /**
    *Sets the message to be included in the API response.
    *
-   * @param message The message to be set.
+   * @param messagex The message to be set.
    */
-  public final void setMessage(final String message) {
-    this.message = message;
+  public final void setMessage(final String messagex) {
+    this.message = messagex;
   }
 
   /**
@@ -51,10 +51,10 @@ public class ApiResponse {
   /**
    * Sets the success indicator for the API response.
    *
-   * @param success True for successful responses, false for errors.
+   * @param successx True for successful responses, false for errors.
    */
-  public final void setSuccess(final boolean success) {
-    this.success = success;
+  public final void setSuccess(final boolean successx) {
+    this.success = successx;
   }
 
   /**
@@ -95,12 +95,12 @@ public class ApiResponse {
    * Constructs an ApiResponse object with the specified message
    *    and success indicator.
    *
-   * @param message The message to include in the response.
-   * @param success True for successful responses, false for errors.
+   * @param messagex The message to include in the response.
+   * @param successx True for successful responses, false for errors.
    */
-  public ApiResponse(final String message, final boolean success) {
+  public ApiResponse(final String messagex, final boolean successx) {
     super();
-    this.message = message;
-    this.success = success;
+    this.message = messagex;
+    this.success = successx;
   }
 }

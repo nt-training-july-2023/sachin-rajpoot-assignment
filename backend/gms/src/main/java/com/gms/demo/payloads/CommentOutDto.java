@@ -9,7 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 /**
  * The `CommentOutDto` class represents a Data
  *    Transfer Object (DTO) for comment information.
- * It contains details about a comment, such as content, author username, and creation date.
+ * It contains details about a comment, such as content,
+ *     author username, and creation date.
  *
  * @version 1.0
  * @since 28-08-2023
@@ -23,6 +24,8 @@ public class CommentOutDto {
 
   /**
    * Gets the comment.
+   *
+   * @return commentId comment Id
    */
   public final Integer getCommentId() {
     return commentId;
@@ -30,9 +33,11 @@ public class CommentOutDto {
 
   /**
    * Sets the comment.
+   *
+   *@param commentIdx comment Id
    */
-  public final void setCommentId(final Integer commentId) {
-    this.commentId = commentId;
+  public final void setCommentId(final Integer commentIdx) {
+    this.commentId = commentIdx;
   }
 
   /**
@@ -64,10 +69,10 @@ public class CommentOutDto {
   /**
    * Sets the content of the comment.
    *
-   * @param content The content to set for the comment.
+   * @param contentx The content to set for the comment.
    */
-  public final void setContent(final String content) {
-    this.content = content;
+  public final void setContent(final String contentx) {
+    this.content = contentx;
   }
 
   /**
@@ -82,10 +87,10 @@ public class CommentOutDto {
   /**
    * Sets the username associated with the comment's author.
    *
-   * @param userName The username to set for the comment's author.
+   * @param userNamex The username to set for the comment's author.
    */
-  public final void setUserName(final String userName) {
-    this.userName = userName;
+  public final void setUserName(final String userNamex) {
+    this.userName = userNamex;
   }
 
   /**
@@ -100,10 +105,10 @@ public class CommentOutDto {
   /**
    *Sets the creation timestamp of the comment.
    *
-   *@param date The creation timestamp to set for the comment.
+   *@param datex The creation timestamp to set for the comment.
    */
-  public void setDate(final Date date) {
-    this.date = date;
+  public final void setDate(final Date datex) {
+    this.date = datex;
   }
 
   /**
@@ -131,50 +136,52 @@ public class CommentOutDto {
   }
 
   /**
-   *Constructs a CommentOutDto object with the specified content, author username, 
+   *Constructs a CommentOutDto object with the specified content,
+   *    author username,
    *and creation date.
    *
-   *@param content  The content of the comment.
-   *@param userName The username of the comment's author.
-   *@param date     The creation date of the comment.
+   *@param contentx  The content of the comment.
+   *@param userNamex The username of the comment's author.
+   *@param datex     The creation date of the comment.
    */
   public CommentOutDto(
-      final String content,
-      final String userName,
-      final Date date
+      final String contentx,
+      final String userNamex,
+      final Date datex
   ) {
     super();
-    this.content = content;
-    this.userName = userName;
-    this.date = date;
+    this.content = contentx;
+    this.userName = userNamex;
+    this.date = datex;
   }
 
   /**
    * Default constructor for CommentOutDto class.
    */
   public CommentOutDto() {
-    // Default constructor
+    super();
   }
-  
+
   /**
    *constructor for CommentOutDto class.
-   *@param commentId  comment
-   *@param content  content
-   *@param userName user Name
-   *@param date date
+   *
+   *@param commentIdx  comment
+   *@param contentx  content
+   *@param userNamex user Name
+   *@param datex date
    */
 
   public CommentOutDto(
-      final Integer commentId,
-      final String content,
-      final String userName,
-      final Date date
+      final Integer commentIdx,
+      final String contentx,
+      final String userNamex,
+      final Date datex
   ) {
     super();
-    this.commentId = commentId;
-    this.content = content;
-    this.userName = userName;
-    this.date = date;
+    this.commentId = commentIdx;
+    this.content = contentx;
+    this.userName = userNamex;
+    this.date = datex;
   }
 
   /**
@@ -201,11 +208,11 @@ public class CommentOutDto {
     }
     CommentOutDto other = (CommentOutDto) obj;
     return (
-      Objects.equals(commentId, other.commentId) 
+      Objects.equals(commentId, other.commentId)
       &&
-      Objects.equals(content, other.content) 
+      Objects.equals(content, other.content)
       &&
-      Objects.equals(date, other.date) 
+      Objects.equals(date, other.date)
       &&
       Objects.equals(userName, other.userName)
       );

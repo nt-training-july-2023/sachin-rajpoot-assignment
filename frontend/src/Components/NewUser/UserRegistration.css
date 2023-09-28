@@ -70,10 +70,11 @@
     /* justify-content: center; */
     /* width: 40%; */
     /* min-width: 50%; */
-    min-width: 300px;
+    min-width: 450px;
     /* align-items: center; */
     background-color: aliceblue;
     /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+    padding: 0 1rem;
 }
 .user_input_area label, .user_input_area input, .user_heading p {
     background-color: aliceblue;

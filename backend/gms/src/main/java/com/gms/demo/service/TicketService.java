@@ -16,7 +16,8 @@ public interface TicketService {
    * department ID.
    *
    * @param ticketDto    The DTO containing ticket information.
-   * @param memberId     The unique identifier of the member creating the ticket.
+   * @param memberId     The unique identifier of the member creating
+   *     the ticket.
    * @param departmentId The unique identifier of the department to which the
    *                     ticket belongs.
    * @return The created ticket as a TicketOutDto if successful, otherwise null.

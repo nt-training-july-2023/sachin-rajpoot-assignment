@@ -42,9 +42,14 @@ public class MemberServiceImpl implements MemberService {
   private MemberRepo memberRepo;
 
   /**
+   * Number of items sent.
+   */
+  private final Integer numberOfItemToSend = 8;
+
+  /**
    * The minimum sixe for password.
    */
-  private static final int MIN_SIZE_PASSWORD = 5;
+  private static final int MIN_SIZE_PASSWORD = 8;
 
   /**
    * Perform member login.
@@ -54,13 +59,17 @@ public class MemberServiceImpl implements MemberService {
    * @throws Exception Exception
    */
   @Override
-  public MemberOutDto login(final MemberLoginDto memberLoginDto) {
-    Member member = this.memberRepo.findByEmail(memberLoginDto.getEmail());
+  public final MemberOutDto
+      login(final MemberLoginDto memberLoginDto) {
+    Member member = this.memberRepo
+            .findByEmail(memberLoginDto.getEmail());
     System.out.println("member found by email " + member);
 
     if (member != null) {
-      System.out.println(member.getPassword() + "  " + memberLoginDto.getPassword());
-      if (member.getPassword().equals(memberLoginDto.getPassword())) {
+      System.out.println(member.getPassword() + "  "
+            + memberLoginDto.getPassword());
+      if (member.getPassword()
+              .equals(memberLoginDto.getPassword())) {
         System.out.println(memberLoginDto);
         return this.mapper.map(member, MemberOutDto.class);
       }
@@ -77,16 +86,22 @@ public class MemberServiceImpl implements MemberService {
    * @throws Exception Exception
    */
   @Override
-  public Boolean verifyEmailAndPassword(final String email, final String password) {
-    String emailPattern = "^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$";
+  public final Boolean verifyEmailAndPassword(final String email,
+          final String password) {
+    String emailPattern =
+            "^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$";
     // String passwordPattern = "^[a-zA-Z0-9]*$";
 
     boolean isValidEmail = email.matches(emailPattern);
     // boolean isValidPassword = password.matches(passwordPattern);
     boolean isValidEmail2 = email.endsWith("@nucleusteq.com");
-    boolean isValidPassword2 = password.length() >= MIN_SIZE_PASSWORD ? true : false;
-
-    if (isValidEmail && isValidEmail2 && isValidPassword2) {
+    boolean isValidPassword2 = false;
+    if (password.length() >= MIN_SIZE_PASSWORD) {
+      isValidPassword2 = true;
+    }
+    if (isValidEmail
+        && isValidEmail2
+        && isValidPassword2) {
       return true;
     }
     return false;
@@ -97,12 +112,16 @@ public class MemberServiceImpl implements MemberService {
       final MemberChangePasswordDto changePasswordDto) {
     System.out.println("member id received -> " + memberId);
     Member member = this.memberRepo.findById(memberId)
-        .orElseThrow(() -> new ResourceNotFoundException("member", "member ID", memberId));
+        .orElseThrow(() -> new
+            ResourceNotFoundException("member", "member ID", memberId));
     System.out.println("MemberChangePasswordDto -> " + changePasswordDto);
     System.out.println(
-        "Real Password : " + member.getPassword() + " Password Received -> "
+        "Real Password : " + member.getPassword()
+        +
+            " Password Received -> "
         + changePasswordDto.getOldpassword());
-    if (member.getPassword().equals(changePasswordDto.getOldpassword())) {
+    if (member.getPassword().equals(changePasswordDto
+            .getOldpassword())) {
       member.setPassword(changePasswordDto.getNewPassword());
       member.setIsFirstLogin(false);
       Member savedMember = this.memberRepo.save(member);
@@ -112,11 +131,18 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public final List<MemberGetAllOutDto> getAllMemberAuth(final String email, final String password,
+  public final List<MemberGetAllOutDto>
+      getAllMemberAuth(final String email,
+              final String password,
       final Integer pageNumber) {
-    Page<Member> members = this.memberRepo.findAll(PageRequest.of(pageNumber, 8, Sort.by("name")));
+    Integer numberOfPages = numberOfItemToSend;
+    Page<Member> members =
+        this.memberRepo
+            .findAll(PageRequest.of(pageNumber,
+                    numberOfPages, Sort.by("name")));
     List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
-    members.forEach(m -> memberOutDtos.add(this.mapper.map(m, MemberGetAllOutDto.class)));
+    members.forEach(m -> memberOutDtos
+            .add(this.mapper.map(m, MemberGetAllOutDto.class)));
     return memberOutDtos;
   }
 
@@ -130,7 +156,8 @@ public class MemberServiceImpl implements MemberService {
           && member.getRole().equals(Role.ADMIN)) {
         Member member2 = this.mapper.map(memberDto, Member.class);
         Member savedMember = this.memberRepo.save(member2);
-        MemberOutDto memberOutDto2 = this.mapper.map(savedMember, MemberOutDto.class);
+        MemberOutDto memberOutDto2 =
+                this.mapper.map(savedMember, MemberOutDto.class);
         return memberOutDto2;
       }
     }
@@ -140,7 +167,8 @@ public class MemberServiceImpl implements MemberService {
   @Override
   public final ApiResponse deleteMember(final Integer memberId) {
     this.memberRepo.findById(memberId)
-        .orElseThrow(() -> new ResourceNotFoundException("member", "member ID", memberId));
+        .orElseThrow(() -> new
+                ResourceNotFoundException("member", "member ID", memberId));
     this.memberRepo.deleteById(memberId);
 
     return new ApiResponse("Member with member ID : "

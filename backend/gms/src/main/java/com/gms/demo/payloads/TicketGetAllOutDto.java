@@ -65,6 +65,8 @@ public class TicketGetAllOutDto {
 
   /**
    * gets ticketId of the the ticket.
+   *
+   *@return  ticketId ticket Id
    */
   public final Integer getTicketId() {
     return ticketId;
@@ -72,13 +74,17 @@ public class TicketGetAllOutDto {
 
   /**
    * sets ticketId of the the ticket.
+   *
+   *@param ticketIdx ticket Id
    */
-  public final void setTicketId(final Integer ticketId) {
-    this.ticketId = ticketId;
+  public final void setTicketId(final Integer ticketIdx) {
+    this.ticketId = ticketIdx;
   }
 
   /**
    * gets title of the the ticket.
+   *
+   *@return  title title
    */
   public final String getTitle() {
     return title;
@@ -86,13 +92,17 @@ public class TicketGetAllOutDto {
 
   /**
    * sets title of the the ticket.
+   *
+   *@param titlex title
    */
-  public final void setTitle(final String title) {
-    this.title = title;
+  public final void setTitle(final String titlex) {
+    this.title = titlex;
   }
 
   /**
    * gets description of the the ticket.
+   *
+   *@return  description description
    */
   public final String getDescription() {
     return description;
@@ -100,13 +110,17 @@ public class TicketGetAllOutDto {
 
   /**
    * sets description of the the ticket.
+   *
+   *@param descriptionx description
    */
-  public final void setDescription(final String description) {
-    this.description = description;
+  public final void setDescription(final String descriptionx) {
+    this.description = descriptionx;
   }
 
   /**
    * gets createdOn of the the ticket.
+   *
+   *@return  createdOn createdOn
    */
   public final Date getCreatedOn() {
     return createdOn;
@@ -114,13 +128,17 @@ public class TicketGetAllOutDto {
 
   /**
    * sets createdOn of the the ticket.
+   *
+   *@param createdOnx created On
    */
-  public final void setCreatedOn(final Date createdOn) {
-    this.createdOn = createdOn;
+  public final void setCreatedOn(final Date createdOnx) {
+    this.createdOn = createdOnx;
   }
 
   /**
    * gets lastUpdatedOn of the the ticket.
+   *
+   *@return lastUpdatedOn last Updated On
    */
   public final Date getLastUpdatedOn() {
     return lastUpdatedOn;
@@ -128,13 +146,17 @@ public class TicketGetAllOutDto {
 
   /**
    * sets lastUpdatedOn of the the ticket.
+   *
+   *@param lastUpdatedOnx lastUpdatedOn
    */
-  public final void setLastUpdatedOn(final Date lastUpdatedOn) {
-    this.lastUpdatedOn = lastUpdatedOn;
+  public final void setLastUpdatedOn(final Date lastUpdatedOnx) {
+    this.lastUpdatedOn = lastUpdatedOnx;
   }
 
   /**
    * gets status of the the ticket.
+   *
+   *@return  status status
    */
   public final Status getStatus() {
     return status;
@@ -142,36 +164,65 @@ public class TicketGetAllOutDto {
 
   /**
    * sets status of the the ticket.
+   *
+   *@param statusx status
    */
-  public final void setStatus(final Status status) {
-    this.status = status;
+  public final void setStatus(final Status statusx) {
+    this.status = statusx;
   }
 
   /**
    * gets status of the the ticket.
+   *
+   *@return ticketType ticketType
    */
   public final TicketType getTicketType() {
     return ticketType;
   }
 
-  public final void setTicketType(final TicketType ticketType) {
-    this.ticketType = ticketType;
+  /**
+   * sets ticketType of the the ticket.
+   *
+   *@param ticketTypex ticketType
+   */
+  public final void setTicketType(final TicketType ticketTypex) {
+    this.ticketType = ticketTypex;
   }
 
+  /**
+   * gets departmentName of the the ticket.
+   *
+   *@return departmentName departmentName
+   */
   public final String getDepartmentName() {
     return departmentName;
   }
 
-  public final void setDepartmentName(final String departmentName) {
-    this.departmentName = departmentName;
+  /**
+   * sets departmentName of the the ticket.
+   *
+   *@param departmentNamex departmentName
+   */
+  public final void setDepartmentName(final String departmentNamex) {
+    this.departmentName = departmentNamex;
   }
 
+  /**
+   * gets status of the the ticket.
+   *
+   *@return ticketType ticketType
+   */
   public final String getMemberName() {
     return memberName;
   }
 
-  public final void setMemberName(final String memberName) {
-    this.memberName = memberName;
+  /**
+   * sets memberName of the the ticket.
+   *
+   *@param memberNamex memberName
+   */
+  public final void setMemberName(final String memberNamex) {
+    this.memberName = memberNamex;
   }
 
   @Override
@@ -265,10 +316,10 @@ public class TicketGetAllOutDto {
       );
   }
 
-  
-
+  /**
+   *Default constructor.
+   */
   public TicketGetAllOutDto() {
     super();
-    // TODO Auto-generated constructor stub
   }
 }

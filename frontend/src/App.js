@@ -94,7 +94,7 @@ function App() {
         {/* Catch-all route for unauthorized access */}
         <Route
           path="*"
-          element={<div>You are not authorized to access this page.</div>}
+          element={<div>NOT FOUND.</div>}
         />
       </Routes>
     </div>

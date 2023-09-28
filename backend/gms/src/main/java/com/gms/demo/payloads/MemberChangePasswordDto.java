@@ -35,10 +35,10 @@ public class MemberChangePasswordDto {
   /**
    * Set the old password.
    *
-   * @param oldpassword The old password to set.
+   * @param oldpasswordx The old password to set.
    */
-  public final void setOldpassword(final String oldpassword) {
-    this.oldpassword = oldpassword;
+  public final void setOldpassword(final String oldpasswordx) {
+    this.oldpassword = oldpasswordx;
   }
 
   /**
@@ -53,10 +53,10 @@ public class MemberChangePasswordDto {
   /**
    * Set the NewPassword.
    *
-   *@param newPassword new Password
+   *@param newPasswordx new Password
    */
-  public final void setNewPassword(final String newPassword) {
-    this.newPassword = newPassword;
+  public final void setNewPassword(final String newPasswordx) {
+    this.newPassword = newPasswordx;
   }
 
   /**
@@ -88,7 +88,7 @@ public class MemberChangePasswordDto {
     }
     MemberChangePasswordDto other = (MemberChangePasswordDto) obj;
     return (
-      Objects.equals(newPassword, other.newPassword) 
+      Objects.equals(newPassword, other.newPassword)
       &&
       Objects.equals(oldpassword, other.oldpassword)
       );
@@ -99,16 +99,16 @@ public class MemberChangePasswordDto {
    * Create a new instance of MemberChangePasswordDto with
    * the specified old and new passwords.
    *
-   * @param oldpassword The old password.
-   * @param newPassword The new password.
+   * @param oldpasswordx The old password.
+   * @param newPasswordx The new password.
    */
   public MemberChangePasswordDto(
-      final String oldpassword,
-      final String newPassword
+      final String oldpasswordx,
+      final String newPasswordx
   ) {
     super();
-    this.oldpassword = oldpassword;
-    this.newPassword = newPassword;
+    this.oldpassword = oldpasswordx;
+    this.newPassword = newPasswordx;
   }
 
   /**
@@ -116,6 +116,5 @@ public class MemberChangePasswordDto {
    */
   public MemberChangePasswordDto() {
     super();
-    // TODO Auto-generated constructor stub
   }
 }

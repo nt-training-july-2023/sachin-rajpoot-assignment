@@ -44,19 +44,17 @@ function UserRegistration() {
     const newName = event.target.value;
     setName(newName);
     const usernameregex = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
-    if(newName.trim() === ""){
+    if (newName.trim() === "") {
       setNameError("Name cannot be empty");
     }
-    else if(newName.trim().length > 3){
-      setNameError("Name must be minimum 3 letter")
+    // else if(usernameregex.test(newName) === false){
+    //   setNameError("Name must not contain digits")
+    // }
+    else if (newName.trim().length < 3) {
+      setNameError("Name must be minimum 3 letter");
+    } else {
+      setNameError("");
     }
-    else if(usernameregex.test(newName) == false){
-      setNameError("Name must not contain digits")
-    }
-    else{
-      setNameError("")
-    }
-    
   };
 
   // HANDLE EMAIL CHANGE
@@ -82,12 +80,12 @@ function UserRegistration() {
     );
     if (newPassword.trim() === "") {
       setPasswordError("Password can not be empty.");
-    } else if (newPassword.trim().length < 8) {
-      setPasswordError("Password must be at least 8 characters long.");
     } else if (passwordRegex.test(newPassword) === false) {
       setPasswordError(
         "password must contain capital, small letter, digit and special character"
       );
+    } else if (newPassword.trim().length < 8) {
+      setPasswordError("Password must be at least 8 characters long.");
     } else {
       setPasswordError("");
     }
@@ -223,7 +221,7 @@ function UserRegistration() {
               required
             />
             {passwordError && (
-              <span className="error-message">{passwordError}</span>
+              <span className="error-message">{"password must contain capital, small, digit and special character"}</span>
             )}
           </div>
 

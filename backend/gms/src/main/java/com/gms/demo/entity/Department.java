@@ -61,10 +61,10 @@ public class Department {
   /**
    * Sets the unique identifier for the department.
    *
-   * @param departmentId The department's unique identifier.
+   * @param departmentIdx The department's unique identifier.
    */
-  public final void setDepartmentId(final Integer departmentId) {
-    this.departmentId = departmentId;
+  public final void setDepartmentId(final Integer departmentIdx) {
+    this.departmentId = departmentIdx;
   }
 
   /**
@@ -106,10 +106,10 @@ public class Department {
   /**
    * Sets the list of members associated with the department.
    *
-   * @param members The list of members associated with the department.
+   * @param membersx The list of members associated with the department.
    */
-  public final void setMembers(final List<Member> members) {
-    this.members = members;
+  public final void setMembers(final List<Member> membersx) {
+    this.members = membersx;
   }
 
   /**
@@ -124,10 +124,10 @@ public class Department {
   /**
    * Sets the list of tickets associated with the department.
    *
-   * @param tickets The list of tickets associated with the department.
+   * @param ticketsx The list of tickets associated with the department.
    */
-  public final void setTickets(final List<Ticket> tickets) {
-    this.tickets = tickets;
+  public final void setTickets(final List<Ticket> ticketsx) {
+    this.tickets = ticketsx;
   }
 
   /**
@@ -153,22 +153,22 @@ public class Department {
   /**
    * Constructs a Department object with the specified parameters.
    *
-   * @param departmentId The unique identifier for the department.
-   * @param members      The list of members associated with the department.
-   * @param tickets      The list of tickets associated with the department.
-   * @param departmentName  Department name
+   * @param departmentIdx The unique identifier for the department.
+   * @param membersx      The list of members associated with the department.
+   * @param ticketsx      The list of tickets associated with the department.
+   * @param departmentNamex  Department name
    */
   public Department(
-      final Integer departmentId,
-      @NotEmpty final String departmentName,
-      final List<Member> members,
-      final List<Ticket> tickets
+      final Integer departmentIdx,
+      @NotEmpty final String departmentNamex,
+      final List<Member> membersx,
+      final List<Ticket> ticketsx
   ) {
     super();
-    this.departmentId = departmentId;
-    this.departmentName = departmentName;
-    this.members = members;
-    this.tickets = tickets;
+    this.departmentId = departmentIdx;
+    this.departmentName = departmentNamex;
+    this.members = membersx;
+    this.tickets = ticketsx;
   }
 
   /**

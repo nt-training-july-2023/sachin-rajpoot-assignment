@@ -60,7 +60,8 @@ public interface MemberService {
    *
    * @param email    The email associated with the member.
    * @param password The password provided for authentication.
-   * @return true if the email and password combination is valid, false otherwise.
+   * @return true if the email and password combination is valid,
+   *     false otherwise.
    */
   Boolean verifyEmailAndPassword(String email, String password);
 

@@ -47,10 +47,10 @@ public class SecurityFilter implements Filter {
   /**
    *Constructor.
    *
-   *@param memberRepo member repo.
+   *@param memberRepox member repo.
    */
-  public SecurityFilter(final MemberRepo memberRepo) {
-    this.memberRepo = memberRepo;
+  public SecurityFilter(final MemberRepo memberRepox) {
+    this.memberRepo = memberRepox;
   }
 
   /**

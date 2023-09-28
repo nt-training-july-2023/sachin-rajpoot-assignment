@@ -67,7 +67,7 @@ public final
   }
 
   /**
-   * Exception handler for 
+   * Exception handler for
    *     HttpRequestMethodNotSupportedException.
    *
    * @param ex The HttpRequestMethodNotSupportedException instance.
