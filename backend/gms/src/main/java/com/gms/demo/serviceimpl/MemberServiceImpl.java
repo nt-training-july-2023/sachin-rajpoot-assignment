@@ -10,6 +10,7 @@ import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
 import com.gms.demo.payloads.MemberLoginDto;
 import com.gms.demo.payloads.MemberOutDto;
+import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.service.MemberService;
 import java.util.ArrayList;
@@ -44,10 +45,14 @@ public class MemberServiceImpl implements MemberService {
   @Autowired
   private MemberRepo memberRepo;
 
+  /** The MemberRepo instance. */
+  @Autowired
+  private DepartmentRepo departmentRepo;
+
   /**
    * Number of items sent.
    */
-  private final Integer numberOfItemToSend = 8;
+  private final Integer numberOfItemToSend = 10;
 
   /**
    * The minimum sixe for password.
@@ -74,12 +79,11 @@ public class MemberServiceImpl implements MemberService {
     Member member = this.memberRepo
             .findByEmail(memberLoginDto.getEmail());
     DISPLAY.info("Member Found");
-    if (member != null) {
-      if (member.getPassword()
-              .equals(memberLoginDto.getPassword())) {
+    if (member != null
+        && member.getPassword()
+        .equals(memberLoginDto.getPassword())) {
         DISPLAY.info("Password Matched");
         return this.mapper.map(member, MemberOutDto.class);
-      }
     }
     DISPLAY.info("Password does not Matched");
     return null;
@@ -157,18 +161,22 @@ public class MemberServiceImpl implements MemberService {
       final String email, final String password) {
     DISPLAY.info("Inside Service");
     Member member = this.memberRepo.findByEmail(email);
+    this.departmentRepo.findById(memberDto.getDepartment()
+        .getDepartmentId()).orElseThrow(() -> new
+                    ResourceNotFoundException("Department", "Department ID",
+                    memberDto.getDepartment().getDepartmentId()));
     DISPLAY.info("member found");
-    if (member != null) {
-      if (member.getPassword().equals(password)
-          && member.getRole() != null
-          && member.getRole().equals(Role.ADMIN)) {
+    if (member != null
+            && member.getPassword().equals(password)
+            && member.getRole() != null
+            && member.getRole().equals(Role.ADMIN)) {
         DISPLAY.info("Role is Admin");
+        memberDto.setIsFirstLogin(true);
         Member member2 = this.mapper.map(memberDto, Member.class);
         Member savedMember = this.memberRepo.save(member2);
         MemberOutDto memberOutDto2 =
                 this.mapper.map(savedMember, MemberOutDto.class);
         return memberOutDto2;
-      }
     }
     DISPLAY.info("Null returned");
     return null;

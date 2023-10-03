@@ -90,12 +90,7 @@
   padding: 0.5rem;
 }
 
-.error-message {
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
-  background-color: aliceblue;
-}
+
 
 .dept_input_area label,
 .dept_input_area input,

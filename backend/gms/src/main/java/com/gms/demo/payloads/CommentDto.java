@@ -137,7 +137,7 @@ public class CommentDto {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "CommentDto [commentId="
       +
       commentId
@@ -154,8 +154,7 @@ public class CommentDto {
       +
       date
       +
-      "]"
-      );
+      "]";
   }
 
   /**

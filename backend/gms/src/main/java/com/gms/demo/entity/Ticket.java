@@ -301,7 +301,7 @@ public class Ticket {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "Ticket [ticketId="
       +
       ticketId
@@ -342,8 +342,7 @@ public class Ticket {
       +
       comments
       +
-      "]"
-      );
+      "]";
   }
 
   /**

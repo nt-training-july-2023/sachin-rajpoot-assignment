@@ -33,8 +33,10 @@ function ChangePassword({ setIsLoggedIn }) {
     );
     if (v.trim() === "") {
       setNewPasswordError("Password can not be empty.");
-    } else if (v.trim().length < 8) {
-      setNewPasswordError("Password must be at least 8 characters long.");
+    } else if (v.trim().length < 8 || v.trim().length > 12) {
+      setNewPasswordError(
+        "Password must be minimum 8 and maximum 12 characters long."
+      );
     } else if (passwordRegex.test(v) === false) {
       setNewPasswordError(
         "password must contain capital, small letter," +
@@ -86,14 +88,6 @@ function ChangePassword({ setIsLoggedIn }) {
       oldpassword: btoa(oldPassword), // ENCODING OLD PASSWORD BEFORE SENDING
       newPassword: btoa(newPassword), // ENCODING NEW PASSWORD BEFORE SENDING
     };
-    console.log("old password -> " + oldPassword);
-    console.log("old password encoded -> " + btoa(oldPassword));
-    console.log("new password -> " + newPassword);
-    console.log("new password encoded -> " + btoa(newPassword));
-    console.log("Data sent");
-    console.log(data);
-    console.log("headers sent");
-    console.log(config);
     axios
       .put(
         `http://localhost:8080/api/changepassword/memberId/${memberId}`,
@@ -110,7 +104,6 @@ function ChangePassword({ setIsLoggedIn }) {
         setModal(true);
         console.log(err);
       });
-    console.log("Form submitted successfully!");
   };
 
   // TOGGLES THE MODAL

@@ -41,7 +41,6 @@ function DeptRegistration() {
       .get("http://localhost:8080/api/department/getAll/noPage", config)
       .then((response) => {
         setDepartmentData(response.data);
-        console.log(response);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -80,8 +79,6 @@ function DeptRegistration() {
     data.description = desc;
     data.status = "OPEN";
     data.ticketType = tickettype;
-    console.log("Data Sent");
-    console.log(data);
     const headers = {
       email: memberEmail,
       password: memberPassword,
@@ -96,11 +93,7 @@ function DeptRegistration() {
         config
       )
       .then((response) => {
-        console.log("Form submitted successfully!");
-        console.log("Data received");
         setSubmitSuccessMessage(true);
-        console.log(setSubmitSuccessMessage);
-        console.log(response.data);
         setIsModalVisible(true);
         setModal(true);
         formRef.current.reset();

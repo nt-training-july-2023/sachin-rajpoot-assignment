@@ -39,9 +39,14 @@ public class MemberDto {
   private String email;
 
   /**
-   * The minimum sixe for password.
+   * The minimum size for password.
    */
-  private static final int MIN_SIZE_PASSWORD = 5;
+  private static final int MIN_SIZE_PASSWORD = 8;
+
+  /**
+   * The maximum size for password.
+   */
+  private static final int MAX_SIZE_PASSWORD = 12;
 
   /**
    * The password associated with the member's account.
@@ -51,7 +56,8 @@ public class MemberDto {
   @NotEmpty
   @Size(
       min = MIN_SIZE_PASSWORD,
-      message = "PASSWORD MUST BE MINIMUM 5 CHARACTER."
+      max = MAX_SIZE_PASSWORD,
+      message = "PASSWORD MUST BE MINIMUM 8 AND MAXIMUM 12 CHARACTER."
   )
   private String password;
 
@@ -208,7 +214,7 @@ public class MemberDto {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "MemberDto [memberId="
       +
       memberId
@@ -233,8 +239,7 @@ public class MemberDto {
       +
       role
       +
-      "]"
-      );
+      "]";
   }
 
   /**

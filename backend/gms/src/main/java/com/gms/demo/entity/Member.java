@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * Represents an Member Entity.
@@ -53,6 +54,7 @@ public class Member {
    * The password of the member.
    */
   @NotEmpty
+  @NotNull
   private String password;
 
   /**
@@ -236,7 +238,7 @@ public class Member {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "Member [memberId="
       +
       memberId
@@ -261,8 +263,7 @@ public class Member {
       +
       role
       +
-      "]"
-      );
+      "]";
   }
 
   /**

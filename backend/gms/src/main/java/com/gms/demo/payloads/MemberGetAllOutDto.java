@@ -151,7 +151,7 @@ public class MemberGetAllOutDto {
       return false;
     }
     MemberGetAllOutDto other = (MemberGetAllOutDto) obj;
-    return (
+    return
       Objects.equals(departmentName, other.departmentName)
       &&
       Objects.equals(email, other.email)
@@ -160,8 +160,7 @@ public class MemberGetAllOutDto {
       &&
       Objects.equals(name, other.name)
       &&
-      role == other.role
-      );
+      role == other.role;
   }
 
   /**
@@ -171,7 +170,7 @@ public class MemberGetAllOutDto {
 
   @Override
   public final String toString() {
-    return (
+    return
       "MemberGetAllOutDto [memberId="
       +
       memberId
@@ -192,8 +191,7 @@ public class MemberGetAllOutDto {
       +
       departmentName
       +
-      "]"
-      );
+      "]";
   }
 
   /**

@@ -35,7 +35,7 @@ public class MemberChangePasswordDtoTest {
     public void testEquals() {
         assertTrue(memberChangePasswordDto1.equals(memberChangePasswordDto1));
         assertFalse(memberChangePasswordDto1.equals(null));
-        assertFalse(memberChangePasswordDto1.equals("Not a MemberChangePasswordDto"));
+        assertFalse(memberChangePasswordDto1.equals("Not a MembersChangePasswordDto"));
 
         assertFalse(memberChangePasswordDto1.equals(memberChangePasswordDto2));
         assertFalse(memberChangePasswordDto2.equals(memberChangePasswordDto1));

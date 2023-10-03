@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -102,6 +103,36 @@ public
 
     ApiResponse api = new ApiResponse(message, false);
     return new ResponseEntity<>(api, HttpStatus.BAD_REQUEST);
+  }
+
+  /**
+   * Exception handler for HttpMessageNotReadableException.
+   *
+   * @param ex HttpMessageNotReadableException exception.
+   * @return ResponseEntity with Api Response.
+   */
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  public ResponseEntity<ApiResponse> handleHttpMessageNotReadableException(
+          final HttpMessageNotReadableException ex) {
+    ApiResponse errorResponse = new ApiResponse(
+              "Invalid Input, Enum Values Must Be Exact.", false);
+    return new ResponseEntity<ApiResponse>(
+              errorResponse, HttpStatus.BAD_REQUEST);
+  }
+
+  /**
+   * Exception handler for IllegalArgumentException.
+   *
+   * @param ex IllegalArgumentException EXCEPTION.
+   * @return ResponseEntity aPI RESPONSE.
+   */
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<ApiResponse> handleIllegalArgumentException(
+          final IllegalArgumentException ex) {
+    ApiResponse errorResponse = new ApiResponse(
+              ex.getMessage(), false);
+    return new ResponseEntity<ApiResponse>(
+              errorResponse, HttpStatus.BAD_REQUEST);
   }
 }
 

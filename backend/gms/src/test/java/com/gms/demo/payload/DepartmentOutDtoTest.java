@@ -1,8 +1,6 @@
 package com.gms.demo.payload;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import com.gms.demo.entity.Member;
 import com.gms.demo.payloads.DepartmentOutDto;
 import com.gms.demo.payloads.MemberOutDto;
 import com.gms.demo.payloads.TicketOutDto;

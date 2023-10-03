@@ -15,11 +15,12 @@
   background-color: #d0dae3;
   height: 85vh;
   /* top: 25%; */
-  position: absolute;
-  top: 15%;
+  /* position: absolute; */
+  /* top: 15%; */
   /* left: 6%; */
   /* width: 80%; */
   width: 98vw;
+  margin-top: 2rem;
   overflow-x: hidden;
   align-items: center;
 }
@@ -37,6 +38,11 @@
   text-align: center;
   margin-bottom: 1rem;
   color: #1d2b36;
+
+  text-decoration: underline;
+  text-transform: uppercase;
+  /* line-height: 18px; */
+  letter-spacing: 1px;
 }
 
 .ticket-table-select-div {
@@ -224,7 +230,7 @@ body.active-modal {
 .view-ticket-comment h3 {
   font-weight: 400;
   font-size: 1rem;
-
+  margin-bottom: 5px;
   background-color: white;
 }
 
@@ -248,6 +254,7 @@ body.active-modal {
   height: 64px;
   background-color: aliceblue;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .view-ticket-create-comment-area button {

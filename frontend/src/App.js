@@ -20,10 +20,6 @@ function App() {
   const user = JSON.parse(localStorage.getItem("member"));
   const role = user ? user.role : "GUEST";
   const isFirstLogin = user ? user.isFirstLogin : false;
-  console.log("isFirstLogin : ");
-  console.log(isFirstLogin);
-  console.log("Role");
-  console.log(role);
 
   return (
     <div className="App">
@@ -36,7 +32,6 @@ function App() {
           <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         )}
 
-        {console.log(isFirstLogin, "isFirstLoginisFirstLoginisFirstLogin")}
         {isFirstLogin === true ? (
           <Route
             path="/changepassword"

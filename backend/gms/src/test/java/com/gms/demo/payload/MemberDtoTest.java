@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.gms.demo.entity.Role;
 import com.gms.demo.payloads.DepartmentDto;
-import com.gms.demo.payloads.DepartmentOutDto;
 import com.gms.demo.payloads.MemberDto;
 import org.junit.jupiter.api.Test;
 

@@ -6,11 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 /**
- * Represents an Member Login DTO.
+ * Application starts from here.
  *
  * @author Sachin Singh Rajpoot
  * @version 1.0
- * @since Begining of time
  */
 
 @SpringBootApplication

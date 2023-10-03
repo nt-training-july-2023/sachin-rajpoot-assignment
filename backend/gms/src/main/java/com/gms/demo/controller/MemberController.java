@@ -115,7 +115,7 @@ public class MemberController {
           HttpStatus.OK);
     } else {
       return new ResponseEntity<>(new
-          ApiResponse("Failed", false),
+          ApiResponse("Invalid Data", false),
       HttpStatus.BAD_REQUEST);
     }
   }
@@ -124,7 +124,7 @@ public class MemberController {
    *
    * @param email      The email header used for authentication.
    * @param password   The password header used for authentication.
-   * @param pageNumber The page number for pagination. an
+   * @param pageNumber The page number for pagination.
    * @return A ResponseEntity containing a list of
    *     authenticated MemberGetAllOutDto.
    */

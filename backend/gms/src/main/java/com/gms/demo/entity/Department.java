@@ -137,7 +137,7 @@ public class Department {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "Department [departmentId="
       +
       departmentId
@@ -146,8 +146,7 @@ public class Department {
       +
       departmentName
       +
-      "]"
-      );
+      "]";
   }
 
   /**

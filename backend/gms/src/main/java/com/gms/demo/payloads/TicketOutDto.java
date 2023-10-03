@@ -270,7 +270,7 @@ public class TicketOutDto {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "TicketOutDto [title="
       +
       title
@@ -303,8 +303,7 @@ public class TicketOutDto {
       +
       memberName
       +
-      "]"
-      );
+      "]";
   }
 
   /**
@@ -348,7 +347,7 @@ public class TicketOutDto {
       return false;
     }
     TicketOutDto other = (TicketOutDto) obj;
-    return (
+    return
       Objects.equals(comments, other.comments)
       &&
       Objects.equals(createdOn, other.createdOn)
@@ -367,8 +366,7 @@ public class TicketOutDto {
       &&
       ticketType == other.ticketType
       &&
-      Objects.equals(title, other.title)
-      );
+      Objects.equals(title, other.title);
   }
 
 }

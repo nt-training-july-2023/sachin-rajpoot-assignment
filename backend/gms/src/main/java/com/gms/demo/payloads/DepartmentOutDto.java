@@ -166,15 +166,14 @@ public class DepartmentOutDto {
       return false;
     }
     DepartmentOutDto other = (DepartmentOutDto) obj;
-    return (
+    return
       Objects.equals(departmentId, other.departmentId)
       &&
       Objects.equals(departmentName, other.departmentName)
       &&
       Objects.equals(members, other.members)
       &&
-      Objects.equals(tickets, other.tickets)
-      );
+      Objects.equals(tickets, other.tickets);
   }
 
   /**

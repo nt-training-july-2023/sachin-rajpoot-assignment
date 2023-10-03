@@ -3,9 +3,9 @@ import axios from "axios";
 import "./TicketTable.css";
 
 function TicketTable({ isLoggedIn }) {
-  console.log("Inside Ticket Table");
   // STATE VARIABLES
   const [modal, setModal] = useState(false);
+  const [ticketDetailsFetched, setTicketDetailsFetched] = useState(false);
   const [modal2, setModal2] = useState(false);
   const [ticketsData, setTicketsData] = useState([]);
   const [ticket, setTicket] = useState();
@@ -24,6 +24,7 @@ function TicketTable({ isLoggedIn }) {
   const memberId = JSON.parse(localStorage.getItem("member"))?.memberId;
   const memberEmail = JSON.parse(localStorage.getItem("member"))?.email;
   const memberUserName = JSON.parse(localStorage.getItem("member"))?.name;
+  const memberRole = JSON.parse(localStorage.getItem("member"))?.role;
   const memberDepartmentName = JSON.parse(
     localStorage.getItem("member")
   )?.departmentName;
@@ -33,8 +34,6 @@ function TicketTable({ isLoggedIn }) {
 
   // GETTING ALL TICKETS FOR TICKET TABLE
   useEffect(() => {
-    console.log("Param sent : ");
-    console.log(tableParams);
     const headers = {
       email: memberEmail,
       password: memberPassword,
@@ -43,8 +42,6 @@ function TicketTable({ isLoggedIn }) {
       headers: headers,
       params: tableParams,
     };
-    console.log("Headers");
-    console.log(config);
     axios
       .get(
         `http://localhost:8080/api/ticket/getAll/auth/memberId/${memberId}/filter/${selectedStatus}/pageNumber/${currentPage}`,
@@ -52,8 +49,6 @@ function TicketTable({ isLoggedIn }) {
       )
       .then((response) => {
         setTicketsData(response.data);
-        console.log("DATA RECEIVED");
-        console.log(response);
       })
       .catch((err) => console.log(err));
   }, [selectedStatus, currentPage, tableParams, modal]);
@@ -63,15 +58,12 @@ function TicketTable({ isLoggedIn }) {
     const newSelectedStatus = event.target.value;
     setCurrentPage(0);
     setSelectedStatus(newSelectedStatus);
-    console.log("FILTERED TICKETS BY " + newSelectedStatus);
   };
 
   // HANDLE PARAM CHANGES
   const handleParamChange = async (e) => {
     const selectedValue = e.target.value;
-    //  setCurrentPage(0);
     setSelectedParam(selectedValue);
-    console.log(selectedValue);
     if (selectedValue === "adminDept") {
       setTableParams({
         myTickets: false,
@@ -114,7 +106,6 @@ function TicketTable({ isLoggedIn }) {
 
   // GETTING TICKET DETAILS ON CLICK ON VIEW DETAIL
   const handleViewDetail = async (ticketId) => {
-    console.log(ticketId);
     let res = {};
     const headers = {
       email: memberEmail,
@@ -128,19 +119,11 @@ function TicketTable({ isLoggedIn }) {
         `http://localhost:8080/api/ticket/getbyId/ticketId/${ticketId}`,
         config
       );
-      console.log("Ticket data received");
-      console.log(res.data);
 
       setTicketStatus(res.data.status);
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
 
     setTicket(res.data);
-    console.log("ticket status received");
-    // console.log(res.data.status)
-    // setTicketStatus(res.data.status)
-    console.log(res);
   };
 
   // UPDATES THE TICKET STATUS AND ADD COMMENT ON CLICK -> UPDATE BUTTON
@@ -155,14 +138,6 @@ function TicketTable({ isLoggedIn }) {
       setModal2(true);
       return;
     }
-    console.log("New Ticket Status Sent");
-    console.log(ticketStatus);
-    console.log("Comment sent");
-    console.log(comment);
-    console.log("Member Name Sent");
-    console.log(memberUserName);
-    console.log("Old Ticket");
-    console.log(ticket);
     let res = {};
     const headers = {
       email: memberEmail,
@@ -178,8 +153,6 @@ function TicketTable({ isLoggedIn }) {
         userName: memberUserName,
       },
     };
-    console.log("Data Sent");
-    console.log(ticketUpdateStatusInDto);
     try {
       res = await axios.put(
         `http://localhost:8080/api/ticket/update/ticketId/${ticket.ticketId}`,
@@ -188,26 +161,18 @@ function TicketTable({ isLoggedIn }) {
       );
 
       formRef.current.reset();
-    } catch (e) {
-      console.log(e);
-    }
+    } catch (e) {}
 
     if (typeof res.data !== "undefined") {
       setTicket(res.data);
       setModal2(false);
     }
-    console.log("Updated ticket Received");
-    console.log(res.data);
     setComment("");
-    console.log("Comment after");
-    console.log(comment);
-    console.log(ticketStatus);
   };
 
   // ONCHANGE FOR TICKET TYPE
   const handleTicketStatus = (e) => {
     setTicketStatus(e.target.value);
-    console.log(ticketStatus);
   };
 
   // HANDLE "Next" BUTTON CLICK
@@ -240,8 +205,8 @@ function TicketTable({ isLoggedIn }) {
           >
             <option value="ALL">ALL</option>
             <option value="OPEN">OPEN</option>
-            <option value="PROGRESS">PROGRESS</option>
-            <option value="CLOSED">CLOSED</option>
+            <option value="BEING_ADDRESSED">BEING_ADDRESSED</option>
+            <option value="RESOLVED">RESOLVED</option>
           </select>
         </div>
 
@@ -255,7 +220,9 @@ function TicketTable({ isLoggedIn }) {
             onChange={handleParamChange}
           >
             <option value="ALL">ALL</option>
-            <option value="adminDept">My Department</option>
+            {memberRole === "ADMIN" && (
+              <option value="adminDept">My Department</option>
+            )}
             <option value="myTickets">My Tickets</option>
           </select>
         </div>
@@ -323,10 +290,9 @@ function TicketTable({ isLoggedIn }) {
                                   id=""
                                   cols="30"
                                   rows="10"
+                                  value={ticket.description}
                                   disabled
-                                >
-                                  {ticket.description}
-                                </textarea>
+                                />
                               </div>
 
                               {/* TICKET TYPE  */}
@@ -352,8 +318,10 @@ function TicketTable({ isLoggedIn }) {
                                   required
                                 >
                                   <option value="">--- Select ---</option>
-                                  <option value="PROGRESS">PROGRESS</option>
-                                  <option value="CLOSED">CLOSED</option>
+                                  <option value="BEING_ADDRESSED">
+                                    BEING_ADDRESSED
+                                  </option>
+                                  <option value="RESOLVED">RESOLVED</option>
                                 </select>
                               </div>
 
@@ -387,17 +355,25 @@ function TicketTable({ isLoggedIn }) {
                           <div className="view-ticket-modal-right">
                             {/* TICKET COMMENTS  */}
                             <div className="view-ticket-comment-list">
-                              {ticket.comments.map((c) => {
-                                return (
-                                  <div
-                                    key={c.commentId}
-                                    className="view-ticket-comment"
-                                  >
-                                    <h3>{c.userName}</h3>
-                                    <p>{c.content}</p>
-                                  </div>
-                                );
-                              })}
+                              {ticket.comments
+                                .slice()
+                                .sort((a, b) => {
+                                  // Sort the comments by date in descending order
+                                  const dateA = new Date(a.date);
+                                  const dateB = new Date(b.date);
+                                  return dateB - dateA;
+                                })
+                                .map((c) => {
+                                  return (
+                                    <div
+                                      key={c.commentId}
+                                      className="view-ticket-comment"
+                                    >
+                                      <h3>{c.userName}</h3>
+                                      <p>{c.content}</p>
+                                    </div>
+                                  );
+                                })}
                             </div>
 
                             {/* TICKET COMMENT AREA  */}
@@ -414,21 +390,20 @@ function TicketTable({ isLoggedIn }) {
                                 ></textarea>
                               </form>
 
-                              <button
-                                onClick={handleUpdateTicket}
-                                disabled={
-                                  ticket.departmentName !== memberDepartmentName
-                                }
-                              >
-                                Update
-                              </button>
+                              {(ticket.departmentName ===
+                                memberDepartmentName ||
+                                ticket.memberName === memberUserName) && (
+                                <button onClick={handleUpdateTicket}>
+                                  Update
+                                </button>
+                              )}
                             </div>
                           </div>
 
                           {/* TOGGLE CLOSE BUTTON  */}
                           <button
                             className="view-ticket-close-modal"
-                            onClick={toggleModal}
+                            onClick={() => setModal(false)}
                           >
                             CLOSE
                           </button>
@@ -446,7 +421,8 @@ function TicketTable({ isLoggedIn }) {
                                   marginTop: "10px",
                                 }}
                               >
-                                comment and change status if open
+                                Please comment and Change <br />
+                                Ticket Status if it is Open.
                               </h3>
                               <button
                                 className="dept-close-modal"
@@ -469,11 +445,7 @@ function TicketTable({ isLoggedIn }) {
       {/* NOT FOUND IMAGE  */}
       {ticketsData && ticketsData?.length === 0 && (
         <div className="not-found-img-div">
-          <img
-            src="NoDataFound.jpg"
-            className="not-found-img"
-            alt="no data found image"
-          />
+          <img src="NoDataFound.jpg" className="not-found-img" alt="no data" />
           <h3>Go Back</h3>
         </div>
       )}

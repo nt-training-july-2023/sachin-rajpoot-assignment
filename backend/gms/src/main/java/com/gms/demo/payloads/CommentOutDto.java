@@ -118,7 +118,7 @@ public class CommentOutDto {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "CommentOutDto [content="
        +
       content
@@ -131,8 +131,7 @@ public class CommentOutDto {
       +
       date
       +
-      "]"
-      );
+      "]";
   }
 
   /**
@@ -207,14 +206,13 @@ public class CommentOutDto {
       return false;
     }
     CommentOutDto other = (CommentOutDto) obj;
-    return (
+    return
       Objects.equals(commentId, other.commentId)
       &&
       Objects.equals(content, other.content)
       &&
       Objects.equals(date, other.date)
       &&
-      Objects.equals(userName, other.userName)
-      );
+      Objects.equals(userName, other.userName);
   }
 }

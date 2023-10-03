@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import com.gms.demo.entity.Role;
 import com.gms.demo.payloads.DepartmentDto;
-import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
 
 public class MemberGetAllOutDtoTest {

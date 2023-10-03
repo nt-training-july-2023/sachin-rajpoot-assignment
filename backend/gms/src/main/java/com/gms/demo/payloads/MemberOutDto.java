@@ -184,7 +184,7 @@ public class MemberOutDto {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "MemberOutDto [name="
       +
       name
@@ -205,8 +205,7 @@ public class MemberOutDto {
       +
       isFirstLogin
       +
-      "]"
-      );
+      "]";
   }
 
   /**
@@ -280,7 +279,7 @@ public class MemberOutDto {
       return false;
     }
     MemberOutDto other = (MemberOutDto) obj;
-    return (
+    return
       Objects.equals(departmentName, other.departmentName)
       &&
       Objects.equals(email, other.email)
@@ -293,8 +292,7 @@ public class MemberOutDto {
       &&
       role == other.role
       &&
-      Objects.equals(tickets, other.tickets)
-      );
+      Objects.equals(tickets, other.tickets);
   }
 
   /**

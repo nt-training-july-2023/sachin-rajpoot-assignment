@@ -254,7 +254,7 @@ public class TicketDto {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "TicketDto [ticketId="
       +
       ticketId
@@ -283,7 +283,6 @@ public class TicketDto {
       +
       ticketType
       +
-      "]"
-      );
+      "]";
   }
 }

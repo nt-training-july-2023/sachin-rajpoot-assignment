@@ -13,11 +13,11 @@ public enum Status {
   /**
    * Indicates that the task/ticket is in progress.
    */
-  PROGRESS,
+  BEING_ADDRESSED,
   /**
    * Indicates that the task/ticket is closed or resolved.
    */
-  CLOSED,
+  RESOLVED,
   /**
    * Indicates ALL tickets.
    */

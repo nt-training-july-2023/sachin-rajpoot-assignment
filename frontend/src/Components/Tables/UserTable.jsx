@@ -30,14 +30,12 @@ function UserTable() {
       )
       .then((response) => {
         setUsersData(response.data);
-        console.log(response);
       })
       .catch((err) => console.log(err));
   }, [tableRender, currentPage, modal]);
 
   // HANDLE DELETE USER
   const handleDeleteUser = (memberId) => {
-    console.log(memberId);
     if(memberId === loggedInUserId) {
       setCustomMessage("Can not delete yourself.")
       setError(true)
@@ -58,12 +56,10 @@ function UserTable() {
       .then((response) => {
         setModal(true);
         setTableRender(!tableRender);
-        console.log(response);
       })
       .catch((err) => {
         setCustomMessage("something went wrong check network connections");
         setError(true)
-        console.log(err)
       });
   };
 

@@ -30,6 +30,24 @@ public class TicketUpdateStatusInDto {
   /**
    * Get the new status.
    *
+   *@return The new status.
+   */
+  public final Integer getTicketId() {
+    return ticketId;
+  }
+
+  /**
+   * Set the ticket Id.
+   *
+   * @param ticketIdx ticket id to set.
+   */
+  public final void setTicketId(final Integer ticketIdx) {
+    this.ticketId = ticketIdx;
+  }
+
+  /**
+   * Get the new status.
+   *
    * @return The new status.
    */
   public final Status getStatus() {
@@ -102,9 +120,9 @@ public class TicketUpdateStatusInDto {
    */
   @Override
   public final String toString() {
-    return (
-      "TicketUpdateStatusInDto [status=" + status + ", comment=" + comment + "]"
-      );
+    return
+      "TicketUpdateStatusInDto [status=" + status + ", comment="
+        + comment + "]";
   }
 
   /**

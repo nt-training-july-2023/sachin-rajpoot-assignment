@@ -50,7 +50,7 @@ public class DepartmentServiceImpl implements DepartmentService {
   /**
    * Number of items sent.
    */
-  private final Integer numberOfItemToSend = 8;
+  private final Integer numberOfItemToSend = 10;
 
   /**
    * Logger for logging.
@@ -127,22 +127,19 @@ public class DepartmentServiceImpl implements DepartmentService {
   ) {
     DISPLAY.info("Inside Department Service");
     Member member = this.memberRepo.findByEmail(email);
-
-    if (member != null) {
-      if (
-          member.getPassword().equals(password)
-          &&
-          member.getRole() != null
-          &&
-          member.getRole().equals(Role.ADMIN)
-      ) {
-        Department department =
+    if(departmentDto.getDepartmentName().trim() == "") {
+        return null;
+    }
+    if (member != null
+        && member.getPassword().equals(password)
+        && member.getRole() != null
+        && member.getRole().equals(Role.ADMIN)) {
+      Department department =
             this.modelMapper.map(departmentDto, Department.class);
-        return this.modelMapper.map(
+      return this.modelMapper.map(
             this.departmentRepo.save(department),
             DepartmentOutDto.class
           );
-      }
     }
     return null;
   }

@@ -50,71 +50,68 @@ import static org.mockito.Mockito.*;
 @AutoConfigureMockMvc
 public class DepartmentControllerTest {
 
-    @Mock
-    private DepartmentService departmentService;
-		
+	@Mock
+	private DepartmentService departmentService;
 
-    @InjectMocks
-    private DepartmentController departmentController;
-    
-    final String email = "naruto@nucleysteq.com";
+	@InjectMocks
+	private DepartmentController departmentController;
+
+	final String email = "naruto@nucleysteq.com";
 	final String password = "12345678";
 	DepartmentOutDto departmentOutDto = new DepartmentOutDto();
-	
 
-    @Test
-    public void testCreateDepartment2_ValidCredentials() {
-    
-        DepartmentDto departmentDto = new DepartmentDto();
-        String email = "test@example.com";
-        String password = "password";
-        DepartmentOutDto departmentOutDto = new DepartmentOutDto();
-        when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(departmentOutDto);
-        ResponseEntity<?> response = departmentController.createDepartment2(departmentDto, email, password);
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        assertEquals(new 
-            ApiResponse("Created Successfully", true), response.getBody());
-    }
+	@Test
+	public void testCreateDepartment2_ValidCredentials() {
 
-    @Test
-    public void testCreateDepartment2_InvalidCredentials() {
- 
-        DepartmentDto departmentDto = new DepartmentDto();
-        String email = "invalid@example.com";
-        String password = "invalidPassword";
-        when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(null); 
-        ResponseEntity<?> response = departmentController.createDepartment2(departmentDto, email, password);
+		DepartmentDto departmentDto = new DepartmentDto();
+		String email = "test@example.com";
+		String password = "password";
+		DepartmentOutDto departmentOutDto = new DepartmentOutDto();
+		when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(departmentOutDto);
+		ResponseEntity<?> response = departmentController.createDepartment2(departmentDto, email, password);
+		assertEquals(HttpStatus.CREATED, response.getStatusCode());
+		assertEquals(new ApiResponse("Created Successfully", true), response.getBody());
+	}
 
- 
-        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-    }
+	@Test
+	public void testCreateDepartment2_InvalidCredentials() {
 
-    @Test
-    public void testGetAllDepartment() {
-  
-        List<DepartmentOutDto> departmentOutDtoList = Arrays.asList(new DepartmentOutDto(), new DepartmentOutDto());
-        when(departmentService.getAllDepartment(10)).thenReturn(departmentOutDtoList);
-        ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment(10);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(departmentOutDtoList, response.getBody());
-    }
-    
-    @Test
-    public void testGetAllDepartmentNoPage() {
-  
-        List<DepartmentOutDto> departmentOutDtoList = Arrays.asList(new DepartmentOutDto(), new DepartmentOutDto());
-        when(departmentService.getAllDepartmentNoPage()).thenReturn(departmentOutDtoList);
-        ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment();
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(departmentOutDtoList, response.getBody());
-    }
-    @Test
-    public void testDeleteDepartment() {
-    	DepartmentDto departmentDto = new DepartmentDto();
-    	departmentDto.setDepartmentId(1);
-    	when(departmentService.deleteDepartment(1)).thenReturn(new ApiResponse("PASS", true));
-    	ResponseEntity<ApiResponse> response = departmentController.deleteDepartment(1);
-    	 assertEquals(HttpStatus.OK, response.getStatusCode());
-         assertEquals(new ApiResponse("PASS", true), response.getBody());
-    }
+		DepartmentDto departmentDto = new DepartmentDto();
+		String email = "invalid@example.com";
+		String password = "invalidPassword";
+		when(departmentService.createDepartment2(departmentDto, email, password)).thenReturn(null);
+		ResponseEntity<?> response = departmentController.createDepartment2(departmentDto, email, password);
+
+		assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+	}
+
+	@Test
+	public void testGetAllDepartment() {
+
+		List<DepartmentOutDto> departmentOutDtoList = Arrays.asList(new DepartmentOutDto(), new DepartmentOutDto());
+		when(departmentService.getAllDepartment(10)).thenReturn(departmentOutDtoList);
+		ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment(10);
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(departmentOutDtoList, response.getBody());
+	}
+
+	@Test
+	public void testGetAllDepartmentNoPage() {
+
+		List<DepartmentOutDto> departmentOutDtoList = Arrays.asList(new DepartmentOutDto(), new DepartmentOutDto());
+		when(departmentService.getAllDepartmentNoPage()).thenReturn(departmentOutDtoList);
+		ResponseEntity<List<DepartmentOutDto>> response = departmentController.getAllDepartment();
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(departmentOutDtoList, response.getBody());
+	}
+
+	@Test
+	public void testDeleteDepartment() {
+		DepartmentDto departmentDto = new DepartmentDto();
+		departmentDto.setDepartmentId(1);
+		when(departmentService.deleteDepartment(1)).thenReturn(new ApiResponse("PASS", true));
+		ResponseEntity<ApiResponse> response = departmentController.deleteDepartment(1);
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(new ApiResponse("PASS", true), response.getBody());
+	}
 }

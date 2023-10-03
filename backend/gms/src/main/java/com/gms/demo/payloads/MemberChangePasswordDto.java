@@ -87,11 +87,10 @@ public class MemberChangePasswordDto {
       return false;
     }
     MemberChangePasswordDto other = (MemberChangePasswordDto) obj;
-    return (
+    return
       Objects.equals(newPassword, other.newPassword)
       &&
-      Objects.equals(oldpassword, other.oldpassword)
-      );
+      Objects.equals(oldpassword, other.oldpassword);
   }
 
 

@@ -59,29 +59,21 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (!verifyEmailHandlder() || passwordError !== "" || emailError !== "") {
-      // alert("Enter Valid Email Address.");
-      // setEmailError("Enter Valid Email Address.")
     } else {
       const logindata = {
         email: data.email,
         password: btoa(data.password),
       };
-      console.log("Login Data Sent : ");
-      console.log(logindata);
       await axios
         .post("http://localhost:8080/api/login", logindata)
         .then((response) => {
-          console.log("pop up");
           setData(response.data);
-          console.log(response.data);
           localStorage.setItem("member", JSON.stringify(response.data));
           // SAVING PASSWORD AS -> ENCODED PASSWORD
           localStorage.setItem(
             "memberPassword",
             JSON.stringify(btoa(data.password))
           );
-          // setIsLoggedIn(true);
-          // setPopup(true)
           setIsLoggedIn(true);
           if (response.data.isFirstLogin === true) {
             navigate("/changepassword");
@@ -93,11 +85,8 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
           setError(true);
           console.log(err);
           if (err?.message) {
-            // alert(err.message);
           } else if (err.response.data?.password) {
-            // alert(err.response.data.password);
           }
-          console.log(err.message);
         });
     }
   };

@@ -34,14 +34,12 @@ function DepartmentTable() {
       )
       .then((response) => {
         setDepartmentsData(response.data);
-        console.log(response);
       })
       .catch((err) => console.log(err));
   }, [tableRender, currentPage]);
 
   // DELETING DEPARTMENT
   const handleDeletedepartment = (departmentId, departmentName) => {
-    console.log(departmentId);
     if (departmentName === loggedInUserDeptName) {
       setCustomMessage("Can not delete your department.");
       setError(true);
@@ -62,13 +60,10 @@ function DepartmentTable() {
       .then((response) => {
         setModal(true);
         setTableRender(!tableRender);
-
-        console.log(response);
       })
       .catch((err) => {
         setCustomMessage("Something went wrong,Check network connection");
         setError(true);
-        console.log(err);
       });
   };
 

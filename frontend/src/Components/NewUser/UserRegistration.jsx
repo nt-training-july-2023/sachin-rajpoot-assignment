@@ -34,7 +34,6 @@ function UserRegistration() {
       .get("http://localhost:8080/api/department/getAll/noPage", config)
       .then((response) => {
         setDepartmentData(response.data);
-        console.log(response);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -46,8 +45,7 @@ function UserRegistration() {
     const usernameregex = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
     if (newName.trim() === "") {
       setNameError("Name cannot be empty");
-    }
-    else if (newName.trim().length < 3) {
+    } else if (newName.trim().length < 3) {
       setNameError("Name must be minimum 3 letter");
     } else {
       setNameError("");
@@ -70,19 +68,21 @@ function UserRegistration() {
 
   // HANDLE PASSWORD CHANGE
   const handlePasswordChange = (event) => {
-    const newPassword = event.target.value;
-    setPassword(newPassword);
+    const v = event.target.value;
+    setPassword(v);
     const passwordRegex = new RegExp(
       /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).*$/
     );
-    if (newPassword.trim() === "") {
+    if (v.trim() === "") {
       setPasswordError("Password can not be empty.");
-    } else if (passwordRegex.test(newPassword) === false) {
+    } else if (v.trim().length < 8 || v.trim().length > 12) {
+      setPasswordError(
+        "Password must be minimum 8 and maximum 12 characters long."
+      );
+    } else if (passwordRegex.test(v) === false) {
       setPasswordError(
         "password must contain capital, small letter, digit and special character"
       );
-    } else if (newPassword.trim().length < 8) {
-      setPasswordError("Password must be at least 8 characters long.");
     } else {
       setPasswordError("");
     }
@@ -91,15 +91,11 @@ function UserRegistration() {
   // CHANGE USER TYPE CHANGE
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
-    console.log("USER TYPE SELECTED");
-    console.log(e.target.value);
   };
 
   // HANDLE DEPARTMENT SELECT CHANGE
   const handleDepartmentChange = (e) => {
     setUserDepartment(e.target.value);
-    console.log("DEPARTMENT ID SELECTED");
-    console.log(e.target.value);
   };
 
   // TOGGLES THE SUCCESS MODAL -> POP UP
@@ -138,8 +134,6 @@ function UserRegistration() {
     const config = {
       headers: headers,
     };
-    console.log("DATA SENT : ");
-    console.log(data);
     await axios
       .post("http://localhost:8080/api/create/", data, config)
       .then((response) => {
@@ -149,13 +143,10 @@ function UserRegistration() {
         setPassword("");
         setUserType("");
         setUserDepartment("");
-        console.log("DATA RECEIVED : ");
-        console.log(response.data);
         formRef.current.reset();
       })
       .catch((err) => {
         setError(true);
-        console.log(err);
       });
   };
 
@@ -175,7 +166,7 @@ function UserRegistration() {
           ref={formRef}
         >
           {/* USER NAME  */}
-          <div className={`user_input_area ${nameError ? "error" : ""}`}>
+          <div className="user_input_area">
             <label htmlFor="name">Name:</label>
             <input
               type="text"
@@ -190,7 +181,7 @@ function UserRegistration() {
           </div>
 
           {/* EMAIL  */}
-          <div className={`user_input_area ${emailError ? "error" : ""}`}>
+          <div className="user_input_area">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -205,7 +196,7 @@ function UserRegistration() {
           </div>
 
           {/* PASSWORD  */}
-          <div className={`user_input_area ${passwordError ? "error" : ""}`}>
+          <div className="user_input_area">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -213,11 +204,11 @@ function UserRegistration() {
               name="password"
               placeholder="Enter your password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => handlePasswordChange(e)}
               required
             />
             {passwordError && (
-              <span className="error-message">{"password must contain capital, small, digit and special character"}</span>
+              <span className="error-message">{passwordError}</span>
             )}
           </div>
 

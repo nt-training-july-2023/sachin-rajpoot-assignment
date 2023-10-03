@@ -252,7 +252,7 @@ public class TicketGetAllOutDto {
       return false;
     }
     TicketGetAllOutDto other = (TicketGetAllOutDto) obj;
-    return (
+    return
       Objects.equals(createdOn, other.createdOn)
       &&
       Objects.equals(departmentName, other.departmentName)
@@ -269,13 +269,12 @@ public class TicketGetAllOutDto {
       &&
       ticketType == other.ticketType
       &&
-      Objects.equals(title, other.title)
-      );
+      Objects.equals(title, other.title);
   }
 
   @Override
   public final String toString() {
-    return (
+    return
       "TicketGetAllOutDto [ticketId="
       +
       ticketId
@@ -312,8 +311,7 @@ public class TicketGetAllOutDto {
       +
       memberName
       +
-      "]"
-      );
+      "]";
   }
 
   /**

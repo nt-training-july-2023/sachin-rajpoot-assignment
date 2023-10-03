@@ -6,6 +6,7 @@ import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
 import com.gms.demo.payloads.ApiResponse;
+import com.gms.demo.payloads.DepartmentDto;
 import com.gms.demo.payloads.MemberChangePasswordDto;
 import com.gms.demo.payloads.MemberDto;
 import com.gms.demo.payloads.MemberGetAllOutDto;
@@ -41,191 +42,191 @@ import org.springframework.data.domain.Sort;
 @ExtendWith(MockitoExtension.class)
 public class MemberServiceImplTest {
 
-  @Mock
-  private MemberRepo memberRepo;
+	@Mock
+	private MemberRepo memberRepo;
 
-  @Mock
-  private DepartmentService departmentService;
+	@Mock
+	private DepartmentService departmentService;
 
-  @Mock
-  private DepartmentRepo departmentRepo;
+	@Mock
+	private DepartmentRepo departmentRepo;
 
-  @InjectMocks
-  private MemberServiceImpl memberService = new MemberServiceImpl();
+	@InjectMocks
+	private MemberServiceImpl memberService = new MemberServiceImpl();
 
-  @Mock
-  private  ModelMapper modelMapper ;
+	@Mock
+	private ModelMapper modelMapper;
 
-  @BeforeEach
-  public void setUp() {
-    MockitoAnnotations.initMocks(this);
-  }
-  Member member = new Member();
-  List<Member> members = new ArrayList<>();
-  MemberDto memberDto = new MemberDto();
-  MemberOutDto memberOutDto = new MemberOutDto();
-  MemberLoginDto memberLoginDto = new MemberLoginDto();
-  MemberChangePasswordDto changePasswordDto = new MemberChangePasswordDto();
-  List<MemberGetAllOutDto> allOutDto = new ArrayList<>();
-  MemberGetAllOutDto getAllOutDto = new MemberGetAllOutDto();
-  Integer pageNumber = 0;
-  Pageable pageable = PageRequest.of(pageNumber, 6, Sort.by("name"));
-  Page<Member> memberPages = new PageImpl<>(members, pageable, members.size());
-  Department department = new Department();
-  
-  String email = "admin@nucleusteq.com";
-  String password = "adminPassword";
+	@BeforeEach
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+	}
 
-  @Test
-  public void testLoginValidCredentials() {
-	memberLoginDto.setPassword(password);
-	memberLoginDto.setEmail(email);  
-    member.setEmail(email);
-    member.setPassword(password);
-    when(memberRepo.findByEmail(email)).thenReturn(member);
-    when(this.modelMapper.map(member, MemberOutDto.class)).thenReturn(memberOutDto);
-    assertNotNull(memberService.login(memberLoginDto));
-  }
+	Member member = new Member();
+	List<Member> members = new ArrayList<>();
+	MemberDto memberDto = new MemberDto();
+	MemberOutDto memberOutDto = new MemberOutDto();
+	MemberLoginDto memberLoginDto = new MemberLoginDto();
+	MemberChangePasswordDto changePasswordDto = new MemberChangePasswordDto();
+	List<MemberGetAllOutDto> allOutDto = new ArrayList<>();
+	MemberGetAllOutDto getAllOutDto = new MemberGetAllOutDto();
+	Integer pageNumber = 0;
+	Pageable pageable = PageRequest.of(pageNumber, 6, Sort.by("name"));
+	Page<Member> memberPages = new PageImpl<>(members, pageable, members.size());
+	Department department = new Department();
 
-  @Test
-  public void testLoginInvalidCredentials() {
-    MemberLoginDto loginDto = new MemberLoginDto(
-      "invalidEmail",
-      "invalidPassword"
-    );
-    when(memberRepo.findByEmail("invalidEmail")).thenReturn(null);
+	String email = "admin@nucleusteq.com";
+	String password = "adminPassword";
 
-    assertNull(memberService.login(loginDto));
-  }
+	@Test
+	public void testLoginValidCredentials() {
+		memberLoginDto.setPassword(password);
+		memberLoginDto.setEmail(email);
+		member.setEmail(email);
+		member.setPassword(password);
+		when(memberRepo.findByEmail(email)).thenReturn(member);
+		when(this.modelMapper.map(member, MemberOutDto.class)).thenReturn(memberOutDto);
+		assertNotNull(memberService.login(memberLoginDto));
+	}
 
-  @Test
-  public void testVerifyEmailAndPasswordValid() {
-    assertTrue(
-      memberService.verifyEmailAndPassword(
-        "user@nucleusteq.com",
-        "validPassword"
-      )
-    );
-  }
+	@Test
+	public void testLoginInvalidCredentials() {
+		MemberLoginDto loginDto = new MemberLoginDto("invalidEmail", "invalidPassword");
+		when(memberRepo.findByEmail("invalidEmail")).thenReturn(null);
 
-  @Test
-  public void testVerifyEmailAndPasswordInvalidEmail() {
-    assertFalse(
-      memberService.verifyEmailAndPassword("invalid_email", "validPassword")
-    );
-  }
+		assertNull(memberService.login(loginDto));
+	}
 
-  @Test
-  public void testVerifyEmailAndPasswordInvalidPassword() {
-    assertFalse(
-      memberService.verifyEmailAndPassword("user@example.com", "pass")
-    );
-  }
+	@Test
+	public void testVerifyEmailAndPasswordValid() {
+		assertTrue(memberService.verifyEmailAndPassword("user@nucleusteq.com", "validPassword"));
+	}
 
-  @Test
-  public void testCreateMember3ValidAdminCredentials() {
-      MemberDto memberDto = new MemberDto(); 
-      Member existingMember = new Member();
-      existingMember.setEmail(email);
-      existingMember.setPassword(password);
-      existingMember.setRole(Role.ADMIN);
-      Mockito.when(memberRepo.findByEmail(email)).thenReturn(existingMember);
-      Member mappedMember = new Member(); 
-      Mockito.when(this.modelMapper.map(memberDto, Member.class)).thenReturn(mappedMember);
-      Member savedMember = new Member(); 
-      Mockito.when(memberRepo.save(mappedMember)).thenReturn(savedMember);
-      MemberOutDto mappedMemberOutDto = new MemberOutDto();
-      Mockito.when(this.modelMapper.map(savedMember, MemberOutDto.class)).thenReturn(mappedMemberOutDto);  
-      MemberOutDto result = memberService.createMember3(memberDto, email, password);  
-      assertEquals(mappedMemberOutDto, result);
-  }
+	@Test
+	public void testVerifyEmailAndPasswordInvalidEmail() {
+		assertFalse(memberService.verifyEmailAndPassword("invalid_email", "validPassword"));
+	}
 
-  @Test
-  public void testCreateMember2InvalidAdminCredentials() {
-      MemberDto memberDto = new MemberDto();  
-      Mockito.when(memberRepo.findByEmail(email)).thenReturn(null);
-      MemberOutDto result = memberService.createMember3(memberDto, email, password);
-      assertNull(result);
-  }
+	@Test
+	public void testVerifyEmailAndPasswordInvalidPassword() {
+		assertFalse(memberService.verifyEmailAndPassword("user@example.com", "pass"));
+	}
 
-//  @Test
-//  public void testGetAllMemberAuth() {
-//      String email = "test@nucleusteq.com";
-//      String password = "password";
-//      Integer pageNumber = 0;
-//      Pageable pageable = PageRequest.of(pageNumber, 6, Sort.by("name"));
-//      List<Member> memberEntities = new ArrayList<>();
-//      Page<Member> memberPage = new PageImpl<>(memberEntities, pageable, memberEntities.size());
-//      Mockito.when(memberRepo.findAll(pageable)).thenReturn(memberPage);
-//      List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
+	@Test
+	public void testCreateMember3ValidAdminCredentials() {
+		Integer DeptId = 1;
+		MemberDto memberDto = new MemberDto();
+		DepartmentDto departmentDto = new DepartmentDto();
+		department.setDepartmentId(DeptId);
+		memberDto.setDepartment(departmentDto);
+		Member existingMember = new Member();
+		existingMember.setEmail(email);
+		existingMember.setPassword(password);
+		existingMember.setRole(Role.ADMIN);
+		Department department = new Department();
+		department.setDepartmentId(DeptId);
+		existingMember.setDepartment(department);
+		Mockito.when(memberRepo.findByEmail(email)).thenReturn(existingMember);
+		Mockito.when(this.departmentRepo.findById(memberDto.getDepartment().getDepartmentId()))
+				.thenReturn(Optional.of(department));
+		Member mappedMember = new Member();
+		Mockito.when(this.modelMapper.map(memberDto, Member.class)).thenReturn(mappedMember);
+		Member savedMember = new Member();
+		Mockito.when(memberRepo.save(mappedMember)).thenReturn(savedMember);
+		MemberOutDto mappedMemberOutDto = new MemberOutDto();
+		Mockito.when(this.modelMapper.map(savedMember, MemberOutDto.class)).thenReturn(mappedMemberOutDto);
+		MemberOutDto result = memberService.createMember3(memberDto, email, password);
+		assertEquals(mappedMemberOutDto, result);
+	}
+
+	@Test
+	public void testCreateMember2InvalidAdminCredentials() {
+		Integer DeptId = 1;
+		MemberDto memberDto = new MemberDto();
+		DepartmentDto departmentDto = new DepartmentDto();
+		department.setDepartmentId(DeptId);
+		memberDto.setDepartment(departmentDto);
+		Mockito.when(memberRepo.findByEmail(email)).thenReturn(null);
+		Mockito.when(this.departmentRepo.findById(memberDto.getDepartment().getDepartmentId()))
+				.thenReturn(Optional.of(department));
+		MemberOutDto result = memberService.createMember3(memberDto, email, password);
+		assertNull(result);
+	}
+
+	@Test
+	public void testGetAllMemberAuth() {
+		String email = "test@nucleusteq.com";
+		String password = "password";
+		Integer pageNumber = 0;
+		Pageable pageable = PageRequest.of(pageNumber, 6, Sort.by("name"));
+		List<Member> memberEntities = new ArrayList<>();
+		Page<Member> memberPage = new PageImpl<>(memberEntities, pageable, memberEntities.size());
+		Mockito.when(this.memberRepo.findAll(PageRequest.of(pageNumber, 10, Sort.by("name")))).thenReturn(memberPage);
+		List<MemberGetAllOutDto> memberOutDtos = new ArrayList<>();
 //      Mockito.when(this.modelMapper.map(member, MemberGetAllOutDto.class))
 //              .thenReturn(getAllOutDto); 
-//      List<MemberGetAllOutDto> result = memberService.getAllMemberAuth(email, password, pageNumber);
-//      assertEquals(memberOutDtos.size(), result.size());
-//  }
-  
-  @Test
-  public void changePassword_Test() {  
-      Integer memberId = 1;
-      MemberChangePasswordDto changePasswordDto = new MemberChangePasswordDto();
-      changePasswordDto.setOldpassword("oldPassword");
-      changePasswordDto.setNewPassword("newPassword");
-      Member existingMember = new Member();
-      existingMember.setMemberId(memberId);
-      existingMember.setPassword("oldPassword");
-      Mockito.when(memberRepo.findById(memberId)).thenReturn(Optional.of(existingMember));
-      Member updatedMember = new Member();
-      updatedMember.setMemberId(memberId);
-      updatedMember.setPassword("newPassword");
-      Mockito.when(memberRepo.save(existingMember)).thenReturn(updatedMember);
-      MemberOutDto mappedMemberOutDto = new MemberOutDto();
-      Mockito.when(this.modelMapper.map(updatedMember, MemberOutDto.class)).thenReturn(mappedMemberOutDto);
-      MemberOutDto result = memberService.changePassword(memberId, changePasswordDto);
-      assertEquals(mappedMemberOutDto, result);    
-  }
-  
-  @Test
-  public void changePasswordFail_Test() {
-	 
-	  Integer memberId = 1;
-	  String oldPassword ="12345678";
-	  String newPassword ="11111111";
-	  
-	    Member member = new Member();
-	    member.setEmail("user@nucleusteq.com");
-	    member.setPassword("222222222222"); 
-	    member.setIsFirstLogin(true); 
-	    member.setName("test name");
-	    member.setMemberId(1);
-	    member.setRole(Role.USER);
-	    
-	    MemberOutDto memberOutDto = new MemberOutDto();
-	    memberOutDto.setEmail(member.getEmail());
-	    memberOutDto.setName(member.getName());
-	    memberOutDto.setRole(member.getRole());
-	    memberOutDto.setDepartmentName(null);
-	    memberOutDto.setDepartmentName(null);
-	    memberOutDto.setIsFirstLogin(member.getIsFirstLogin());
-	    
-	    when(this.memberRepo.findById(memberId)).thenReturn(Optional.of(member));
+		List<MemberGetAllOutDto> result = memberService.getAllMemberAuth(email, password, pageNumber);
+		assertEquals(memberOutDtos.size(), result.size());
+	}
 
-	   
-	    MemberOutDto memberOutDto2 = this.memberService.changePassword(memberId,changePasswordDto );
-	    assertNotEquals(memberOutDto2, memberOutDto);
-	    
-	    
-  }
-  
-  @Test
-  public void testDeleteExistingMember() {
-      Integer memberId = 1;
-      member.setMemberId(memberId);
-      when(memberRepo.findById(memberId)).thenReturn(Optional.of(member));
-      ApiResponse response = memberService.deleteMember(memberId);
-      verify(memberRepo, times(1)).deleteById(memberId);
-      assertNotNull(response);
-      assertTrue(response.isSuccess());
-      assertEquals("Member with member ID : " + memberId + " is deleted successfully", response.getMessage());
-  }
+	@Test
+	public void changePassword_Test() {
+		Integer memberId = 1;
+		MemberChangePasswordDto changePasswordDto = new MemberChangePasswordDto();
+		changePasswordDto.setOldpassword("oldPassword");
+		changePasswordDto.setNewPassword("newPassword");
+		Member existingMember = new Member();
+		existingMember.setMemberId(memberId);
+		existingMember.setPassword("oldPassword");
+		Mockito.when(memberRepo.findById(memberId)).thenReturn(Optional.of(existingMember));
+		Member updatedMember = new Member();
+		updatedMember.setMemberId(memberId);
+		updatedMember.setPassword("newPassword");
+		Mockito.when(memberRepo.save(existingMember)).thenReturn(updatedMember);
+		MemberOutDto mappedMemberOutDto = new MemberOutDto();
+		Mockito.when(this.modelMapper.map(updatedMember, MemberOutDto.class)).thenReturn(mappedMemberOutDto);
+		MemberOutDto result = memberService.changePassword(memberId, changePasswordDto);
+		assertEquals(mappedMemberOutDto, result);
+	}
+
+	@Test
+	public void changePasswordFail_Test() {
+
+		Integer memberId = 1;
+
+		Member member = new Member();
+		member.setEmail("user@nucleusteq.com");
+		member.setPassword("222222222222");
+		member.setIsFirstLogin(true);
+		member.setName("test name");
+		member.setMemberId(1);
+		member.setRole(Role.USER);
+
+		MemberOutDto memberOutDto = new MemberOutDto();
+		memberOutDto.setEmail(member.getEmail());
+		memberOutDto.setName(member.getName());
+		memberOutDto.setRole(member.getRole());
+		memberOutDto.setDepartmentName(null);
+		memberOutDto.setDepartmentName(null);
+		memberOutDto.setIsFirstLogin(member.getIsFirstLogin());
+
+		when(this.memberRepo.findById(memberId)).thenReturn(Optional.of(member));
+
+		MemberOutDto memberOutDto2 = this.memberService.changePassword(memberId, changePasswordDto);
+		assertNotEquals(memberOutDto2, memberOutDto);
+
+	}
+
+	@Test
+	public void testDeleteExistingMember() {
+		Integer memberId = 1;
+		member.setMemberId(memberId);
+		when(memberRepo.findById(memberId)).thenReturn(Optional.of(member));
+		ApiResponse response = memberService.deleteMember(memberId);
+		verify(memberRepo, times(1)).deleteById(memberId);
+		assertNotNull(response);
+		assertTrue(response.isSuccess());
+		assertEquals("Member with member ID : " + memberId + " is deleted successfully", response.getMessage());
+	}
 
 }

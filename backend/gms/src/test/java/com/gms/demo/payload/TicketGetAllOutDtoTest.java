@@ -1,19 +1,16 @@
 package com.gms.demo.payload;
 
-import static org.junit.Assert.assertTrue;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Date;
-import java.util.Objects;
+
 
 import org.junit.jupiter.api.Test;
 
 import com.gms.demo.entity.Status;
 import com.gms.demo.entity.TicketType;
-import com.gms.demo.payloads.DepartmentDto;
-import com.gms.demo.payloads.MemberDto;
-import com.gms.demo.payloads.TicketDto;
 import com.gms.demo.payloads.TicketGetAllOutDto;
 
 public class TicketGetAllOutDtoTest {

@@ -43,3 +43,11 @@ p {
   background-color: grey;
   color: black;
 }
+
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  background-color: aliceblue;
+}

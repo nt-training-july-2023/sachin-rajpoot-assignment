@@ -182,7 +182,7 @@ public class Comment {
    */
   @Override
   public final String toString() {
-    return (
+    return
       "Comment [commentId="
       +
       commentId
@@ -199,7 +199,6 @@ public class Comment {
       +
       date
       +
-      "]"
-      );
+      "]";
   }
 }
