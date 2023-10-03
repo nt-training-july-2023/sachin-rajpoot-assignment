@@ -127,7 +127,7 @@ public class DepartmentServiceImpl implements DepartmentService {
   ) {
     DISPLAY.info("Inside Department Service");
     Member member = this.memberRepo.findByEmail(email);
-    if(departmentDto.getDepartmentName().trim() == "") {
+    if (departmentDto.getDepartmentName().trim() == "") {
         return null;
     }
     if (member != null
