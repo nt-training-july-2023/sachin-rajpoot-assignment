@@ -95,12 +95,18 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
   return (
     <div className="container pt1 patterns">
       <h1>Grievance Management System</h1>
+      <div className="login-svg-container">
+
+      <img src="login1.svg" alt="login" />
+       
       {/* LOGIN FORM  */}
       <div className="registration_form">
+
         {/* HEADING  */}
         <div className="heading">
           <h1 id="heading">Login</h1>
         </div>
+
         <div className="input_fields">
           <form className="content" onSubmit={submitHandler}>
             {/* EMAIL  */}
@@ -118,6 +124,7 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
               }
               {emailError && <span className="login-error">{emailError}</span>}
             </div>
+
             {/* PASSWORD  */}
             <div className="input_area">
               <Label htmlFor={"password"} text={"Password"} />
@@ -135,12 +142,15 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
                 <span className="login-error">{passwordError}</span>
               )}
             </div>
+
             {/* SUBMIT BUTTON */}
             <div className="registraction_btn">
               <input type="submit" value="Login" />
             </div>
           </form>
         </div>
+      </div>
+      
       </div>
 
       {/* POP UP ON SUCCESS  */}

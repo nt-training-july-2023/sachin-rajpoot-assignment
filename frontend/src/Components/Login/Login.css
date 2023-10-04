@@ -18,6 +18,17 @@
   gap: 3rem;
 }
 
+.login-svg-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.login-svg-container img {
+  width: 388px;
+}
+
 .registration_form {
   min-width: 350px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
