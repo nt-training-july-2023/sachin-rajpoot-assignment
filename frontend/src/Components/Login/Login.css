@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d0dae3;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.login-svg-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.login-svg-container img {
+  width: 388px;
+}
+
+.registration_form {
+  min-width: 350px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1rem;
+  background-color: white;
+  margin-bottom: 10%;
+}
+
+.heading {
+  font-size: 1rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.heading h1 {
+  text-decoration: underline;
+  color: #434343;
+  font-weight: 700;
+  background-color: white;
+}
+
+.heading h1 span {
+  text-decoration: underline;
+  text-decoration-color: var(--gradient);
+}
+
+.input_fields {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 65%;
+  background-color: white;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  column-gap: 3rem;
+  width: 100%;
+  justify-content: space-between;
+  row-gap: 1.5rem;
+}
+
+.input_area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: white;
+}
+
+.input_area input {
+  font-size: 12px;
+  font-weight: 100;
+  padding: 0.5rem;
+  text-align: start;
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 100%;
+  background-color: white;
+}
+
+.input_area label {
+  color: #1d2b36;
+  background-color: white;
+}
+
+.registraction_btn {
+  text-align: center;
+  background-color: white;
+}
+.registraction_btn input {
+  width: 80%;
+}
+.registraction_btn input {
+  background-color: #1d2b36;
+
+  color: aliceblue;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+  border-radius: 10px;
+}
+.registraction_btn input:hover {
+  background-color: aliceblue;
+  color: black;
+}
+
+h1 {
+  color: aqua;
+}
+
+.login-error {
+  background-color: white;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  margin-top: 60px;
+}

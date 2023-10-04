@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
+
+.ticket-table-container {
+  display: flex;
+  flex-direction: column;
+
+  background-color: #d0dae3;
+  height: 85vh;
+  width: 98vw;
+  margin-top: 2rem;
+  overflow-x: hidden;
+  align-items: center;
+}
+
+.ticket-table-container table {
+  border-collapse: collapse;
+  background-color: aliceblue;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  width: 90%;
+}
+
+.ticket-table-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #1d2b36;
+
+  text-decoration: underline;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ticket-table-select-div {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #1d2b36;
+}
+
+.ticket-table-select-div select {
+  padding: 0rem 0.7rem;
+  cursor: pointer;
+  border-radius: 7px;
+}
+.ticket-table-data,
+.ticket-table-head {
+  border: 1px solid grey;
+  text-align: center;
+}
+.ticket-table-head {
+  padding: 6px;
+}
+.ticket-table-data {
+  padding: 4px;
+}
+
+.ticket-table-head {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+
+  background-color: #152f45;
+  color: white;
+}
+.ticket-table-data {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  background-color: beige;
+  font-size: 15px;
+}
+
+.ticket-table-view-btn {
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.ticket-table-view-btn:hover {
+  color: black;
+  background-color: gray;
+}
+
+/* TICKET TABLE VIEW TICKET CSS  */
+
+.ticket-table-view-btn-modal {
+  padding: 5px 7px;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+  border: none;
+  background-color: #1d2b36;
+  border: 1px solid lightslategray;
+  cursor: pointer;
+}
+
+.ticket-table-view-btn-modal:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid lightslategray;
+}
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.ticket-table-view-btn-modal {
+  font-size: 1rem;
+  color: aliceblue;
+}
+
+.view-ticket-modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.view-ticket-modal-content {
+  display: flex;
+  padding: 3rem 3rem;
+  margin-top: 70px;
+
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  min-width: 350px;
+
+  background-color: #61707d;
+}
+
+.view-ticket-modal-left {
+  text-align: left;
+
+  padding: 1.5rem;
+  min-width: 332px;
+  border-radius: 10px 0 0 10px;
+
+  background-color: #d0dae3;
+}
+
+.view-ticket-form {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+
+  background-color: #d0dae3;
+}
+
+.view-ticket-input-area {
+  background-color: #d0dae3;
+
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.view-ticket-input-area h3 {
+  font-size: 1rem;
+}
+
+.view-ticket-input-area input,
+.view-ticket-input-area select {
+  padding: 0.5rem;
+  background-color: aliceblue;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 10px;
+}
+.view-ticket-input-area label,
+.view-ticket-comment,
+.view-ticket-comment p,
+.view-ticket-comment h3,
+.view-ticket-close-modal,
+.view-ticket-create-comment-area label {
+  background-color: #d0dae3;
+}
+.view-ticket-modal-right {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+
+  border-radius: 0 10px 10px 0;
+
+  background-color: #d0dae3;
+}
+.view-ticket-comment-list {
+  height: 315px;
+  overflow-y: scroll;
+  background-color: #d0dae3;
+}
+
+.view-ticket-comment {
+  border: 1px solid lightgrey;
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin: 0.5rem 0;
+  background-color: white;
+  word-break: break-all;
+}
+
+.view-ticket-comment h3 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.view-ticket-comment p {
+  font-weight: 100;
+  font-size: 0.8rem;
+
+  background-color: white;
+}
+
+.view-ticket-create-comment-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  background-color: #d0dae3;
+}
+
+.view-ticket-create-comment-area textarea {
+  width: 332px;
+  height: 64px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.view-ticket-create-comment-area button {
+  padding: 0.5rem;
+  color: aliceblue;
+  background-color: #1d2b36;
+  transition: 0.2s ease-in-out;
+  border-radius: 10px;
+  border: none;
+
+  border: 1px solid lightslategray;
+  cursor: pointer;
+}
+
+.view-ticket-create-comment-area button:hover,
+.view-ticket-close-modal:hover {
+  color: black;
+  background-color: aliceblue;
+}
+
+.view-ticket-close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 15px;
+  color: aliceblue;
+  background-color: black;
+  transition: 0.2s ease-in-out;
+  border-radius: 10px;
+  border: none;
+
+  border: 1px solid rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+/* TICKET TABLE VIEW TICKET CSS END  */
+
+.table-selects {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#ticket-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#ticket-desc textarea {
+  width: 291px;
+  height: 84px;
+  overflow-y: scroll;
+}
+
+.errorMessage {
+  font-size: 1.5rem;
+  color: white;
+}
+
+/* NOT FOUND IMAGE CSS  */
+
+.not-found-img-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.not-found-img-div img {
+  height: 340px;
+  width: 80%;
+}
+
+.not-found-img-div h3 {
+  text-align: center;
+}
+
+.dept-heading-section a {
+  display: block;
+  text-align: center;
+  margin: 0.5rem 0;
+  padding: 5px 7px;
+  border-radius: 10px;
+  background-color: #318d59;
+
+  transition: 0.2s ease-in-out;
+}
+
+.dept-heading-section a:hover {
+  color: black;
+  background-color: white;
+}
