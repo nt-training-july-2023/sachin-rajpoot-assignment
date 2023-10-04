@@ -1,24 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
 
 .ticket-table-container {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #d0dae3;
-  height: 90vh; */
-
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
+
   background-color: #d0dae3;
   height: 85vh;
-  /* top: 25%; */
-  /* position: absolute; */
-  /* top: 15%; */
-  /* left: 6%; */
-  /* width: 80%; */
   width: 98vw;
   margin-top: 2rem;
   overflow-x: hidden;
@@ -27,7 +14,6 @@
 
 .ticket-table-container table {
   border-collapse: collapse;
-  /* width: 80%; */
   background-color: aliceblue;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
@@ -41,7 +27,6 @@
 
   text-decoration: underline;
   text-transform: uppercase;
-  /* line-height: 18px; */
   letter-spacing: 1px;
 }
 
@@ -344,7 +329,7 @@ body.active-modal {
   border-radius: 10px;
   background-color: #318d59;
 
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .dept-heading-section a:hover {

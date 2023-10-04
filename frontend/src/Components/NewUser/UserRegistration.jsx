@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "./UserRegistration.css";
 import axios from "axios";
 import PopUp from "../PopUp/PopUp";
+import InputField from "../InputField/InputField";
+import Label from "../Label/Label";
 function UserRegistration() {
   // USE STATES
   const [name, setName] = useState("");
@@ -167,46 +169,54 @@ function UserRegistration() {
         >
           {/* USER NAME  */}
           <div className="user_input_area">
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your name"
-              value={name}
-              onChange={handleNameChange}
-              required
-            />
+            <Label htmlFor={"name"} text={"Name"} />
+            {
+              <InputField
+                type={"text"}
+                name={"name"}
+                id={"name"}
+                placeholder={"Enter your name"}
+                value={name}
+                onChange={handleNameChange}
+                required
+              />
+            }
             {nameError && <span className="error-message">{nameError}</span>}
           </div>
 
           {/* EMAIL  */}
           <div className="user_input_area">
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={handleEmailChange}
-              required
-            />
+
+            <Label htmlFor={"email"} text={"Email"} />
+            {
+              <InputField
+                type={"email"}
+                name={"email"}
+                id={"email"}
+                placeholder={"Enter your email"}
+                value={email}
+                onChange={handleEmailChange}
+                required
+              />
+            }
             {emailError && <span className="error-message">{emailError}</span>}
           </div>
 
           {/* PASSWORD  */}
           <div className="user_input_area">
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => handlePasswordChange(e)}
-              required
-            />
+
+            <Label htmlFor={"password"} text={"Password"} />
+            {
+              <InputField
+                type={"password"}
+                name={"password"}
+                id={"password"}
+                placeholder={"Enter password"}
+                value={password}
+                onChange={handlePasswordChange}
+                required
+              />
+            }
             {passwordError && (
               <span className="error-message">{passwordError}</span>
             )}
@@ -214,7 +224,8 @@ function UserRegistration() {
 
           {/* USER TYPE  */}
           <div className="user_input_area">
-            <label htmlFor="usertype">User Type:</label>
+            <Label htmlFor={"usertype"} text={"User Type"} />
+
             <select
               name="usertype"
               id="usertype"
@@ -230,7 +241,8 @@ function UserRegistration() {
 
           {/* USER DEPARTMENT  */}
           <div className="user_input_area">
-            <label htmlFor="dept">Department:</label>
+            <Label htmlFor={"dept"} text={"Department"} />
+
             <select
               name="departmentId"
               value={userDepartment}

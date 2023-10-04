@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../App.css";
 import PopUp from "../PopUp/PopUp";
+import Table from "../Table/Table";
 
 function UserTable() {
   const [usersData, setUsersData] = useState([]);
@@ -12,7 +13,7 @@ function UserTable() {
   const [currentPage, setCurrentPage] = useState(0);
   const [modal, setModal] = useState(false);
   const [Error, setError] = useState(false);
-  const[customMessage, setCustomMessage] = useState(""); 
+  const [customMessage, setCustomMessage] = useState("");
 
   // GETTNG ALL MEMBER DATA
   useEffect(() => {
@@ -36,9 +37,9 @@ function UserTable() {
 
   // HANDLE DELETE USER
   const handleDeleteUser = (memberId) => {
-    if(memberId === loggedInUserId) {
-      setCustomMessage("Can not delete yourself.")
-      setError(true)
+    if (memberId === loggedInUserId) {
+      setCustomMessage("Can not delete yourself.");
+      setError(true);
       return;
     }
     const headers = {
@@ -59,7 +60,7 @@ function UserTable() {
       })
       .catch((err) => {
         setCustomMessage("something went wrong check network connections");
-        setError(true)
+        setError(true);
       });
   };
 
@@ -96,39 +97,25 @@ function UserTable() {
       <h2 className="ticket-table-heading">User Table</h2>
 
       {/* USER TABLE  */}
-      <table>
-        <thead>
-          <tr className="ticket-table-row">
-          <th className="ticket-table-head">Serial No.</th>
-            <th className="ticket-table-head">Name</th>
-            <th className="ticket-table-head">Department</th>
-            <th className="ticket-table-head">Role</th>
-            <th className="ticket-table-head">Email</th>
-            <th className="ticket-table-head">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usersData &&
-            usersData
-              .map((user, index) => (
-                <tr key={user.memberId}>
-                   <td className="ticket-table-data">{index + 1}</td>
-                  <td className="ticket-table-data">{user.name}</td>
-                  <td className="ticket-table-data">{user.departmentName}</td>
-                  <td className="ticket-table-data">{user.role}</td>
-                  <td className="ticket-table-data">{user.email}</td>
-                  <td className="ticket-table-data">
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDeleteUser(user.memberId)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-        </tbody>
-      </table>
+
+      <Table
+        headers={[
+          "Serial No.",
+          "Name",
+          "Department",
+          "Role",
+          "Email",
+          "Remove",
+        ]}
+        data={usersData.map((user, index) => [
+          index + 1,
+          user.name,
+          user.departmentName,
+          user.role,
+          user.email,
+        ])}
+        onRemoveClick={(index) => handleDeleteUser(usersData[index].memberId)}
+      />
 
       {/* NOT FOUND IMAGE  */}
       {usersData && usersData.length === 0 && (

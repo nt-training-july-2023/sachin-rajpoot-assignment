@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../App.css";
 import PopUp from "../PopUp/PopUp";
+import Table from "../Table/Table";
 
 function DepartmentTable() {
   const [departmentsData, setDepartmentsData] = useState([]);
@@ -30,10 +31,13 @@ function DepartmentTable() {
   } else {
     document.body.classList.remove("active-modal");
   }
+
+  // TOGGLES THE CREATE NEW DEPT SUCCESS POP UP
   const toggleNewDeptModalSuccess = () => {
     SetNewDeptSuccess(!newDeptSuccess);
   };
 
+  // TOGGLES THE CREATE NEW DEPT FAIL POP-UP
   const toggleNewDeptModalFail = () => {
     SetNewDeptFail(!SetNewDeptFail);
   };
@@ -138,17 +142,12 @@ function DepartmentTable() {
       });
   };
 
-  // TOGGLES -> SUCCESS DELETE POP-UP
+  // TOGGLES -> DELETE DEPT SUCCESS DELETE POP-UP
   const toggleSuccess = () => {
     setModal(!modal);
   };
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
 
-  // TOGGLES THE FAIL MODAL -> POP UP
+  // TOGGLES THE DELETE DEPT FAIL MODAL -> POP UP
   const toggleError = () => {
     setError(!Error);
   };
@@ -207,34 +206,16 @@ function DepartmentTable() {
       </div>
 
       {/* DEPARTMENT TABLE  */}
-      <table>
-        <thead>
-          <tr className="ticket-table-row">
-            <th className="ticket-table-head">Serial No.</th>
-            <th className="ticket-table-head">Name</th>
-            <th className="ticket-table-head">Remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          {departmentsData &&
-            departmentsData.map((e, index) => (
-              <tr key={e.departmentId}>
-                <td className="ticket-table-data">{index + 1}</td>
-                <td className="ticket-table-data">{e.departmentName}</td>
-                <td className="ticket-table-data">
-                  <button
-                    className="delete-btn"
-                    onClick={() =>
-                      handleDeletedepartment(e.departmentId, e.departmentName)
-                    }
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <Table
+        headers={["Serial No.", "Name", "Remove"]}
+        data={departmentsData.map((e, index) => [index + 1, e.departmentName])}
+        onRemoveClick={(index) =>
+          handleDeletedepartment(
+            departmentsData[index].departmentId,
+            departmentsData[index].departmentName
+          )
+        }
+      />
 
       {/* NOT FOUND IMAGE  */}
       {departmentsData && departmentsData.length === 0 && (

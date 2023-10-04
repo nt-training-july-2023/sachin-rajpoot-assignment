@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "./NewTicket.css";
 import axios from "axios";
 import PopUp from "../PopUp/PopUp";
+import InputField from "../InputField/InputField";
+import Label from "../Label/Label";
 
 function DeptRegistration() {
   const [title, setTitle] = useState("");
@@ -62,7 +64,6 @@ function DeptRegistration() {
   // ONCHANGE FOR TICKET TYPE
   const handleTicketTypeChange = (e) => {
     setTickettype(e.target.value);
-    console.log(tickettype);
   };
 
   // ONCHANGE FOR SELECT
@@ -132,22 +133,25 @@ function DeptRegistration() {
         >
           {/* TITLE  */}
           <div className={`dept_input_area ${titleError ? "error" : ""}`}>
-            <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              placeholder="Enter ticket title"
-              value={title}
-              onChange={handleTitleChange}
-              required
-            />
+            <Label htmlFor={"title"} text={"Title"} />
+            {
+              <InputField
+                className="new-ticket-input"
+                type={"text"}
+                id={"title"}
+                name={"title"}
+                placeholder={"Enter ticket title"}
+                value={title}
+                onChange={handleTitleChange}
+                required
+              />
+            }
             {titleError && <span className="error-message">{titleError}</span>}
           </div>
 
           {/* DESCRIPTION  */}
           <div className={`dept_input_area ${descError ? "error" : ""}`}>
-            <label htmlFor="desc">Description:</label>
+            <Label htmlFor={"desc"} text={"Description"} />
             <textarea
               id="desc"
               name="desc"
@@ -161,7 +165,8 @@ function DeptRegistration() {
 
           {/* TICKET TYPE  */}
           <div className="dept_input_area">
-            <label htmlFor="tickettype">Ticket Type:</label>
+            <Label htmlFor={"tickettype"} text={"Ticket Type"} />
+
             <select
               name="tickettype"
               id="tickettype"
@@ -177,7 +182,8 @@ function DeptRegistration() {
 
           {/* DEPARTMENT NAME  */}
           <div className="dept_input_area">
-            <label htmlFor="dept">Department:</label>
+            <Label htmlFor={"dept"} text={"Department"} />
+
             <select
               name="departmentId"
               defaultValue=""
@@ -197,7 +203,8 @@ function DeptRegistration() {
 
           {/* DEFAULT STATUS  */}
           <div className="dept_input_area">
-            <label htmlFor="status">Ticket Status:</label>
+            <Label htmlFor={"status"} text={"Ticket Status"} />
+
             <select name="status" id="status" disabled>
               <option value="open">Open</option>
               <option value="progress">Progress</option>

@@ -3,9 +3,10 @@ import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PopUp from "../PopUp/PopUp";
+import InputField from "../InputField/InputField";
+import Label from "../Label/Label";
 
 function Login({ setIsLoggedIn, isLoggedIn }) {
-  console.log("Login Component");
   const navigate = useNavigate();
   const [Popup, setPopup] = useState(false);
   const [Error, setError] = useState(false);
@@ -104,28 +105,32 @@ function Login({ setIsLoggedIn, isLoggedIn }) {
           <form className="content" onSubmit={submitHandler}>
             {/* EMAIL  */}
             <div className="input_area">
-              <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email "
-                onChange={handleEmailChange}
-                required
-              />
+              <Label htmlFor={"email"} text={"Email"} />
+              {
+                <InputField
+                  type={"email"}
+                  name={"email"}
+                  id={"email"}
+                  placeholder={"Enter your email"}
+                  onChange={handleEmailChange}
+                  required
+                />
+              }
               {emailError && <span className="login-error">{emailError}</span>}
             </div>
             {/* PASSWORD  */}
             <div className="input_area">
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter your password"
-                onChange={handlePasswordChange}
-                required
-              />
+              <Label htmlFor={"password"} text={"Password"} />
+              {
+                <InputField
+                  type={"password"}
+                  name={"password"}
+                  id={"password"}
+                  placeholder={"Enter password"}
+                  onChange={handlePasswordChange}
+                  required
+                />
+              }
               {passwordError && (
                 <span className="login-error">{passwordError}</span>
               )}

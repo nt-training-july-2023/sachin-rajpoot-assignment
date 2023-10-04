@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ChangePassword.css";
 import { useNavigate } from "react-router-dom";
+import Label from "../Label/Label";
+import InputField from "../InputField/InputField";
 
 function ChangePassword({ setIsLoggedIn }) {
   const [oldPassword, setOldPassword] = useState("");
@@ -132,13 +134,15 @@ function ChangePassword({ setIsLoggedIn }) {
         >
           {/* OLD PASSWORD  */}
           <div className="change-password-input-area">
-            <label htmlFor="oldpassword">Old Password :</label>
-            <input
-              type="password"
-              placeholder="Enter old password"
-              onChange={(e) => handleOldPasswordChange(e)}
-              required
-            />
+            <Label htmlFor={"oldpassword"} text={"Old password"} />
+            {
+              <InputField
+                type={"password"}
+                placeholder={"Enter old password"}
+                onChange={(e) => handleOldPasswordChange(e)}
+                required
+              />
+            }
             {oldPasswordError && (
               <span className="error-message">{oldPasswordError}</span>
             )}
@@ -146,13 +150,15 @@ function ChangePassword({ setIsLoggedIn }) {
 
           {/* NEW PASSWORD  */}
           <div className="change-password-input-area">
-            <label htmlFor="newpassword">New Password :</label>
-            <input
-              type="password"
-              placeholder="Enter new password"
-              onChange={(e) => handleNewPasswordChange(e)}
-              required
-            />
+            <Label htmlFor={"newpassword"} text={"New password"} />
+            {
+              <InputField
+                type={"password"}
+                placeholder={"Enter new password"}
+                onChange={(e) => handleNewPasswordChange(e)}
+                required
+              />
+            }
             {newPasswordError && (
               <span className="error-message">{newPasswordError}</span>
             )}
@@ -160,13 +166,15 @@ function ChangePassword({ setIsLoggedIn }) {
 
           {/* CONFIRM PASSWORD  */}
           <div className="change-password-input-area">
-            <label htmlFor="conpassword">Confirm Password :</label>
-            <input
-              type="password"
-              placeholder="confirm new password"
-              onChange={(e) => handleconfirmPasswordChange(e)}
-              required
-            />
+            <Label htmlFor={"conpassword"} text={"Confirm Password"} />
+            {
+              <InputField
+                type={"password"}
+                placeholder={"Confirm new password"}
+                onChange={(e) => handleconfirmPasswordChange(e)}
+                required
+              />
+            }
             {confirmNewPasswordError && (
               <span className="error-message">{confirmNewPasswordError}</span>
             )}

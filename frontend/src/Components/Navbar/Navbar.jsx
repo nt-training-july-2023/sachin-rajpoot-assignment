@@ -14,6 +14,7 @@ function Navbar({ setIsLoggedIn }) {
   const memberName = JSON.parse(localStorage.getItem("member"))?.name;
   const memberRole = JSON.parse(localStorage.getItem("member"))?.role;
   const memberDept = JSON.parse(localStorage.getItem("member"))?.departmentName;
+  const memberId = JSON.parse(localStorage.getItem("member"))?.memberId;
 
   const location = useLocation();
 
@@ -128,6 +129,9 @@ function Navbar({ setIsLoggedIn }) {
                 <div className="dept-modal">
                   <div onClick={toggleModal} className="overlay"></div>
                   <div className="dept-modal-content">
+                    <h2 style={{ textDecoration: "none" }}>
+                      EMP ID : {memberId}
+                    </h2>
                     <h2 style={{ textDecoration: "none" }}>
                       Name : {memberName}
                     </h2>
