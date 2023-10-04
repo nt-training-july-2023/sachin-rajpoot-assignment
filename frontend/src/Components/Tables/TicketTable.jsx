@@ -259,7 +259,7 @@ function TicketTable({ isLoggedIn }) {
                       className="ticket-table-view-btn-modal"
                       onClick={() => toggleModal(e.ticketId)}
                     >
-                      details
+                      Details
                     </button>
                     {/* VIEW TICKET MODAL  */}
                     {modal && (
@@ -355,7 +355,7 @@ function TicketTable({ isLoggedIn }) {
                           <div className="view-ticket-modal-right">
                             {/* TICKET COMMENTS  */}
                             <div className="view-ticket-comment-list">
-                              {ticket.comments
+                              {ticket?.comments
                                 .slice()
                                 .sort((a, b) => {
                                   // Sort the comments by date in descending order
@@ -374,6 +374,10 @@ function TicketTable({ isLoggedIn }) {
                                     </div>
                                   );
                                 })}
+
+                              {ticket?.comments?.length === 0 && (
+                                <h2>No Comments Yet.</h2>
+                              )}
                             </div>
 
                             {/* TICKET COMMENT AREA  */}

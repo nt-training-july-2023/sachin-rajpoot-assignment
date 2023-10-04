@@ -8,6 +8,7 @@ function PopUp({
   customImageSrc,
   toggleModal,
   toggleError,
+  toggleSuccess,
 }) {
   const navigate = useNavigate();
   let popup = document.getElementById("popup");
@@ -15,6 +16,7 @@ function PopUp({
   const closePopup = () => {
     toggleModal && toggleModal();
     toggleError && toggleError();
+    toggleSuccess && toggleSuccess();
   };
 
   return (

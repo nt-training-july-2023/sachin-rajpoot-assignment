@@ -23,7 +23,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
- *Sevive Implementation for department.
+ *Service Implementation for department.
  *
  */
 @Service
