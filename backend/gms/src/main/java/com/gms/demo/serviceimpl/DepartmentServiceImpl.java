@@ -127,13 +127,15 @@ public class DepartmentServiceImpl implements DepartmentService {
   ) {
     DISPLAY.info("Inside Department Service");
     Member member = this.memberRepo.findByEmail(email);
-    if (departmentDto.getDepartmentName().trim() == "") {
+    if (departmentDto.getDepartmentName().trim().equals("")) {
         return null;
     }
     if (member != null
         && member.getPassword().equals(password)
         && member.getRole() != null
         && member.getRole().equals(Role.ADMIN)) {
+      departmentDto.setDepartmentName(departmentDto
+          .getDepartmentName().trim());
       Department department =
             this.modelMapper.map(departmentDto, Department.class);
       return this.modelMapper.map(

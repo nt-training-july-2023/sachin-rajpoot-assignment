@@ -32,11 +32,11 @@ public class Comment {
   /**
    * The content of the comment.
    */
-  @NotEmpty
+  @NotEmpty(message = "comment content cannot be empty")
   private String content;
 
   /**
-   * The username associated with the comment.
+   * The user name associated with the comment.
    */
   @NotEmpty
   private String userName;

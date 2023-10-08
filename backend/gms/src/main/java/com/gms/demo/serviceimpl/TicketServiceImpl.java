@@ -1,5 +1,17 @@
 package com.gms.demo.serviceimpl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 import com.gms.demo.controller.DepartmentController;
 import com.gms.demo.entity.Comment;
 import com.gms.demo.entity.Department;
@@ -17,17 +29,6 @@ import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.repo.TicketRepo;
 import com.gms.demo.service.TicketService;
-import java.util.ArrayList;
-import java.util.List;
-import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 
 /**
  * This is Ticket Service Implementation.
@@ -101,6 +102,9 @@ public class TicketServiceImpl implements TicketService {
         new ResourceNotFoundException("Department", "department ID",
             departmentId));
     DISPLAY.info("Department found");
+    ticketDto.setStatus(Status.OPEN);
+    ticketDto.setTitle(ticketDto.getTitle().trim());
+    ticketDto.setDescription(ticketDto.getDescription().trim());
     Ticket ticket = this.modelMapper.map(ticketDto, Ticket.class);
     ticket.setMember(member);
     ticket.setDepartment(department);
@@ -123,6 +127,17 @@ public class TicketServiceImpl implements TicketService {
             "ticket ID", ticketId));
     ticket.setStatus(ticketDto.getStatus());
     CommentDto commentDto = ticketDto.getComment();
+    if (Objects.isNull(commentDto.getContent()) || commentDto
+        .getContent().trim().equals("")) {
+        throw new
+            ResourceNotFoundException("Comment content not found");
+    }
+    if (Objects.isNull(commentDto.getUserName()) || commentDto
+        .getUserName().trim().equals("")) {
+        throw new ResourceNotFoundException("Comment username not found");
+    }
+    commentDto.setContent(commentDto.getContent().trim());
+    commentDto.setUserName(commentDto.getUserName().trim());
     commentDto.setTicket(this.modelMapper.map(ticket, TicketDto.class));
     List<Comment> comments = ticket.getComments();
     comments.add(this.modelMapper.map(commentDto, Comment.class));

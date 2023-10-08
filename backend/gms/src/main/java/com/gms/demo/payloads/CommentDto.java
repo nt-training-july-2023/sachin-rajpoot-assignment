@@ -19,13 +19,13 @@ public class CommentDto {
   /**
    * The content of the comment.
    */
-  @NotEmpty
+  @NotEmpty(message = "comment content cannot be empty or null")
   private String content;
 
   /**
    * The username associated with the comment.
    */
-  @NotEmpty
+  @NotEmpty(message = "comment username cannot be empty or null")
   private String userName;
 
   /**

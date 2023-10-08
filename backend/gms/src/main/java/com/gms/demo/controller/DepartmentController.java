@@ -73,7 +73,7 @@ public class DepartmentController {
       return new ResponseEntity<>(new
               ApiResponse("Created Successfully", true), HttpStatus.CREATED);
     }
-    return new ResponseEntity<>(new ApiResponse("Failed, Check Your"
+    return new ResponseEntity<>(new ApiResponse("Failed, Check Your "
             + "Inputs And Try Again.",
             false), HttpStatus.UNAUTHORIZED);
   }

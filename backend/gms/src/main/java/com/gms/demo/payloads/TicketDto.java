@@ -10,6 +10,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 /**
@@ -24,15 +26,33 @@ public class TicketDto {
   private Integer ticketId;
 
   /**
+   * The max size for title.
+   */
+  private static final int MAX_SIZE_TITLE = 40;
+
+  /**
+   * The max size for description.
+   */
+  private static final int MAX_SIZE_DESC = 240;
+
+  /**
    * The title of the ticket.
    */
   @NotEmpty
+  @Size(
+      max = MAX_SIZE_TITLE,
+      message = "TITLE CANNOT BE MORE THAN 40 CHARACTER."
+  )
   private String title;
 
   /**
    * The description of the ticket.
    */
   @NotEmpty
+  @Size(
+      max = MAX_SIZE_DESC,
+      message = "DESCRIPTION CANNOT BE MORE THAN 240 CHARACTER."
+  )
   private String description;
 
   /**
@@ -53,8 +73,6 @@ public class TicketDto {
    * The status of the ticket.
    */
 
-  //  @NotEmpty
-  @NotNull
   @Enumerated(EnumType.STRING)
   private Status status;
 

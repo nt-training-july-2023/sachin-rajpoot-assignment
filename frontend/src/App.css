@@ -8,6 +8,9 @@ h3,
 p {
   color: #1d2b36;
 }
+a {
+  text-decoration: none;
+}
 
 .delete-btn {
   padding: 5px 7px;

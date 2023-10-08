@@ -26,7 +26,7 @@ public interface MemberService {
    * @param password password
    * @return MemberOutDto Member Out Dto
    */
-  MemberOutDto createMember3(
+  ApiResponse createMember3(
       MemberDto memberDto,
       String email,
       String password

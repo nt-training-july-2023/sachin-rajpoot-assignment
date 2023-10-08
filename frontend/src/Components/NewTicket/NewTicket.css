@@ -14,18 +14,28 @@
   justify-content: center;
   align-items: center;
   background-color: #d0dae3;
+  gap: 2rem;
 }
 
+.dept_container .dept-img {
+  width: 435px;
+}
+
+@media screen and (max-width: 1020px) {
+  .dept_container .dept-img {
+     display: none;
+   }
+ }
 .dept_registration_form {
   padding: 1rem 2rem;
   background-color: aliceblue;
   box-shadow: -2px 7px 25px -9px rgba(0, 0, 0, 0.75);
-  border-radius: 10px;
+  border-radius: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: .5rem;
 }
 
 .dept_heading {
@@ -51,7 +61,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  min-width: 300px;
+  min-width: 400px;
   background-color: aliceblue;
 }
 

@@ -85,7 +85,7 @@ public class MemberController {
       return new ResponseEntity<>(memberOutDto, HttpStatus.ACCEPTED);
     }
     return new ResponseEntity<>(
-      "Invalid Credentials, Please try again.",
+      new ApiResponse("Invalid Credentials, Please try again.", false),
       HttpStatus.BAD_REQUEST
     );
   }
@@ -107,17 +107,9 @@ public class MemberController {
       @RequestHeader final String password
   ) {
     DISPLAY.info("Inside Controller");
-    MemberOutDto dto = this.memberService
-        .createMember3(memberDto, email, password);
-    if (dto != null) {
-      return new ResponseEntity<>(new
-              ApiResponse("Created Successfully", true),
-          HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(new
-          ApiResponse("Invalid Data", false),
-      HttpStatus.BAD_REQUEST);
-    }
+    return new ResponseEntity<>(this.memberService
+        .createMember3(memberDto, email, password),
+        HttpStatus.OK);
   }
   /**
    * Retrieves a list of authenticated members with pagination.

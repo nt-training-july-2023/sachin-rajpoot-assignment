@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @since 28-08-2023
  */
 @RestControllerAdvice
-public class GlobalException {
+public class GlobalExcHandler {
 
   /**
    * Exception handler for ResourceNotFoundException.
