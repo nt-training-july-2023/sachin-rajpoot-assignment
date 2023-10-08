@@ -97,9 +97,6 @@ function ChangePassword({ setIsLoggedIn }) {
         config
       )
       .then((response) => {
-        console.log("DATA RECEIVED");
-        console.log(response.data);
-        console.log("Log Out Function");
         handleLogOut();
       })
       .catch((err) => {
