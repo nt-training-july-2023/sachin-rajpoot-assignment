@@ -97,9 +97,6 @@ function ChangePassword({ setIsLoggedIn }) {
         config
       )
       .then((response) => {
-        console.log("DATA RECEIVED");
-        console.log(response.data);
-        console.log("Log Out Function");
         handleLogOut();
       })
       .catch((err) => {
@@ -120,6 +117,7 @@ function ChangePassword({ setIsLoggedIn }) {
 
   return (
     <div className="change-password-container">
+      <img src="changepassword.svg" alt="" />
       <div className="change-password-subcontainer">
         {/* HEADING */}
         <div className="change-password-heading">

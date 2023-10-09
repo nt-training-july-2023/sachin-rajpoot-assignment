@@ -43,12 +43,14 @@ function UserRegistration() {
   // HANDLE NAME CHANGE
   const handleNameChange = (event) => {
     const newName = event.target.value;
-    setName(newName);
+    setName(newName.trim());
     const usernameregex = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
     if (newName.trim() === "") {
       setNameError("Name cannot be empty");
     } else if (newName.trim().length < 3) {
       setNameError("Name must be minimum 3 letter");
+    } else if (newName.trim().length > 40) {
+      setNameError("Name cannot be more than 40 letter");
     } else {
       setNameError("");
     }
@@ -64,6 +66,8 @@ function UserRegistration() {
         ? "Email cannot be empty"
         : !emailRegex.test(newEmail)
         ? "Email must have domain nucleusteq.com"
+        : newEmail.trim().length > 40
+        ? "email cannot be more than 40 character"
         : ""
     );
   };
@@ -118,9 +122,9 @@ function UserRegistration() {
     }
     // DATA SENT
     let data = {
-      name: name,
-      email: email,
-      password: btoa(password),
+      name: name.trim(),
+      email: email.trim(),
+      password: btoa(password.trim()),
       isFirstLogin: true,
       role: userType,
       department: {
@@ -154,6 +158,7 @@ function UserRegistration() {
 
   return (
     <div className="user_container">
+      <img className="user-img" src="adduser.svg" alt="add user" />
       <div className="user_registration_form">
         {/* HEADING */}
         <div className="user_heading">
@@ -186,7 +191,6 @@ function UserRegistration() {
 
           {/* EMAIL  */}
           <div className="user_input_area">
-
             <Label htmlFor={"email"} text={"Email"} />
             {
               <InputField
@@ -204,7 +208,6 @@ function UserRegistration() {
 
           {/* PASSWORD  */}
           <div className="user_input_area">
-
             <Label htmlFor={"password"} text={"Password"} />
             {
               <InputField

@@ -51,14 +51,26 @@ function DeptRegistration() {
   const handleTitleChange = (event) => {
     const newTitle = event.target.value;
     setTitle(newTitle);
-    setTitleError(newTitle.trim() === "" ? "Title cannot be empty" : "");
+    if (newTitle.trim() === "") {
+      setTitleError("Title cannot be empty");
+    } else if (newTitle.trim().length > 40) {
+      setTitleError("title cannot be more than 40 character");
+    } else {
+      setTitleError("");
+    }
   };
 
   // ONCHANGE FOR DESCRIPTION
   const handleDescChange = (event) => {
     const newDesc = event.target.value;
     setDesc(newDesc);
-    setDescError(newDesc.trim() === "" ? "Description cannot be empty" : "");
+    if (newDesc.trim() === "") {
+      setDescError("Description cannot be empty");
+    } else if (newDesc.trim().length > 240) {
+      setDescError("Description cannot be more than 240 character");
+    } else {
+      setDescError("");
+    }
   };
 
   // ONCHANGE FOR TICKET TYPE
@@ -69,15 +81,14 @@ function DeptRegistration() {
   // ONCHANGE FOR SELECT
   const handleSelectChange = (e) => {
     const { name, value } = e.target;
-    console.log(value);
     setDepartmentId(Number(value));
   };
 
   // SUBMIT BUTTON HANDLER
   const handleSubmit = (event) => {
     event.preventDefault();
-    data.title = title;
-    data.description = desc;
+    data.title = title.trim();
+    data.description = desc.trim();
     data.status = "OPEN";
     data.ticketType = tickettype;
     const headers = {
@@ -118,6 +129,7 @@ function DeptRegistration() {
 
   return (
     <div className="dept_container">
+      <img className="dept-img" src="ticket2.svg" alt="ticket" />
       <div className="dept_registration_form">
         {/* HEADING  */}
         <div className="dept_heading">

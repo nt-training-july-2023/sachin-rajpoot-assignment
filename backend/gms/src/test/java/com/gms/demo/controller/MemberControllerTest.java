@@ -117,7 +117,7 @@ public class MemberControllerTest {
 		memberOutDto.setIsFirstLogin(true);
 		memberOutDto.setName("test name");
 
-		when(memberService.createMember3(memberDto, email, password)).thenReturn(memberOutDto);
+		when(memberService.createMember3(memberDto, email, password)).thenReturn(new ApiResponse("success", true));
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/create/nodept", memberDto, email, password)
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));
@@ -157,7 +157,6 @@ public class MemberControllerTest {
 	@Test
 	public void testDeleteMember() throws Exception {
 		Integer memberId = 1;
-
 		when(this.memberService.deleteMember(memberId)).thenReturn(new ApiResponse("SS", true));
 		mockMvc.perform(MockMvcRequestBuilders.put("/api/member/delete/memberId/{memberId}", memberId)
 				.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON));

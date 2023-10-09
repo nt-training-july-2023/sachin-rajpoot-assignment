@@ -56,6 +56,15 @@ public class ResourceNotFoundException extends RuntimeException {
   }
 
   /**
+   * constructor.
+   *
+   * @param string message
+   */
+  public ResourceNotFoundException(final String string) {
+    super(string);
+}
+
+/**
    * Gets the name of the resource that was not found.
    *
    * @return The name of the resource.

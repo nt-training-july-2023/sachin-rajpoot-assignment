@@ -1,19 +1,16 @@
 package com.gms.demo.serviceImpl;
 
 import static org.junit.Assert.assertNotNull;
-
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
@@ -23,15 +20,14 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-
 import com.gms.demo.entity.Department;
 import com.gms.demo.entity.Member;
 import com.gms.demo.entity.Role;
 import com.gms.demo.entity.Status;
 import com.gms.demo.entity.Ticket;
 import com.gms.demo.entity.TicketType;
+import com.gms.demo.exception.ResourceNotFoundException;
 import com.gms.demo.payloads.CommentDto;
-
 import com.gms.demo.payloads.TicketDto;
 import com.gms.demo.payloads.TicketGetAllOutDto;
 import com.gms.demo.payloads.TicketOutDto;
@@ -40,7 +36,6 @@ import com.gms.demo.repo.DepartmentRepo;
 import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.repo.TicketRepo;
 import com.gms.demo.service.DepartmentService;
-
 import com.gms.demo.serviceimpl.TicketServiceImpl;
 
 @SpringBootTest
@@ -145,14 +140,19 @@ public class TicketServiceImplTest {
 	}
 
 	@Test
-	public void updateTicket_Test() {
+	public void updateTicket_Test() throws ResourceNotFoundException{
 			when(ticketRepo.findById(ticketId)).thenReturn(Optional.of(ticket));
 			statusInDto.setStatus(Status.OPEN);	
-			statusInDto.setComment(new CommentDto());
+			CommentDto commentDto = new CommentDto();
+			commentDto.setCommentId(departmentId);
+			commentDto.setContent("hh");
+			commentDto.setDate(new Date());
+			commentDto.setTicket(ticketDto); 
+			commentDto.setUserName("hh");
+			statusInDto.setComment(commentDto);
 			when(ticketRepo.save(ticket)).thenReturn(ticket);	
-			when(this.modelMapper.map(ticket, TicketOutDto.class)).thenReturn(ticketOutDto);			
+			when(this.modelMapper.map(ticket, TicketOutDto.class)).thenReturn(ticketOutDto);	
 			assertNotNull(this.ticketServiceImpl.updateTicket(statusInDto, ticketId));
-	    
 	}
 
 	@Test
@@ -184,7 +184,7 @@ public class TicketServiceImplTest {
 		when(ticketRepo.findAllByMemberIdOrderByStatusAsc(member.getMemberId(),
 				PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
 		;
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, myTickets, filter,
@@ -213,7 +213,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(ticketRepo.findAllByMemberIdAndStatus(member.getMemberId(), filter, pageable)).thenReturn(ticketPages);
 		;
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, myTickets, filter,
@@ -244,7 +244,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findAllByDepartmentId(member.getDepartment().getDepartmentId(),
 				PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, myTickets, filter,
@@ -254,7 +254,7 @@ public class TicketServiceImplTest {
 
 	@Test
 	public void getAllFilterAllRoleAdminMyDept() {
-		
+
 		boolean adminDept = true;
 		Status filter = Status.ALL;
 		Integer pageNumber = 0;
@@ -273,7 +273,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findAllByDepartmentId(member.getDepartment().getDepartmentId(),
 				PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, false, filter,
@@ -283,7 +283,7 @@ public class TicketServiceImplTest {
 
 	@Test
 	public void getAllFilterNotAllRoleAdminMyDept() {
-		
+
 		boolean adminDept = true;
 		Status filter = Status.OPEN;
 		Integer pageNumber = 0;
@@ -302,7 +302,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findAllByDepartmentIdAndStatus(member.getDepartment().getDepartmentId(), filter,
 				PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, false, filter,
@@ -312,7 +312,7 @@ public class TicketServiceImplTest {
 
 	@Test
 	public void getAllFilterAllRole() {
-		
+
 		boolean adminDept = false;
 		Status filter = Status.ALL;
 		Integer pageNumber = 0;
@@ -330,7 +330,7 @@ public class TicketServiceImplTest {
 		tickets.add(ticket2);
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findAll(PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, false, filter,
@@ -340,7 +340,7 @@ public class TicketServiceImplTest {
 
 	@Test
 	public void getAllFilterNotAllRole() {
-		
+
 		boolean adminDept = false;
 		Status filter = Status.OPEN;
 		Integer pageNumber = 0;
@@ -359,7 +359,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findByStatus(filter, PageRequest.of(pageNumber, 8, Sort.by("status"))))
 				.thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, false, filter,
@@ -369,7 +369,7 @@ public class TicketServiceImplTest {
 
 	@Test
 	public void getAllFilterAllRoleUser() {
-		
+
 		boolean adminDept = false;
 		Status filter = Status.ALL;
 		Integer pageNumber = 0;
@@ -390,7 +390,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findAllByDepartmentId(member.getDepartment().getDepartmentId(),
 				PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, false, filter,
@@ -400,7 +400,7 @@ public class TicketServiceImplTest {
 
 	@Test
 	public void getAllFilterNotAllRoleUser() {
-		
+
 		boolean adminDept = false;
 		Status filter = Status.OPEN;
 		Integer pageNumber = 0;
@@ -419,7 +419,7 @@ public class TicketServiceImplTest {
 		Page<Ticket> ticketPages = new PageImpl<>(tickets, pageable, tickets.size());
 		when(this.ticketRepo.findAllByDepartmentIdAndStatus(member.getDepartment().getDepartmentId(), filter,
 				PageRequest.of(pageNumber, 8, Sort.by("status")))).thenReturn(ticketPages);
-		
+
 		when(this.modelMapper.map(ticket1, TicketGetAllOutDto.class)).thenReturn(getAllOutDto);
 
 		List<TicketGetAllOutDto> getAllOutDtos2 = this.ticketServiceImpl.getAllTicketAuth(memberId, false, filter,

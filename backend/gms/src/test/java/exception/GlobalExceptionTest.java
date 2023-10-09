@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 
-import com.gms.demo.exception.GlobalException;
+import com.gms.demo.exception.GlobalExcHandler;
 import com.gms.demo.payloads.ApiResponse;
 
 public class GlobalExceptionTest {
-	private final GlobalException globalException = new GlobalException();
+	private final GlobalExcHandler globalException = new GlobalExcHandler();
 
 	@Test
 	public void testHttpRequestMethodNotSupportedExceptionHandler() {

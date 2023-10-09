@@ -115,17 +115,28 @@ public class MemberServiceImplTest {
 	@Test
 	public void testCreateMember3ValidAdminCredentials() {
 		Integer DeptId = 1;
-		MemberDto memberDto = new MemberDto();
 		DepartmentDto departmentDto = new DepartmentDto();
+		departmentDto.setDepartmentId(DeptId); 
+		departmentDto.setDepartmentName("HR");
+		
+		Department department = new Department();
 		department.setDepartmentId(DeptId);
+		department.setDepartmentName("HR");
+		
+		MemberDto memberDto = new MemberDto();
+		memberDto.setName("name");
+		memberDto.setPassword(password);
+		memberDto.setEmail(email);
+		memberDto.setRole(Role.USER);
 		memberDto.setDepartment(departmentDto);
+		
 		Member existingMember = new Member();
 		existingMember.setEmail(email);
 		existingMember.setPassword(password);
 		existingMember.setRole(Role.ADMIN);
-		Department department = new Department();
 		department.setDepartmentId(DeptId);
 		existingMember.setDepartment(department);
+		
 		Mockito.when(memberRepo.findByEmail(email)).thenReturn(existingMember);
 		Mockito.when(this.departmentRepo.findById(memberDto.getDepartment().getDepartmentId()))
 				.thenReturn(Optional.of(department));
@@ -134,23 +145,46 @@ public class MemberServiceImplTest {
 		Member savedMember = new Member();
 		Mockito.when(memberRepo.save(mappedMember)).thenReturn(savedMember);
 		MemberOutDto mappedMemberOutDto = new MemberOutDto();
-		Mockito.when(this.modelMapper.map(savedMember, MemberOutDto.class)).thenReturn(mappedMemberOutDto);
-		MemberOutDto result = memberService.createMember3(memberDto, email, password);
-		assertEquals(mappedMemberOutDto, result);
+		ApiResponse result = memberService.createMember3(memberDto, email, password);
+		assertTrue(result.isSuccess());
 	}
 
 	@Test
-	public void testCreateMember2InvalidAdminCredentials() {
-		Integer DeptId = 1;
+	public void testCreateMemberInvalidData1() {
 		MemberDto memberDto = new MemberDto();
+		memberDto.setName("");
+		ApiResponse result = memberService.createMember3(memberDto, email, password);
+		assertFalse(result.isSuccess());
+	}
+	
+	@Test
+	public void testCreateMemberInvalidData2() {
+		MemberDto memberDto = new MemberDto();
+		memberDto.setName("hh");
+		memberDto.setPassword("         ");
+		ApiResponse result = memberService.createMember3(memberDto, email, password);
+		assertFalse(result.isSuccess());
+	}
+	
+	@Test
+	public void testCreateMemberInvalidData3() {
+		MemberDto memberDto = new MemberDto();
+		memberDto.setName("hh");
+		memberDto.setPassword("         ");
+		memberDto.setDepartment(null);
+		ApiResponse result = memberService.createMember3(memberDto, email, password);
+		assertFalse(result.isSuccess());
+	}
+	
+	@Test
+	public void testCreateMemberInvalidData4() {
+		MemberDto memberDto = new MemberDto();
+		memberDto.setName("hh");
+		memberDto.setPassword("         ");
 		DepartmentDto departmentDto = new DepartmentDto();
-		department.setDepartmentId(DeptId);
 		memberDto.setDepartment(departmentDto);
-		Mockito.when(memberRepo.findByEmail(email)).thenReturn(null);
-		Mockito.when(this.departmentRepo.findById(memberDto.getDepartment().getDepartmentId()))
-				.thenReturn(Optional.of(department));
-		MemberOutDto result = memberService.createMember3(memberDto, email, password);
-		assertNull(result);
+		ApiResponse result = memberService.createMember3(memberDto, email, password);
+		assertFalse(result.isSuccess());
 	}
 
 	@Test

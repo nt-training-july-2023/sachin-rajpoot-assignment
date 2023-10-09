@@ -44,7 +44,7 @@ function DepartmentTable() {
 
   // ON CHANGE -> CREATE NEW DEPARTMENT
   const handleDepartmentNameChange = (e) => {
-    setDepartment(e.target.value);
+    setDepartment(e.target.value.trim());
     let deptName = e.target.value;
     if (deptName.trim() === "") {
       setDepartmentNameError("name can not be empty.");

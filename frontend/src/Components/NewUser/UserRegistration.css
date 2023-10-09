@@ -13,6 +13,17 @@
   justify-content: center;
   align-items: center;
   background-color: #d0dae3;
+  gap: 2rem;
+}
+
+.user_container .user-img {
+  width: 500px;
+}
+
+@media screen and (max-width: 1020px) {
+ .user_container .user-img {
+    display: none;
+  }
 }
 
 .user_registration_form {

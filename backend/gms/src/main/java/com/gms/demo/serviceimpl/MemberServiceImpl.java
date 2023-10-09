@@ -15,6 +15,8 @@ import com.gms.demo.repo.MemberRepo;
 import com.gms.demo.service.MemberService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -157,9 +159,29 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
-  public final MemberOutDto createMember3(final MemberDto memberDto,
+  public final ApiResponse createMember3(final MemberDto memberDto,
       final String email, final String password) {
     DISPLAY.info("Inside Service");
+    if (memberDto.getName().trim().equals("")) {
+        DISPLAY.info("name failed");
+        return new ApiResponse("Name cannot be empty", false);
+    }
+    if (memberDto.getPassword().trim().equals("")) {
+        DISPLAY.info("password failed");
+        return new ApiResponse("password cannot be empty", false);
+    }
+    if (Objects.isNull(memberDto.getDepartment())) {
+        DISPLAY.info("Department failed");
+        return new ApiResponse("Department cannot be null", false);
+    }
+    if (Objects.isNull(memberDto.getDepartment().getDepartmentId())) {
+        DISPLAY.info("Department ID failed");
+        return new ApiResponse("Department ID cannot be null or empty", false);
+    }
+    if (memberDto.getEmail().trim().equals("")) {
+        DISPLAY.info("email failed");
+        return new ApiResponse("Email cannot be empty", false);
+    }
     Member member = this.memberRepo.findByEmail(email);
     this.departmentRepo.findById(memberDto.getDepartment()
         .getDepartmentId()).orElseThrow(() -> new
@@ -172,14 +194,14 @@ public class MemberServiceImpl implements MemberService {
             && member.getRole().equals(Role.ADMIN)) {
         DISPLAY.info("Role is Admin");
         memberDto.setIsFirstLogin(true);
+        memberDto.setName(memberDto.getName().trim());
+        memberDto.setPassword(memberDto.getPassword().trim());
         Member member2 = this.mapper.map(memberDto, Member.class);
-        Member savedMember = this.memberRepo.save(member2);
-        MemberOutDto memberOutDto2 =
-                this.mapper.map(savedMember, MemberOutDto.class);
-        return memberOutDto2;
+        this.memberRepo.save(member2);
+        return new ApiResponse("Member Created Successfully", true);
     }
     DISPLAY.info("Null returned");
-    return null;
+    return new ApiResponse("Something went wrong", false);
   }
 
   @Override

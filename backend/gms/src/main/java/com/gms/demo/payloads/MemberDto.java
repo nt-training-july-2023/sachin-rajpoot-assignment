@@ -28,6 +28,10 @@ public class MemberDto {
    * The name of the member.
    */
   @NotEmpty
+  @Size(
+      max = MAX_SIZE_NAME,
+      message = "NAME CANNOT BE MORE THAN 40 CHARACTER."
+  )
   private String name;
 
   /**
@@ -44,6 +48,11 @@ public class MemberDto {
   private static final int MIN_SIZE_PASSWORD = 8;
 
   /**
+   * The max size for name.
+   */
+  private static final int MAX_SIZE_NAME = 40;
+
+  /**
    * The password associated with the member's account.
    * Password must be between 5.
    * and 12 characters in length.
@@ -58,20 +67,17 @@ public class MemberDto {
   /**
    * The Check for the first login of the member.
    */
-  //  @NotEmpty
   private Boolean isFirstLogin;
 
   /**
    * The role of the member in the system.
    */
-  // @NotEmpty
   @Enumerated(EnumType.STRING)
   private Role role;
 
   /**
    * The department associated with the member.
    */
-  //  @JsonIgnore
   private DepartmentDto department;
 
   /**

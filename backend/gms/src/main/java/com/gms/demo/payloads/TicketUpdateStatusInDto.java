@@ -3,6 +3,7 @@ package com.gms.demo.payloads;
 import com.gms.demo.entity.Status;
 import java.util.Objects;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * A DTO (Data Transfer Object) class representing
@@ -25,6 +26,7 @@ public class TicketUpdateStatusInDto {
   /**
    * An optional comment associated with the status update.
    */
+  @NotNull(message = "comment cannot be null.")
   private CommentDto comment;
 
   /**

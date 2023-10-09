@@ -249,7 +249,7 @@ function TicketTable({ isLoggedIn }) {
               return (
                 <tr key={e.ticketId}>
                   <td className="ticket-table-data">{index + 1}</td>
-                  <td className="ticket-table-data">{e.title}</td>
+                  <td className="ticket-table-data ticket-table-title">{e.title}</td>
                   <td className="ticket-table-data">{e.departmentName}</td>
                   <td className="ticket-table-data">{e.status}</td>
                   <td className="ticket-table-data">{e.memberName}</td>
@@ -275,8 +275,8 @@ function TicketTable({ isLoggedIn }) {
                             >
                               {/* TICKET TITLE  */}
                               <div className="view-ticket-input-area">
-                                <h3>Title :</h3>
-                                <p>{ticket.title}</p>
+                                <h3 >Title :</h3>
+                                <p className="ticket-table-title">{ticket.title}</p>
                               </div>
 
                               {/* TICKET DESC  */}
@@ -376,7 +376,8 @@ function TicketTable({ isLoggedIn }) {
                                 })}
 
                               {ticket?.comments?.length === 0 && (
-                                <h2>No Comments Yet.</h2>
+                                // <h2>No Comments Yet.</h2> 
+                                <img src="ufo.svg" style={{width:"283px"}}/>
                               )}
                             </div>
 
